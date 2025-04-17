@@ -204,11 +204,11 @@ const CitySelector = ({
           xl: "480px",
         },
         height: {
-          xs: "45px",
-          sm: "47px",
-          md: "67px",
-          lg: "57px",
-          xl: "67px",
+          xs: "30px",
+          sm: "40px",
+          md: "52px",
+          lg: "47px",
+          xl: "40px",
         },
       }}
     >

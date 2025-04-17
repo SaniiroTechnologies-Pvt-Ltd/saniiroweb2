@@ -21,6 +21,10 @@ const BlogFeed = () => {
   const [tags, setTags] = useState([]);
   const [Featured, setFeatured] = useState([]);
   const [blogs, setBlogs] = useState([]);
+
+  
+
+  console.log(blogsPerPage, "blog")
   const blogMatchesTags = (blog) => {
     return (
       activeTags.every((tag) => blog.region.includes(tag)) ||

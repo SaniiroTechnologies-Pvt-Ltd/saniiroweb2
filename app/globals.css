@@ -1,16 +1,21 @@
 body {
-  margin: 0;
+  /* margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Work Sans", sans-serif;
+    "Work Sans", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* font-size: 14px !important; */
+}
+/* Apply the font globally to all Material-UI components */
+[class^="Mui"], [class*=" Mui"] {
+  font-family: 'Prompt', sans-serif !important;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 .input-new {
   width: 480px;
   height: 55px;
@@ -25,7 +30,7 @@ code {
   border: 1px solid #aaaaaa;
   color: #aaaaaa;
   padding-left: 5%;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 10px;
 }
 
@@ -61,4 +66,108 @@ code {
   background-position: center;
   mix-blend-mode: overlay; /* Adjust blend mode as needed */
   opacity: 0.7; /* Adjust opacity of the texture */
+}
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Jump height */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes starAnimation {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+
+
+
+.card-ribon-container{
+ z-index: inherit;
+ display: flex;
+  background-color:#fff;
+  padding: 20px;
+  transition: border-color 0.3s ease; 
+}
+.card-ribon-container:hover{
+  border: 2px solid #052973;
+}
+.card-ribon {
+  /* width: 350px;
+  height: 150px; */
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  display: contents;
+
+}
+.card-label{
+ position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+
+.card-ribon .card-ribon-container {
+  /* width: 100%; */
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+  z-index: 10;
+  border-radius: 10px;
+  padding: 15px;
+  padding-top: 50px;
+}
+.css-gx0dit-MuiPaper-root-MuiDialog-paper{
+  width: 990px !important;
+}
+
+
+
+.card-ribon::before  {
+  position: absolute;
+  content: "";
+  background-color: #F15B25;
+  height: 22px;
+  width: 35px;
+  top: 32px;
+  right:-13px;
+  transform: rotate(45deg);
+  z-index: -10!important;
+}
+
+.card-ribon::after {
+  position: absolute;
+  content: attr(data-label);
+  top: 17px;
+  padding-left: 20px;
+  padding: 5px 20px;
+  right: -16px;
+  width: 6rem;
+  background-color: #F15B25;
+  z-index: 20 !important;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 10px;
+  color: #fff;
+}
+
+
+.text-stroke {
+  -webkit-text-stroke: 1px #F15B25;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }

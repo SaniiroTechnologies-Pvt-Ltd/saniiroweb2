@@ -139,7 +139,7 @@ const FeaturesGlance = () => {
                   <span style={{ color: "#F15B25" }}>Accounting</span> &
                   <span style={{ color: "#F15B25" }}> Billing Software</span>
                 </Typography>
-                <Stack
+                {/* <Stack
                   gap={2}
                   width={"533px"}
                   height={"231px"}
@@ -156,10 +156,7 @@ const FeaturesGlance = () => {
                       opacity: "80%",
                     }}
                   >
-                    At Saniiro Technologies Private Limited we provide the best
-                    in class accounting and billing software, which along with
-                    the various applications will aid you to get a better
-                    understanding of what your company needs.
+                 At Saniiro Technologies Private Limited, we offer top-tier accounting and billing software designed to meet your company's needs. Our services include
                   </Typography>
                   <Typography
                     sx={{
@@ -193,7 +190,86 @@ const FeaturesGlance = () => {
                     provide an ecommerce website builder which helps to get an
                     appealing website for your clients.
                   </Typography>
-                </Stack>
+                </Stack> */}
+                <Stack
+  gap={2}
+  width={"533px"}
+  height={"auto"}
+  margin={"0 auto"}
+>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    At Saniiro Technologies Private Limited, we offer top-tier accounting and
+    billing software designed to meet your company's needs. Our services
+    include:
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Customized Solutions:</strong> Tailored services to fit the unique
+    requirements of each client.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Comprehensive GST Accounting:</strong> Our software provides a
+    detailed overview of your books, ensuring GST compliance.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Affordable E-commerce Development Tools:</strong> Access the best
+    tools in the market at competitive prices.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>E-commerce Website Builder:</strong> Create appealing websites for
+    your clients with ease.
+  </Typography>
+</Stack>
+
               </Stack>
             </Stack>
           </Stack>
@@ -215,59 +291,83 @@ const FeaturesGlance = () => {
                   <span style={{ color: "#F15B25" }}>Financial Management</span>
                 </Typography>
                 <Stack
-                  gap={2}
-                  width={"533px"}
-                  height={"231px"}
-                  margin={"0 auto"}
-                >
-                  <Typography
-                    sx={{
-                      fontFamily: "Work Sans",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "21px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      opacity: "80%",
-                    }}
-                  >
-                    We offer a range of financial management systems to help you
-                    get a better grip on your books. One of our most popular
-                    financial tracking software is our quotation management
-                    software which lets you create, track and submit quotes and
-                    invoices with ease.
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: "Work Sans",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "21px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      opacity: "80%",
-                    }}
-                  >
-                    Saniiro kept its user interface very user friendly which
-                    allows anyone to use it without having any trouble. We also
-                    provide the best CMS software as well, which lets you
-                    seamlessly manage your web content to your liking.
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: "Work Sans",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "21px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      opacity: "80%",
-                    }}
-                  >
-                    Our CMS system takes into consideration a lot of factors
-                    before showing you how to best manage your content.
-                  </Typography>
-                </Stack>
+  gap={2}
+  width={"533px"}
+  height={"auto"}
+  margin={"0 auto"}
+>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    We offer a range of financial management systems to help you better manage
+    your books, including:
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Quotation Management Software:</strong> Easily create, track, and
+    submit quotes and invoices.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>User-Friendly Interface:</strong> Designed for ease of use,
+    allowing anyone to navigate without trouble.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Top CMS Software:</strong> Seamlessly manage your web content to
+    your liking.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Comprehensive CMS System:</strong> Considers various factors to
+    show you the best ways to manage your content.
+  </Typography>
+</Stack>
+
               </Stack>
               <Stack sx={{ position: "relative", width: "100%" }}>
                 <Image
@@ -311,47 +411,83 @@ const FeaturesGlance = () => {
                   <span style={{ color: "#F15B25" }}>Inventory Management</span>
                 </Typography>
                 <Stack
-                  gap={2}
-                  width={"533px"}
-                  height={"231px"}
-                  margin={"0 auto"}
-                >
-                  <Typography
-                    sx={{
-                      fontFamily: "Work Sans",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "21px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      opacity: "80%",
-                    }}
-                  >
-                    We also provide inventory management software which would
-                    let you keep track of your orders, inventory levels, sales
-                    and deliveries. This software takes in a range of data
-                    before presenting you with the entire picture of what your
-                    books would look like.
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: "Work Sans",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "21px",
-                      letterSpacing: "0em",
-                      textAlign: "left",
-                      opacity: "80%",
-                    }}
-                  >
-                    It is our bet that you would not find a better inventory
-                    management system at the prices we offer. However, inventory
-                    management is not the only management software we provide,
-                    as the task management software would keep track of
-                    tracking, testing, planning and reporting, which would speed
-                    up your company achieving the goals you set.
-                  </Typography>
-                </Stack>
+  gap={2}
+  width={"533px"}
+  height={"auto"}
+  margin={"0 auto"}
+>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    We offer top-tier inventory management software to help you efficiently
+    manage your operations. Our features include:
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Order and Inventory Tracking:</strong> Keep track of orders,
+    inventory levels, sales, and deliveries.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Comprehensive Data Analysis:</strong> Presents a complete picture
+    of your books by analyzing a range of data.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Competitive Pricing:</strong> Our inventory management system offers
+    exceptional value at competitive prices.
+  </Typography>
+  <Typography
+    sx={{
+      fontFamily: "Work Sans",
+      fontSize: "14px",
+      fontWeight: 400,
+      lineHeight: "21px",
+      letterSpacing: "0em",
+      textAlign: "left",
+      opacity: "80%",
+    }}
+  >
+    <strong>Task Management Software:</strong> Track, test, plan, and report to
+    accelerate your company's goal achievement.
+  </Typography>
+</Stack>
+
               </Stack>
             </Stack>
           </Stack>

@@ -75,7 +75,7 @@ const Industries1 = () => {
             fontWeight={"bold"}
             textAlign={"center"}
           >
-            SANIIRO CRM
+            Saniiro Platform
           </Typography>
           <Typography
             color={"#052973"}
@@ -88,7 +88,7 @@ const Industries1 = () => {
             }}
             textAlign={"center"}
           >
-            The operating core of your business
+            The Unified Platform for Every Organization
           </Typography>
         </Stack>
         <Typography
@@ -104,11 +104,7 @@ const Industries1 = () => {
           }}
           textAlign={"center"}
         >
-          Saniiro Books offers tailored business accounting solutions designed
-          to meet the unique needs of organizations of all sizes. Whether you
-          are a startup, a small-sized business, a small-scale enterprise, or a
-          non-profit organization, our platform provides the essential tools to
-          manage your billing, inventory, and accounting efficiently.
+          Saniiro is a powerful, cloud-based platform designed to streamline operations for small businesses, medium-sized enterprises, and nonprofits. It integrates key features like billing, accounting, inventory, CRM, and more, helping businesses save time and scale efficiently. With automated tools, GST compliance, real-time reporting, and mobile accessibility, Saniiro simplifies daily tasks, ensures smooth team collaboration, and provides real-time insights. Whether you’re managing a growing business or a non-profit organization, Saniiro offers a unified solution to drive productivity, transparency, and growth.
         </Typography>
         <Stack alignItems={"center"}>
         <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>

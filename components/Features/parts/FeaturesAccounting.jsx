@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../Navbar/Nav";
 import BillingBanner from "./parts/BillingBanner";
 import BillingFeatures from "./parts/BillingFeatures";
@@ -11,29 +11,38 @@ import ImprovedSales from "./parts/ImprovedSales";
 import Footer from "../../utils/Footer";
 import ProductSlider from "../../About/parts/ProductSlider";
 import { Stack } from "@mui/material";
+import AccountingFolderOperationList from "./parts/AccountingFolderOperationList";
+import AccountingFeaturesGlance2 from "./parts/AccountingFeaturesGlance2";
 const FeaturesAccounting = () => {
+  const [showNav, setShowNav] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 570) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
+      {showNav && <Nav />}
+
       <BillingBanner />
       <BillingFeatures />
-      <FeaturesGlance />
+      {/* <FeaturesGlance /> */}
+      <AccountingFolderOperationList />
+      <AccountingFeaturesGlance2 />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <BillingSteps />
         <BestFinchers />
-        {/* <Stack
-          display={{
-            xs: "none",
-            lg: "flex",
-          }}
-        >
-          <CustomerFeedback />
-        </Stack> */}
-        <Stack
-        // display={{
-        //   xs: "flex",
-        //   lg: "none",
-        // }}
-        >
+        <Stack>
           <ProductSlider />
         </Stack>
         <Clock />

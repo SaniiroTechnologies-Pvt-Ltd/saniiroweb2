@@ -1,9 +1,9 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import NavLight from "../Navbar/NavLight";
 import "../Solutions/IndustriesByusecases/Solution.css";
 import TickMark from "../assets/TickMark.svg";
 import Image from "next/image";
+import NavLight from "../Navbar/NavLight";
 
 const PRicingBAnner = () => {
   const lists = [
@@ -26,7 +26,8 @@ const PRicingBAnner = () => {
   ];
   return (
     <Stack bgcolor={"#052973"} className="textured-background">
-      <NavLight />
+    <NavLight />
+     
       <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
         <Stack
           p={"50px 0px 0 0"}
@@ -34,6 +35,7 @@ const PRicingBAnner = () => {
           alignItems={"center"}
           justifyContent={"center"}
         >
+
           <Typography
             textTransform={"uppercase"}
             fontSize={{

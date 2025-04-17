@@ -56,10 +56,10 @@ const Simplify = () => {
               textTransform={"uppercase"}
               sx={{
                 fontSize: {
-                  xs: "55px",
-                  sm: "55px",
-                  lg: "85px",
-                  xl: "108px",
+                  xs: "20px",
+                  sm: "35px",
+                  lg: "45px",
+                  xl: "60px",
                 },
                 textAlign: {
                   xs: "center",
@@ -72,7 +72,7 @@ const Simplify = () => {
               lineHeight={1}
               letterSpacing={"0.05em"}
             >
-              Simplify Your
+             Transforming Financial
             </Typography>
             <Typography
               className="text-stroke"
@@ -80,10 +80,10 @@ const Simplify = () => {
               sx={{
                 textTransform: "uppercase",
                 fontSize: {
-                  xs: "55px",
-                  sm: "55px",
-                  lg: "85px",
-                  xl: "108px",
+                  xs: "20px",
+                  sm: "35px",
+                  lg: "45px",
+                  xl: "60px",
                 },
                 textAlign: {
                   xs: "center",
@@ -95,7 +95,7 @@ const Simplify = () => {
                 lineHeight: 1,
               }}
             >
-              Business
+              Management
             </Typography>
             <Typography
               // color={"white"}
@@ -121,17 +121,10 @@ const Simplify = () => {
                 },
               }}
             >
-              Saniiro Books empowers over 10,000+ business houses globally by
-              streamlining invoicing and financial operations, driving
-              remarkable growth for businesses of all sizes. Now it's time to
-              say goodbye to complicated processes! Our intuitive design makes
-              accounting effortless, allowing you to manage your finances with
-              confidence and precision. Experience the best in SaaS accounting
-              solutions and transform your financial management with Saniiro
-              Books today!
+              Join over 10,000 businesses worldwide who trust Saniiro Books to streamline their invoicing and financial operations. Our cloud-based platform simplifies complex processes, driving growth for businesses of all sizes. With an intuitive design, Saniiro Books makes accounting effortless, empowering you to manage your finances with confidence and precision. Experience the pinnacle of SaaS accounting solutions and elevate your financial management with Saniiro today!
             </Typography>
             <Stack direction={"row"} gap={2} pt={4}>
-              <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+              <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
                 <Button
                   sx={{
                     fontSize: {
@@ -187,8 +180,8 @@ const Simplify = () => {
                 fontSize: {
                   xs: "18px",
                   sm: "22px",
-                  md: "28px",
-                  xl: "28px",
+                  md: "26px",
+                  xl: "26px",
                 },
                 textAlign: {
                   xs: "center",

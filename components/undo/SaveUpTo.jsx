@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import roundedAwwow from "../assets/curveArrow.png";
+// import roundedArrow from "../assets/curveArrow.png"
+
 const SaveUpTo = () => {
   return (
     <Box
@@ -35,7 +36,7 @@ const SaveUpTo = () => {
         </Typography>
         <Box
           component={"img"}
-          src={roundedAwwow}
+          src="/images/curveArrow.png"
           alt="arrow"
           sx={{
             transform: "scaleX(-1)",

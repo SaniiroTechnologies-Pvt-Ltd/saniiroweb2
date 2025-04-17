@@ -9,6 +9,8 @@ import Clock from "../Home/parts/Clock";
 import ContactFaq from "../Home/parts/ContactFaq";
 import Footer from "../utils/Footer";
 import ProductSlider from "../About/parts/ProductSlider";
+import IndustriesGridInteractive from "./industriesParts/IndustriesGridInteractive";
+
 
 const SolutionByIndustries = () => {
   return (
@@ -17,6 +19,7 @@ const SolutionByIndustries = () => {
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Stack position={"relative"}>
           <Industries1 />
+          <IndustriesGridInteractive />
           <Industries2 />
         </Stack>
         <Industries3 />

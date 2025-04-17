@@ -1,109 +1,67 @@
-import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import NavLight from "../../../Navbar/NavLight";
-// import TickMark from "../assets/TickMark.svg";
-import Button from "../../../utils/Button";
-import dotedSmImg from "../../../assets/Group 62557.png";
-import dotedMdImg from "../../../assets/Group 62562.png";
-import mediaImg from "../../../assets/image 124.png";
-import ReactPlayer from "react-player";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { usePathname, } from "next/navigation";
+import { Box, Stack, Typography } from "@mui/material";
+import NavLight from "@/components/Navbar/NavLight";
+
 
 const BillingBanner = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  // console.log(router);
-  // console.log(pathname);
+  const pathname = usePathname()
 
-  // Determine the text based on the URL
-  const getBannerText = () => {
-    if (pathname.includes("Billing")) {
-      return "Billing";
-    } else if (pathname.includes("Accounting")) {
-      return "Accounting";
-    } else if (pathname.includes("Inventory")) {
-      return "Inventory";
-    } else {
-      return "Default"; // Default text if no keyword is found
-    }
+  const data = {
+    Billing: {
+      title: 'Billing',
+      bodyText: 'Saniiro - <strong>Billing Management Software </strong> provides a free invoice generator, online bill generator, and GST-compliant invoicing. With multi-POS billing, recurring invoices, tax compliance, and secure transactions, Saniiro is the most efficient billing software in India for businesses of all sizes.',
+      subText1: 'Saniiro Billing Software is a robust, cloud-based billing management solution built to simplify your business operations. Whether you run a single shop, a chain of retail outlets, a service-based business, or a global enterprise, Saniiro scales to meet your needs.',
+      subText2: 'From fast invoice creation and real-time POS billing to advanced GST compliance and secure payment handling, Saniiro provides everything you need for accurate, professional, and legally compliant billing. Its user-friendly interface ensures anyone can use it, with no technical expertise required.',
+    },
+    Accounting: {
+      title: 'Accounting',
+      bodyText: '<strong>Automate accounting tasks effortlessly</strong> with Saniiro\'s easy-to-use software. Track expenses, manage invoices, and generate detailed financial reports with ease. Stay tax-compliant and simplify bank reconciliation to make smarter financial decisions for your business.',
+      subText1: '<strong>Simplify multi-company finances</strong> with Saniiro, your all-in-one financial solution. Generate GST-compliant invoices, stay tax-ready with real-time audit trails, and leverage smart financial automation to streamline voucher and ledger management, while ensuring cloud-based access.',
+      subText2: '<strong>Boost efficiency and cut costs</strong> with advanced dashboards and insights that help monitor assets, liabilities, and cash flow. Saniiro empowers businesses with ratio analysis, detailed financial reporting, and reduced manual errors—all while optimizing IT costs.',
+    },
+    Inventory: {
+      title: 'Inventory',
+      bodyText: '<strong>Experience the best Inventory Management software</strong> with Saniiro. Optimize stock levels, reduce wastage, and enhance operational efficiency with cutting-edge technology. Powered by cloud-based solutions, this software empowers businesses with real-time tracking and automated stock updates.',
+      subText1: 'Stay ahead in the competitive market by utilizing smart stock management on the cloud. With <strong>Saniiro\'s best Inventory Management software</strong>, gain access to insightful analytics that enable data-driven decisions and effortless business growth.',
+      subText2: 'Streamline your inventory, sales, and purchase processes with ease. Take advantage of <strong>Saniiro&apos;s cloud-based automation</strong> to manage your inventory effortlessly while tracking stock in real-time and boosting business efficiency.',
+    },
   };
+
+  // Match the key in the data object based on the route name
+  const matchedKey = Object.keys(data).find((key) => pathname.includes(key));
+
+  const bannerData = matchedKey ? data[matchedKey] : null;
+
   return (
-    <Stack
-      height={{
-        xs: "100%",
-        lg: "100vh",
-      }}
-      position={"relative"}
-      bgcolor={"#052973"}
-      className="textured-background"
-    >
+    <Stack height={{ xs: "calc(100% - 100px)", lg: "calc(100% - 100px)" }} paddingBottom={4} position={"relative"} bgcolor={"#052973"} className="textured-background" >
       <NavLight />
-      <Stack></Stack>
-      <Stack
-        maxWidth={"1536px"}
-        margin={"0 auto"}
-        position={"relative"}
-        zIndex={12}
-      >
-        <Stack
-          margin={"0 auto"}
-          width={{
-            xs: "90%",
-            lg: "95%",
-            xl: "100%",
-          }}
-        >
-          {" "}
+      {/* <Stack></Stack> */}
+
+      <Stack maxWidth={"1536px"} margin={"0 auto"} position={"relative"} zIndex={12}>
+        <Stack margin={"0 auto"} width={{ xs: "90%", lg: "95%", xl: "100%", }}>
           {/* Add padding for inner content */}
-          <Stack
-            color={"white"}
-            margin={"0px auto"}
-            width={"100%"}
-            position={"relative"}
-          >
-            <Stack
-              marginTop={{
-                xs: "2rem",
-                lg: "3rem",
-                xl: "4rem",
-              }}
-              direction={"row"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              gap={1}
-            >
-              <Typography
-                fontFamily={"monospace"}
-                width={"50%"}
-                textAlign={"right"}
-                textTransform={"uppercase"}
-                fontSize={"calc(6vw + 13px)"}
-                letterSpacing={1}
-                fontWeight={"bold"}
-                color={"transparent"}
-                lineHeight={1}
-                className="text-stroke"
-              >
-                {getBannerText()}
+          <Stack color={"white"} margin={"0px auto"} width={"100%"} position={"relative"} >
+
+            {/* Heading Text */}
+            <Stack width={"calc(100%)"} direction="column" justifyContent="center" alignItems="center" gap={1}>
+
+              <Typography component="div" fontFamily={"monospace"} textAlign={"center"} textTransform={"uppercase"} fontSize={"calc(6vw + 13px)"}
+                letterSpacing={1} fontWeight={"bold"} color={"transparent"} lineHeight={1} className="text-stroke">
+                {/* {getBannerText()} */}
+                {bannerData ? bannerData.title : ''}
               </Typography>
-              <Typography
-                width={"49%"}
-                textTransform={"uppercase"}
-                fontSize={"calc(3vw + 10px)"}
-                letterSpacing={1}
-                fontWeight={"bold"}
-                color={"white"}
-                lineHeight={1}
-                textAlign={"left"}
-              >
-                Software Management
+
+              <Typography component="div" textTransform={"uppercase"} fontSize={"calc(3vw + 10px)"} letterSpacing={1}
+                fontWeight={"bold"} color={"white"} lineHeight={1} textAlign={"center"}>
+                Management Software
               </Typography>
             </Stack>
 
+            {/* Head Text */}
             <Stack marginTop={"1rem"}>
-              <Typography
+              <Typography component="div"
                 sx={{
                   fontFamily: "Work Sans",
                   fontSize: "calc(0.8vw + 0.6rem)", // Responsive font size
@@ -115,128 +73,74 @@ const BillingBanner = () => {
                   width: "90%",
                   margin: "0px auto",
                 }}
-              >
-                Saniirobooks is the fastest growing billing software curated to
-                serve micro, small, and medium business houses. It allows users
-                to create GST-compliant professional invoices and bills in a
-                simple manner, using minimal time. Saniiro takes care of the
-                MSMED Act, GST, E-invoice, E-way bills, and TDS/TCS laws while
-                issuing invoices.With Saniiro, you can customize your invoice
-                format or choose from more than 50+ predefined professional
-                invoices. When generating invoices from proforma invoices, sales
-                orders, or sale challans, no repetitive data feeding is
-                required; only one click generates the invoice and notifies to
-                the buyer. The same functionality applies to E-invoice and E-way
-                bill generation, you can attach a document with invoice for
-                future reference ,allowing you to access them anytime ,
-                anywhere. Saniiro is a simple, efficient, and fast solution to
-                generating regular invoices, export invoices, SEZ invoices,
-                service invoices, recurring invoices, E-invoices, and AMC
-                invoices.
-              </Typography>
+                variant="h4"
+                gutterBottom
+                dangerouslySetInnerHTML={{ __html: bannerData.bodyText }}
+              ></Typography>
             </Stack>
-            <Stack margin={"0px auto"}>
-            <Link style={{textDecoration:"none" ,color:"#fff"}} href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
 
-              <Box
-                alignSelf={"center"}
+            <Stack marginTop={"1rem"}>
+              <Typography component="div"
                 sx={{
-                  width: "80%",
-                  padding: "0.5rem 1rem",
-                  marginTop: "2rem",
-                  backgroundColor: "#F15B25",
+                  fontFamily: "Work Sans",
+                  fontSize: "calc(0.8vw + 0.6rem)", // Responsive font size
+                  fontWeight: 400,
+                  lineHeight: "1.2",
+                  letterSpacing: "0em",
+                  textAlign: "center",
+                  color: "#B0B0B0",
+                  width: "90%",
+                  margin: "0px auto",
                 }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Work Sans",
-                    fontSize: "calc(0.6vw + 0.5rem)",
-                    fontWeight: 600,
-                    lineHeight: "1.2",
-                    letterSpacing: "0em",
-                    padding: "0.5rem 1rem",
-                    textAlign: "center",
-                  }}
-                >
-                  Learn More
-                </Typography>
-              </Box>
+                variant="subtitle2"
+                gutterBottom
+                dangerouslySetInnerHTML={{ __html: bannerData.subText1 }}
+              ></Typography>
+            </Stack>
+
+            <Stack marginTop={"1rem"}>
+              <Typography component="div"
+                sx={{
+                  fontFamily: "Work Sans",
+                  fontSize: "calc(0.8vw + 0.6rem)", // Responsive font size
+                  fontWeight: 400,
+                  lineHeight: "1.2",
+                  letterSpacing: "0em",
+                  textAlign: "center",
+                  color: "#B0B0B0",
+                  width: "90%",
+                  margin: "0px auto",
+                }}
+                variant="subtitle2"
+                gutterBottom
+                dangerouslySetInnerHTML={{ __html: bannerData.subText2 }}
+              ></Typography>
+            </Stack>
+
+            <Stack margin={"0px auto"}>
+              <Link style={{ textDecoration: "none", color: "#fff" }} href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+
+                <Box 
+                  alignSelf={"center"}
+                  sx={{ width: "80%", padding: "0.5rem 1rem", marginTop: "2rem", backgroundColor: "#F15B25"}}>
+                  <Typography 
+                    component="span"
+                    sx={{
+                      fontFamily: "Work Sans",
+                      fontSize: "calc(0.6vw + 0.5rem)",
+                      fontWeight: 500,
+                      lineHeight: "1.2",
+                      letterSpacing: "0em",
+                      padding: "0.5rem 1rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    Learn More
+                  </Typography>
+                </Box>
               </Link>
             </Stack>
           </Stack>{" "}
-          {/* <Box
-            display={{
-              xs: "none",
-              lg: "block",
-            }}
-            position={"absolute"}
-            bottom={{
-              lg: "-97%",
-              xl: "-56%",
-            }}
-            left={{
-              lg: "15%",
-              xl: "11%",
-            }}
-            width={"10%"}
-          >
-            <img width={"100%"} src={dotedSmImg} alt="icon" />
-          </Box>
-          <Box
-            display={{
-              xs: "none",
-              lg: "block",
-            }}
-            zIndex={1}
-            position={"absolute"}
-            bottom={{
-              lg: "-185%",
-              xl: "-100%",
-            }}
-            right={{
-              lg: "13%",
-              xl: "5%",
-            }}
-            width={"15%"}
-          >
-            <img width={"100%"} src={dotedMdImg} alt="icon" />
-          </Box> */}
-          {/* <Box
-            display={{
-              xs: "block",
-              lg: "none",
-            }}
-            width={{
-              xs: "100%",
-              md: "80%",
-            }}
-            height={{
-              xs: "12rem",
-              sm: "15rem",
-              md: "20rem",
-            }}
-            pt={{
-              xs: "2rem",
-              md: "2rem",
-            }}
-            margin={"0 auto 2rem"}
-          >
-            <ReactPlayer
-              controls
-              url="https://www.youtube.com/watch?v=SlhESAKF1Tk"
-              width="100%"
-              height="100%"
-              // controls={true}
-              playing
-              light={true}
-              sx={{ borderRadius: "10px" }}
-              config={{
-                youtube: {
-                  playerVars: { showinfo: 1 },
-                },
-              }}
-            ></ReactPlayer>
-          </Box> */}
         </Stack>
       </Stack>
     </Stack>

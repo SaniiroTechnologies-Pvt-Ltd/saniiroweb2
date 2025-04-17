@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Nav from "../Navbar/Nav";
 import Simplify from "./parts/Simplify";

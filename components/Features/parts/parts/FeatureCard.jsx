@@ -25,13 +25,17 @@ const FeatureCard = (props) => {
             xs: "4.77px",
             smm: "9.54px",
           },
-
-          border: "1.19px",
+          border: "1.19px solid #ccc",
           gap: {
             xs: "9.54px",
             smm: "17.89px",
           },
           background: "#FFFFFFE5",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease", // Animation properties
+          "&:hover": {
+            transform: "scale(1.05)", // Slight zoom-in effect
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", // Shadow effect
+          },
         }}
       >
         <Stack
@@ -51,8 +55,6 @@ const FeatureCard = (props) => {
             fill
             objectFit="contain"
             sizes="100vw"
-            // width={"100%"}
-            // height={"100%"}
           />
         </Stack>
 
@@ -68,7 +70,6 @@ const FeatureCard = (props) => {
               xs: "10px",
               smm: "18px",
             },
-            lineHeight: "18px",
             letterSpacing: "0em",
             textAlign: "center",
           }}

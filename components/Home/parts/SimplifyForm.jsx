@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, CircularProgress } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import PersonIcon from "@mui/icons-material/Person";
@@ -11,6 +11,7 @@ import { validationSchema, validationWithOTPSchema } from "@/Validation-Scema";
 import apiEndpoints from "@/utils/apiEndpoints";
 import SweetAlert from "@/components/SweetAlert/SweetAlert";
 import * as Yup from "yup";
+import Link from "next/link";
 
 const SimplifyForm = () => {
   const [countries, setCountries] = useState([]);
@@ -18,6 +19,7 @@ const SimplifyForm = () => {
   const [otpSent, setOtpSent] = useState(false);
   const [ShowContact, setShowContact] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("123");
+  const [loading, setLoading] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   const [otpId, setOtpId] = useState("");
 
@@ -50,7 +52,7 @@ const SimplifyForm = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       const response = await axios.get(`${apiEndpoints.Country}`);
-      console.log("country response", response);
+      // console.log("country response", response);
       setCountries(response.data.Data || []);
     };
 
@@ -80,20 +82,23 @@ const SimplifyForm = () => {
   }, [selectedCountry]);
 
   const handleSubmit = async (values, { resetForm }) => {
+    setLoading(true); // Start loading
     const payload = {
       ...values,
       OtpId: otpId,
     };
+
     try {
-      const response = await axios.post(`${apiEndpoints.Purchase}`, payload);
-      if (response?.data.Status === 1000) {
+      const response = await axios.post(apiEndpoints.Purchase, payload);
+
+      if (response?.data?.Status === 1000) {
         SweetAlert.success("Form Submitted", "Your Saniiro Account is Created");
-        resetForm();
-        setOtpSent(false);
+        resetForm(); // Reset the form on success
+        setOtpSent(false); // Reset OTP sent state
       } else {
         SweetAlert.error(
           "Error",
-          "Failed to create your account. Please try again."
+          response?.data?.message || "Failed to create your account. Please try again."
         );
       }
     } catch (error) {
@@ -102,8 +107,11 @@ const SimplifyForm = () => {
         "Error",
         error?.response?.data?.message || "Something went wrong!"
       );
+    } finally {
+      setLoading(false); // End loading in both success and error scenarios
     }
   };
+
 
   const sendOTP = async (values) => {
     try {
@@ -163,6 +171,8 @@ const SimplifyForm = () => {
                 md: "70%",
                 lg: "100%",
                 xl: "100%",
+                xxl: "100%",
+
               },
             }}
           >
@@ -179,11 +189,11 @@ const SimplifyForm = () => {
                     xl: "480px",
                   },
                   height: {
-                    xs: "45px",
-                    sm: "47px",
-                    md: "67px",
-                    lg: "57px",
-                    xl: "67px",
+                    xs: "30px",
+                    sm: "40px",
+                    md: "52px",
+                    lg: "47px",
+                    xl: "40px",
                   },
                 }}
               >
@@ -194,7 +204,7 @@ const SimplifyForm = () => {
                     border: "1px solid #AAAAAA",
                     color: otpSent ? "#DDDDDD" : "#AAAAAA",
                     paddingLeft: "5%",
-                    fontSize: "20px",
+                    fontSize: "18px",
                     borderRadius: "12px",
                   }}
                   name="Name"
@@ -210,19 +220,15 @@ const SimplifyForm = () => {
                     transform: "translateY(-50%)",
                     color: "#AAAAAA",
                     fontSize: {
-                      xl: "40px",
-                      md: "35px",
-                      lg: "38px",
-                      sm: "30px",
+                      xl: "30px",
+                      md: "28px",
+                      lg: "28px",
+                      sm: "22px",
                     },
                   }}
                 />
               </Stack>
-              <ErrorMessage
-                name="Name"
-                component="div"
-                style={{ color: "red" }}
-              />
+              <ErrorMessage name="Name" component="span" style={{ color: "red", margin: "5px" }} />
             </Stack>
             <Stack>
               <Stack
@@ -237,11 +243,11 @@ const SimplifyForm = () => {
                     xl: "480px",
                   },
                   height: {
-                    xs: "45px",
-                    sm: "47px",
-                    md: "67px",
-                    lg: "57px",
-                    xl: "67px",
+                    xs: "30px",
+                    sm: "40px",
+                    md: "52px",
+                    lg: "47px",
+                    xl: "40px",
                   },
                 }}
               >
@@ -256,7 +262,7 @@ const SimplifyForm = () => {
                     border: "1px solid #AAAAAA",
                     color: otpSent ? "#DDDDDD" : "#AAAAAA",
                     paddingLeft: "5%",
-                    fontSize: "20px",
+                    fontSize: "18px",
                     borderRadius: "12px",
                   }}
                 />
@@ -269,19 +275,15 @@ const SimplifyForm = () => {
                     transform: "translateY(-50%)",
                     color: "#AAAAAA",
                     fontSize: {
-                      xl: "40px",
-                      md: "35px",
-                      lg: "38px",
-                      sm: "30px",
+                      xl: "30px",
+                      md: "28px",
+                      lg: "28px",
+                      sm: "22px",
                     },
                   }}
                 />
               </Stack>
-              <ErrorMessage
-                name="Email"
-                component="div"
-                style={{ color: "red" }}
-              />
+              <ErrorMessage name="Email" component="span" style={{ color: "red", margin: "5px" }} />
             </Stack>
             <Stack>
               <Stack
@@ -296,11 +298,11 @@ const SimplifyForm = () => {
                     xl: "480px",
                   },
                   height: {
-                    xs: "45px",
-                    sm: "47px",
-                    md: "67px",
-                    lg: "57px",
-                    xl: "67px",
+                    xs: "30px",
+                    sm: "40px",
+                    md: "52px",
+                    lg: "47px",
+                    xl: "40px",
                   },
                 }}
               >
@@ -314,7 +316,7 @@ const SimplifyForm = () => {
                     border: "1px solid #AAAAAA",
                     paddingLeft: "5%",
                     color: otpSent ? "#DDDDDD" : "#AAAAAA",
-                    fontSize: "20px",
+                    fontSize: "18px",
                     borderRadius: "12px",
                   }}
                 />
@@ -327,19 +329,15 @@ const SimplifyForm = () => {
                     transform: "translateY(-50%)",
                     color: "#AAAAAA",
                     fontSize: {
-                      xl: "40px",
-                      md: "35px",
-                      lg: "38px",
-                      sm: "30px",
+                      xl: "30px",
+                      md: "28px",
+                      lg: "28px",
+                      sm: "22px",
                     },
                   }}
                 />
               </Stack>
-              <ErrorMessage
-                name="UserName"
-                component="div"
-                style={{ color: "red" }}
-              />
+              <ErrorMessage name="UserName" component="span" style={{ color: "red", margin: "5px" }} />
             </Stack>
 
             <CitySelector
@@ -372,11 +370,11 @@ const SimplifyForm = () => {
                       xl: "480px",
                     },
                     height: {
-                      xs: "45px",
-                      sm: "47px",
-                      md: "67px",
-                      lg: "57px",
-                      xl: "67px",
+                      xs: "30px",
+                      sm: "40px",
+                      md: "52px",
+                      lg: "47px",
+                      xl: "40px",
                     },
                   }}
                 >
@@ -390,7 +388,7 @@ const SimplifyForm = () => {
                       border: "1px solid #AAAAAA",
                       color: values.PhoneNumber ? "#000000" : "#AAAAAA",
                       paddingLeft: "5%",
-                      fontSize: "20px",
+                      fontSize: "18px",
                       borderRadius: "12px",
                     }}
                   />
@@ -402,29 +400,22 @@ const SimplifyForm = () => {
                       transform: "translateY(-50%)",
                       color: "#AAAAAA",
                       fontSize: {
-                        xl: "40px",
-                        md: "35px",
-                        lg: "38px",
-                        sm: "30px",
+                        xl: "30px",
+                        md: "28px",
+                        lg: "28px",
+                        sm: "22px",
                       },
                     }}
                   />
                 </Stack>
-                <ErrorMessage
-                  name="PhoneNumber"
-                  component="div"
-                  style={{ color: "red" }}
-                />
+                <ErrorMessage name="PhoneNumber" component="span" style={{ color: "red", margin: "5px" }} />
               </Stack>
             )}
 
             <Stack
               gap={2}
               sx={{
-                alignItems: {
-                  xs: "center",
-                  lg: "left",
-                },
+                alignItems: { xs: "center", lg: "left", },
               }}
             >
               <Stack>
@@ -435,7 +426,7 @@ const SimplifyForm = () => {
                     style={{ width: "20px", height: "20px", cursor: "pointer" }}
                   />
                   <Typography fontSize="13px" color="#AAAAAA">
-                    I agree to the Terms of Service and Privacy Policy.
+                    I agree to the Terms of <Link href="/subfooter/terms-and-conditions" style={{ color: "#AAAAAA" }}>Service and Privacy Policy.</Link>
                   </Typography>
                 </Stack>
 
@@ -460,11 +451,11 @@ const SimplifyForm = () => {
                           xl: "480px",
                         },
                         height: {
-                          xs: "45px",
-                          sm: "47px",
-                          md: "67px",
-                          lg: "57px",
-                          xl: "67px",
+                          xs: "30px",
+                          sm: "40px",
+                          md: "52px",
+                          lg: "47px",
+                          xl: "40px",
                         },
                       }}
                     >
@@ -479,18 +470,14 @@ const SimplifyForm = () => {
                           border: "1px solid #AAAAAA",
                           color: "#AAAAAA",
                           paddingLeft: "5%",
-                          fontSize: "20px",
+                          fontSize: "16px",
                           borderRadius: "12px",
                           WebkitAppearance: "none",
                           MozAppearance: "textfield",
                         }}
                       />
                     </Stack>
-                    <ErrorMessage
-                      name="Otp"
-                      component="div"
-                      style={{ color: "red" }}
-                    />
+                    <ErrorMessage name="Otp" component="span" style={{ color: "red", margin: "5px" }} />
 
                     <Button
                       type="submit"
@@ -505,17 +492,17 @@ const SimplifyForm = () => {
                           xl: "400px",
                         },
                         height: {
-                          xs: "45px",
-                          sm: "55px",
-                          md: "67px",
-                          lg: "57px",
-                          xl: "67px",
+                          xs: "30px",
+                          sm: "40px",
+                          md: "52px",
+                          lg: "47px",
+                          xl: "40px",
                         },
                         color: "white",
                         fontSize: {
-                          xs: "16px",
-                          sm: "19px",
-                          md: "22px",
+                          xs: "14px",
+                          sm: "16px",
+                          md: "18px",
                         },
                         bgcolor: "#F15B25",
                         fontWeight: "bold",
@@ -526,7 +513,14 @@ const SimplifyForm = () => {
                         },
                       }}
                     >
-                      Verify OTP and Register
+                      {loading ? (
+                        <>
+                          Loading <CircularProgress size={14} color="inherit" />
+                        </>
+                      ) : (
+                        "Verify OTP and Register"
+                      )}
+
                     </Button>
                   </>
                 ) : (
@@ -543,17 +537,17 @@ const SimplifyForm = () => {
                         xl: "400px",
                       },
                       height: {
-                        xs: "45px",
-                        sm: "55px",
-                        md: "67px",
-                        lg: "57px",
-                        xl: "67px",
+                        xs: "30px",
+                        sm: "40px",
+                        md: "52px",
+                        lg: "47px",
+                        xl: "40px",
                       },
                       color: "white",
                       fontSize: {
-                        xs: "16px",
-                        sm: "19px",
-                        md: "22px",
+                        xs: "14px",
+                        sm: "16px",
+                        md: "18px",
                       },
                       bgcolor: "#F15B25",
                       fontWeight: "bold",
@@ -563,11 +557,19 @@ const SimplifyForm = () => {
                         color: "white",
                       },
                     }}
-                    //   onClick={sendOTP }
+                    disabled={loading} // Disable the button during loading
                   >
-                    Try It Free for 7 Days
+                    {loading ? (
+                      <>
+                        Loading <CircularProgress size={14} color="inherit" />
+                      </>
+                    ) : (
+                      "Try It Free for 7 Days"
+                    )}
                   </Button>
+
                 )}
+
               </Stack>
             </Stack>
           </Stack>

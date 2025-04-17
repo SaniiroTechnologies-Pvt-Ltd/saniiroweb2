@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack, IconButton, Typography, Snackbar, Alert } from "@mui/material";
+import { Stack, IconButton, Typography, Snackbar, Alert, Grid, styled, Paper } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneNumberInput from "./nm";
@@ -23,6 +23,18 @@ import Image from "next/image";
 import apiEndpoints from "@/utils/apiEndpoints";
 import SimplifyForm from "./SimplifyForm";
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: (theme.vars ?? theme).palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
+
+
 const Clock = () => {
   const router = useRouter();
   const initialState = {
@@ -37,6 +49,7 @@ const Clock = () => {
     Otp: "",
     OtpId: "",
   };
+
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [otpSent, setOtpSent] = useState(false);
@@ -44,6 +57,11 @@ const Clock = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalError, setModalError] = useState("");
+  const [isChecked, setChecked] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(123);
+  const [selectedState, setSelectedState] = useState("");
   // const [paymentData, setPaymentData] = useState({});
   // const [paymentDataPayu, setPaymentDataPayu] = useState({});
 
@@ -70,8 +88,7 @@ const Clock = () => {
     setErrors(tempErrors);
     return Object.values(tempErrors).every((x) => x === "");
   };
-  const [isChecked, setChecked] = useState(false);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "PhoneNumber" && value.length > 10) {
@@ -93,6 +110,7 @@ const Clock = () => {
       setCheckboxError("");
     }
   };
+
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
     setCheckboxError(
@@ -102,10 +120,6 @@ const Clock = () => {
     );
   };
 
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState(123);
-  const [selectedState, setSelectedState] = useState("");
   // Fetch countries
   useEffect(() => {
     const fetchCountries = async () => {
@@ -148,6 +162,7 @@ const Clock = () => {
       StateId: foundState ? Number(foundState.Id) : 0, // Ensure StateId is stored as a string
     }));
   };
+
   const sendOTP = async () => {
     if (!validateForm()) return;
 
@@ -209,6 +224,7 @@ const Clock = () => {
       setModalVisible(true);
     }
   };
+
   const resetForm = () => {
     setOtpSent(false);
     setErrors({});
@@ -219,111 +235,81 @@ const Clock = () => {
   };
 
   return (
-    <>
-      <Stack alignItems={"center"} p={{ xs: "40px 0", xl: "80px 0" }}>
+    <React.Fragment>
+
+      <Stack component={'div'} alignItems={"center"} p={{ xs: "40px 0", md: "60px 0", xl: "80px 0" }}>
         <Stack
-          padding={{ xl: "20px", xs: "0" }}
-          width={{ xl: "80%", xs: "100%" }}
+          component={'div'}
+          padding={{  xs: "0", md: '10px', xl: "20px" }}
+          width={{ xs: "100%", md: "90%", xl: "80%" }}
           bgcolor={"#F15B25"}
           sx={{
-            flexDirection: {
-              xs: "column",
-              lg: "row",
-            },
             height: "100%",
-            alignItems: {
-              xs: "center",
-            },
+            flexDirection: { xs: "column", lg: "row" },
+            alignItems: { xs: "center" },
           }}
         >
           <Stack
-            width={"60%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            height={"100%"}
-            gap={"10px"}
+           component={'div'}
             sx={{
-              marginTop: {
-                xs: "20px",
-                lg: "0px",
-              },
+              width: '60%',
+              justifyContent:'center',
+              alignItems: 'center',
+              height: '100%',
+              gap: '10px',
+              marginTop: { xs: "20px", md: "10px", lg: "0px", },
             }}
           >
             <Typography
-              color={"white"}
-              fontWeight={"bold"}
+              component={'h4'}
               sx={{
-                fontSize: {
-                  xs: "27px",
-                  lg: "30px",
-                },
-                textAlign: {
-                  xs: "center",
-                  lg: "left",
-                },
+                fontSize: { xs: "27px", lg: "30px", },
+                textAlign: { xs: "center", lg: "left", },
                 letterSpacing: "2px",
+                color: 'white',
+                fontWeight: 'bold'
               }}
-              letterSpacing={2}
             >
               Get Started in Less Then
             </Typography>
             <Stack
               sx={{
-                width: {
-                  xs: "100px",
-                  lg: "31%",
-                },
+                width: { xs: "100px", md: '65%', lg: "31%", },
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
               gap={2}
-              alignItems={"center"}
-              justifyContent={"center"}
             >
               <Image
                 src={stopWatch}
-                alt=""
+                alt="60 seconds"
                 style={{ width: "100%", height: "100%" }}
               />
             </Stack>
             <Typography
               sx={{
-                fontSize: {
-                  xs: "30px",
-                  lg: "50px",
-                },
+                fontSize: { xs: "30px", md: '40px', lg: "50px", },
+                fontWeight: 'bold',
+                color: 'white',
               }}
-              fontWeight={"bold"}
-              color={"white"}
             >
               60 seconds
             </Typography>
           </Stack>
 
           <Stack
+            component={'div'}
             bgcolor={"white"}
             borderRadius={4}
             gap={2}
             sx={{
-              width: {
-                xs: "85%",
-                sm: "81%",
-                md: "56%",
-                lg: "50%",
-                xl: "50%",
-              },
-              margin: {
-                xs: "20px 0px",
-                lg: "20px",
-                xl: "20px",
-              },
-              padding: {
-                xs: "20px 0px",
-                sm: "20px",
-                lg: "20px 0px",
-                xl: "40px 30px",
-              },
+              width: { xs: "85%", sm: "81%", md: "56%", lg: "50%", xl: "50%" },
+              margin: { xs: "20px 0px", lg: "20px", xl: "20px", },
+              padding: { xs: "20px 0px", sm: "20px", lg: "20px 0px", xl: "40px 30px", },
             }}
           >
             <Typography
+            component={'h3'}
               sx={{
                 fontSize: {
                   xs: "18px",
@@ -343,478 +329,11 @@ const Clock = () => {
             >
               Try before you buy
             </Typography>
-            {/* <Stack
-              alignItems={"center"}
-              gap={2}
-              margin={"0 auto"}
-              sx={{
-                width: {
-                  xs: "80%",
-                  sm: "100%",
-                  md: "70%",
-                  lg: "100%",
-                  xl: "100%",
-                },
-              }}
-            >
-              <Stack>
-                <Stack
-                  style={{ position: "relative" }}
-                  sx={{
-                    width: {
-                      xs: "220px",
-                      sm: "268px",
-                      smm: "400px",
-                      md: "480px",
-                      lg: "385px",
-                      xl: "480px",
-                    },
-                    height: {
-                      xs: "45px",
-                      sm: "47px",
-                      md: "67px",
-                      lg: "57px",
-                      xl: "67px",
-                    },
-                  }}
-                >
-                  <input
-                    style={{
-                      width: "94%",
-                      height: "100%",
-                      border: "1px solid #AAAAAA",
-                      color: otpSent ? "#DDDDDD" : "#AAAAAA",
-                      paddingLeft: "5%",
-                      fontSize: "20px",
-                      borderRadius: "12px",
-                    }}
-                    type="text"
-                    name="Name"
-                    disabled={otpSent}
-                    placeholder="Full Name"
-                    value={formData.Name}
-                    onChange={handleInputChange}
-                  />
-
-                  <PersonIcon
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      right: "8px",
-                      transform: "translateY(-50%)",
-                      color: "#AAAAAA",
-                      fontSize: {
-                        xl: "40px",
-                        md: "35px",
-                        lg: "38px",
-                        sm: "30px",
-                      },
-                    }}
-                  />
-                </Stack>
-                {errors.Name && (
-                  <Typography color="error">{errors.Name}</Typography>
-                )}
-              </Stack>
-              <Stack>
-                <Stack
-                  style={{ position: "relative" }}
-                  sx={{
-                    width: {
-                      xs: "220px",
-                      sm: "268px",
-                      smm: "400px",
-                      md: "480px",
-                      lg: "385px",
-                      xl: "480px",
-                    },
-                    height: {
-                      xs: "45px",
-                      sm: "47px",
-                      md: "67px",
-                      lg: "57px",
-                      xl: "67px",
-                    },
-                  }}
-                >
-                  <input
-                    type="email"
-                    name="Email"
-                    placeholder="Work Email"
-                    value={formData.Email}
-                    onChange={handleInputChange}
-                    disabled={otpSent}
-                    style={{
-                      width: "94%",
-                      height: "100%",
-                      border: "1px solid #AAAAAA",
-                      color: otpSent ? "#DDDDDD" : "#AAAAAA",
-                      paddingLeft: "5%",
-                      fontSize: "20px",
-                      borderRadius: "12px",
-                    }}
-                  />
-
-                  <EmailIcon
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      right: "8px",
-                      transform: "translateY(-50%)",
-                      color: "#AAAAAA",
-                      fontSize: {
-                        xl: "40px",
-                        md: "35px",
-                        lg: "38px",
-                        sm: "30px",
-                      },
-                    }}
-                  />
-                </Stack>
-                {errors.Email && (
-                  <Typography color="error">{errors.Email}</Typography>
-                )}
-              </Stack>
-              <Stack>
-                <Stack
-                  style={{ position: "relative" }}
-                  sx={{
-                    width: {
-                      xs: "220px",
-                      md: "480px",
-                      sm: "268px",
-                      smm: "400px",
-                      lg: "385px",
-                      xl: "480px",
-                    },
-                    height: {
-                      xs: "45px",
-                      sm: "47px",
-                      md: "67px",
-                      lg: "57px",
-                      xl: "67px",
-                    },
-                  }}
-                >
-                  <input
-                    type="text"
-                    name="UserName"
-                    placeholder="User name"
-                    value={formData.UserName}
-                    onChange={handleInputChange}
-                    disabled={otpSent}
-                    style={{
-                      width: "94%",
-                      height: "100%",
-                      border: "1px solid #AAAAAA",
-                      paddingLeft: "5%",
-                      color: otpSent ? "#DDDDDD" : "#AAAAAA",
-                      fontSize: "20px",
-                      borderRadius: "12px",
-                    }}
-                  />
-
-                  <AccountCircleIcon
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      right: "8px",
-                      transform: "translateY(-50%)",
-                      color: "#AAAAAA",
-                      fontSize: {
-                        xl: "40px",
-                        md: "35px",
-                        lg: "38px",
-                        sm: "30px",
-                      },
-                    }}
-                  />
-                </Stack>
-                {errors.UserName && (
-                  <Typography color="error">{errors.UserName}</Typography>
-                )}
-              </Stack>
-              <CitySelector
-                selectedCountry={selectedCountry}
-                handleCountryChange={handleCountryChange}
-                countries={countries}
-                selectedState={selectedState}
-                handleStateChange={handleStateChange}
-                states={states}
-                errors={errors}
-                otpSent={otpSent}
-              />
-
-              <Stack>
-                {selectedCountry === 123 && (
-                  <Stack
-                    style={{ position: "relative" }}
-                    sx={{
-                      width: {
-                        xs: "220px",
-                        sm: "268px",
-                        smm: "400px",
-                        md: "480px",
-                        lg: "385px",
-                        xl: "480px",
-                      },
-                      height: {
-                        xs: "45px",
-                        sm: "47px",
-                        md: "67px",
-                        lg: "57px",
-                        xl: "67px",
-                      },
-                    }}
-                  >
-                    <input
-                      type="tel"
-                      className="input-new"
-                      value={formData.PhoneNumber}
-                      name="PhoneNumber"
-                      placeholder="Phone Number"
-                      onChange={handleInputChange}
-                      maxLength={16}
-                      disabled={otpSent}
-                      style={{
-                        width: "94%",
-                        height: "100%",
-                        border: "1px solid #AAAAAA",
-                        color: otpSent ? "#DDDDDD" : "#AAAAAA",
-                        paddingLeft: "5%",
-                        fontSize: "20px",
-                        borderRadius: "12px",
-                        WebkitAppearance: "none", 
-                        MozAppearance: "textfield",
-                      }}
-                    />
-
-                    <PhoneAndroidIcon
-                      sx={{
-                        position: "absolute",
-                        top: "50%",
-                        right: "16px",
-                        transform: "translateY(-50%)",
-                        color: "#AAAAAA",
-                        fontSize: {
-                          xl: "40px",
-                          md: "35px",
-                          lg: "38px",
-                          sm: "30px",
-                        },
-                      }}
-                    />
-                  </Stack>
-                )}
-                {formData.PhoneNumber.length === 16 && (
-                  <div style={{ color: "red" }}>
-                    Maximum 16 characters allowed.
-                  </div>
-                )}
-                {errors.PhoneNumber && (
-                  <Typography color="error">{errors.PhoneNumber}</Typography>
-                )}
-              </Stack>
-              <Stack
-                gap={2}
-                sx={{
-                  alignItems: {
-                    xs: "center",
-                    lg: "left",
-                  },
-                }}
-              >
-                <Stack>
-                  <Stack
-                    direction={"row"}
-                    gap={1}
-                    sx={{ textAlign: { xs: "left", lg: "left" } }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={handleCheckboxChange}
-                    />
-                    <Typography fontSize={"13px"} color={"black"}>
-                      I agree to the Terms of Service and Privacy Policy.
-                    </Typography>
-                  </Stack>
-                  {checkboxError && (
-                    <Typography
-                      color="error"
-                      sx={{ fontSize: "14px", marginLeft: "20px" }}
-                    >
-                      {checkboxError}
-                    </Typography>
-                  )}
-                </Stack>
-                <Stack gap={"20px"} alignItems={"center"}>
-                  {otpSent ? (
-                    <>
-                      <Stack
-                        sx={{
-                          width: {
-                            xs: "220px",
-                            sm: "268px",
-                            smm: "400px",
-                            md: "480px",
-                            lg: "385px",
-                            xl: "480px",
-                          },
-                          height: {
-                            xs: "45px",
-                            sm: "47px",
-                            md: "67px",
-                            lg: "57px",
-                            xl: "67px",
-                          },
-                        }}
-                      >
-                        <input
-                          type="number"
-                          className="input-new"
-                          value={formData.Otp}
-                          name="Otp"
-                          placeholder="OTP"
-                          onChange={handleInputChange}
-                          maxLength={16}
-                          style={{
-                            width: "94%",
-                            height: "100%",
-                            border: "1px solid #AAAAAA",
-                            color: "#AAAAAA",
-                            paddingLeft: "5%",
-                            fontSize: "20px",
-                            borderRadius: "12px",
-                            WebkitAppearance: "none", 
-                            MozAppearance: "textfield",
-                          }}
-                        />
-                      </Stack>
-                      <Stack alignItems={"flex-end"} width={"95%"}>
-                        <Typography
-                          onClick={resetForm}
-                          color={"white"}
-                          sx={{ cursor: "pointer" }}
-                        >
-                          Edit Details
-                        </Typography>
-                      </Stack>
-                      <Button
-                        type="button"
-                        sx={{
-                          borderRadius: "10px",
-                          width: {
-                            xs: "220px",
-                            sm: "268px",
-                            smm: "400px",
-                            md: "480px",
-                            lg: "385px",
-                            xl: "400px",
-                          },
-                          height: {
-                            xs: "45px",
-                            sm: "55px",
-                            md: "67px",
-                            lg: "57px",
-                            xl: "67px",
-                          },
-                          color: "white",
-                          fontSize: {
-                            xs: "16px",
-                            sm: "19px",
-                            md: "22px",
-                          },
-                          bgcolor: "#F15B25",
-                          fontWeight: "bold",
-                          "&:hover": {
-                            backgroundColor: "#F15B25",
-                            border: "1px solid #052973",
-                            color: "white",
-                          },
-                        }}
-                        onClick={verifyOTP}
-                      >
-                        Verify OTP and Register
-                      </Button>
-                    </>
-                  ) : (
-                    <Button
-                      type="button"
-                      sx={{
-                        borderRadius: "10px",
-                        width: {
-                          xs: "220px",
-                          sm: "268px",
-                          smm: "400px",
-                          md: "480px",
-                          lg: "385px",
-                          xl: "400px",
-                        },
-                        height: {
-                          xs: "45px",
-                          sm: "55px",
-                          md: "67px",
-                          lg: "57px",
-                          xl: "67px",
-                        },
-                        color: "white",
-                        fontSize: {
-                          xs: "16px",
-                          sm: "19px",
-                          md: "22px",
-                        },
-                        bgcolor: "#F15B25",
-                        fontWeight: "bold",
-                        "&:hover": {
-                          backgroundColor: "#F15B25",
-                          border: "1px solid #052973",
-                          color: "white",
-                        },
-                      }}
-                      onClick={sendOTP}
-                    >
-                      Try It Free for 7 Days
-                    </Button>
-                  )}
-                </Stack>
-                {modalVisible && (
-                  <div className="modalBackground">
-                    <Stack>
-                      <div className="modalContainer">
-                        <div className="titleCloseBtn">
-                          <button onClick={() => setModalVisible(false)}>
-                            X
-                          </button>
-                        </div>
-                        <Stack
-                          p={{ lg: "20px 40px 40px 40px", xs: "10px 20px" }}
-                        >
-                          <>
-                            {modalMessage && (
-                              <Typography fontSize={"30px"} color="green">
-                                {modalMessage}
-                              </Typography>
-                            )}
-                            {modalError && (
-                              <Typography fontSize={"15px"} color="red">
-                                {modalError}
-                              </Typography>
-                            )}
-                          </>
-                        </Stack>
-                      </div>
-                    </Stack>
-                  </div>
-                )}
-              </Stack>
-            </Stack> */}
-
             <SimplifyForm/>
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
 
