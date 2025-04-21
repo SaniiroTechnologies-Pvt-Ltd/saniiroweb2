@@ -37,7 +37,7 @@ const Industries1 = () => {
           }}
           textAlign={"center"}
         >
-          One Solution, Countless Industries:
+          A Unified Solution for Every Industry
         </Typography>
       </Stack>
       <Typography
@@ -52,15 +52,10 @@ const Industries1 = () => {
         textAlign={"center"}
         fontFamily={"Work Sans"}
       >
-        Saniiro Books offers a versatile and robust business accounting solution
-        tailored to meet the unique needs of various industries. Our product is
-        designed to enhance operational efficiency, streamline financial
-        management, and support growth across different sectors. Explore how
-        Saniiro Books can benefit your industry with specific features and
-        integration capabilities.
+        Saniiro ERP Software is a versatile, cloud-based solution designed to cater to diverse industries, such as retail, manufacturing, wholesale distribution, and professional services. It empowers businesses with automated GST billing, inventory tracking, CRM capabilities, and financial reporting to optimize operations, enhance accuracy, and save time. Whether managing a single retail store or a chain, Saniiro simplifies tasks like billing, customer management, and compliance, offering centralized control and efficient performance across sectors.
       </Typography>
       <Stack alignItems={"center"}>
-      <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+      <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
 
         <Button
           sx={{

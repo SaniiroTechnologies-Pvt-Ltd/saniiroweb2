@@ -38,7 +38,8 @@ const Featured = () => {
         //   backgroundRepeat: "no-repeat",
         // }}
       >
-        <NavLight />
+                <NavLight/>
+
         <Stack
           fontFamily={"Work Sans"}
           maxWidth={"1536px"}
@@ -153,7 +154,7 @@ const Featured = () => {
             >
               
 
-               <Link style={{zIndex:"999"}} href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+               <Link style={{zIndex:"99"}} href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
               <Button
                 sx={{
                   width: {

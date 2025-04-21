@@ -7,6 +7,7 @@ import Slider from "./Slider";
 import Link from "next/link";
 
 import Image from "next/image";
+import Slider2 from "./Slider2";
 
 const RequestDemo = () => {
   return (
@@ -74,7 +75,7 @@ const RequestDemo = () => {
             SIGN UP FOR FREE
           </Button>
         </Link>
-        <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+        <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
           <Button
             sx={{
               fontSize: {
@@ -96,33 +97,8 @@ const RequestDemo = () => {
         </Link>
       </Stack>
       <Stack>
-        {/* <Box
-          margin={"0 auto"}
-          sx={{
-            width: {
-              xs: "200px",
-              sm: "330px ",
-              md: "600px",
-              lg: "1018px",
-            },
-          }}
-        >
-          <img src={section2} style={{ width: "100%" }} />
-        </Box> */}
-        <Box
-          margin={"0 auto"}
-          sx={{
-            width: {
-              xs: "200px",
-              sm: "330px ",
-              md: "600px",
-              lg: "1018px",
-            },
-          }}
-          position={"relative"}
-        >
-          <Image src={LogosDesign} height={150} style={{ width: "100%" }} />
-          <Slider />
+        <Box>
+          <Slider2 />
         </Box>
       </Stack>
     </Stack>

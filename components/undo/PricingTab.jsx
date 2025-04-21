@@ -354,8 +354,8 @@ const PricingTab = () => {
         const plans = response.data.Data;
         setSubscriptionPlans(plans);
         if (plans.length > 0) {
-          setPlan(plans[0].CategoryName); // Set the initial plan to the first plan
-          setSelectedPlanDetails(plans[0]); // Set the initial plan details
+          setPlan(plans[0].CategoryName); 
+          setSelectedPlanDetails(plans[0]); 
         }
       } catch (error) {
         console.error("Error fetching subscription plans:", error);
@@ -367,64 +367,66 @@ const PricingTab = () => {
   console.log("subscriptionPlans", subscriptionPlans);
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
+     <Box
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }}
+>
+  <Box
+    sx={{
+      zIndex: "1",
+      position: "absolute",
+      translateY: "-25px",
+    }}
+  >
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "10px",
+      }}
+    >
+      {subscriptionPlans.map((d) => (
+        <Stack
+          key={d.CategoryName}
           sx={{
-            zIndex: "1",
-            position: "absolute",
-            translateY: "-25px",
+            background: "#34A853",
+            borderRadius: "8px",
+            boxShadow: "3px 4px 4.3px 0px #00000040",
           }}
+          direction="row"
+          spacing={4}
+          p={"4px 6px"}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {subscriptionPlans.map((d) => (
-              <Stack
-                key={d.CategoryName}
-                sx={{
-                  background: "#34A853",
-                  borderRadius: "8px",
-                  boxShadow: "3px 4px 4.300000190734863px 0px #00000040",
-                }}
-                direction="row"
-                spacing={4}
-                p={"4px 6px"}
-              >
-                <Box>
-                  <Typography
-                    sx={{
-                      padding: "13px 42px",
-                      borderRadius: "5px",
-                      background: plan === d.CategoryName ? "#FFFFFF" : "none",
-                      opacity: plan === d.CategoryName ? 0.7 : 1,
-                      fontFamily: "Work Sans",
-                      fontSize: "20px",
-                      fontWeight: 600,
-                      lineHeight: "16px",
-                      textAlign: "center",
-                      color: plan === d.CategoryName ? "#000000" : "#FFFFFF",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => handlePlan(d.CategoryName)}
-                  >
-                    {d.CategoryName}
-                  </Typography>
-                </Box>
-              </Stack>
-            ))}
+          <Box>
+            <Typography
+              sx={{
+                padding: "13px 42px",
+                borderRadius: "5px",
+                background: plan === d.CategoryName ? "#FFFFFF" : "none",
+                opacity: plan === d.CategoryName ? 0.7 : 1,
+                fontFamily: "Work Sans",
+                fontSize: "20px",
+                fontWeight: 600,
+                lineHeight: "16px",
+                textAlign: "center",
+                color: plan === d.CategoryName ? "#000000" : "#FFFFFF",
+                cursor: "pointer",
+              }}
+              onClick={() => handlePlan(d.CategoryName)}
+            >
+              {d.CategoryName}
+            </Typography>
           </Box>
-        </Box>
-      </Box>
+        </Stack>
+      ))}
+    </Box>
+  </Box>
+</Box>
+
 
       <SaveUpTo />
 

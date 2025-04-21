@@ -68,9 +68,12 @@ const Nav = () => {
         justifyContent={"space-between"}
         p={"20px 90px"}
         alignItems={"center"}
+        position={"sticky"}
+        top={0}
+        backgroundColor={"#fff"}
+        zIndex={999}
       >
-        <Stack
-          width={{ xl: "16vw", md: "25vw", sm: "35vw" }}
+             <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}
           height={"7vh"}
           position={"relative"}
         >
@@ -78,6 +81,7 @@ const Nav = () => {
             <Image src={lo} alt="" fill objectFit="contain" sizes="100%" />
           </Link>
         </Stack>
+
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -145,21 +149,23 @@ const Nav = () => {
                   justifyContent={"center"}
                   alignItems={"center"}
                   sx={{
-                    height: isPopoverOpen(1) ? 152 : 0,
+                    height: isPopoverOpen(1) ? 108 : 0,
                     opacity: isPopoverOpen(1) ? 1 : 0,
                     transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
                     position: "absolute",
-                    top: 27,
+                    top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
-                    border={"1px solid black"}
+                    border={"2px solid #052973"}
+                    borderRadius={2}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 1, width: 160 }}
                   >
                     <Link
                       href="/Features/Billing-module"
@@ -258,22 +264,27 @@ const Nav = () => {
                   justifyContent={"center"}
                   alignItems={"center"}
                   sx={{
-                    height: isPopoverOpen(2) ? 154 : 0,
+                    height: isPopoverOpen(2) ? 140 : 0,
                     opacity: isPopoverOpen(2) ? 1 : 0,
-                    transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
+                    transition:
+                      "height 0.2s ease-in, opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out",
                     position: "absolute",
                     top: 40,
+                    borderRadius: "8px",
                     overflow: "hidden",
                     backgroundColor: "white",
+                    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.15)",
                     zIndex: 1,
+                    transform: isPopoverOpen(2) ? "scale(1)" : "scale(0.95)",
                   }}
                 >
                   {" "}
                   <Stack
                     justifyContent={"center"}
-                    border={"1px solid black"}
+                    border={"2px solid #052973"}
+                    borderRadius={2}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 1, width: 160 }}
                     position={"relative"}
                   >
                     <Link
@@ -380,21 +391,23 @@ const Nav = () => {
                   justifyContent={"center"}
                   alignItems={"center"}
                   sx={{
-                    height: isPopoverOpen(3) ? 250 : 0,
+                    height: isPopoverOpen(3) ? 236 : 0,
                     opacity: isPopoverOpen(3) ? 1 : 0,
                     transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
                     position: "absolute",
                     top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
-                    border={"1px solid black"}
+                    border={"2px solid #052973"}
+                    borderRadius={2}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 1, width: 160 }}
                   >
                     <Link
                       href="/Resources/BecomeAPartner"
@@ -534,6 +547,7 @@ const Nav = () => {
             </div>
           </Stack>
         </Stack>
+
         <Link href="https://app.saniiro.com">
           <Button
             sx={{

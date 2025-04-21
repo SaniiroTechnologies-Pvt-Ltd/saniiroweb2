@@ -117,7 +117,7 @@ const ImprovedSales = () => {
                 SIGN UP FOR FREE
               </Button>
               </Link>
-              <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+              <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
               <Button
                 sx={{
                   bgcolor: "white",

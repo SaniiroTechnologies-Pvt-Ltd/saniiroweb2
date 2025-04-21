@@ -492,7 +492,7 @@ function FeaturesMain() {
                 )}
                 {d.id === "2.5" && (
                   <Stack pt={1}>
-                                  <Link href="/Contact-us" onClick={() => window.scrollTo(0, 0)}>
+                                  <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
 
                     <Button
                       sx={{

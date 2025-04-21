@@ -1188,19 +1188,20 @@ const PriceCardSection = ({ selectedPlanDetails }) => {
           xs: "none",
           lg: "flex",
         }}
-        width={"100%"}
+        // width={"100%"}
         direction={"row"}
         justifyContent={"center"}
         alignItems={"center"}
-        gap={5}
-        m={"30px auto"}
+        gap={2}
+        m={"20px auto"}
       >
         
         <Stack
           ref={sliderRef}
           id="slider"
           direction={"row"}
-          gap={5}width={"100%"}
+          // gap={5}
+          // width={"100%"}
           padding={2}
           overflow={"auto"}
           whiteSpace={"nowrap"}

@@ -25,11 +25,14 @@ const PRicingBAnner = () => {
     },
   ];
   return (
+    <>
+         {/* <NavLight /> */}
+    
     <Stack bgcolor={"#052973"} className="textured-background">
       <NavLight />
       <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
         <Stack
-          p={"50px 0px 0 0"}
+          p={"150px 0px 0 0"}
           gap={2}
           alignItems={"center"}
           justifyContent={"center"}
@@ -125,6 +128,7 @@ const PRicingBAnner = () => {
         </Stack>
       </Stack>
     </Stack>
+    </>
   );
 };
 

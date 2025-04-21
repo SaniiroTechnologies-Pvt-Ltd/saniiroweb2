@@ -100,3 +100,25 @@ export  const ShereExperienceSchema = Yup.object({
   CountryId: Yup.string().required("Country is required"),
   StateId: Yup.string().required("State is required"),
 });
+
+
+  export const purchaseSchema = Yup.object({
+    Name: Yup.string().required("Customer Name is required"),
+    Email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    UserName: Yup.string().required("Username is required"),
+    PhoneNumber: Yup.string()
+      .matches(/^[0-9]{10}$/, "Must be a 10-digit mobile number")
+      .required("Mobile No. is required"),
+    CountryId: Yup.string().required("Country is required"),
+    StateId: Yup.string().required("State is required"),
+    OrganisationName: Yup.string().required("Organisation Name is required"),
+    ContactPerson: Yup.string().required("Contact Person is required"),
+    GSTNo: Yup.string().optional(),
+    City: Yup.string().required("City is required"),
+    Address: Yup.string().required("Address is required"),
+    PostCode: Yup.string().required("Post Code is required"),
+    SalesExecutive: Yup.string().optional(),
+    Remark: Yup.string().optional(),
+  });

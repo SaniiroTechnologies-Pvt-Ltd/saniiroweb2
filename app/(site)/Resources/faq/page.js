@@ -1,6 +1,6 @@
 "use client";
 
-import Resources from "@components/faq/faq";
+import Resources from "@components/Faq/Faq";
 
 export default function Index() {
   return (

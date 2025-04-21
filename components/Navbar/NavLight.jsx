@@ -22,10 +22,30 @@ const NavLight = () => {
   const [popoverState, setPopoverState] = useState({});
   const [subLinks, setSubLinks] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
+  const [scrollBackground, setScrollBackground] = useState("transparent"); 
+
 
   const handleClick = () => {
     setMenuClick(!menuClick);
   };
+
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 10) {
+  //       setScrollBackground("#052973"); // Change to your desired color
+      
+  //     } else {
+  //       setScrollBackground("#052973"); // Initial color
+  //     }
+  //   };
+  
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -64,12 +84,18 @@ const NavLight = () => {
             xs: "none",
             lg: "flex",
           },
+          backgroundColor: scrollBackground,
+          transition: "background-color 0.4s ease-in", // Smooth transition
         }}
         direction={"row"}
         justifyContent={"space-between"}
         p={"20px 90px"}
         alignItems={"center"}
-        zIndex={13}
+        // position={"sticky"}
+        // top={0}
+        // backgroundColor={"#052973"}
+        zIndex={999}
+
       >
         <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}>
           <Link href="/">
@@ -134,7 +160,7 @@ const NavLight = () => {
                       sx={{
                         fontSize: 25,
                         transition: "all 0.3s ease-in",
-                        color: isPopoverOpen(1) ? "#818181" : "#818181",
+                        color: isPopoverOpen(1) ? "#fff" : "#818181",
                         transform: isPopoverOpen(1)
                           ? "rotate(180deg)"
                           : "rotate(0)",
@@ -155,13 +181,14 @@ const NavLight = () => {
                     top: 47,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius:"8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 2, width: 160 }}
                   >
                     <Link
                       href="/Features/Billing-module"
@@ -267,13 +294,14 @@ const NavLight = () => {
                     top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius:"8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 2, width: 160 }}
                     position={"relative"}
                   >
                     <Link
@@ -386,14 +414,15 @@ const NavLight = () => {
                     top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius:"8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
-                    border={"1px solid black"}
+                    // border={"1px solid black"}
                     gap={1}
-                    sx={{ p: 2, width: 140 }}
+                    sx={{ p: 2, width: 160 }}
                   >
                     <Link
                       href="/Resources/BecomeAPartner"
@@ -526,6 +555,7 @@ const NavLight = () => {
                     left: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
+                    borderRadius:"8px",
                     zIndex: 1,
                   }}
                 ></Stack>

@@ -4,6 +4,7 @@ const apiEndpoints = {
     review:`${BASE_URL}/api/v1/customer/review`,
     Country:`${BASE_URL}/api/v1/country`,
     State:`${BASE_URL}/api/v1/state`,
+    City:`${BASE_URL}/api/v1/city`,
     Purchase:`${BASE_URL}/api/v1/pricing/purchase`,
     OTP:`${BASE_URL}/api/v1/Common/Messaging/otp`,
     Blog:`${BASE_URL}/api/v1/blog`,
@@ -15,7 +16,8 @@ const apiEndpoints = {
     Career:`${BASE_URL}/api/v1/career`,
     priceComparison:`${BASE_URL}/api/v1/price-comparison`,
     Pricing:`${BASE_URL}/api/v1/pricing`,
-
+    RequestDemo:`${BASE_URL}/api/v1/request/demo`,
+    PurchaseConfirm:`${BASE_URL}/api/v1/pricing/purchase/confirm`,
 
 };
 

@@ -11,10 +11,11 @@ import Clock from "../Home/parts/Clock";
 import ContactFaq from "../Home/parts/ContactFaq";
 import Footer from "../utils/Footer";
 import Image from "next/image";
+import IndustryCards from "../IndustryCards";
 
 const SolutionBysize = () => {
   return (
-    <>
+    <React.Fragment>
       {/* for desktop view  */}
       <Nav />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
@@ -24,10 +25,11 @@ const SolutionBysize = () => {
               <Industries1 />
             </Stack>
             <Stack gap={5}>
-              <Line />
+              {/* <Line /> */}
               {/* <SliderIndustry /> */}
+              <IndustryCards />
             </Stack>
-            <Stack
+            {/* <Stack
               alignItems={"center"}
               p={"100px 0"}
               display={{
@@ -37,7 +39,8 @@ const SolutionBysize = () => {
             >
               <Image src={Boxes} alt="" style={{ width: "100px" }} />
             </Stack>
-            <Industries2 />
+           
+            <Industries2 /> */}
           </Stack>
           <Stack bgcolor={"#F8F8F8"} pt={5}>
             <ProductSlider />
@@ -67,7 +70,7 @@ const SolutionBysize = () => {
           <Footer />
         </Stack>
       </Stack> */}
-    </>
+    </React.Fragment>
   );
 };
 

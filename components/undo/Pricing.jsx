@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PRicingBAnner from "./PRicingBAnner";
 import PricingTab from "./PricingTab";
 import Readytosign from "../Contact/parts/Readytosign";
@@ -9,9 +9,30 @@ import Footer from "../utils/Footer";
 import ContactFaq from "../Home/parts/ContactFaq";
 import JoinBusinesses from "./JoinBusinesses";
 import { Stack } from "@mui/material";
+import NavLight from "../Navbar/NavLight";
+import Nav from "../Navbar/Nav";
 const Pricings = () => {
+
+  const [showNav, setShowNav] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 450) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
+        {showNav && <Nav />}
       <PRicingBAnner />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <PricingTab />
