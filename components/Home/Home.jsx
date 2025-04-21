@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Nav from "../Navbar/Nav";
-import Simplify from "./parts/Simplify";
+import BannerComponent from "./parts/BannerComponent";
 import RequestDemo from "./parts/RequestDemo";
 import Billing from "./parts/Billing";
 import ToggleSection from "./parts/State";
@@ -24,7 +24,7 @@ const Home = () => {
         margin={"0 auto"}
         gap={4}
       >
-        <Simplify />
+        <BannerComponent />
       </Box>
       <RequestDemo />
       <Billing />
