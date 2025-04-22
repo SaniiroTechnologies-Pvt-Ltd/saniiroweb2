@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 
-const Line = () => {
+export default function Line() {
   return (
     <>
       {/* <Stack direction={"row"} justifyContent={"center"} gap={2}>
@@ -80,5 +80,3 @@ const Line = () => {
     </>
   );
 };
-
-export default Line;

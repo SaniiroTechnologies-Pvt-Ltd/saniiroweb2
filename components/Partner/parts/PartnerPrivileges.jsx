@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import OurGrowth from "./OurGrowth";
 import { Box, Button, Stack, Typography } from "@mui/material";
-const PartnerPrivileges = () => {
+
+export default function PartnerPrivileges() {
   return (
-    <>
+    <React.Fragment>
       {/* desktop  */}
       <Stack
         display={{
@@ -857,8 +860,6 @@ const PartnerPrivileges = () => {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
-
-export default PartnerPrivileges;

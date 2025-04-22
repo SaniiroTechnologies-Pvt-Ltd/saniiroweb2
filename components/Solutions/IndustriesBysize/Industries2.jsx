@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import IndustryLogo1 from "../../assets/IndustryLogo1.svg";
@@ -5,7 +7,8 @@ import LeftBracket from "../../assets/Leftbracket.jsx.svg";
 import RightBracket from "../../assets/Rightbracket.svg";
 import FeaturesBysize from "./FeaturesBysize";
 import Image from "next/image";
-const Industries2 = () => {
+
+export default function Industries2() {
   const lists = [
     {
       left: LeftBracket,
@@ -208,5 +211,3 @@ const Industries2 = () => {
     </>
   );
 };
-
-export default Industries2;

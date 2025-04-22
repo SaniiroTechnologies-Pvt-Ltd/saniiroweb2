@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import CaseStudyBanner from "./parts/CaseStudyBanner";
-import CompanyBanner from "./parts/CompanyBanner";
-import ReviewSection from "./parts/ReviewSection";
+import CaseStudyBanner from "./CaseStudyBanner";
+import CompanyBanner from "./CompanyBanner";
+import ReviewSection from "./ReviewSection";
 import Footer from ".././utils/Footer";
 import { Stack } from "@mui/material";
 import TestimonialsCardsSection from "./CaseStudyCardsSection";

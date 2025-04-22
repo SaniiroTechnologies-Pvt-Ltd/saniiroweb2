@@ -1,12 +1,11 @@
 import { Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import Nav from "../../Navbar/Nav";
+import Nav from "@/components/Navbar/Nav"; 
 import VideoCard1 from "./parts/VideoCard1";
 import videoImg from "../../assets/Rectangle 4301.png";
-import Footer from "../../utils/Footer";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import apiEndpoints from "@/utils/apiEndpoints";
 import axios from "axios";
 
@@ -180,7 +179,6 @@ const PlayVideo = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Footer />
     </>
   );
 };

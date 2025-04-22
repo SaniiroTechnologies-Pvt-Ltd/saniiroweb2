@@ -1,0 +1,36 @@
+import React, { useEffect, useState } from "react";
+import BillingBanner from "../BillingBanner";
+import BillingFeatures from "../BillingFeatures";
+import BillingSteps from "../BillingSteps";
+import BestFinchers from "../FeatureVideo";
+import Clock from "@/components/Home/Clock";
+import ImprovedSales from "../parts/parts/ImprovedSales";
+import ProductSlider from "@/components/About/ProductSlider";
+import { Stack } from "@mui/material";
+import InventoryFolderOperationList from "./InventoryFolderOperationList";
+import InventoryFeaturesGlance2 from "./InventoryFeaturesGlance2";
+
+const FeaturesInventory = () => {
+  
+  return (
+    <>
+    
+      <BillingBanner />
+      <BillingFeatures />
+      {/* <FeaturesGlance /> */}
+      <InventoryFolderOperationList />
+      <InventoryFeaturesGlance2 />
+      <Stack maxWidth={"1536px"} margin={"0 auto"}>
+        <BillingSteps />
+        <BestFinchers />
+        <Stack>
+          <ProductSlider />
+        </Stack>
+        <Clock />
+        <ImprovedSales />
+      </Stack>
+    </>
+  );
+};
+
+export default FeaturesInventory;

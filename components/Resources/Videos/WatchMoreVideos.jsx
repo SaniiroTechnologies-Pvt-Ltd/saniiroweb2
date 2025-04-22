@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./parts/Header";
-import Nav from "../../Navbar/Nav";
+import Nav from "@/components/Navbar/Nav"; 
 import VideoFeedSection from "./parts/VideoFeedSection";
-import Signupfree from "../../Solutions/Signupfree";
-import Footer from "../../utils/Footer";
+import Signupfree from "@/components/Solutions/Signupfree"; 
 import { Stack } from "@mui/material";
+
 const WatchMoreVideos = () => {
   return (
     <div>
@@ -14,7 +14,6 @@ const WatchMoreVideos = () => {
         <VideoFeedSection />
       </Stack>
       <Signupfree />
-      <Footer />
     </div>
   );
 };

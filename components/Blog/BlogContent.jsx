@@ -1,21 +1,16 @@
 "use client";
+
 import React from "react";
 import BlogBanner from "./parts/BlogBanner";
 import Nav from "../Navbar/Nav";
-import BlogFeed from "./parts/BlogFeed";
-import Footer from "../utils/Footer";
 import BlogContentFeed from "./parts/BlogContentFeed";
-import { Box, Stack } from "@mui/material";
 const BlogContent = () => {
   return (
-    <>
+    <React.Fragment>
       <Nav />
       <BlogBanner GrayBanner={true} />
-
       <BlogContentFeed />
-
-      <Footer />
-    </>
+    </React.Fragment>
   );
 };
 

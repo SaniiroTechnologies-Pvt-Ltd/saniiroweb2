@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import "./Features.css";
 import FeatureIcon1 from "../../assets/FeatureIcon1.svg";
@@ -8,6 +10,7 @@ import Button from "../../utils/Button";
 import EastIcon from "@mui/icons-material/East";
 import kickStart from "../../assets/kickStart.svg";
 import Image from "next/image";
+
 function FeaturesBysize() {
   const [activeItem, setActiveItem] = useState("item1");
 

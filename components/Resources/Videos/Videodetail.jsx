@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Stack, Typography, Box } from "@mui/material";
-import Footer from "../../utils/Footer";
-import Nav from "../../Navbar/Nav";
-import { useParams, useRouter } from "next/navigation";
+import Nav from "@/components/Navbar/Nav"; 
+import { useParams } from "next/navigation";
 import apiEndpoints from "@/utils/apiEndpoints";
 
 const VideoDetails = () => {
   const params = useParams();
-  const Slug = params.slug;
+  const slug = params.slug;
   const [video, setVideo] = useState(null);
 
   useEffect(() => {
@@ -47,7 +46,6 @@ const VideoDetails = () => {
           allowFullScreen
         ></iframe>
       </Stack>
-      <Footer />
     </>
   );
 };

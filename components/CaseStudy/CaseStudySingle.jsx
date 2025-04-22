@@ -1,7 +1,7 @@
 import Nav from "../Navbar/Nav";
-import FaqBanner from "./parts/FaqBanner";
-import FeqBodyTop from "./parts/FeqBodytop";
-import FeqBodyContent from "./parts/FaqBodyContent";
+import FaqBanner from "./FaqBanner";
+import FeqBodyTop from "./FeqBodytop";
+import FeqBodyContent from "./FaqBodyContent";
 import Footer from "../utils/Footer";
 import { Stack } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";

@@ -1,9 +1,8 @@
 "use client";
 
 import Banner from "@/components/Banner";
-import Nav from "@/components/Navbar/Nav";
-import { Box, Container, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Image from "next/image";
 
@@ -121,28 +120,11 @@ const titleFontSize = {
 };
 
 export default function Retailer() {
-  const [showNav, setShowNav] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const shouldShow = window.scrollY > 570;
-      setShowNav((prevShowNav) =>
-        prevShowNav !== shouldShow ? shouldShow : prevShowNav
-      );
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-
+  
   return (
     <React.Fragment>
-      {showNav && <Nav />}
       <Banner />
-
       <Box sx={{ ...containerStyles }}>
-
         {headings.map((heading, index) => (
           <Typography
             key={index}

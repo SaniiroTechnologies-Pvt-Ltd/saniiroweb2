@@ -378,230 +378,231 @@ function FeaturesMain() {
   return (
     <>
       {/* for Desktip view */}
-
-      <Stack
-        direction={{
-          xs: "column",
-          lg: "row",
-        }}
-        alignItems={"start"}
-        pt={5}
-        width={"90%"}
-        margin={"0 auto"}
-      >
+      <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Stack
-          className="sidebar"
-          width={{ lg: "20%", xs: "100%" }}
-          alignItems={"center"}
-          bgcolor={"white"}
-          border={"1px solid lightgrey"}
-          zIndex={11}
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
+          alignItems={"start"}
+          pt={5}
+          width={"90%"}
+          margin={"0 auto"}
         >
           <Stack
-            height={{ xs: "70px", lg: "" }}
-            width={{ lg: "29%", xs: "95%" }}
-            margin={"0 auto"}
-            direction={{ lg: "column", xs: "row" }}
-            gap={{ lg: 1, xs: "30px" }}
-            sx={{
-              overflowY: "scroll",
-              scrollbarWidth: "none",
-              scrollbarColor: "transparent transparent",
-              "&::-webkit-scrollbar": {
-                display: "none",
-              },
-            }}
+            className="sidebar"
+            width={{ lg: "20%", xs: "100%" }}
+            alignItems={"center"}
+            bgcolor={"white"}
+            border={"1px solid lightgrey"}
+            zIndex={11}
           >
-            {lists.map((d) => (
-              <ul key={d.id}>
-                <li onClick={() => handleItemClick(`item${d.id}`)}>
-                  <Typography
-                    style={{
-                      listStyle: "none",
-                      textDecoration:
-                        activeItem === `item${d.id}` ? "underline" : "none",
-                      textUnderlineOffset: "5px",
-                    }}
-                  >
-                    {d.heading}
-                  </Typography>
-                </li>
-              </ul>
-            ))}
+            <Stack
+              height={{ xs: "70px", lg: "" }}
+              width={{ lg: "29%", xs: "95%" }}
+              margin={"0 auto"}
+              direction={{ lg: "column", xs: "row" }}
+              gap={{ lg: 1, xs: "30px" }}
+              sx={{
+                overflowY: "scroll",
+                scrollbarWidth: "none",
+                scrollbarColor: "transparent transparent",
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              }}
+            >
+              {lists.map((d) => (
+                <ul key={d.id}>
+                  <li onClick={() => handleItemClick(`item${d.id}`)}>
+                    <Typography
+                      style={{
+                        listStyle: "none",
+                        textDecoration:
+                          activeItem === `item${d.id}` ? "underline" : "none",
+                        textUnderlineOffset: "5px",
+                      }}
+                    >
+                      {d.heading}
+                    </Typography>
+                  </li>
+                </ul>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
 
-        <Stack width={"100%"}>
-          {lists2.map((d) => (
-            <Stack className="content" bgcolor={d.bgcolor} width={"100%"}>
-              <Stack
-                minHeight={0}
-                gap={1}
-                id={`item${d.id}`}
-                className="item"
-                alignItems={"flex-start"}
-                margin={"0 auto"}
-              >
-                <Typography
-                  fontWeight={"bold"}
-                  fontSize={{
-                    xs: "25px",
-                    sm: "25px",
-                    md: "35px",
-                  }}
-                  color={d.id === "4" || d.id === "6" ? "white" : "black"}
+          <Stack width={"100%"}>
+            {lists2.map((d) => (
+              <Stack className="content" bgcolor={d.bgcolor} width={"100%"}>
+                <Stack
+                  minHeight={0}
+                  gap={1}
+                  id={`item${d.id}`}
+                  className="item"
+                  alignItems={"flex-start"}
+                  margin={"0 auto"}
                 >
-                  {d.title}
-                </Typography>
-                <Typography
-                  fontSize={{
-                    xs: "12px",
-                    sm: "14px",
-                    md: "20px",
-                  }}
-                  color={d.id === "4" || d.id === "6" ? "white" : "black"}
-                >
-                  {d.description}
-                </Typography>
-                {d.id !== "2.5" && (
-                  <Button
-                    endIcon={<EastIcon />}
-                    sx={{
-                      bgcolor: "transparent",
-                      color:
-                        d.id === "4"
-                          ? "#DF7E00"
-                          : d.id === "6"
-                          ? "white"
-                          : "#0079FF",
-                      fontSize: {
-                        xs: "14px",
-                        md: "16px",
-                      },
-                      fontWeight: "bold",
-                      pl: "0px",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                        color: "#0079FF",
-                        textDecoration: "underline",
-                      },
+                  <Typography
+                    fontWeight={"bold"}
+                    fontSize={{
+                      xs: "25px",
+                      sm: "25px",
+                      md: "35px",
                     }}
+                    color={d.id === "4" || d.id === "6" ? "white" : "black"}
                   >
-                    Learn More
-                  </Button>
-                )}
-                {d.id === "2.5" && (
-                  <Stack pt={1}>
-                                  <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
-
+                    {d.title}
+                  </Typography>
+                  <Typography
+                    fontSize={{
+                      xs: "12px",
+                      sm: "14px",
+                      md: "20px",
+                    }}
+                    color={d.id === "4" || d.id === "6" ? "white" : "black"}
+                  >
+                    {d.description}
+                  </Typography>
+                  {d.id !== "2.5" && (
                     <Button
+                      endIcon={<EastIcon />}
                       sx={{
-                        width: {
-                          xs: "150px",
-                          md: "200px",
-                        },
+                        bgcolor: "transparent",
+                        color:
+                          d.id === "4"
+                            ? "#DF7E00"
+                            : d.id === "6"
+                            ? "white"
+                            : "#0079FF",
                         fontSize: {
                           xs: "14px",
                           md: "16px",
                         },
                         fontWeight: "bold",
-                        fontFamily: "Work Sans",
-                        p: 1.5,
+                        pl: "0px",
+                        "&:hover": {
+                          backgroundColor: "transparent",
+                          color: "#0079FF",
+                          textDecoration: "underline",
+                        },
                       }}
                     >
-                      Request Demo
+                      Learn More
                     </Button>
-                    </Link>
-                  </Stack>
-                )}
-                <Stack
-                  direction={"row"}
-                  justifyContent={"center"}
-                  gap={1}
-                  pt={1}
-                  width={{
-                    xs: "100%",
-                    sm: "100%",
-                    md: "100%",
-                  }}
-                  flexWrap={"wrap"}
-                >
-                  {d.items?.map((di) => (
-                    <Stack
-                      width={"40%"}
-                      gap={2}
-                      bgcolor={"white"}
-                      pl={2}
-                      borderRadius={2}
-                      border={
-                        di.boxcolor
-                          ? `1px solid {${di.boxcolor}`
-                          : "1px solid lightgrey"
-                      }
-                    >
-                      <Stack
-                        width={{ xs: "50px", sm: "60px", md: "70px" }}
-                        height={{
-                          xs: "50px",
-                          sm: "60px",
-                          md: "70px",
-                        }}
-                      >
-                        <Image
-                          src={di.src}
-                          alt=""
-                          style={{ width: "100%", height: "100%" }}
-                        />
-                      </Stack>
+                  )}
+                  {d.id === "2.5" && (
+                    <Stack pt={1}>
+                                    <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
 
-                      <Typography
-                        fontSize={{
-                          xs: "14px",
-                          sm: "16px",
-                          md: "23px",
+                      <Button
+                        sx={{
+                          width: {
+                            xs: "150px",
+                            md: "200px",
+                          },
+                          fontSize: {
+                            xs: "14px",
+                            md: "16px",
+                          },
+                          fontWeight: "bold",
+                          fontFamily: "Work Sans",
+                          p: 1.5,
                         }}
-                        fontWeight={"bold"}
                       >
-                        {di.title}
-                      </Typography>
-                      <Typography
-                        fontSize={{
-                          xs: "10px",
-                          sm: "12px",
-                          md: "13px",
-                        }}
-                        color={"grey"}
+                        Request Demo
+                      </Button>
+                      </Link>
+                    </Stack>
+                  )}
+                  <Stack
+                    direction={"row"}
+                    justifyContent={"center"}
+                    gap={1}
+                    pt={1}
+                    width={{
+                      xs: "100%",
+                      sm: "100%",
+                      md: "100%",
+                    }}
+                    flexWrap={"wrap"}
+                  >
+                    {d.items?.map((di) => (
+                      <Stack
+                        width={"40%"}
+                        gap={2}
+                        bgcolor={"white"}
+                        pl={2}
+                        borderRadius={2}
+                        border={
+                          di.boxcolor
+                            ? `1px solid {${di.boxcolor}`
+                            : "1px solid lightgrey"
+                        }
                       >
-                        {di.description}
-                      </Typography>
-                      <Stack alignItems={"flex-start"}>
-                        <Button
-                          endIcon={<EastIcon />}
-                          sx={{
-                            bgcolor: "transparent",
-                            color: "#0079FF",
-                            fontSize: {
-                              xs: "14px",
-                              md: "16px",
-                            },
-                            fontWeight: "bold",
-                            pl: "0px",
-                            "&:hover": {
-                              backgroundColor: "transparent",
-                              color: "#0079FF",
-                              textDecoration: "underline",
-                            },
+                        <Stack
+                          width={{ xs: "50px", sm: "60px", md: "70px" }}
+                          height={{
+                            xs: "50px",
+                            sm: "60px",
+                            md: "70px",
                           }}
                         >
-                          Learn More
-                        </Button>
+                          <Image
+                            src={di.src}
+                            alt=""
+                            style={{ width: "100%", height: "100%" }}
+                          />
+                        </Stack>
+
+                        <Typography
+                          fontSize={{
+                            xs: "14px",
+                            sm: "16px",
+                            md: "23px",
+                          }}
+                          fontWeight={"bold"}
+                        >
+                          {di.title}
+                        </Typography>
+                        <Typography
+                          fontSize={{
+                            xs: "10px",
+                            sm: "12px",
+                            md: "13px",
+                          }}
+                          color={"grey"}
+                        >
+                          {di.description}
+                        </Typography>
+                        <Stack alignItems={"flex-start"}>
+                          <Button
+                            endIcon={<EastIcon />}
+                            sx={{
+                              bgcolor: "transparent",
+                              color: "#0079FF",
+                              fontSize: {
+                                xs: "14px",
+                                md: "16px",
+                              },
+                              fontWeight: "bold",
+                              pl: "0px",
+                              "&:hover": {
+                                backgroundColor: "transparent",
+                                color: "#0079FF",
+                                textDecoration: "underline",
+                              },
+                            }}
+                          >
+                            Learn More
+                          </Button>
+                        </Stack>
                       </Stack>
-                    </Stack>
-                  ))}
+                    ))}
+                  </Stack>
                 </Stack>
               </Stack>
-            </Stack>
-          ))}
+            ))}
+          </Stack>
         </Stack>
       </Stack>
 

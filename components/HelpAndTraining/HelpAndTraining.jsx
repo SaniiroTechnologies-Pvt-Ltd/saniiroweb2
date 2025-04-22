@@ -4,7 +4,7 @@ import HnTHeader from "./parts/HnTHeader";
 import HnTVirtal from "./parts/HnTVirtal";
 import HnTBanner from "./parts/HnTBanner";
 import HnTTranie from "./parts/HnTTranie";
-import ContactFaq from "../Home/parts/ContactFaq";
+import ContactFaq from "../Home/ContactFaq";
 import Footer from "../utils/Footer";
 import Quote from "./parts/Quote";
 import CareerBanner from "../Resources/Career/parts/CareerBanner";

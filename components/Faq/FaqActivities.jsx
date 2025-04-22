@@ -1,36 +1,12 @@
-// import React from "react";
-// import Nav from "../Navbar/Nav";
-// import FaqBanner from "./parts/FaqBanner";
-// import FeqBodyTop from "./parts/FeqBodytop";
-// import FeqBodyContent from "./parts/FaqBodyContent";
-// import Footer from "../utils/Footer";
-// import { Stack } from "@mui/material";
-// import { useParams } from "react-router-dom";
-// const FaqActivities = () => {
-//    const { ID } = useParams();
-//   return (
-//     <>
-//       <Stack maxWidth={"1536px"} margin={"0 auto"}>
-//         <Nav />
-//         <FaqBanner />
-//         <FeqBodyTop />
-//         <FeqBodyContent />
-//       </Stack>
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default FaqActivities;
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Nav from "../Navbar/Nav";
 import FaqBanner from "./parts/FaqBanner";
 import FeqBodyTop from "./parts/FeqBodytop";
 import FeqBodyContent from "./parts/FaqBodyContent";
-import Footer from "../utils/Footer";
 import { Stack } from "@mui/material";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
 
@@ -62,7 +38,6 @@ const FaqActivities = () => {
         <FeqBodyTop />
         <FeqBodyContent faqData={faqData} />{" "}
       </Stack>
-      <Footer />
     </>
   );
 };

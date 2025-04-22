@@ -1,8 +1,7 @@
 import React from "react";
-import Nav from "../../Navbar/Nav";
+import Nav from "@/components/Navbar/Nav"; 
 import JobDiscrption from "./parts/JobDiscrption";
-import Footer from "../../utils/Footer";
-import Readytosign from "../../Contact/parts/Readytosign";
+import Readytosign from "@/components/Contact/Readytosign"; 
 import { Stack } from "@mui/material";
 
 const JobDetails = () => {
@@ -13,7 +12,6 @@ const JobDetails = () => {
         <JobDiscrption />
       </Stack>
       <Readytosign />
-      <Footer />
     </>
   );
 };

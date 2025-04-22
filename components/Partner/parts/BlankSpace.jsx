@@ -1,12 +1,12 @@
+"use client";
+
 import React from "react";
 import OurGrowth from "./OurGrowth";
 
-const BlankSpace = () => {
+export default function BlankSpace () {
   return (
-    <>
+    <React.Fragment>
       <OurGrowth />
-    </>
+    </React.Fragment>
   );
 };
-
-export default BlankSpace;

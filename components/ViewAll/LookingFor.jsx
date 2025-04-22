@@ -1,11 +1,11 @@
 import { Stack, IconButton, Typography, Box } from "@mui/material";
 import React, { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
-import PhoneNumberInput from "../Home/parts/nm";
+import PhoneNumberInput from "../Home/nm";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import CitySelector from "../Home/parts/Cityselctor";
+import CitySelector from "../Home/Cityselctor";
 import Button from "../utils/Button";
 import Google from "../assets/google.png";
 import lo from "../assets/lo.svg";

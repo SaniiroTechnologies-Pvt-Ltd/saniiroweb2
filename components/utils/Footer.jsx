@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import ofc from "../assets/ofc.svg";
@@ -7,7 +9,6 @@ import Link from "next/link";
 import play from "../assets/play.svg";
 import software from "../assets/software.svg";
 import EmailIcon from "@mui/icons-material/Email";
-import CallIcon from "@mui/icons-material/Call";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -18,119 +19,43 @@ import "./Footer.css";
 import Image from "next/image";
 const Footer = () => {
   const list1 = [
-    {
-      item: "About us",
-      to: "/About-us",
-    },
-    {
-      item: "Career",
-      to: "/Resources/Career",
-    },
-    {
-      item: "Updates",
-      to: "/Updates",
-    },
-
-    {
-      item: "Contact us",
-      to: "/Contact-us",
-    },
-    {
-      item: "Request Callback",
-      to: "/requestCallback",
-    },
-    // {
-    //   item: "Product Reviews",
-    // },
-    // {
-    //   item: "Awards & Recognition",
-    // },
-    // {
-    //   item: "Get Offer",
-    // },
+    { item: "About us", to: "/About-us" },
+    { item: "Career", to: "/Resources/Career" },
+    { item: "Updates", to: "/Updates" },
+    { item: "Contact us", to: "/Contact-us" },
+    { item: "Request Callback", to: "/requestCallback" },
+    // { item: "Product Reviews", },
+    // { item: "Awards & Recognition", },
+    // { item: "Get Offer", },
   ];
   const list2 = [
-    {
-      item: "Resources",
-      to: "/HelpAndTraining",
-    },
-
-    {
-      item: "Help & Training ",
-      to: "/HelpAndTraining",
-    },
-
-    {
-      item: "FAQ’s",
-      to: "/Resources/faq",
-    },
-    {
-      item: "Blog",
-      to: "/Resources/Blog",
-    },
-    {
-      item: "Videos",
-      to: "/Resources/Videos",
-    },
-    // {
-    //   item: "Gallery",
-    // },
-    // {
-    //   item: "Security & Performance",
-    // },
-    // {
-    //   item: "Contact support",
-    // },
+    { item: "Resources", to: "/HelpAndTraining" },
+    { item: "Help & Training ", to: "/HelpAndTraining" },
+    { item: "FAQ’s", to: "/Resources/faq" },
+    { item: "Blog", to: "/Resources/Blog" },
+    { item: "Videos", to: "/Resources/Videos" },
+    // { item: "Gallery" },
+    // { item: "Security & Performance" },
+    // { item: "Contact support" },
   ];
 
   const list3 = [
-    {
-      item: "Case studies",
-      to: "/Resources/CaseStudy",
-    },
-    {
-      item: "Testimonials",
-      to: "/Resources/Testimonials",
-    },
-    {
-      item: "Become A Partner",
-      to: "/Resources/BecomeAPartner",
-    },
+    { item: "Case studies", to: "/Resources/CaseStudy" },
+    { item: "Testimonials", to: "/Resources/Testimonials" },
+    { item: "Become A Partner", to: "/Resources/BecomeAPartner" },
   ];
 
   const list4 = [
-    {
-      item: "Legal",
-      to: "/subfooter/legal",
-    },
-    {
-      item: "Terms & Conditions",
-      to: "/subfooter/terms-and-conditions",
-    },
-    {
-      item: "Privacy Policy",
-      to: "/subfooter/privacy-policy",
-    },
-    {
-      item: "Cancalation/Refund Policy",
-      to: "/subfooter/cancalation-and-refund-policy",
-    },
-    {
-      item: "Employee Login",
-      to: "/subfooter/employee-login",
-    },
+    { item: "Legal", to: "/subfooter/legal" },
+    { item: "Terms & Conditions", to: "/subfooter/terms-and-conditions" },
+    { item: "Privacy Policy", to: "/subfooter/privacy-policy" },
+    { item: "Cancalation/Refund Policy", to: "/subfooter/cancalation-and-refund-policy" },
+    { item: "Employee Login", to: "/subfooter/employee-login" },
   ];
 
   return (
     <>
-      <Stack
-        sx={{
-          display: {
-            xs: "none",
-            lg: "flex",
-          },
-        }}
-      >
+      <Stack sx={{ display: { xs: "none", lg: "flex" }, }}>
         <Stack
           bgcolor={"#35373E"}
           p={"40px 0"}

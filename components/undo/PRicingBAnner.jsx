@@ -5,7 +5,7 @@ import "../Solutions/IndustriesByusecases/Solution.css";
 import TickMark from "../assets/TickMark.svg";
 import Image from "next/image";
 
-const PRicingBAnner = () => {
+const PricingBanner = () => {
   const lists = [
     {
       title: "FREE TRIAL",
@@ -26,8 +26,6 @@ const PRicingBAnner = () => {
   ];
   return (
     <>
-         {/* <NavLight /> */}
-    
     <Stack bgcolor={"#052973"} className="textured-background">
       <NavLight />
       <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
@@ -132,4 +130,4 @@ const PRicingBAnner = () => {
   );
 };
 
-export default PRicingBAnner;
+export default PricingBanner;

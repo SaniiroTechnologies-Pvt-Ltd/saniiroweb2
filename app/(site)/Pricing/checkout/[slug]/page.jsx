@@ -1,16 +1,13 @@
 "use client";
 
-import Readytosign from '@/components/Contact/parts/Readytosign';
-import ContactFaq from '@/components/Home/parts/ContactFaq';
+import Readytosign from '@/components/Contact/Readytosign';
+import ContactFaq from '@/components/Home/ContactFaq';
 import PRicingBAnner from '@/components/Pricing/PRicingBAnner';
 import JoinBusinesses from '@/components/undo/JoinBusinesses';
 import PackageDetails from '@/components/undo/PackageDetails';
-import Footer from '@/components/utils/Footer';
 import { Stack } from '@mui/material';
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import NavLight from '@/components/Navbar/NavLight';
-import Nav from '@/components/Navbar/Nav';
+import React from 'react';
 
 function Page() {
   const price = sessionStorage.getItem("price") || 0;
@@ -19,28 +16,8 @@ function Page() {
   const param = useParams();
   const slug = param.slug;
 
-  const [showNav, setShowNav] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowNav(true);
-      } else {
-        setShowNav(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <>
-          {/* {showNav && <Nav />} */}
-          <Nav />
-
+    <React.Fragment>
       {/* <PRicingBAnner /> */}
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <PackageDetails slug={slug} price={price} Name={planName} />
@@ -48,8 +25,7 @@ function Page() {
         <ContactFaq />
       </Stack>
       <Readytosign />
-      <Footer />
-    </>
+    </React.Fragment>
   );
 }
 

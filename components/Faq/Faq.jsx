@@ -1,11 +1,11 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Nav from "../Navbar/Nav";
 import FaqBanner from "./parts/FaqBanner";
-import { Search } from "@mui/icons-material";
 import SearchSection from "./parts/SearchSection";
 import ActivityManagement from "./parts/ActivityManagement";
-import Footer from "./../utils/Footer";
 const Faq = () => {
   const [questions, setQuestions] = useState(null);
   // console.log(questions);
@@ -43,7 +43,6 @@ const Faq = () => {
           <ActivityManagement />
         )}
       </Stack>
-      <Footer />
     </>
   );
 };

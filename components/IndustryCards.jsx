@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Box, 
@@ -148,7 +150,7 @@ const industryData = [
   },
 ];
 
-const IndustryCards = () => {
+export default function IndustryCards() {
   const [activeSection, setActiveSection] = useState('small');
   const [isScrolling, setIsScrolling] = useState(false);
   const contentRefs = useRef({});
@@ -558,5 +560,3 @@ const IndustryCards = () => {
     </Box>
   );
 };
-
-export default IndustryCards; 

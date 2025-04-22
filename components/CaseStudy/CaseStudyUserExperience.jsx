@@ -1,8 +1,8 @@
 import React from "react";
 
-import CaseStudyUserBanner from "./parts/CaseStudyUserBanner";
-import ContentSection from "./parts/ContentSection";
-import RecommendedSection from "./parts/RecommendedSection";
+import CaseStudyUserBanner from "./CaseStudyUserBanner";
+import ContentSection from "./ContentSection";
+import RecommendedSection from "./RecommendedSection";
 import Footer from ".././utils/Footer";
 import { Stack } from "@mui/material";
 const CaseStudyUserExperience = () => {

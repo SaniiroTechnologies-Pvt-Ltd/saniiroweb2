@@ -3,7 +3,7 @@ import React from "react";
 import BannerVirtualTraining from "./parts/BannerVirtualTraining";
 import Footer from "../utils/Footer";
 import WhatOpt from "./parts/WhatOpt";
-import ContactFaq from "../Home/parts/ContactFaq";
+import ContactFaq from "../Home/ContactFaq";
 const ViewAll2 = () => {
   return (
     <>

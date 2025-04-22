@@ -27,39 +27,23 @@ const Featured = () => {
   ];
   return (
     <>
-      <Stack
-        height={"auto"}
-        position={"relative"}
+      <Stack height={"auto"} position={"relative"}
         bgcolor={"#052973"}
         className="textured-background"
-        // sx={{
-        //   backgroundImage: `url(${ContactCTA})`,
-        //   backgroundSize: "auto",
-        //   backgroundRepeat: "no-repeat",
-        // }}
       >
-                <NavLight/>
+        <NavLight />
 
         <Stack
           fontFamily={"Work Sans"}
           maxWidth={"1536px"}
           margin={"0 auto"}
           gap={2}
-          direction={{
-            xs: "column",
-            lg: "row",
-          }}
+          direction={{ xs: "column", lg: "row", }}
         >
           <Stack
             m={"0 auto"}
-            width={{
-              xs: "95%",
-              lg: "50%",
-            }}
-            p={{
-              xs: 0,
-              lg: "40px 0px 40px 100px",
-            }}
+            width={{ xs: "95%", lg: "50%", }}
+            p={{ xs: 0, lg: "40px 0px 40px 100px", }}
             gap={2}
           >
             <Typography
@@ -75,10 +59,7 @@ const Featured = () => {
               color={"transparent"}
               lineHeight={1}
               className="text-stroke"
-              textAlign={{
-                xs: "center",
-                lg: "left",
-              }}
+              textAlign={{ xs: "center", lg: "left", }}
             >
               FEATURES
             </Typography>
@@ -94,10 +75,7 @@ const Featured = () => {
               fontWeight={900}
               lineHeight={1}
               letterSpacing={"0.05em"}
-              textAlign={{
-                xs: "center",
-                lg: "left",
-              }}
+              textAlign={{ xs: "center", lg: "left", }}
             >
               THAT MAKE SELLING EASIER
             </Typography>
@@ -152,26 +130,26 @@ const Featured = () => {
                 lg: "flex-start",
               }}
             >
-              
 
-               <Link style={{zIndex:"99"}} href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
-              <Button
-                sx={{
-                  width: {
-                    xs: "150px",
-                    lg: "200px",
-                  },
-                  fontSize: {
-                    xs: "12px",
-                    lg: "16px",
-                  },
-                  fontWeight: "bold",
-                  fontFamily: "Work Sans",
-                  p: 1.5,
-                }}
-              >
-                Request Demo
-              </Button>
+
+              <Link style={{ zIndex: "99" }} href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
+                <Button
+                  sx={{
+                    width: {
+                      xs: "150px",
+                      lg: "200px",
+                    },
+                    fontSize: {
+                      xs: "12px",
+                      lg: "16px",
+                    },
+                    fontWeight: "bold",
+                    fontFamily: "Work Sans",
+                    p: 1.5,
+                  }}
+                >
+                  Request Demo
+                </Button>
               </Link>
 
             </Stack>

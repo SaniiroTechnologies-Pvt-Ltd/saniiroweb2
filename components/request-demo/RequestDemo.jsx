@@ -6,7 +6,7 @@ import axios from "axios";
 import { ContactUsSchema } from "@/Validation-Scema";
 import apiEndpoints from "@/utils/apiEndpoints";
 import NavLight from "@/components/Navbar/NavLight";
-import PhoneNumberInput from "@/components/Home/parts/nm";
+import PhoneNumberInput from "@/components/Home/nm";
 import SweetAlert from "@/components/SweetAlert/SweetAlert";
 import Button from "../utils/Button";
 

@@ -79,6 +79,8 @@
 
 // export default SliderIndustry;
 
+"use client";
+
 import React from "react";
 import Boxes from "../../assets/Boxes.svg";
 import Carousel from "react-multi-carousel";

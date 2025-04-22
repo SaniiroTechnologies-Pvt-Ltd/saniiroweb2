@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import CitySelector from "../Home/parts/Cityselctor";
+import CitySelector from "../Home/Cityselctor";
 import Button from "../utils/Button";
 import lo from "../assets/lo.svg";
 import dottedbg from "../assets/dottedbg.svg";

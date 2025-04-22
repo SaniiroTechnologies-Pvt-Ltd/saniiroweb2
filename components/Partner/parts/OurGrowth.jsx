@@ -1,9 +1,11 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client"
+
+import { Stack, Typography } from "@mui/material";
 import React from "react";
 
-const OurGrowth = () => {
+export default function OurGrowth() {
   return (
-    <>
+    <React.Fragment>
       {/* desktop  */}
       {/* <Stack
         sx={{
@@ -561,8 +563,6 @@ const OurGrowth = () => {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
-
-export default OurGrowth;

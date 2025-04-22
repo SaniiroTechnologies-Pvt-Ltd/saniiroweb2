@@ -1,9 +1,9 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import ResourceBanner from "./parts/ResourceBanner";
-import Readytosign from "../Contact/parts/Readytosign";
-import Footer from "../utils/Footer";
-import { Stack } from "@mui/material";
-import Nav from "../Navbar/Nav";
+import Readytosign from "../Contact/Readytosign"; 
+
 const Resources = () => {
   const [showNav, setShowNav] = useState(false);
 
@@ -27,7 +27,6 @@ const Resources = () => {
 
       <ResourceBanner />
       <Readytosign />
-      <Footer />
     </>
   );
 };

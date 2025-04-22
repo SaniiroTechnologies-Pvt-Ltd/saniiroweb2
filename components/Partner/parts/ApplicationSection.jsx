@@ -1,9 +1,11 @@
+"use client";
+
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import BookImg from "./assets/MaskGroup.png";
 import Image from "next/image";
 
-const Industry2 = () => {
+export default function Industry2() {
   const lists = [
     { bgcolor: "#FEE9E9", title: "Application Name" },
     { bgcolor: "#FEF8E9", title: "Application Name" },
@@ -14,85 +16,85 @@ const Industry2 = () => {
   ];
 
   return (
-    <Stack
-      direction="row"
-      flexWrap="wrap"
-      justifyContent="center"
-      gap={{
-        xs: 1,
-        sm: 2,
-        md: 3,
-      }}
-      p={3}
-    >
-      {lists.map((item, index) => (
-        <Stack
-          p={2}
-          key={index}
-          justifyContent="center"
-          alignItems="left"
-          border="1px solid black"
-          bgcolor={item.bgcolor}
-          width={{
-            xs: "32%",
-            sm: "36%",
-            md: "25%",
-            lg: "12%",
-          }}
-          height={{
-            xs: "110px",
-            sm: "110px",
-            md: "110px",
-            lg: "180px",
-          }}
-          borderRadius={2}
-          gap={1}
-        >
-          <Box
+    <React.Fragment>
+      <Stack
+        direction="row"
+        flexWrap="wrap"
+        justifyContent="center"
+        gap={{
+          xs: 1,
+          sm: 2,
+          md: 3,
+        }}
+        p={3}
+      >
+        {lists.map((item, index) => (
+          <Stack
+            p={2}
+            key={index}
+            justifyContent="center"
+            alignItems="left"
+            border="1px solid black"
+            bgcolor={item.bgcolor}
             width={{
-              xs: 50,
-              sm: 60,
-              md: 70,
-              lg: 82,
+              xs: "32%",
+              sm: "36%",
+              md: "25%",
+              lg: "12%",
             }}
-            height={"100%"}
-            position={"relative"}
-          >
-            <Image
-              src={BookImg}
-              alt="Book"
-              fill
-              objectFit="contain"
-              sizes="100vw"
-            />
-          </Box>
-          <Typography
-            fontSize={{
-              xs: "12px",
-              sm: "14px",
-              md: "16px",
+            height={{
+              xs: "110px",
+              sm: "110px",
+              md: "110px",
+              lg: "180px",
             }}
-            fontWeight="bold"
-            textAlign="left"
+            borderRadius={2}
+            gap={1}
           >
-            {item.title}
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: "Work Sans",
-              fontSize: "12px",
-              fontWeight: 400,
-              lineHeight: "13px",
-              letterSpacing: "0em",
-              textAlign: "left",
-            }}
-          >
-            Work
-          </Typography>
-        </Stack>
-      ))}
-    </Stack>
+            <Box
+              width={{
+                xs: 50,
+                sm: 60,
+                md: 70,
+                lg: 82,
+              }}
+              height={"100%"}
+              position={"relative"}
+            >
+              <Image
+                src={BookImg}
+                alt="Book"
+                fill
+                objectFit="contain"
+                sizes="100vw"
+              />
+            </Box>
+            <Typography
+              fontSize={{
+                xs: "12px",
+                sm: "14px",
+                md: "16px",
+              }}
+              fontWeight="bold"
+              textAlign="left"
+            >
+              {item.title}
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "Work Sans",
+                fontSize: "12px",
+                fontWeight: 400,
+                lineHeight: "13px",
+                letterSpacing: "0em",
+                textAlign: "left",
+              }}
+            >
+              Work
+            </Typography>
+          </Stack>
+        ))}
+      </Stack>
+    </React.Fragment>
   );
 };
-
-export default Industry2;

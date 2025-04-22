@@ -181,6 +181,7 @@ const Nav = () => {
                         Billing
                       </Typography>
                     </Link>
+
                     <Link
                       href="/Features/Accounting-module"
                       className="popperLinks"
@@ -195,6 +196,7 @@ const Nav = () => {
                         Accounting
                       </Typography>
                     </Link>
+
                     <Link
                       href="/Features/Inventory-module"
                       className="popperLinks"
@@ -207,6 +209,21 @@ const Nav = () => {
                         }}
                       >
                         Inventory
+                      </Typography>
+                    </Link>
+
+                    <Link
+                      href="/Features/Crm-module"
+                      className="popperLinks"
+                    >
+                      <Typography
+                        sx={{
+                          "&:hover": {
+                            color: "#F15B25",
+                          },
+                        }}
+                      >
+                        CRM
                       </Typography>
                     </Link>
                   </Stack>
@@ -719,6 +736,11 @@ const Nav = () => {
                 <Link href="/Features/Inventory-module" className="popperLinks">
                   <Typography fontFamily={"Work Sans"} sx={{}}>
                     Inventory
+                  </Typography>
+                </Link>
+                <Link href="/Features/Crm-module" className="popperLinks">
+                  <Typography fontFamily={"Work Sans"} sx={{}}>
+                    CRM
                   </Typography>
                 </Link>
               </Stack>

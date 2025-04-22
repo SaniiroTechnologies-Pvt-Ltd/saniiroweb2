@@ -1,11 +1,34 @@
 "use client";
 
-import Solutions from "@components/Solutions/SolutionByIndustries";
+import ProductSlider from "@/components/About/ProductSlider";
+import Clock from "@/components/Home/Clock";
+import ContactFaq from "@/components/Home/ContactFaq";
+import Nav from "@/components/Navbar/Nav";
+import Industries1 from "@/components/Solutions/industriesParts/Industries1";
+import Industries2 from "@/components/Solutions/industriesParts/Industries2";
+import Industries3 from "@/components/Solutions/industriesParts/Industries3";
+import Industries4 from "@/components/Solutions/industriesParts/Industries4";
+import IndustriesGridInteractive from "@/components/Solutions/industriesParts/IndustriesGridInteractive";
+import { Stack } from "@mui/material";
 
 export default function Index() {
   return (
-    <main>
-      <Solutions />
-    </main>
+    <>
+      <Nav />
+      <Stack maxWidth={"1536px"} margin={"0 auto"}>
+        <Stack position={"relative"}>
+          <Industries1 />
+          <IndustriesGridInteractive />
+          <Industries2 />
+        </Stack>
+        <Industries3 />
+        <Industries4 />
+        <Stack bgcolor={"#f1f1f1"} pt={5}>
+          <ProductSlider />
+          <Clock />
+        </Stack>
+        <ContactFaq />
+      </Stack>
+    </>
   );
 }

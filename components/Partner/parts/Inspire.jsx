@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import InspireImg from "./assets/Group80.png";
@@ -6,7 +8,7 @@ import Image from "next/image";
 const IMAGE_HEIGHT = "156.37px";
 const TEXT_WIDTH = "508px";
 
-const Inspire = () => {
+export default function Inspire () {
   return (
     <Stack
       paddingTop="20px"
@@ -57,5 +59,3 @@ const Inspire = () => {
     </Stack>
   );
 };
-
-export default Inspire;

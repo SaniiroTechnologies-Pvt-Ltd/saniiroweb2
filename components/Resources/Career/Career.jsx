@@ -1,10 +1,9 @@
 
 import React, { useState } from "react";
-import Nav from "../../Navbar/Nav";
+import Nav from "@/components/Navbar/Nav";
 import CareerBanner from "./parts/CareerBanner";
 import JobSection from "./parts/JobSection";
-import Readytosign from "../../Contact/parts/Readytosign";
-import Footer from "../../utils/Footer";
+import Readytosign from "@/components/Contact/Readytosign"; 
 import { Stack } from "@mui/material";
 
 function Career() {
@@ -33,7 +32,7 @@ function Career() {
         />
       </Stack>
       <Readytosign />
-      <Footer />
+
     </>
   );
 }
