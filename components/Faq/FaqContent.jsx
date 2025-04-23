@@ -2,17 +2,14 @@
 
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import Nav from "../Navbar/Nav";
-import FaqBanner from "./parts/FaqBanner";
 import SearchSection from "./parts/SearchSection";
 import ActivityManagement from "./parts/ActivityManagement";
-const Faq = () => {
+
+const FaqContent = () => {
   const [questions, setQuestions] = useState(null);
   // console.log(questions);
   return (
-    <>
-      <Nav />
-      <FaqBanner />
+    <React.Fragment>
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <SearchSection setQuestions={setQuestions} />
         {questions ? (
@@ -43,8 +40,8 @@ const Faq = () => {
           <ActivityManagement />
         )}
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
 
-export default Faq;
+export default FaqContent;

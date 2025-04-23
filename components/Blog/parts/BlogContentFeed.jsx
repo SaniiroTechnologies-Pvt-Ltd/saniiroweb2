@@ -1,20 +1,17 @@
-import { Box, InputAdornment, Stack, Typography } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
+"use client";
+
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DescriptionIcon from "@mui/icons-material/Description";
-import FortImage from "../../assets/image 164.png";
-import TagSection from "./TagSection";
 import CommentForm from "./CommentForm";
 import RelatedPost from "./RelatedPost";
-import { Tags, Blogs, FeaturedPosts } from "./TagsBlogsData";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { usePathname, useRouter } from "next/navigation";
+import { Blogs } from "./TagsBlogsData";
+import { usePathname } from "next/navigation";
 import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
 import Link from "next/link";
 
-const BlogFeed = () => {
+const BlogContentFeed = () => {
   const [activeTags, setActiveTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage] = useState(10);
@@ -22,9 +19,6 @@ const BlogFeed = () => {
   const [Featured, setFeatured] = useState([]);
   const [blogs, setBlogs] = useState([]);
 
-  
-
-  console.log(blogsPerPage, "blog")
   const blogMatchesTags = (blog) => {
     return (
       activeTags.every((tag) => blog.region.includes(tag)) ||
@@ -37,6 +31,7 @@ const BlogFeed = () => {
   const segments = pathname.split("/");
   const slug = segments[3];
   const BlogId = segments[4];
+
   const transformTags = (tagsData) => {
     const transformedTags = {};
     tagsData.forEach((tag) => {
@@ -51,6 +46,7 @@ const BlogFeed = () => {
     });
     return Object.values(transformedTags);
   };
+
   const fetchBlogs = async () => {
     try {
       const { data } = await axios.get(`${apiEndpoints.Blog}/?slug=${slug}`);
@@ -82,6 +78,7 @@ const BlogFeed = () => {
   const handleFilterClick = () => {
     setFilterClicked(!filterClicked);
   };
+
   return (
     <Stack
       backgroundColor={"#F6F8FF"}
@@ -320,4 +317,4 @@ const BlogFeed = () => {
   );
 };
 
-export default BlogFeed;
+export default BlogContentFeed;

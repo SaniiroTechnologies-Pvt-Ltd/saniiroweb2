@@ -1,8 +1,6 @@
-"use client";
-
 import Resources from "@components/Resources/Resources";
 
-export default function Index() {
+export default function page() {
   return (
     <main>
       <Resources />

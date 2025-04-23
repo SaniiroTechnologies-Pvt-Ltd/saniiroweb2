@@ -75,7 +75,7 @@ const Industries1 = () => {
         </Button>
         </Link>
       </Stack>
-      <Stack
+      {/* <Stack
         alignItems={"center"}
         p={{
           xs: "20px 0",
@@ -85,7 +85,7 @@ const Industries1 = () => {
         }}
       >
         <Image src={Boxes} alt="" style={{ width: "100px" }} />
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 };

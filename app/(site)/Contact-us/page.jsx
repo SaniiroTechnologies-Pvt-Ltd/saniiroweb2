@@ -5,11 +5,13 @@ import ContactUs from "@/components/Contact/ContactUs";
 import GrennSection from "@/components/Contact/GreenSection";
 import Offices from "@/components/Contact/Offices";
 import Readytosign from "@/components/Contact/Readytosign";
+import NavOnScroll from "@/components/NavOnScroll";
 import { Box, Stack } from "@mui/material";
 
 function page() {
   return (
     <>
+      <NavOnScroll threshold={610} />
       <ContactUs />
       <Stack bgcolor={"#F1F1F1"}>
         <Box

@@ -19,7 +19,7 @@ export default function Index() {
         <Stack position={"relative"}>
           <Industries1 />
           <IndustriesGridInteractive />
-          <Industries2 />
+          {/* <Industries2 /> */}
         </Stack>
         <Industries3 />
         <Industries4 />

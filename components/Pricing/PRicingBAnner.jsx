@@ -5,7 +5,7 @@ import TickMark from "../assets/TickMark.svg";
 import Image from "next/image";
 import NavLight from "../Navbar/NavLight";
 
-const PRicingBAnner = () => {
+const PricingBanner = () => {
   const lists = [
     {
       title: "FREE TRIAL",
@@ -130,4 +130,4 @@ const PRicingBAnner = () => {
   );
 };
 
-export default PRicingBAnner;
+export default PricingBanner;

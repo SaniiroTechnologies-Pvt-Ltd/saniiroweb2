@@ -1,11 +1,15 @@
 "use client";
 
-import Resources from "@components/Resources/Career/Career";
+import Readytosign from "@/components/Contact/Readytosign";
+import NavOnScroll from "@/components/NavOnScroll";
+import CareerDescription from "@/components/Resources/Career/CareerDescription"; 
 
 export default function Index() {
   return (
     <main>
-      <Resources />
+      <NavOnScroll isAlwaysVisible={true} />
+      <CareerDescription />
+      <Readytosign />
     </main>
   );
 }

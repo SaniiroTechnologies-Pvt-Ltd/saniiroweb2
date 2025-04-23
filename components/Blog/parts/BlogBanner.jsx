@@ -1,8 +1,10 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import FramImg from "../assets/Frame62700.png";
-
 import Image from "next/image";
+
 const BlogBanner = (props) => {
   console.log(props);
   return (

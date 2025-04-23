@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import BgSvg01 from "../../assets/BgSvg01.jpeg";

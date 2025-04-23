@@ -1,11 +1,13 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Nav from "@/components/Navbar/Nav"; 
 import VideoCard1 from "./parts/VideoCard1";
-import videoImg from "../../assets/Rectangle 4301.png";
+// import videoImg from "../../assets/Rectangle 4301.png";
 import Link from "next/link";
-import { useParams} from "next/navigation";
+import { useParams } from "next/navigation";
 import apiEndpoints from "@/utils/apiEndpoints";
+import NavOnScroll from "@/components/NavOnScroll";
 
 const PlayDifferent = () => {
   const params = useParams();
@@ -28,7 +30,7 @@ const PlayDifferent = () => {
 
   return (
     <>
-      <Nav />
+      <NavOnScroll isAlwaysVisible={true} />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Stack width={"100%"} margin={"20px auto 50px"}>
           <Stack

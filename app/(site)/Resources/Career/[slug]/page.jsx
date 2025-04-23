@@ -1,11 +1,16 @@
-"use client";
+import Readytosign from "@/components/Contact/Readytosign";
+import NavOnScroll from "@/components/NavOnScroll";
+import JobDescription from "@/components/Resources/Career/parts/JobDescription";
+import { Stack } from "@mui/material";
 
-import Resources from "@components/Resources/Career/JobDetails";
-
-export default function Index() {
+export default function page() {
   return (
     <main>
-      <Resources />
+      <Stack maxWidth={"1536px"} margin={"0 auto"}>
+        <NavOnScroll isAlwaysVisible={true} />
+        <JobDescription />
+      </Stack>
+      <Readytosign />
     </main>
   );
 }

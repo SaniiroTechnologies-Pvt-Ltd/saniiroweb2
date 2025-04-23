@@ -15,13 +15,9 @@ const Industries = () => {
           <Stack
             pt={{
               xs: "50px",
-              lg: "100px",
             }}
             gap={2}
-            direction={{
-              xs: "column",
-              lg: "row",
-            }}
+            direction={{ xs: "column", }}
             alignItems={"center"}
             justifyContent={"center"}
           >
@@ -55,7 +51,7 @@ const Industries = () => {
               textAlign={"center"}
               letterSpacing={"0.05em"}
             >
-              CRM USE CASES
+             One Platform, Endless Possibilities
             </Typography>
           </Stack>
           <Typography
@@ -71,11 +67,11 @@ const Industries = () => {
             }}
             textAlign={"center"}
           >
-            Do you need a widget that geolocates your customers on a map? Or a
-            completely automated lead follow-up or quoting process? Our solution
-            architects love customizing Zoho CRM for unique business scenarios and
-            use cases. Learn about the solutions we implemented for real Zoho
-            customers with special requirements.
+            Saniiro is a powerful all-in-one business management software designed 
+            for billing, inventory, CRM, GST filing, manufacturing, POS, and 
+            multi-branch operations. It streamlines workflows with smart automation, 
+            real-time reporting, and mobile access—perfect for SMEs, service providers, 
+            retailers, manufacturers, and nonprofits.
           </Typography>
         </Stack>
       </Stack>

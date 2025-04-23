@@ -2,19 +2,21 @@
 
 import BillingBanner from "@/components/Features/BillingBanner";
 import BillingFolderOperationList from "@/components/Features/Billing/BillingFolderOperationList";
-import BillingFeaturesGlance2 from "@/components/Features/Billing/BillingFeaturesGlance2"; 
+import BillingFeaturesGlance2 from "@/components/Features/Billing/BillingFeaturesGlance2";
 import { Stack } from "@mui/material";
 import BillingSteps from "@/components/Features/BillingSteps";
 // import FeatureVideo from "@/components/Features/FeatureVideo";
 import ProductSlider from "@/components/About/ProductSlider";
 import Clock from "@/components/Home/Clock";
-import ImprovedSales from "@/components/Features/ImprovedSales"; 
+import ImprovedSales from "@/components/Features/ImprovedSales";
+import NavOnScroll from "@/components/NavOnScroll";
 // import BillingFeatures from "@/components/Features/BillingFeatures";
 // import FeaturesGlance from "@/components/Features/FeaturesGlance";
 
 function page() {
   return (
     <>
+      <NavOnScroll threshold={570} />
       <BillingBanner />
       {/* <BillingFeatures /> */}
       {/* <FeaturesGlance /> */}

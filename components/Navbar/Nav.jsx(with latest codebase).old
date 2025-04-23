@@ -1,0 +1,516 @@
+"use client";
+
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Link from "next/link";
+import { Box, Typography } from "@mui/material";
+import lo from "../assets/lo.svg";
+import { Stack } from "@mui/material";
+import "./nav.css";
+import Button from "../utils/Button";
+import Image from "next/image";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import { RxCross2 } from "react-icons/rx";
+import { CgMenuRight } from "react-icons/cg";
+
+/**
+ * Navigation component that handles both desktop and mobile views
+ * Features:
+ * - Responsive design with different layouts for desktop and mobile
+ * - Dropdown menus for desktop view
+ * - Accordion menus for mobile view
+ * - Smooth transitions and animations
+ * - Proper hover and click behaviors
+ */
+const Nav = () => {
+  // State for managing popover visibility
+  const [popoverState, setPopoverState] = useState({});
+  // State for managing mobile menu visibility
+  const [menuClick, setMenuClick] = useState(false);
+  // State to track active menu item
+  const [activeMenuId, setActiveMenuId] = useState(null);
+
+  /**
+   * Toggle mobile menu visibility
+   */
+  const handleClick = useCallback(() => {
+    setMenuClick(prev => !prev);
+  }, []);
+
+  /**
+   * Handle mouse enter on main menu items
+   * @param {number} linkId - ID of the menu item
+   */
+  const handleMouseEnter = useCallback((linkId) => {
+    // Close all other submenus first
+    setPopoverState(prev => {
+      const newState = {};
+      Object.keys(prev).forEach(key => {
+        newState[key] = false;
+      });
+      return newState;
+    });
+    
+    // Open the current submenu
+    setActiveMenuId(linkId);
+    setPopoverState(prev => ({
+      ...prev,
+      [linkId]: true,
+    }));
+  }, []);
+
+  /**
+   * Handle mouse leave on main menu items
+   * @param {number} linkId - ID of the menu item
+   */
+  const handleMouseLeave = useCallback((linkId) => {
+    // Only close if we're not hovering over the submenu
+    if (activeMenuId !== linkId) {
+      setPopoverState(prev => ({
+        ...prev,
+        [linkId]: false,
+      }));
+    }
+  }, [activeMenuId]);
+
+  /**
+   * Check if a popover is open
+   * @param {number} linkId - ID of the menu item
+   * @returns {boolean} - Whether the popover is open
+   */
+  const isPopoverOpen = useCallback((linkId) => Boolean(popoverState[linkId]), [popoverState]);
+
+  /**
+   * Handle clicks outside the menu
+   * Closes mobile menu and all popovers
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const menuContainer = document.getElementById("menu-container");
+      if (menuContainer && !menuContainer.contains(event.target)) {
+        setMenuClick(false);
+        setPopoverState({});
+        setActiveMenuId(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside, { passive: true });
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  /**
+   * Navigation items configuration
+   * Each item can have subitems for dropdown menus
+   */
+  const navItems = useMemo(() => [
+    {
+      id: 1,
+      title: "Features",
+      path: "/Features",
+      subItems: [
+        { title: "Billing", path: "/Features/Billing-module" },
+        { title: "Accounting", path: "/Features/Accounting-module" },
+        { title: "Inventory", path: "/Features/Inventory-module" },
+        { title: "Crm", path: "/Features/Crm-module" }
+      ]
+    },
+    {
+      id: 2,
+      title: "Solutions",
+      path: "/Solutions",
+      subItems: [
+        { title: "By Industries", path: "/Solutions/By-Industries" },
+        { title: "By Size", path: "/Solutions/By-Size" },
+        { title: "By Role", path: "/Solutions/By-role" },
+        { title: "By use cases", path: "/Solutions/By-usecases" }
+      ]
+    },
+    {
+      id: 3,
+      title: "Resources",
+      path: "/Resources",
+      subItems: [
+        { title: "Become A Partner", path: "/Resources/BecomeAPartner" },
+        { title: "Career", path: "/Resources/Career" },
+        { title: "Blog", path: "/Resources/Blog" },
+        { title: "Case Study", path: "/Resources/CaseStudy" },
+        { title: "Testimonials", path: "/Resources/Testimonials" },
+        { title: "Videos", path: "/Resources/Videos" },
+        { title: "Faq", path: "/Resources/faq" }
+      ]
+    },
+    {
+      id: 4,
+      title: "Pricing",
+      path: "/Pricing"
+    }
+  ], []);
+
+  return (
+    <React.Fragment>
+      {/* Desktop view */}
+      <Stack
+        sx={{
+          display: {
+            xs: "none",
+            lg: "flex",
+          },
+        }}
+        direction={"row"}
+        justifyContent={"space-between"}
+        p={"20px 90px"}
+        alignItems={"center"}
+        position={"sticky"}
+        top={0}
+        backgroundColor={"#fff"}
+        zIndex={999}
+      >
+        <Stack
+          width={{ xl: "16%", md: "25%", sm: "35%" }}
+          height={"7vh"}
+          position={"relative"}
+        >
+          <Link href="/">
+            <Image
+              src={lo}
+              alt="Logo"
+              fill
+              style={{ objectFit: "contain" }}
+              sizes="100%"
+            />
+          </Link>
+        </Stack>
+
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          alignSelf={"center"}
+        >
+          <Stack
+            direction="row"
+            justifyContent="space-evenly"
+            alignContent="center"
+            gap={5}
+            pl={3}
+            sx={{ color: "white", height: "100%", paddingRight: 4 }}
+          >
+            {navItems.map((item) => (
+              <div
+                key={item.id}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+                onMouseEnter={() => handleMouseEnter(item.id)}
+                onMouseLeave={() => handleMouseLeave(item.id)}
+                className="navlink-box"
+              >
+                <Box sx={{ position: "relative" }}>
+                  <Link href={item.path} className="navlink-link">
+                    <Box
+                      display={"flex"}
+                      justifyContent="center"
+                      alignItems={"center"}
+                    >
+                      <Typography
+                        alignSelf="center"
+                        display="inline-block"
+                        fontSize={20}
+                        fontFamily={"Work Sans"}
+                        className="navlink"
+                        sx={{
+                          transition: "all 0.4s ease-in",
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                      {item.subItems && (
+                        <ArrowDropDownIcon
+                          className="navlink-link-downarrow"
+                          sx={{
+                            fontSize: 25,
+                            transition: "all 0.3s ease-in",
+                            color: isPopoverOpen(item.id) ? "#818181" : "#818181",
+                            transform: isPopoverOpen(item.id)
+                              ? "rotate(180deg)"
+                              : "rotate(0)",
+                          }}
+                        />
+                      )}
+                    </Box>
+                  </Link>
+
+                  {item.subItems && (
+                    <Stack
+                      flexDirection={"row"}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      sx={{
+                        height: isPopoverOpen(item.id) ? 'auto' : 0,
+                        opacity: isPopoverOpen(item.id) ? 1 : 0,
+                        transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
+                        position: "absolute",
+                        top: 40,
+                        overflow: "hidden",
+                        backgroundColor: "white",
+                        borderRadius: "8px",
+                        zIndex: 1,
+                        padding: isPopoverOpen(item.id) ? "1px" : 0,
+                        boxShadow: isPopoverOpen(item.id) ? "0 4px 8px rgba(0,0,0,0.1)" : "none",
+                        marginTop: "-10px",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      <Stack
+                        justifyContent={"center"}
+                        border={"2px solid #052973"}
+                        borderRadius={2}
+                        gap={1}
+                        sx={{ 
+                          p: 1, 
+                          width: 160,
+                          "&:hover": {
+                            borderColor: "#F15B25",
+                          }
+                        }}
+                      >
+                        {item.subItems.map((subItem, index) => (
+                          <Link
+                            key={index}
+                            href={subItem.path}
+                            className="popperLinks"
+                            onClick={() => {
+                              setPopoverState({});
+                              setActiveMenuId(null);
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                "&:hover": {
+                                  color: "#F15B25",
+                                  transform: "translateX(5px)",
+                                  transition: "all 0.2s ease-in-out",
+                                },
+                              }}
+                            >
+                              {subItem.title}
+                            </Typography>
+                          </Link>
+                        ))}
+                      </Stack>
+                    </Stack>
+                  )}
+                </Box>
+              </div>
+            ))}
+          </Stack>
+        </Stack>
+        <Link href="https://app.saniiro.net">
+          <Button
+            sx={{
+              height: "5vh",
+              "&:hover": {
+                backgroundColor: "#F15B25",
+                color: "white",
+              },
+            }}
+          >
+            Login
+          </Button>
+        </Link>
+      </Stack>
+
+      {/* Mobile view */}
+      <Stack
+        alignItems={"end"}
+        width={"100%"}
+        sx={{
+          display: {
+            xs: "flex",
+            lg: "none",
+          },
+        }}
+      >
+        <Stack
+          width={"90%"}
+          direction={"row"}
+          alignSelf={"center"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          padding={"20px 0px"}
+        >
+          <Stack
+            width={{ xs: "45%", md: "30%" }}
+            height={"10vh"}
+            position={"relative"}
+          >
+            <Link href="/">
+              <Image
+                src={lo}
+                alt="Logo"
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="100%"
+              />
+            </Link>
+          </Stack>
+          <Stack
+            onClick={handleClick}
+            width={"32px"}
+            height={"32px"}
+            sx={{
+              display: {
+                xs: "block",
+                lg: "none",
+              },
+              "&:hover": {
+                cursor: "pointer",
+              },
+            }}
+          >
+            {menuClick ? (
+              <RxCross2
+                style={{ color: "#052973", width: "32px", height: "32px" }}
+              />
+            ) : (
+              <CgMenuRight
+                style={{ color: "#052973", width: "32px", height: "32px" }}
+              />
+            )}
+          </Stack>
+        </Stack>
+
+        <Stack
+          id="menu-container"
+          height={"100dvh"}
+          width={"100%"}
+          position={"fixed"}
+          gap={2}
+          sx={{
+            top: 0,
+            left: menuClick ? "0" : "-100%",
+            transition: "all 0.2s ease-in",
+            backgroundColor: "white",
+            zIndex: "1000001",
+          }}
+        >
+          <Stack
+            margin={"10px auto"}
+            width={"100%"}
+            height={"40px"}
+            direction={"row"}
+            justifyContent={"end"}
+          >
+            <Stack
+              onClick={handleClick}
+              width={"32px"}
+              height={"32px"}
+              marginRight={"20px"}
+              marginTop={"15px"}
+              sx={{
+                display: {
+                  xs: "block",
+                  lg: "none",
+                },
+                "&:hover": {
+                  cursor: "pointer",
+                },
+              }}
+            >
+              {menuClick ? (
+                <RxCross2
+                  style={{ color: "#052973", width: "32px", height: "32px" }}
+                />
+              ) : (
+                <CgMenuRight
+                  style={{ color: "#052973", width: "32px", height: "32px" }}
+                />
+              )}
+            </Stack>
+          </Stack>
+
+          {navItems.map((item) => (
+            <Accordion
+              key={item.id}
+              sx={{
+                border: "none",
+                boxShadow: "none",
+              }}
+            >
+              <AccordionSummary
+                expandIcon={item.subItems && <ArrowDropDownIcon />}
+                aria-controls={`panel${item.id}-content`}
+                id={`panel${item.id}-header`}
+              >
+                <Typography>
+                  <Link href={item.path} className="navlink-link">
+                    <Box
+                      display={"flex"}
+                      justifyContent="center"
+                      alignItems={"center"}
+                    >
+                      <Typography
+                        alignSelf="center"
+                        display="inline-block"
+                        fontSize={20}
+                        fontFamily={"Work Sans"}
+                        className="navlink"
+                        sx={{
+                          transition: "all 0.4s ease-in",
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                    </Box>
+                  </Link>
+                </Typography>
+              </AccordionSummary>
+              {item.subItems && (
+                <AccordionDetails>
+                  <Stack justifyContent={"center"} gap={1} marginLeft={"20px"}>
+                    {item.subItems.map((subItem, index) => (
+                      <Link
+                        key={index}
+                        href={subItem.path}
+                        className="popperLinks"
+                        onClick={handleClick}
+                      >
+                        <Typography fontFamily={"Work Sans"}>
+                          {subItem.title}
+                        </Typography>
+                      </Link>
+                    ))}
+                  </Stack>
+                </AccordionDetails>
+              )}
+            </Accordion>
+          ))}
+
+          <Stack alignItems={"center"} margin={"10px auto"}>
+            <Link href="/Login">
+              <Button
+                sx={{
+                  width: "120px",
+                  borderRadius: "10px",
+                  height: "5vh",
+                  "&:hover": {
+                    backgroundColor: "#F15B25",
+                    color: "white",
+                  },
+                }}
+              >
+                Login
+              </Button>
+            </Link>
+          </Stack>
+        </Stack>
+      </Stack>
+    </React.Fragment>
+  );
+};
+
+export default React.memo(Nav);

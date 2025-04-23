@@ -1,13 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Nav from "../Navbar/Nav";
-import FaqBanner from "./parts/FaqBanner";
-import FeqBodyTop from "./parts/FeqBodytop";
-import Footer from "../utils/Footer";
-import { Stack } from "@mui/material";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import FaqRecentContent from "./RecentParts/FaqRecentContent";
 
 const FaqRecentActivities = () => {
@@ -31,16 +26,9 @@ const FaqRecentActivities = () => {
   }, [slug]);
 
   return (
-    <>
-      <Stack maxWidth={"1536px"} margin={"0 auto"}>
-        <Nav />
-        <FaqBanner />
-        <FeqBodyTop />
-        <FaqRecentContent faqData={faqData} />{" "}
-        {/* Pass faqData to the content component */}
-      </Stack>
-      <Footer />
-    </>
+    <React.Fragment>
+      <FaqRecentContent faqData={faqData} />{" "}
+    </React.Fragment>
   );
 };
 

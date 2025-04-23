@@ -7,217 +7,213 @@ import logo1 from "../assets/logo1.png";
 // import logo2 from "../assets/logo2.png";
 // import logo3 from "../assets/logo3.png";
 import Img from "../assets/Img.png";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Button, Container } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import apiEndpoints from "@/utils/apiEndpoints";
 
 const ProductSlider = () => {
   const [reviews, setReviews] = useState([]);
+  const [expandedReviews, setExpandedReviews] = useState({});
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 1,
+      items: 3,
+      slidesToSlide: 1,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1,
+      items: 3,
+      slidesToSlide: 1,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      items: 2,
+      slidesToSlide: 1,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
+      slidesToSlide: 1,
     },
   };
+
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(`${apiEndpoints.review}`);
-        setReviews(
-          response.data.Data.map((review) => ({ ...review, expanded: false }))
-        );
+        setReviews(response.data.Data);
       } catch (error) {
         console.error("Failed to fetch reviews:", error);
       }
     };
     fetchReviews();
   }, []);
-  const toggleReview = (index) => {
-    setReviews((prevReviews) => {
-      const newReviews = [...prevReviews];
-      newReviews[index].expanded = !newReviews[index].expanded;
-      return newReviews;
-    });
+
+  const toggleReview = (reviewId) => {
+    setExpandedReviews(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }));
   };
+
+  const truncateText = (text, maxLength = 100) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "...";
+  };
+
   return (
-    <React.Fragment>
+    <Container maxWidth="1530px" sx={{ py: 4 }}>
       <Box width="100%">
         <Carousel
           responsive={responsive}
           autoPlay
           showDots
           infinite
-          autoPlaySpeed={1500}
-          removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+          autoPlaySpeed={3000}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          customDot={<Box sx={{ width: 8, height: 8, bgcolor: "#F15B25", borderRadius: "50%", mx: 0.5 }} />}
+          dotListClass="custom-dot-list"
+          containerClass="carousel-container"
+          itemClass="carousel-item"
+          customTransition="transform 300ms ease-in-out"
+          transitionDuration={300}
+          ssr
+          deviceType="desktop"
+          itemAriaLabel="Review card"
+          renderButtonGroupOutside
+          renderDotsOutside
+          className="review-carousel"
         >
-          {reviews.map((d, index) => (
-            <Stack alignItems={"center"} padding={"20px 20px 60px 20px"}>
+          {reviews.map((review, index) => (
+            <Stack 
+              key={review.id || index} 
+              justifyContent='center'
+              alignItems="center"
+              display={'flex'}
+              flexDirection={"column"}
+              p={2}
+              mx={2}
+              sx={{
+                height: "100%",
+                minHeight: "380px",
+              }}
+             
+            >
               <Stack
-                bgcolor={"white"}
-                width={{
-                  xs: "80%",
-                  md: "70%",
-                  lg: "50%",
-                }}
-                boxShadow={"1px 2px 6px 4px lightgray"}
+                bgcolor="white"
+                width="100%"
+                boxShadow="0 4px 20px rgba(0,0,0,0.1)"
                 gap={3}
-                direction={"row"}
-                p={"20px 20px"}
+                direction="row"
+                p={3}
+                borderRadius={2}
+                sx={{
+                  height: "100%",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+                  },
+                }}
               >
-                <Stack gap={2} position={"relative"}>
+                <Stack gap={2} position="relative" width="100%">
                   <Image
                     src={logo1}
                     alt={`Logo ${index + 1}`}
-                    style={{ width: "120px", height: "50px", padding: "0 10px" }}
+                    style={{ width: "100px", height: "40px", padding: "0 10px" }}
                   />
 
                   <Typography
-                    width={{
-                      xs: "100%",
-                      md: "95%",
-                      lg: "80%",
+                    variant="body1"
+                    color="text.secondary"
+                    style={{
+                      textAlign: "justify",
+                      lineHeight: 1.6,
+                      mb: 2,
+                      position: "relative",
+                      "&::before": {
+                        content: '"""',
+                        position: "absolute",
+                        top: -20,
+                        right: 0,
+                        color: "#248F41",
+                        fontSize: "100px",
+                        lineHeight: 1,
+                        opacity: 0.2,
+                      },
                     }}
-                    marginLeft={{
-                      xs: "0",
-                      md: "20px",
+                    dangerouslySetInnerHTML={{
+                      __html: expandedReviews[review.id] ? review.Review : truncateText(review.Review)
                     }}
-                    textAlign={"justify"}
-                    height={d.Review.length <= 130 ? "42px" : "fit-content"}
-                  >
-                    {d.expanded ? (
-                      <>
-                        <Typography
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              d.Review.length > 130
-                                ? `${d.Review.substring(0, 130)}...`
-                                : d.Review,
-                          }}
-                        />
-                        {d.Review.length > 130 && (
-                          <span
-                            style={{
-                              color: "#052973",
-                              cursor: "pointer",
-                              fontWeight: "bold",
-                            }}
-                            onClick={() => toggleReview(index)}
-                          >
-                            View Less
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        <Typography
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              d.Review.length > 130
-                                ? `${d.Review.substring(0, 130)}...`
-                                : d.Review,
-                          }}
-                        />
-                        {d.Review.length > 130 && (
-                          <span
-                            style={{
-                              color: "#052973",
-                              cursor: "pointer",
-                              fontWeight: "bold",
-                            }}
-                            onClick={() => toggleReview(index)}
-                          >
-                            View More
-                          </span>
-                        )}
-                      </>
-                    )}
-                  </Typography>
-                  <Stack direction={"row"} gap={2} alignItems={"center"}>
-                    <Stack
+                  />
+
+                  {review.Review.length > 150 && (
+                    <Button
+                      onClick={() => toggleReview(review.id)}
                       sx={{
-                        width: {
-                          xs: "75px",
-
-                          lg: "100px",
-                        },
-                        height: {
-                          xs: "75px",
-
-                          lg: "100px",
+                        color: "#F15B25",
+                        textTransform: "none",
+                        alignSelf: "flex-start",
+                        "&:hover": {
+                          backgroundColor: "transparent",
+                          textDecoration: "underline",
                         },
                       }}
                     >
+                      {expandedReviews[review.id] ? "Show less" : "Show more"}
+                    </Button>
+                  )}
+
+                  <Stack direction="row" gap={2} alignItems="center" mt="auto">
+                    <Box
+                      sx={{
+                        width: { xs: "50px", sm: "60px", md: "80px" },
+                        height: { xs: "50px", sm: "60px", md: "80px" },
+                        borderRadius: "50%",
+                        overflow: "hidden",
+                        border: "2px solid #F15B25",
+                      }}
+                    >
                       <Image
-                        src={d.ImageName !== null ? d.ImageName : Img}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </Stack>
-                    <Stack justifyContent={"center"}>
-                      <Typography
-                        fontWeight={"bold"}
-                        color={"grey"}
-                        fontSize={{
-                          xs: "15px",
-                          md: "20px",
+                        src={review.ImageName || Img}
+                        width={80}
+                        height={80}
+                        alt={review.Name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
                         }}
+                      />
+                    </Box>
+                    <Stack>
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        color="text.primary"
+                        sx={{ fontSize: { xs: "14px", md: "18px" } }}
                       >
-                        {d.Name}
+                        {review.Name}
                       </Typography>
                       <Typography
-                        fontSize={{
-                          xs: "15px",
-                          md: "20px",
-                        }}
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ fontSize: { xs: "12px", md: "14px" } }}
                       >
-                        {d.Designation}
+                        {review.Designation}
                       </Typography>
                     </Stack>
                   </Stack>
-                  <Typography
-                    display={{
-                      xs: "none",
-                      md: "block",
-                    }}
-                    position={"absolute"}
-                    right={{
-                      xs: "20px",
-                      md: "10px",
-                      lg: "20px",
-                    }}
-                    top={-15}
-                    color={"#248F41"}
-                    fontSize={{
-                      xs: "140px",
-                      md: "180px",
-                      lg: "220px",
-                    }}
-                    lineHeight={0.9}
-                  >
-                    “
-                  </Typography>
                 </Stack>
               </Stack>
             </Stack>
           ))}
         </Carousel>
       </Box>
-    </React.Fragment>
+    </Container>
   );
 };
 

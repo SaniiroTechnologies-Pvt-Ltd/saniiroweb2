@@ -36,7 +36,9 @@ const Industries3 = () => {
         </Typography>
         <SliderIndustry />
       </Stack>
-      <Stack
+
+      {/** Video 1 */}
+      {/* <Stack
         width={{
           xs: "90%",
           lg: "70%",
@@ -105,8 +107,9 @@ const Industries3 = () => {
             }}
           ></ReactPlayer>
         </Stack>
-      </Stack>
+      </Stack> */}
 
+      {/** Video 2 */}
       <Stack
         width={{
           xs: "90%",

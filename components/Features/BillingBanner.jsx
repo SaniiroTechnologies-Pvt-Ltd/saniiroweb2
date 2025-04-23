@@ -44,7 +44,12 @@ const BillingBanner = () => {
 
   return (
     <React.Fragment>
-      <Stack height={{ xs: "calc(100% - 100px)", lg: "calc(100% - 100px)" }} paddingBottom={4} position={"relative"} bgcolor={"#052973"} className="textured-background" >
+      <Stack
+        height={{ xs: "calc(100% - 150px)", lg: "calc(100% - 150px)" }}
+        paddingBottom={4}
+        position={"relative"}
+        bgcolor={"#052973"}
+        className="textured-background" >
         <NavLight />
         {/* <Stack></Stack> */}
 

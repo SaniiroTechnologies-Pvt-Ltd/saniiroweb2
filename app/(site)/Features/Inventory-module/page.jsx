@@ -8,11 +8,13 @@ import ImprovedSales from "@/components/Features/ImprovedSales";
 import InventoryFeaturesGlance2 from "@/components/Features/Inventory/InventoryFeaturesGlance2";
 import InventoryFolderOperationList from "@/components/Features/Inventory/InventoryFolderOperationList";
 import Clock from "@/components/Home/Clock";
+import NavOnScroll from "@/components/NavOnScroll";
 import { Stack } from "@mui/material";
 
 export default function Index() {
   return (
-    <>
+    <main>
+      <NavOnScroll threshold={570} />
       <BillingBanner />
       {/* <BillingFeatures /> */}
       {/* <FeaturesGlance /> */}
@@ -27,6 +29,6 @@ export default function Index() {
         <Clock />
         <ImprovedSales />
       </Stack>
-    </>
+    </main>
   );
 }

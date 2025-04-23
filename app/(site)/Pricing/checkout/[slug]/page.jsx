@@ -2,7 +2,7 @@
 
 import Readytosign from '@/components/Contact/Readytosign';
 import ContactFaq from '@/components/Home/ContactFaq';
-import PRicingBAnner from '@/components/Pricing/PRicingBAnner';
+import PricingBanner from '@/components/Pricing/PricingBanner'; 
 import JoinBusinesses from '@/components/undo/JoinBusinesses';
 import PackageDetails from '@/components/undo/PackageDetails';
 import { Stack } from '@mui/material';
@@ -18,7 +18,7 @@ function Page() {
 
   return (
     <React.Fragment>
-      {/* <PRicingBAnner /> */}
+      {/* <PricingBanner /> */}
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <PackageDetails slug={slug} price={price} Name={planName} />
         <JoinBusinesses />

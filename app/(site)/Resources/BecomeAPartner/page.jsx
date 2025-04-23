@@ -2,7 +2,7 @@
 import Readytosign from "@/components/Contact/Readytosign";
 import Billing from "@/components/Home/Billing";
 import ContactFaq from "@/components/Home/ContactFaq";
-import Nav from "@/components/Navbar/Nav";
+import NavOnScroll from "@/components/NavOnScroll";
 import Industry2 from "@/components/Partner/parts/ApplicationSection";
 import BlankSpace from "@/components/Partner/parts/BlankSpace";
 import BuildingSuccess from "@/components/Partner/parts/BuildingSuccess";
@@ -16,7 +16,7 @@ import { Stack } from "@mui/material";
 export default function Index() {
   return (
     <>
-      <Nav />
+      <NavOnScroll isAlwaysVisible={true} />
       <BuildingSuccess />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Tagline />

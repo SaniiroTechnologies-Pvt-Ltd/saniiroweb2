@@ -1,11 +1,13 @@
-"use client";
+import Readytosign from "@/components/Contact/Readytosign";
+import NavOnScroll from "@/components/NavOnScroll";
+import ResourceBanner from "@/components/Resources/parts/ResourceBanner";
 
-import Resources from "@components/Resources/Resources";
-
-export default function Index() {
+export default function page() {
   return (
     <main>
-      <Resources />
+      <NavOnScroll threshold={300} />
+      <ResourceBanner />
+      <Readytosign />
     </main>
   );
 }

@@ -1,11 +1,13 @@
-"use client";
+import FaqBanner from "@/components/Faq/parts/FaqBanner";
+import NavOnScroll from "@/components/NavOnScroll";
+import FaqContent from "@/components/Faq/FaqContent";
 
-import Resources from "@components/Faq/Faq";
-
-export default function Index() {
+export default function page() {
   return (
     <main>
-      <Resources />
+      <NavOnScroll isAlwaysVisible={true} />
+      <FaqBanner />
+      <FaqContent />
     </main>
   );
 }

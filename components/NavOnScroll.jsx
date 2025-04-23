@@ -1,30 +1,14 @@
 "use client"; // This ensures the component runs only on the client
 
-import { useState, useEffect, useMemo } from "react";
-import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import Nav from "./Navbar/Nav";
 
-const NavWrapper = () => {
-  const pathname = usePathname();
-
-  // Define paths where nav should be permanently visible
-  const permanentNavPaths = useMemo(() => [
-    "/",
-    "/About-us",
-    "/Contact-us",
-    // Add more paths here
-  ], []);
-
-  // Check if current path should have permanent nav
-  const isPermanentNav = useMemo(() => 
-    permanentNavPaths.includes(pathname),
-    [pathname, permanentNavPaths]
-  );
-
-  const [showNav, setShowNav] = useState(isPermanentNav);
+const NavOnScroll = ({ threshold, isAlwaysVisible = false }) => {
+  const [showNav, setShowNav] = useState(isAlwaysVisible);
 
   useEffect(() => {
-    if (isPermanentNav) {
+    // If nav should be always visible, no need for scroll listener
+    if (isAlwaysVisible) {
       setShowNav(true);
       return;
     }
@@ -38,11 +22,11 @@ const NavWrapper = () => {
           const currentScrollY = window.scrollY;
           
           // Show nav when scrolling down past threshold
-          if (currentScrollY > 570) {
+          if (currentScrollY > threshold) {
             setShowNav(true);
           } 
           // Hide nav when scrolling up past threshold
-          else if (currentScrollY < 570) {
+          else if (currentScrollY < threshold) {
             setShowNav(false);
           }
           
@@ -55,9 +39,9 @@ const NavWrapper = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isPermanentNav]);
+  }, [threshold, isAlwaysVisible]);
 
   return showNav && <Nav />;
 };
 
-export default NavWrapper;
+export default NavOnScroll;

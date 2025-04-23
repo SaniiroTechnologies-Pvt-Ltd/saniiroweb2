@@ -1,12 +1,12 @@
 import React from "react";
 import BlogBanner from "./parts/BlogBanner";
-import Nav from "../Navbar/Nav"; 
 import BlogFeed from "./parts/BlogFeed";
+import NavOnScroll from "../NavOnScroll";
 
 const Blog = () => {
   return (
     <>
-      <Nav />
+      <NavOnScroll isAlwaysVisible={true} />
       <BlogBanner GrayBanner={false} />
       <BlogFeed />
     </>

@@ -6,13 +6,15 @@ import BillingBanner from "@/components/Features/BillingBanner";
 // import BillingFeatures from "@/components/Features/BillingFeatures";
 // import FeaturesGlance from "@/components/Features/FeaturesGlance";
 import BillingSteps from "@/components/Features/BillingSteps";
-import ImprovedSales from "@/components/Features/ImprovedSales"; 
+import ImprovedSales from "@/components/Features/ImprovedSales";
 import Clock from "@/components/Home/Clock";
+import NavOnScroll from "@/components/NavOnScroll";
 import { Stack } from "@mui/material";
 
 export default function Index() {
   return (
     <>
+      <NavOnScroll threshold={570} />
       <BillingBanner />
       {/* <BillingFeatures /> */}
       {/* <FeaturesGlance /> */}

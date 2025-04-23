@@ -1,8 +1,6 @@
-"use client";
-
 import Resources from "@components/Resources/Videos/PlayDifferent";
 
-export default function Index() {
+export default function page() {
   return (
     <main>
       <Resources />

@@ -148,7 +148,7 @@ const Nav = () => {
                   justifyContent={"center"}
                   alignItems={"center"}
                   sx={{
-                    height: isPopoverOpen(1) ? 108 : 0,
+                    height: isPopoverOpen(1) ? 'auto' : 0,
                     opacity: isPopoverOpen(1) ? 1 : 0,
                     transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
                     position: "absolute",

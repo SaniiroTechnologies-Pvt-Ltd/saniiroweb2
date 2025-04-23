@@ -1,4 +1,6 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
+import { Stack, Typography } from "@mui/material";
 import React from "react";
 import NavLight from "../../Navbar/NavLight";
 import "../../Solutions/IndustriesByusecases/Solution.css";

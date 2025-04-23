@@ -9,11 +9,13 @@ import ProductSlider from "@/components/About/ProductSlider";
 import WelcomeToSaniiro from "@/components/About/WelcomeToSaniiro";
 import Awards from "@/components/Home/Awards";
 import Clock from "@/components/Home/Clock";
+import NavOnScroll from "@/components/NavOnScroll";
 import { Stack } from "@mui/material";
 
 function page() {
   return (
     <>
+      <NavOnScroll isAlwaysVisible={true} />
       <AboutBanner />
       <Stack gap={5} maxWidth={"1536px"} margin={"0 auto"}>
         <WelcomeToSaniiro />

@@ -1,5 +1,5 @@
 import React from "react";
-import PRicingBAnner from "./PRicingBAnner";
+import PricingBanner from "./PricingBanner";
 import PricingTab from "./PricingTab";
 import Readytosign from "../Contact/Readytosign";
 // import PriceCardSection from "./PriceCardSection";
@@ -12,7 +12,7 @@ import { Stack } from "@mui/material";
 const Pricing = () => {
   return (
     <>
-      <PRicingBAnner />
+      <PricingBanner />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <PricingTab />
         <JoinBusinesses />

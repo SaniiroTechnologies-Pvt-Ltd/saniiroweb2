@@ -1,10 +1,11 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
+import { Stack, Typography } from "@mui/material";
 import React from "react";
 import FramImg from "../../assets/Frame62700.png";
-import Link from "next/link";
-
 import Image from "next/image";
-const BlogBanner = (props) => {
+
+const FaqBanner = (props) => {
   console.log(props);
   return (
     <Stack
@@ -97,4 +98,4 @@ const BlogBanner = (props) => {
   );
 };
 
-export default BlogBanner;
+export default FaqBanner;

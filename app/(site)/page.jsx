@@ -3,9 +3,10 @@ import BannerComponent from "@/components/Home/BannerComponent";
 import Billing from "@/components/Home/Billing";
 import Clock from "@/components/Home/Clock";
 import ContactFaq from "@/components/Home/ContactFaq";
-import { NewPart as Award1 } from "@/components/Home/NewPart";
+import NewPart from "@/components/Home/NewPart";
 import RequestDemo from "@/components/Home/RequestDemo";
 import ToggleSection from "@/components/Home/State";
+import NavOnScroll from "@/components/NavOnScroll";
 
 // export async function generateMetadata() {
 //   return {
@@ -22,10 +23,11 @@ import ToggleSection from "@/components/Home/State";
 export default function Index() {
   return (
     <>
+      <NavOnScroll isAlwaysVisible={true} />
       <BannerComponent />
       <RequestDemo />
       <Billing />
-      {/* <Award1 /> */}
+      <NewPart />
       <ToggleSection />
       <Awards />
       <Clock />
