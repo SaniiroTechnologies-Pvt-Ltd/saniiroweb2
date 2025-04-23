@@ -2,7 +2,7 @@
 
 import Readytosign from '@/components/Contact/Readytosign';
 import ContactFaq from '@/components/Home/ContactFaq';
-import PricingBanner from '@/components/Pricing/PricingBanner'; 
+// import PricingBanner from '@/components/Pricing/PricingBanner'; 
 import JoinBusinesses from '@/components/undo/JoinBusinesses';
 import PackageDetails from '@/components/undo/PackageDetails';
 import { Stack } from '@mui/material';
