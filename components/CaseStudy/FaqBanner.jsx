@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import FramImg from "../../assets/Frame62700.png";
+import FramImg from "./assets/Frame62700.png";
 import Link from "next/link";
 
 const BlogBanner = (props) => {

@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import problem from "../../assets/problem.svg";
-import circleIcon from "../../assets/circleIcon.svg";
-import circleIcon2 from "../../assets/circleIcon2.svg";
+import problem from "../assets/problem.svg";
+import circleIcon from "../assets/circleIcon.svg";
+import circleIcon2 from "../assets/circleIcon2.svg";
 import Image from "next/image";
 
 const OurJourney = () => {

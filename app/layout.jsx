@@ -1,4 +1,4 @@
-import ProviderWrapper from "@/components/ProviderWreper";
+import ThemeWrapper from "@/components/ThemeWrapper";
 import "./globals.css";
 import Script from "next/script";
 
@@ -18,47 +18,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <ProviderWrapper>
+        <ThemeWrapper>
           {children}
-        </ProviderWrapper>
+        </ThemeWrapper>
       </body>
     </html>
   );
 }
 
-// "use client";
-// import { DataProvider } from "@components/context/Authcontext";
-// import "./globals.css";
-// import { ThemeProvider, createTheme } from "@mui/material/styles";
-// import { DefaultSeo } from "next-seo";
-// import defaultSEOConfig from "@/next-seo.config";
-
-// export default function RootLayout({ children }) {
-//   const theme = createTheme({
-//     breakpoints: {
-//       values: {
-//         xs: 0,
-//         sm: 314,
-//         smm: 530,
-//         md: 768,
-//         lg: 1024,
-//         xl: 1220,
-//         xll: 1440,
-//         xxl: 1600,
-//       },
-//     },
-//   });
-
-//   return (
-//     <html lang="en">
-//       <head>
-//         <DefaultSeo {...defaultSEOConfig} />
-//       </head>
-//       <ThemeProvider theme={theme}>
-//         <DataProvider>
-//           <body>{children}</body>
-//         </DataProvider>
-//       </ThemeProvider>
-//     </html>
-//   );
-// }

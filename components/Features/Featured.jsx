@@ -1,11 +1,14 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
 import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
 // import ContactCTA from "../assets/ContactCTA.svg";
 import NavLight from "../Navbar/NavLight";
 import TickMark from "../assets/TickMark.svg";
 import Button from "../utils/Button";
 import Image from "next/image";
 import Link from "next/link";
+
 const Featured = () => {
   const lists = [
     {

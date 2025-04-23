@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import Button from "../utils/Button";
@@ -53,7 +55,7 @@ const Bluescreen = () => {
               <Image
                 src={icon5section}
                 alt=""
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </Stack>
             <Typography
@@ -134,7 +136,7 @@ const Bluescreen = () => {
               <Image
                 src={icon6section}
                 alt=""
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </Stack>
             <Typography

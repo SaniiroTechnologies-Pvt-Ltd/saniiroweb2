@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -44,15 +44,13 @@ const operations = [
   },
 ];
 
-
-
 export default function BillingFolderOperationList() {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('smm')); // Determines if the view is for mobile
 
   return (
-    <>
+    <React.Fragment>
       <Stack sx={{
         justifyContent: "center",
         alignItems: "center",
@@ -86,7 +84,7 @@ export default function BillingFolderOperationList() {
                 marginBottom: "20px",
               }}
             >
-              Enhance your business operations with Saniiro's Billing Management Software. Designed for modern enterprises, this comprehensive invoicing software streamlines billing processes, improves security, and provides real-time insights into your financial transactions.​
+              Enhance your business operations with Saniiro's Billing Management Software. Designed for modern enterprises, this comprehensive invoicing software streamlines billing processes, improves security, and provides real-time insights into your financial transactions.
 
             </Typography>
           </Stack>
@@ -95,75 +93,53 @@ export default function BillingFolderOperationList() {
           {operations.map((operation, index) => {
             const IconComponent = iconMap[operation.image] || WorkIcon;
 
-            return (<React.Fragment>
-              <ListItem key={index} sx={{ marginTop: "20px", marginBottom: "20px" }}>
-                {!isMobile && <ListItemAvatar>
-                  <Avatar sx={{ width: 84, height: 84, marginRight: 4, backgroundColor: '#052973' }}>
-                    <IconComponent sx={{ width: 56, height: 56, }} />
-                  </Avatar>
-                </ListItemAvatar>}
-                <ListItemText
-                  primary={
-                    <React.Fragment>
-                      <Typography
-                        component="h1"
-                        variant="body1"
-                        fontSize={24}
-                        fontWeight={600}
-                        fontFamily={'Work Sans'}
+            return (
+              <React.Fragment key={index}>
+                <ListItem sx={{ marginTop: "20px", marginBottom: "20px" }}>
+                  {!isMobile && <ListItemAvatar>
+                    <Avatar sx={{ width: 84, height: 84, marginRight: 4, backgroundColor: '#052973' }}>
+                      <IconComponent sx={{ width: 56, height: 56, }} />
+                    </Avatar>
+                  </ListItemAvatar>}
+                  <ListItemText
+                    primary={
+                      <React.Fragment>
+                        <Typography
+                          component="h1"
+                          variant="body1"
+                          fontSize={24}
+                          fontWeight={600}
+                          fontFamily={'Work Sans'}
 
-                        dangerouslySetInnerHTML={{ __html: operation.headText }}
-                      >
-                      </Typography>
-                    </React.Fragment>
-                  }
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        component="span"
-                        variant="body2"
-                        sx={{ color: 'text.primary', display: 'inline' }}
-                        fontSize={16}
-                        fontWeight={400}
-                        lineHeight={1}
-                        letterSpacing={0}
-                      >
-                        {operation.subText}
-                      </Typography>
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-              <Divider variant="inset" component="li" sx={{ marginX: '24px' }} />
-
-            </React.Fragment>)
+                          dangerouslySetInnerHTML={{ __html: operation.headText }}
+                        >
+                        </Typography>
+                      </React.Fragment>
+                    }
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          sx={{ color: 'text.primary', display: 'inline' }}
+                          fontSize={16}
+                          fontWeight={400}
+                          lineHeight={1}
+                          letterSpacing={0}
+                        >
+                          {operation.subText}
+                        </Typography>
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" sx={{ marginX: '24px' }} />
+              </React.Fragment>
+            )
           })
           }
         </List>
       </Stack>
-    </>
+    </React.Fragment>
   );
 }
-
-// <ListItem>
-//   <ListItemAvatar>
-//     <Avatar>
-//       <WorkIcon />
-//     </Avatar>
-//   </ListItemAvatar>
-//   <ListItemText
-//     primary="Enhance Customer Satisfaction with Real-Time Stock Visibility"
-//     secondary="With Saniiro&apos;s real-time Stock Management System, businesses can track inventory across multiple locations and channels. Ensure your customers get what they need, when they need it — reducing delays and boosting retention."
-//   />
-// </ListItem>
-// <ListItem>
-//   <ListItemAvatar>
-//     <Avatar>
-//       <BeachAccessIcon />
-//     </Avatar>
-//   </ListItemAvatar>
-//   <ListItemText
-//     primary="Enhance Customer Satisfaction with Real-Time Stock Visibility"
-//     secondary="With Saniiro&apos;s real-time Stock Management System, businesses can track inventory across multiple locations and channels. Ensure your customers get what they need, when they need it — reducing delays and boosting retention."
-//   />
-// </ListItem>

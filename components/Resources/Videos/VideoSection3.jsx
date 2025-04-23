@@ -7,7 +7,7 @@ import Button from "@/components/utils/Button";
 import EastIcon from "@mui/icons-material/East";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useData } from "@/components/context/Authcontext"; 
+import { useData } from "@/components/context/Authcontext";
 
 const VideoSection3 = () => {
   // const [videos, setVideos] = useState([]);

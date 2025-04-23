@@ -10,10 +10,10 @@ import RelatedPost from "./RelatedPost";
 import { Tags, Blogs, FeaturedPosts } from "./TagsBlogsData";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { usePathname, useRouter } from "next/navigation";
-
 import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
 import Link from "next/link";
+
 const BlogFeed = () => {
   const [activeTags, setActiveTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

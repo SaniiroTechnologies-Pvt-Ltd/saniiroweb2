@@ -7,7 +7,7 @@ import store from "@/redux/store";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-function ProviderWrapper({ children }) {
+function ThemeWrapper({ children }) {
   const theme = createTheme({
     breakpoints: {
       values: {
@@ -34,4 +34,4 @@ function ProviderWrapper({ children }) {
   );
 }
 
-export default ProviderWrapper;
+export default ThemeWrapper;

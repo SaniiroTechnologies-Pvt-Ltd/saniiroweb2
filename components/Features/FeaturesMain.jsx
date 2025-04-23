@@ -1,12 +1,15 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import "./Features.css";
 import FeatureIcon1 from "../assets/FeatureIcon1.svg";
 import { Box, Stack, Typography } from "@mui/material";
-import Button from "../utils/Button";
+import Button from "../utils/Button"; 
 import EastIcon from "@mui/icons-material/East";
 import kickStart from "../assets/kickStart.svg";
 import Image from "next/image";
 import Link from "next/link";
+
 function FeaturesMain() {
   const [activeItem, setActiveItem] = useState("item1");
 

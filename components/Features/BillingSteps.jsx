@@ -1,11 +1,11 @@
 "use client";
 
-import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
+import { Stack, Typography } from "@mui/material";
 
 const BillingSteps = () => {
   return (
-    <>
+    <React.Fragment>
       <Stack
         direction={"column"}
         justifyContent={"center"}
@@ -56,7 +56,6 @@ const BillingSteps = () => {
             }}
             height={{
               xs: "16rem",
-
               lg: "394px",
             }}
             borderRadius={"8px"}
@@ -298,7 +297,7 @@ const BillingSteps = () => {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
 

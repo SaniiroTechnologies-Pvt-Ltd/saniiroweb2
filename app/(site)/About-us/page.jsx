@@ -1,3 +1,5 @@
+"use client";
+
 import AboutBanner from "@/components/About/AboutBanner";
 import ExploreAbout from "@/components/About/ExploreAbout";
 import Name from "@/components/About/Name";
@@ -9,7 +11,7 @@ import Awards from "@/components/Home/Awards";
 import Clock from "@/components/Home/Clock";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+function page() {
   return (
     <>
       <AboutBanner />
@@ -25,7 +27,8 @@ export default function Index() {
         <Clock />
         <Awards />
       </Stack>
-      {/* <Footer /> */}
     </>
   );
 }
+
+export default page

@@ -1,8 +1,11 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import indiaFlag from "../assets/indiaflag.svg";
 import USAflag from "../assets/USAflag.svg";
 import Image from "next/image";
+
 const Offices = () => {
   const lists = [
     {
@@ -104,6 +107,7 @@ const Offices = () => {
       Fax: "044 67447172",
     },
   ];
+
   return (
     <Stack bgcolor={"#F6F8FF"} pt={5}>
       <Stack alignItems={"center"} gap={1}>

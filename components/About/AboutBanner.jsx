@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import Aboutbanner from "../../assets/AboutBanner.svg";
+import Aboutbanner from "../assets/AboutBanner.svg";
 import Button from "../utils/Button";
 import Image from "next/image";
 const AboutBanner = () => {

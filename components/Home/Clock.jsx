@@ -1,22 +1,22 @@
 "use client";
 
-import { Stack, IconButton, Typography, Snackbar, Alert, Grid, styled, Paper } from "@mui/material";
-import React, { useEffect, useState, useRef } from "react";
-import PersonIcon from "@mui/icons-material/Person";
-import PhoneNumberInput from "./nm";
+import { Stack, Typography, styled, Paper } from "@mui/material";
+import React, { useEffect, useState } from "react";
+// import PersonIcon from "@mui/icons-material/Person";
+// import PhoneNumberInput from "./nm";
 import stopWatch from "../assets/stopWatch.svg";
-import EmailIcon from "@mui/icons-material/Email";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import CitySelector from "./Cityselctor";
-import Button from "../utils/Button";
-import Google from "../assets/google.png";
-import LinkedIn from "../assets/linkedIn.png";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+// import EmailIcon from "@mui/icons-material/Email";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+// import VisibilityIcon from "@mui/icons-material/Visibility";
+// import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+// import CitySelector from "./Cityselctor";
+// import Button from "../utils/Button";
+// import Google from "../assets/google.png";
+// import LinkedIn from "../assets/linkedIn.png";
+// import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import "./nm.css";
 import axios from "axios";
-import Link from "next/link";
+// import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -55,7 +55,7 @@ const Clock = () => {
   const [otpSent, setOtpSent] = useState(false);
   const [checkboxError, setCheckboxError] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+  // const [modalMessage, setModalMessage] = useState("");
   const [modalError, setModalError] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [countries, setCountries] = useState([]);

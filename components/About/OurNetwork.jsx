@@ -1,7 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 import DottedMaps from "./DottedMaps";
-import ProductSlider from "./ProductSlider";
+// import ProductSlider from "./ProductSlider";
 
 const OurNetwork = () => {
   return (

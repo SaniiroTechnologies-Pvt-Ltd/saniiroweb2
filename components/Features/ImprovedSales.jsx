@@ -3,141 +3,144 @@
 import React from "react";
 import rocketImg from "../assets/icons/image 135.png";
 import { Stack, Typography } from "@mui/material";
-import Button from "../utils/Button"; 
+import Button from "../utils/Button";
 import Image from "next/image";
 import Link from "next/link";
+
 const ImprovedSales = () => {
   return (
-    <Stack>
-      <Stack
-        margin={"0 auto 80px"}
-        maxWidth={"1080px"}
-        height={{
-          xs: "100%",
-          lg: "300px",
-        }}
-        direction={{
-          xs: "column",
-          lg: "row",
-        }}
-        gap={{
-          xs: 4,
-          lg: 10,
-        }}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
+    <React.Fragment>
+      <Stack>
         <Stack
-          width={{
-            xs: "95%",
-            sm: "80%",
-            md: "60%",
-            lg: "60%",
-          }}
+          margin={"0 auto 80px"}
+          maxWidth={"1080px"}
           height={{
-            xs: "180px",
-            lg: "246px",
+            xs: "100%",
+            lg: "300px",
           }}
-          position={"relative"}
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
+          gap={{
+            xs: 4,
+            lg: 10,
+          }}
+          justifyContent={"center"}
+          alignItems={"center"}
         >
-          <Image
-            fill
-            objectFit="contain"
-            sizes="100vw"
-            src={rocketImg}
-            alt="Rocket image"
+          <Stack
+            width={{
+              xs: "95%",
+              sm: "80%",
+              md: "60%",
+              lg: "60%",
+            }}
+            height={{
+              xs: "180px",
+              lg: "246px",
+            }}
+            position={"relative"}
+          >
+            <Image
+              fill
+              objectFit="contain"
+              sizes="100vw"
+              src={rocketImg}
+              alt="Rocket image"
             // width={"100%"}
             // height={"100%"}
-          />
-        </Stack>
-        <Stack
-          gap={4}
-          width={{
-            xs: "95%",
-            sm: "80%",
-            md: "60%",
-            lg: "60%",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Work Sans",
-              fontSize: {
-                xs: "30px",
-                sm: "35px",
-                md: "40px",
-                lg: "45px",
-              },
-              fontWeight: 600,
-              lineHeight: "45px",
-              letterSpacing: "0em",
-              textAlign: {
-                xs: "center",
-                lg: "left",
-              },
+            />
+          </Stack>
+          <Stack
+            gap={4}
+            width={{
+              xs: "95%",
+              sm: "80%",
+              md: "60%",
+              lg: "60%",
             }}
           >
-            Improved Sales. Lasting Relationships. Faster Growth.
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: "Work Sans",
-              fontSize: "18px",
-              fontWeight: 400,
-              lineHeight: "27px",
-              letterSpacing: "0em",
-              textAlign: {
-                xs: "center",
-                lg: "left",
-              },
-              opacity: "60px",
-            }}
-          >
-            15-day free trial. No credit card required.
-          </Typography>
-          <Stack>
-            <Stack
-              direction={{
-                xs: "column",
-                lg: "row",
+            <Typography
+              sx={{
+                fontFamily: "Work Sans",
+                fontSize: {
+                  xs: "30px",
+                  sm: "35px",
+                  md: "40px",
+                  lg: "45px",
+                },
+                fontWeight: 600,
+                lineHeight: "45px",
+                letterSpacing: "0em",
+                textAlign: {
+                  xs: "center",
+                  lg: "left",
+                },
               }}
-              justifyContent={"center"}
-              alignItems={"center"}
-              gap={2}
             >
-              <Link href="/Sign-up" onClick={() => window.scrollTo(0, 0)}>
+              Improved Sales. Lasting Relationships. Faster Growth.
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "Work Sans",
+                fontSize: "18px",
+                fontWeight: 400,
+                lineHeight: "27px",
+                letterSpacing: "0em",
+                textAlign: {
+                  xs: "center",
+                  lg: "left",
+                },
+                opacity: "60px",
+              }}
+            >
+              15-day free trial. No credit card required.
+            </Typography>
+            <Stack>
+              <Stack
+                direction={{
+                  xs: "column",
+                  lg: "row",
+                }}
+                justifyContent={"center"}
+                alignItems={"center"}
+                gap={2}
+              >
+                <Link href="/Sign-up" onClick={() => window.scrollTo(0, 0)}>
 
-              <Button
-                sx={{
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  fontFamily: "Work Sans",
-                  p: 1.5,
-                }}
-              >
-                SIGN UP FOR FREE
-              </Button>
-              </Link>
-              <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
-              <Button
-                sx={{
-                  bgcolor: "white",
-                  color: "black",
-                  border: "1px solid black",
-                  fontSize: "18px",
-                  fontWeight: "bold",
-                  fontFamily: "Work Sans",
-                  p: 1.5,
-                }}
-              >
-                REQUEST DEMO
-              </Button>
-              </Link>
+                  <Button
+                    sx={{
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      fontFamily: "Work Sans",
+                      p: 1.5,
+                    }}
+                  >
+                    SIGN UP FOR FREE
+                  </Button>
+                </Link>
+                <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
+                  <Button
+                    sx={{
+                      bgcolor: "white",
+                      color: "black",
+                      border: "1px solid black",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      fontFamily: "Work Sans",
+                      p: 1.5,
+                    }}
+                  >
+                    REQUEST DEMO
+                  </Button>
+                </Link>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
       </Stack>
-    </Stack>
+    </React.Fragment>
   );
 };
 

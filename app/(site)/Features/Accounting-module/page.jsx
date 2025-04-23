@@ -1,10 +1,10 @@
 import ProductSlider from "@/components/About/ProductSlider";
 import AccountingFeaturesGlance2 from "@/components/Features/Accounting/AccountingFeaturesGlance2";
 import AccountingFolderOperationList from "@/components/Features/Accounting/AccountingFolderOperationList";
-import FeatureVideo from "@/components/Features/FeatureVideo";
+// import FeatureVideo from "@/components/Features/FeatureVideo";
 import BillingBanner from "@/components/Features/BillingBanner";
-import BillingFeatures from "@/components/Features/BillingFeatures";
-import FeaturesGlance from "@/components/Features/FeaturesGlance";
+// import BillingFeatures from "@/components/Features/BillingFeatures";
+// import FeaturesGlance from "@/components/Features/FeaturesGlance";
 import BillingSteps from "@/components/Features/BillingSteps";
 import ImprovedSales from "@/components/Features/ImprovedSales"; 
 import Clock from "@/components/Home/Clock";

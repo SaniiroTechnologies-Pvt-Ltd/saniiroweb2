@@ -1,6 +1,6 @@
-const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:4000";
 
-const apiEndpoints = {
+const apiEndpoints = Object.freeze({
     review:`${BASE_URL}/api/v1/customer/review`,
     Country:`${BASE_URL}/api/v1/country`,
     State:`${BASE_URL}/api/v1/state`,
@@ -19,6 +19,6 @@ const apiEndpoints = {
     RequestDemo:`${BASE_URL}/api/v1/request/demo`,
     PurchaseConfirm:`${BASE_URL}/api/v1/pricing/purchase/confirm`,
 
-};
+});
 
 export default apiEndpoints;

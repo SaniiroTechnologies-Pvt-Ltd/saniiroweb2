@@ -1,5 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
 import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
 import contactsection3 from "../assets/Contactsection3.svg";
 import Button from "../utils/Button";
 import indiaFlag from "../assets/indiaflag.svg";
@@ -11,8 +13,8 @@ import icon3Contact from "../assets/icon3contact.svg";
 import icon4Contact from "../assets/icon4contact.svg";
 import Boxes from "../assets/Boxes.svg";
 import Link from "next/link";
-
 import Image from "next/image";
+
 const GrennSection = () => {
   return (
     <Box sx={{ position: "relative" }}>
@@ -54,7 +56,7 @@ const GrennSection = () => {
                 <Image
                   src={icon1Contact}
                   alt=""
-                  style={{ width: "50px", height: "50px" }}
+                  style={{ width: "50px", height: "50px", objectFit: "contain" }}
                 />
               </Stack>
               <Typography>
@@ -93,7 +95,7 @@ const GrennSection = () => {
                     <Image
                       src={icon2Contact}
                       alt=""
-                      style={{ width: "50px", height: "50px" }}
+                      style={{ width: "50px", height: "50px", objectFit: "contain" }}
                     />
                   </Stack>
                   <Typography>
@@ -111,7 +113,7 @@ const GrennSection = () => {
                     <Image
                       src={icon3Contact}
                       alt=""
-                      style={{ width: "50px", height: "50px" }}
+                      style={{ width: "50px", height: "50px", objectFit: "contain" }}
                     />
                   </Stack>
                   <Typography>
@@ -125,7 +127,7 @@ const GrennSection = () => {
                     <Image
                       src={icon4Contact}
                       alt=""
-                      style={{ width: "50px", height: "50px" }}
+                      style={{ width: "50px", height: "50px", objectFit: "contain" }}
                     />
                   </Stack>
                   <Typography>
@@ -144,7 +146,7 @@ const GrennSection = () => {
           position={"absolute"}
           bottom={"-11%"}
         >
-          <Image src={Boxes} alt="" />
+          <Image src={Boxes} alt="" style={{ objectFit: "contain" }} />
         </Stack>
       </Stack>
 
@@ -157,7 +159,7 @@ const GrennSection = () => {
             <Image
               src={contactsection3}
               alt=""
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
             />
           </Stack>
           <Stack

@@ -8,9 +8,8 @@ import Box from "../../assets/Box.svg";
 import Boxes from "../../assets/Boxes.svg";
 import Industry3 from "../../assets/Industry3.1.svg";
 import Link from "next/link";
-
-import { useData } from "../../context/Authcontext";
 import Image from "next/image";
+import { useData } from "@/components/context/Authcontext";
 
 const VideoSection2 = () => {
   const { categories } = useData();

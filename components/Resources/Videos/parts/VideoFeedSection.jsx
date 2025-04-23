@@ -3,12 +3,11 @@
 import { Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
-import videoImg from "../../../assets/Rectangle 4301.png";
+// import videoImg from "../../../assets/Rectangle 4301.png";
 import Link from "next/link";
-
-import { useData } from "../../../context/Authcontext";
 import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
+import { useData } from "@/components/context/Authcontext";
 
 const VideoCategories = [
   { id: 1, category: "Industries" },

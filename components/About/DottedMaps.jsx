@@ -1,6 +1,8 @@
+"use client";
+
 import { Box, Stack } from "@mui/material";
-import DottedMap, { Point } from "dotted-map";
-import { useMemo, useState } from "react";
+import DottedMap from "dotted-map";
+import { useState } from "react";
 
 const map = new DottedMap({ height: 60, grid: "vertical" });
 

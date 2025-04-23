@@ -1,5 +1,5 @@
 import React from "react";
-import name from "../../assets/Name.svg";
+import name from "../assets/Name.svg";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 

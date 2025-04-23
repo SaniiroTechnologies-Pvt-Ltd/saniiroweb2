@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Link from "next/link";
-
 import { Box, Typography } from "@mui/material";
 import lo from "../assets/lo.svg";
 import { Stack } from "@mui/material";
@@ -73,7 +72,7 @@ const Nav = () => {
         backgroundColor={"#fff"}
         zIndex={999}
       >
-             <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}
+        <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}
           height={"7vh"}
           position={"relative"}
         >

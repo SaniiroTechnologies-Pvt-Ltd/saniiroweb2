@@ -1,16 +1,18 @@
+"use client";
+
 import BillingBanner from "@/components/Features/BillingBanner";
 import BillingFolderOperationList from "@/components/Features/Billing/BillingFolderOperationList";
 import BillingFeaturesGlance2 from "@/components/Features/Billing/BillingFeaturesGlance2"; 
 import { Stack } from "@mui/material";
 import BillingSteps from "@/components/Features/BillingSteps";
-import FeatureVideo from "@/components/Features/FeatureVideo";
+// import FeatureVideo from "@/components/Features/FeatureVideo";
 import ProductSlider from "@/components/About/ProductSlider";
 import Clock from "@/components/Home/Clock";
 import ImprovedSales from "@/components/Features/ImprovedSales"; 
-import BillingFeatures from "@/components/Features/BillingFeatures";
-import FeaturesGlance from "@/components/Features/FeaturesGlance";
+// import BillingFeatures from "@/components/Features/BillingFeatures";
+// import FeaturesGlance from "@/components/Features/FeaturesGlance";
 
-export default function Index() {
+function page() {
   return (
     <>
       <BillingBanner />
@@ -30,3 +32,5 @@ export default function Index() {
     </>
   );
 }
+
+export default page

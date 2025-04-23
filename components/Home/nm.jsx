@@ -1,65 +1,9 @@
-// import React from "react";
-// import PhoneInput from "react-phone-input-2";
-// import "react-phone-input-2/lib/style.css";
-// import { Stack, Typography } from "@mui/material";
-// import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
-
-// const PhoneNumberInput = ({ field, form }) => {
-//   const handlePhoneChange = (value, country) => {
-//     form.setFieldValue(field.name, value);
-//   };
-
-//   const error = form.errors[field.name] && form.touched[field.name];
-
-//   const isContactUsPage = window.location.href.endsWith("/Contact-us");
-
-//   return (
-//     <Stack
-//       style={{ position: "relative" }}
-//       sx={{
-//         width: {
-//           xs: "220px",
-//           sm: "300px",
-//           md: "480px",
-//           lg: "385px",
-//           xl: "480px",
-//         },
-//         height: { xs: "45px", sm: "55px", md: "67px", lg: "57px", xl: "67px" },
-//       }}
-    
-//     >
-//       <PhoneInput
-//         country={"us"} 
-//         value={field.value} 
-//         onChange={handlePhoneChange} 
-//         inputProps={{
-//           name: field.name,
-//           id: "phoneInput",
-//         }}
-//       />
-//       {!isContactUsPage && (
-//         <PhoneAndroidIcon
-//           style={{
-//             position: "absolute",
-//             top: "50%",
-//             right: "4px",
-//             transform: "translateY(-50%)",
-//             color: "#AAAAAA",
-//             fontSize: "40px",
-//           }}
-//         />
-//       )}
-//     </Stack>
-//   );
-// };
-
-// export default PhoneNumberInput;
-
+"use client";
 
 import React from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import { usePathname } from "next/navigation";
 

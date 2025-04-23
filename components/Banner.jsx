@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import NavLight from "@/components/Navbar/NavLight";
 import Image from "next/image";
 import bannerImage from "../public/industry/banner.svg";

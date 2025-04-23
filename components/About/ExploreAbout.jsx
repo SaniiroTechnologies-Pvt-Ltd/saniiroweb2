@@ -1,8 +1,10 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import down from "../../assets/down.svg";
+import down from "../assets/down.svg";
+import Polygon from "../assets/Polygon.svg";
 import ReactPlayer from "react-player";
-import Polygon from "../../assets/Polygon.svg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "next/image";

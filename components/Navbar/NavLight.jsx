@@ -22,30 +22,12 @@ const NavLight = () => {
   const [popoverState, setPopoverState] = useState({});
   const [subLinks, setSubLinks] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
-  const [scrollBackground, setScrollBackground] = useState("transparent"); 
+  const [scrollBackground, setScrollBackground] = useState("transparent");
 
 
   const handleClick = () => {
     setMenuClick(!menuClick);
   };
-
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 10) {
-  //       setScrollBackground("#052973"); // Change to your desired color
-      
-  //     } else {
-  //       setScrollBackground("#052973"); // Initial color
-  //     }
-  //   };
-  
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -102,7 +84,7 @@ const NavLight = () => {
             <Image
               src={logoLight}
               alt=""
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
             />
           </Link>
         </Stack>
@@ -181,7 +163,7 @@ const NavLight = () => {
                     top: 47,
                     overflow: "hidden",
                     backgroundColor: "white",
-                    borderRadius:"8px",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
@@ -230,6 +212,20 @@ const NavLight = () => {
                         }}
                       >
                         Inventory
+                      </Typography>
+                    </Link>
+                    <Link
+                      href="/Features/Crm-module"
+                      className="popperLinks"
+                    >
+                      <Typography
+                        sx={{
+                          "&:hover": {
+                            color: "#F15B25",
+                          },
+                        }}
+                      >
+                        Crm
                       </Typography>
                     </Link>
                   </Stack>
@@ -294,7 +290,7 @@ const NavLight = () => {
                     top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
-                    borderRadius:"8px",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
@@ -414,7 +410,7 @@ const NavLight = () => {
                     top: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
-                    borderRadius:"8px",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
@@ -555,7 +551,7 @@ const NavLight = () => {
                     left: 40,
                     overflow: "hidden",
                     backgroundColor: "white",
-                    borderRadius:"8px",
+                    borderRadius: "8px",
                     zIndex: 1,
                   }}
                 ></Stack>
