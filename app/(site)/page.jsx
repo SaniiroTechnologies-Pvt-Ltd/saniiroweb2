@@ -1,5 +1,5 @@
 import Awards from "@/components/Home/Awards";
-import BannerComponent from "@/components/Home/BannerComponent";
+import HomeBanner from "@/components/Home/HomeBanner";
 import Billing from "@/components/Home/Billing";
 import Clock from "@/components/Home/Clock";
 import ContactFaq from "@/components/Home/ContactFaq";
@@ -7,6 +7,7 @@ import NewPart from "@/components/Home/NewPart";
 import RequestDemo from "@/components/Home/RequestDemo";
 import ToggleSection from "@/components/Home/State";
 import NavOnScroll from "@/components/NavOnScroll";
+import PageWrapper from "@/components/PageWrapper";
 
 // export async function generateMetadata() {
 //   return {
@@ -24,7 +25,7 @@ export default function Index() {
   return (
     <>
       <NavOnScroll isAlwaysVisible={true} />
-      <BannerComponent />
+      <HomeBanner />
       <RequestDemo />
       <Billing />
       <NewPart />

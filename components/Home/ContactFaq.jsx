@@ -29,12 +29,13 @@ const ContactFaq = () => {
       <Typography
         marginTop={"10px"}
         fontWeight={"bold"}
-        color={"#052973"}
+        color={"primary.main"}
         display={"flex"}
         justifyContent={"Center"}
         textAlign={"center"}
         sx={{
-          fontSize: { xs: "20px", sm: "30px", md: "45px" },
+          // fontSize: { xs: "20px", sm: "30px", md: "45px" },
+          fontSize: { xs: "1rem", sm: "2rem", md: "3rem" },
           margin: {
             xs: "7px",
             sm: "15px",

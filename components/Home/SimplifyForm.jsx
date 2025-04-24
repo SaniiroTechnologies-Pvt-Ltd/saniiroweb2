@@ -112,6 +112,8 @@ const SimplifyForm = () => {
             params: { CountryId: selectedCountry },
           });
           setStates(statesRes.data.Data || []);
+          // Set showContact based on the selected country
+          setShowContact(selectedCountry === "123"); // Only show contact if India is selected
         }
       } catch (error) {
         console.error("Error fetching states", error);
@@ -121,7 +123,6 @@ const SimplifyForm = () => {
     };
     fetchStates();
     setSelectedState("");
-    // setShowContact(selectedCountry === "123");
   }, [selectedCountry]);
 
   useEffect(() => {
@@ -236,7 +237,7 @@ const SimplifyForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleFormSubmit} sx={{ mx: 2, px: 4 }}>
+    <Box component="form" onSubmit={handleFormSubmit} sx={{ mx: { xs: 0, md: 2, lg: 2 }, px: { xs: 0, md: 4, lg: 2 } }}>
       <Grid container spacing={2}>
         {/* Full Name */}
         <Grid item xs={12}>
@@ -269,9 +270,9 @@ const SimplifyForm = () => {
                     borderWidth: errors.Name ? "2px" : "1px", // 🎯 Here we increase border width
                   },
                 },
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <PersonIcon sx={{ color: "#AAAAAA" }} />
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonIcon sx={{ color: "text.tertiary" }} />
                   </InputAdornment>
                 ),
               }}
@@ -308,9 +309,9 @@ const SimplifyForm = () => {
                     borderWidth: errors.Email ? "2px" : "1px", // 🎯 Here we increase border width
                   },
                 },
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <EmailIcon sx={{ color: "#AAAAAA" }} />
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon sx={{ color: "text.tertiary" }} />
                   </InputAdornment>
                 ),
               }}
@@ -346,9 +347,9 @@ const SimplifyForm = () => {
                     borderWidth: errors.UserName ? "2px" : "1px", // 🎯 Here we increase border width
                   },
                 },
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <AccountCircleIcon sx={{ color: "#AAAAAA" }} />
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircleIcon sx={{ color: "text.tertiary" }} />
                   </InputAdornment>
                 ),
               }}
@@ -514,9 +515,9 @@ const SimplifyForm = () => {
                       borderWidth: errors.PhoneNumber ? "2px" : "1px", // 🎯 Here we increase border width
                     },
                   },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <PhoneAndroidIcon sx={{ color: "#AAAAAA" }} />
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PhoneAndroidIcon sx={{ color: "text.tertiary" }} />
                     </InputAdornment>
                   ),
                 }}
@@ -535,7 +536,7 @@ const SimplifyForm = () => {
                 onChange={(e) => setFormValues({ ...formValues, terms: e.target.checked })}
                 sx={{
                   "& .MuiSvgIcon-root": {
-                    backgroundColor: "#FFFFFF",
+                    backgroundColor: "background.paper",
                     borderRadius: "4px",
                     fontSize: 24,
                     border: errors.terms ? "2px solid #f44336" : undefined, // Light error ring
@@ -545,9 +546,9 @@ const SimplifyForm = () => {
             }
             label={
               <Tooltip title={errors.terms || ""} open={Boolean(errors.terms)} placement="bottom-start" arrow>
-                <Typography fontSize="13px" color="#AAAAAA">
+                <Typography fontSize="13px" color="text.tertiary">
                   I agree to the Terms of{" "}
-                  <MUILink component={NextLink} href="/subfooter/terms-and-conditions" sx={{ color: "#AAAAAA", textDecoration: "underline" }}>
+                  <MUILink component={NextLink} href="/subfooter/terms-and-conditions" sx={{ color: "text.tertiary", textDecoration: "underline" }}>
                     Service and Privacy Policy
                   </MUILink>
                 </Typography>
@@ -603,16 +604,20 @@ const SimplifyForm = () => {
             disabled={loading}
             sx={{
               borderRadius: "10px",
-              backgroundColor: "#F15B25",
+              backgroundColor: "secondary.main",
               fontWeight: "bold",
               height: "50px",
               position: "relative",
               overflow: "hidden",
-              "&:hover": { backgroundColor: "#F15B25", border: "1px solid #052973" },
+              "&:hover": {
+                backgroundColor: "secondary.main",
+                borderColor: "primary.main",
+                border: "1px solid"
+              },
             }}
           >
             <Box display="flex" alignItems="center" justifyContent="center" gap={1}>
-              {loading && <CircularProgress size={20} sx={{ color: "white" }} />}
+              {loading && <CircularProgress size={20} sx={{ color: "primary.contrastText" }} />}
               {otpSent ? "Verify OTP and Register" : "Try It Free for 7 Days"}
             </Box>
           </Button>

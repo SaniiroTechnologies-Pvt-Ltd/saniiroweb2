@@ -170,12 +170,12 @@ const ContactCustomFaq = ({ data }) => {
         key={index}
         onClick={() => typeof number === "number" && paginate(number)}
         sx={{
-          backgroundColor: number === currentPage ? "#1976d2" : "transparent",
-          color: number === currentPage ? "#fff" : "#000",
+          backgroundColor: number === currentPage ? "primary.main" : "transparent",
+          color: number === currentPage ? "primary.contrastText" : "#000",
           margin: "0 5px",
           "&:hover": {
-            backgroundColor: "#1976d2",
-            color: "white",
+            backgroundColor: "primary.light",
+            color: "primary.contrastText",
           },
         }}
       >

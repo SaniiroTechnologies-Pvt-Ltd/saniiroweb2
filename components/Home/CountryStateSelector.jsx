@@ -5,7 +5,7 @@ import { Grid, Select, MenuItem, InputAdornment, Tooltip, Typography, CircularPr
 import PublicIcon from "@mui/icons-material/Public";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 
-const inputStyles = { borderRadius: "12px", backgroundColor: "#FFFFFF", color: "#AAAAAA" };
+const inputStyles = { borderRadius: "12px", backgroundColor: "#FFFFFF", color: "text.tertiary" };
 const inputSize = "small";
 
 const CountryStateSelector = ({
@@ -47,7 +47,7 @@ const CountryStateSelector = ({
       }}
       startAdornment={
        <InputAdornment position="start">
-        <PublicIcon sx={{ color: "#AAAAAA" }} />
+        <PublicIcon sx={{ color: "text.tertiary" }} />
        </InputAdornment>
       }
      >
@@ -56,7 +56,7 @@ const CountryStateSelector = ({
         {countriesLoading ? (
          <>
           Loading Countries... &nbsp;
-          <CircularProgress size={18} sx={{ color: "#AAAAAA" }} />
+          <CircularProgress size={18} sx={{ color: "text.tertiary" }} />
          </>
         ) : (
          "Select Country"
@@ -99,7 +99,7 @@ const CountryStateSelector = ({
       }}
       startAdornment={
        <InputAdornment position="start">
-        <LocationCityIcon sx={{ color: "#AAAAAA" }} />
+        <LocationCityIcon sx={{ color: "text.tertiary" }} />
        </InputAdornment>
       }
      >
@@ -108,7 +108,7 @@ const CountryStateSelector = ({
         {statesLoading ? (
          <>
           Loading states... &nbsp;
-          <CircularProgress size={18} sx={{ color: "#AAAAAA" }} />
+          <CircularProgress size={18} sx={{ color: "text.tertiary" }} />
          </>
         ) : (
          "Select State"
