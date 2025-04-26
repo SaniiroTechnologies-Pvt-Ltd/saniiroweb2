@@ -2,9 +2,6 @@
 
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-// import section31 from "../assets/billing-module.gif";
-// import section32 from "../assets/inventory-module.gif";
-// import section33 from "/home/accounting-module.gif";
 import Button from "../utils/Button";
 import Carousel from "react-multi-carousel";
 import Link from "next/link";
@@ -13,159 +10,121 @@ import Image from "next/image";
 const features = [
   {
     id: 1,
-    src: '/home/billing-module.gif',
+    src: "/home/billing-module.gif",
     title: "Billing/Invoicing",
-    disc: "Saniiro books is the fastest growing billing software curated to serve micro, small, and medium business houses. It allows users to create GST-compliant professional invoices and bills in a simple manner, using minimal time. Saniiro takes care of the MSMED Act, GST, E-invoice, E-way bills, and TDS/TCS laws while issuing invoices.With Saniiro, you can customize your invoice format or choose from more than 50+ predefined professional invoices...",
-    bulltePoints1: "E-way bill generation",
-    bulltePoints2: "E-invoice generation",
-    bulltePoints3: " Android and iOS app availability for billing",
+    disc: "Saniiro books is the fastest-growing billing software designed for micro, small, and medium business houses. Create GST-compliant invoices seamlessly.",
+    bulletPoints: [
+      "E-way bill generation",
+      "E-invoice generation",
+      "Android and iOS app availability for billing",
+    ],
     Path: "/Features/Billing-module",
   },
   {
     id: 2,
-    src: '/home/inventory-module.gif',
+    src: "/home/inventory-module.gif",
     title: "Inventory",
-    disc: "Optimize your inventory processes with Saniiro Books' robust inventory management module. Our solution helps you maintain accurate stock levels, streamline operations, and enhance overall efficiency.",
-    // subDisc: "Made right here in India–try the SaaS from Madras!",
-    bulltePoints1: "Godown/Location-wise inventory management",
-    bulltePoints2: "Manage minimum/re-order levels",
+    disc: "Optimize your inventory processes with Saniiro Books' robust inventory management module. Maintain accurate stock levels and streamline operations.",
+    bulletPoints: [
+      "Godown/Location-wise inventory management",
+      "Manage minimum/re-order levels",
+      "Barcode management",
+    ],
     Path: "/Features/Inventory-module",
-    bulltePoints3: "Barcode management.",
   },
   {
     id: 3,
-    src: '/home/accounting-module.gif',
+    src: "/home/accounting-module.gif",
     title: "Accounting",
+    disc: "Enhance financial accuracy with automated accounting tools, GST report generation, and bank reconciliation features.",
+    bulletPoints: [
+      "Financial reports generation",
+      "GSTR-1 and GSTR-3B report generation",
+      "Outstanding reminders",
+      "Bank reconciliation",
+    ],
     Path: "/Features/Accounting-module",
-    disc: "Optimize your inventory processes with Saniiro Books' robust inventory management module. Our solution helps you maintain accurate stock levels, streamline operations, and enhance overall efficiency.",
-    subDisc: "Made right here in India–try the SaaS from Madras!",
-    bulltePoints1: "Financial reports generation",
-    bulltePoints2: "GSTR-1 and GSTR-3B report generation",
-    bulltePoints3: "Outstanding reminders",
-    bulltePoints4: "Outstanding reminders",
-    bulltePoints5: "Bank reconciliation",
+  },
+  {
+    id: 4,
+    src: "/home/billing-module.gif",
+    title: "CRM",
+    disc: "Optimize your client management processes with integrated CRM tools that improve customer engagement and retention.",
+    bulletPoints: [
+      "Lead tracking",
+      "Automated follow-ups",
+      "Sales pipeline visibility",
+    ],
+    Path: "/Features/Crm-module",
   },
 ];
+
+// Responsive settings for carousel
 const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
+  superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 1 },
+  desktop: { breakpoint: { max: 3000, min: 1024 }, items: 1 },
+  tablet: { breakpoint: { max: 1024, min: 464 }, items: 1 },
+  mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
 };
+
 const Billing = ({ bgColor }) => {
   return (
     <>
-      <Stack
-        fontFamily={"Work Sans"}
-        sx={{
-          display: {
-            xs: "none",
-            md: "block",
-          },
-        }}
-      >
-        <Stack
-          alignItems={"center"}
-          justifyContent={"center"}
-          gap={6}
-          p={"60px 0"}
-        // backgroundColor={"#eff2f6"}
-        >
+      {/* Desktop & Tablet View */}
+      <Stack sx={{ display: { xs: "none", lg: "block" }, }}>
+        <Stack alignItems="center" justifyContent="center" gap={6} p="60px 0">
           {features.map((d, index) => (
             <Stack
-              alignItems={"center"}
-              justifyContent={d.id !== 2 ? "space-evenly" : "center"}
-              width={"90%"}
-              direction={"row"}
-              sx={{
-                flexDirection: {
-                  xs: "column",
-                  md: d.id === 1 ? "row" : d.id === 2 ? "row-reverse" : d.id === 3 ? "row" : "column",
-                },
-              }}
-              gap={"30px"}
               key={index}
+              sx={{
+                alignItems: "center",
+                justifyContent: d.id % 2 === 0 ? "center" : "space-evenly",
+                width: "90%",
+                direction: "row",
+                gap: "30px",
+                flexDirection: { xs: "column", md: d.id % 2 === 0 ? "row-reverse" : "row" },
+              }}
             >
-              <Stack
-                alignItems={"center"}
-                width={"50%"}
+              {/* Image Section */}
+              <Stack alignItems="center"
                 sx={{
-                  width: { md: "50%", lg: d.id !== 2 ? "49%" : "37%", },
+                  width: { md: "50%", lg: d.id !== 2 || d.id !== 4 ? "49%" : "37%", },
                   height: { md: "70vh", },
-                }}
-              >
-                <Box sx={{ width: d.id === 2 ? "100%" : "67%", position: "relative" }}>
-                  <Image
-                    src={d.src}
-                    alt=""
-                    width={0} // Set width to auto
-                    height={0} // Set height to auto
-                    style={{ width: "100%", height: "auto", objectFit: "contain" }} // Ensure responsiveness
-                  />
+                }}>
+                <Box sx={{ width: d.id === 2 ? "68%" : "67%", position: "relative", }}>
+                  <Image src={d.src} alt={d.title} width={0} height={0} style={{ width: "100%", height: "auto", objectFit: "contain" }} />
                 </Box>
-                {/* <Image
-                  src={d.src}
-                  alt=""
-                  style={{ width: d.id === 2 ? "100%" : "67%", objectFit: "contain" }}
-                /> */}
               </Stack>
-              <Stack gap={2} width={"38%"}>
+
+              {/* Text Section */}
+              <Stack gap={2} width="38%">
                 <Typography
-                  color={"#052973"}
-                  fontSize={"49px"}
-                  fontWeight={"bold"}
-                  fontFamily={"Work sans"}
-                >
+                  sx={{
+                    color: "primary.main",
+                    fontSize: "49px",
+                    fontWeight: "bold",
+                  }}>
                   {d.title}
                 </Typography>
-                <Typography fontFamily={"Work Sans"}>{d.disc}</Typography>
-                {/* <Stack>
-                  <ul>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints1}
-                      </Typography>
-                    </li>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints2}
-                      </Typography>
-                    </li>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints3}
-                      </Typography>
-                    </li>
-                  </ul>
-                </Stack> */}
+                <Typography>{d.disc}</Typography>
+                <Stack component="ul" sx={{ pl: 2 }}>
+                  {d.bulletPoints.map((point, i) => (
+                    <Typography key={i} component="li">
+                      {point}
+                    </Typography>
+                  ))}
+                </Stack>
                 <Link href={d.Path} onClick={() => window.scrollTo(0, 0)}>
                   <Button
                     type="button"
-                    fontFamily={"Work Sans"}
                     sx={{
-                      color: "white",
+                      color: "primary.contrastText",
                       width: "186px",
                       height: "48px",
                       fontSize: "20px",
-                      bgcolor: "#052973",
+                      bgcolor: "primary.main",
                       fontWeight: "bold",
-                      "&:hover": {
-                        backgroundColor: "#052973",
-                        color: "white",
-                      },
+                      "&:hover": { backgroundColor: "primary.light", color: "primary.contrastText" },
                     }}
                   >
                     Learn More
@@ -177,91 +136,26 @@ const Billing = ({ bgColor }) => {
         </Stack>
       </Stack>
 
-      {/* for mobile */}
-      <Box
-        sx={{
-          display: {
-            xs: "block",
-            md: "none",
-          },
-        }}
-        width="100%"
-        backgroundColor={"#eff2f6"}
-      >
-        <Stack margin={"19px auto "} width={"90%"}>
-          <Carousel
-            responsive={responsive}
-            showDots
-            infinite
-            autoPlaySpeed={5000}
-            removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-          >
+      {/* Mobile View */}
+      <Box sx={{ display: { xs: "block", lg: "none" }, width: "100%", backgroundColor: "#eff2f6" }}>
+        <Stack margin="19px auto" width="90%">
+          <Carousel responsive={responsive} showDots infinite autoPlaySpeed={5000} removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}>
             {features.map((d, index) => (
-              <Stack key={index} gap={2} alignItems={"center"}>
-                <Image
-                  width={280}
-                  height={280}
-                  // objectFit="contain"
-                  src={d.src}
-                  alt={`billingImg ${index}`}
-                />
-                <Typography
-                  fontFamily={"Work Sans"}
-                  sx={{
-                    fontFamily: "Work Sans",
-                    fontSize: "38px",
-                    fontWeight: 600,
-                    lineHeight: "31px",
-                    letterSpacing: "0em",
-                    textAlign: "left",
-                  }}
-                >
+              <Stack key={index} gap={2} alignItems="center">
+                <Image width={280} height={280} src={d.src} alt={d.title} />
+                <Typography sx={{ fontSize: "38px", fontWeight: 600, textAlign: "left" }}>
                   {d.title}
                 </Typography>
-                <Typography
-                  fontFamily={"Work Sans"}
-                  sx={{
-                    textAlign: "center",
-                  }}
-                >
+                <Typography sx={{ textAlign: "center" }}>
                   {d.disc}
                 </Typography>
-                <Typography
-                  fontFamily={"Work Sans"}
-                  sx={{
-                    textAlign: "center",
-                  }}
-                >
-                  {d.subDisc}
-                </Typography>
-                {/* <Stack
-                  sx={{
-                    marginBottom: "25px",
-                  }}
-                >
-                  <ul>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints1}
-                      </Typography>
-                    </li>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints2}
-                      </Typography>
-                    </li>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints3}
-                      </Typography>
-                    </li>
-                    <li>
-                      <Typography fontFamily={"Work Sans"}>
-                        {d.bulltePoints4}
-                      </Typography>
-                    </li>
-                  </ul>
-                </Stack> */}
+                <Stack component="ul" sx={{ marginBottom: "25px", pl: 2 }}>
+                  {d.bulletPoints.map((point, i) => (
+                    <Typography key={i} component="li">
+                      {point}
+                    </Typography>
+                  ))}
+                </Stack>
               </Stack>
             ))}
           </Carousel>
