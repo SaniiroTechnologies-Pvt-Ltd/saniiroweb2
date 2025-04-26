@@ -25,7 +25,7 @@ const GrennSection = () => {
         top={"-11%"}
       >
         <Stack
-          bgcolor={"#248F41"}
+          bgcolor={"tertiary.main"}
           width={{ xl: "85%", xs: "none" }}
           borderRadius={{ xl: 1, xs: "none" }}
           p={"20px 24px"}
@@ -43,7 +43,7 @@ const GrennSection = () => {
                 sx={{
                   borderRadius: 1,
                   fontWeight: "bold",
-                  bgcolor: "#248F41",
+                  bgcolor: "tertiary.main",
                   color: "white",
                   width: "100px",
                   height: "25px",
@@ -63,7 +63,7 @@ const GrennSection = () => {
                 Looking for a demo, or have questions about our products and
                 pricing?
               </Typography>
-              <Link href="#">sales@zohocorp.com</Link>
+              <Link href="#">sales@saniiro.com</Link>
             </Stack>
           </Stack>
           <Stack
@@ -76,7 +76,7 @@ const GrennSection = () => {
                 sx={{
                   borderRadius: 1,
                   fontWeight: "bold",
-                  bgcolor: "#052864",
+                  bgcolor: "primary.main",
                   color: "white",
                   width: "150px",
                   height: "25px",
@@ -102,7 +102,7 @@ const GrennSection = () => {
                     Looking for a demo, or have questions about our products and
                     pricing?
                   </Typography>
-                  <Link href="#">sales@zohocorp.com</Link>
+                  <Link href="#">sales@saniiro.com</Link>
                 </Stack>
                 <Stack
                   width={{ xl: "30%", xs: "100%" }}
@@ -120,7 +120,7 @@ const GrennSection = () => {
                     Looking for a demo, or have questions about our products and
                     pricing?
                   </Typography>
-                  <Link href="#">sales@zohocorp.com</Link>
+                  <Link href="#">sales@saniiro.com</Link>
                 </Stack>
                 <Stack width={{ xl: "30%", xs: "100%" }} gap={2}>
                   <Stack>
@@ -134,7 +134,7 @@ const GrennSection = () => {
                     Looking for a demo, or have questions about our products and
                     pricing?
                   </Typography>
-                  <Link href="#">sales@zohocorp.com</Link>
+                  <Link href="#">sales@saniiro.com</Link>
                 </Stack>
               </Stack>
             </Stack>
@@ -184,7 +184,7 @@ const GrennSection = () => {
               Find your way around Saniiro with Concierge
             </Typography>
             <Typography>
-              Not sure which Zoho product is the right fit for your company? No
+              Not sure which saniiro product is the right fit for your company? No
               worries. We'll work with you to determine what solutions will best
               suit your business.
             </Typography>
@@ -276,9 +276,9 @@ const GrennSection = () => {
                   <Stack>
                     <Image src={gmail1} alt="" />
                   </Stack>
-                  1800-201-0000
+                  022-6971-1021
                 </Typography>
-                <Typography
+                {/* <Typography
                   style={{
                     display: "flex",
                     flexDirection: "row",
@@ -294,7 +294,7 @@ const GrennSection = () => {
                     <Image src={gmail1} alt="" />
                   </Stack>
                   1800-201-0000
-                </Typography>
+                </Typography> */}
               </Stack>
               <Stack direction={"row"} justifyContent={"center"} gap={5}>
                 <Typography
@@ -312,7 +312,7 @@ const GrennSection = () => {
                   <Stack>
                     <Image src={gmail} alt="" />
                   </Stack>
-                  sales@zohocorp.com
+                  sales@saniiro.com
                 </Typography>
               </Stack>
             </Stack>

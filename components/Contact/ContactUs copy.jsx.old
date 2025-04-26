@@ -1,16 +1,17 @@
-import { Stack, Typography, IconButton, Box } from "@mui/material";
-import React, { useState } from "react";
-import "./request.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Stack, Typography } from "@mui/material";
+import React from "react";
+import "./contact.css";
 import axios from "axios";
+import Button from "../utils/Button"; 
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ContactUsSchema } from "@/Validation-Scema";
 import apiEndpoints from "@/utils/apiEndpoints";
 import NavLight from "@/components/Navbar/NavLight";
 import PhoneNumberInput from "@/components/Home/nm";
 import SweetAlert from "@/components/SweetAlert/SweetAlert";
-import Button from "../utils/Button";
+import RequestDemoForm from "../request-demo/RequestDemoForm";
 
-const RequestDemo = () => {
+const ContactUs = () => {
 
   const initialValues = {
     Name: "",
@@ -24,7 +25,7 @@ const RequestDemo = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       const response = await axios.post(
-        `${apiEndpoints.RequestDemo}`,
+        `${apiEndpoints.Contact}`,
         values
       );
       if (response.data.Code === 1000) {
@@ -40,10 +41,10 @@ const RequestDemo = () => {
   };
 
   return (
-    <Box
+    <Stack
       height={{ xl: "930px", xs: "auto" }}
       position={"relative"}
-      bgcolor={"primary.main"}
+      bgcolor={"#052973"}
       className="textured-background"
     >
       <NavLight />
@@ -191,9 +192,10 @@ const RequestDemo = () => {
             textAlign={"center"}
             fontFamily={"Work Sans"}
           >
-            Request demo Form
+            Get started with your free trial
           </Typography>
-          <Stack
+          <RequestDemoForm />
+          {/* <Stack
             alignItems={"center"}
             gap={2}
             margin={"0 auto"}
@@ -421,11 +423,11 @@ const RequestDemo = () => {
                 </Form>
               )}
             </Formik>
-          </Stack>
+          </Stack> */}
         </Stack>
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 
-export default RequestDemo;
+export default ContactUs;

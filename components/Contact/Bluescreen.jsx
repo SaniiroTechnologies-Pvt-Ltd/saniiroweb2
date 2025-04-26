@@ -11,7 +11,7 @@ const Bluescreen = () => {
   return (
     <Stack alignItems={"center"} p={{ xl: "100px 0", xs: "0" }}>
       <Stack
-        bgcolor={"#052973"}
+        bgcolor={"primary.main"}
         width={"85%"}
         borderRadius={1}
         p={"30px 24px"}
@@ -35,7 +35,7 @@ const Bluescreen = () => {
               sx={{
                 borderRadius: 1,
                 fontWeight: "bold",
-                bgcolor: "#052864",
+                bgcolor: "primary.main",
                 color: "white",
                 width: "150px",
                 height: "25px",
@@ -82,18 +82,18 @@ const Bluescreen = () => {
             >
               Experiencing issues with a product you're already using? Browse
               through our help docs, videos, and tutorials, or engage with
-              experts from the Zoho support community.
+              experts from the Saniiro support community.
             </Typography>
             <Stack alignItems={"center"}>
               <Button
                 sx={{
                   bgcolor: "transparent",
-                  color: "#0079FF",
+                  color: "primary.main",
                   fontSize: "16px",
                   fontWeight: "bold",
                   "&:hover": {
                     backgroundColor: "transparent",
-                    color: "#0079FF",
+                    color: "primary.light",
                     textDecoration: "underline",
                   },
                 }}
@@ -116,7 +116,7 @@ const Bluescreen = () => {
               sx={{
                 borderRadius: 1,
                 fontWeight: "bold",
-                bgcolor: "#052864",
+                bgcolor: "primary.main",
                 color: "white",
                 width: "150px",
                 height: "25px",
@@ -163,18 +163,18 @@ const Bluescreen = () => {
             >
               Experiencing issues with a product you're already using? Browse
               through our help docs, videos, and tutorials, or engage with
-              experts from the Zoho support community.
+              experts from the Saniiro support community.
             </Typography>
             <Stack alignItems={"center"}>
               <Button
                 sx={{
                   bgcolor: "transparent",
-                  color: "#0079FF",
+                  color: "primary.main",
                   fontSize: "16px",
                   fontWeight: "bold",
                   "&:hover": {
                     backgroundColor: "transparent",
-                    color: "#0079FF",
+                    color: "primary.light",
                     textDecoration: "underline",
                   },
                 }}
