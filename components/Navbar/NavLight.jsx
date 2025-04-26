@@ -62,10 +62,7 @@ const NavLight = () => {
     <>
       <Stack
         sx={{
-          display: {
-            xs: "none",
-            lg: "flex",
-          },
+          display: { xs: "none", lg: "flex"},
           backgroundColor: scrollBackground,
           transition: "background-color 0.4s ease-in", // Smooth transition
         }}
@@ -76,8 +73,7 @@ const NavLight = () => {
         // position={"sticky"}
         // top={0}
         // backgroundColor={"#052973"}
-        zIndex={999}
-
+        zIndex={999999}
       >
         <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}>
           <Link href="/">

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Link from "next/link";
-import { Box, Typography } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import lo from "../assets/lo.svg";
 import { Stack } from "@mui/material";
 import "./nav.css";
@@ -52,8 +52,53 @@ const Nav = () => {
     }));
   };
   const isPopoverOpen = (linkId) => Boolean(popoverState[linkId]);
+
+  const NAV_ITEMS = [
+    {
+      label: "Features",
+      href: "/Features",
+      dropdown: [
+        { label: "Billing", href: "/Features/Billing-module" },
+        { label: "Accounting", href: "/Features/Accounting-module" },
+        { label: "Inventory", href: "/Features/Inventory-module" },
+        { label: "CRM", href: "/Features/Crm-module" },
+      ],
+    },
+    {
+      label: "Solutions",
+      href: "/Solutions",
+      dropdown: [
+        { label: "By Industries", href: "/Solutions/By-industries" },
+        { label: "By Size", href: "/Solutions/By-Size" },
+        { label: "By Role", href: "/Solutions/By-role" },
+        { label: "By Use Cases", href: "/Solutions/By-usecases" },
+      ],
+    },
+    {
+      label: "Resources",
+      href: "/Resources",
+      dropdown: [
+        { label: "Become A Partner", href: "/Resources/BecomeAPartner" },
+        { label: "Career", href: "/Resources/Career" },
+        { label: "Blogs", href: "/Resources/Blog" },
+        { label: "Case Study", href: "/Resources/CaseStudy" },
+        { label: "Testimonials", href: "/Resources/Testimonials" },
+        { label: "Videos", href: "/Resources/Videos" },
+        { label: "Faq", href: "/Resources/faq" },
+      ],
+    },
+    {
+      label: "Pricing",
+      href: "/Pricing",
+      dropdown: [],
+    },
+    // Add more menu items as needed
+  ];
+
   return (
     <>
+
+
       {/* for Desktop view */}
 
       <Stack
@@ -124,7 +169,7 @@ const Nav = () => {
                       className="navlink"
                       sx={{
                         transition: "all 0.4s ease-in",
-                        //   color: isPopoverOpen(1) ? "white" : "black",
+                        // color: isPopoverOpen(1) ? "white" : "black",
                       }}
                     >
                       Features
@@ -134,7 +179,7 @@ const Nav = () => {
                       sx={{
                         fontSize: 25,
                         transition: "all 0.3s ease-in",
-                        color: isPopoverOpen(1) ? "#818181" : "#818181",
+                        color: "#818181",
                         transform: isPopoverOpen(1)
                           ? "rotate(180deg)"
                           : "rotate(0)",
@@ -154,14 +199,15 @@ const Nav = () => {
                     position: "absolute",
                     top: 40,
                     overflow: "hidden",
-                    backgroundColor: "white",
+                    backgroundColor: "background.paper",
                     borderRadius: "8px",
                     zIndex: 1,
                   }}
                 >
                   <Stack
                     justifyContent={"center"}
-                    border={"2px solid #052973"}
+                    border={"2px solid"}
+                    borderColor={"primary.main"}
                     borderRadius={2}
                     gap={1}
                     sx={{ p: 1, width: 160 }}
@@ -173,7 +219,7 @@ const Nav = () => {
                       <Typography
                         sx={{
                           "&:hover": {
-                            color: "#F15B25",
+                            color: "secondary.main",
                           },
                         }}
                       >
@@ -229,7 +275,7 @@ const Nav = () => {
                 </Stack>
               </Box>
             </div>
-            {/* //!our Story */}
+
             <div
               style={{
                 display: "flex",
