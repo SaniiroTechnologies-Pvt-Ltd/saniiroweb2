@@ -63,7 +63,7 @@ const Footer = () => {
           justifyContent={"space-evenly"}
         >
           <Stack gap={2}>
-            <Typography color={"white"} fontWeight={"bold"} fontSize={"25px"}>
+            <Typography component={'div'} color={"white"} fontWeight={"bold"} fontSize={"25px"}>
               Saniiro Contact
             </Typography>
             <Stack gap={1}>
@@ -84,14 +84,14 @@ const Footer = () => {
                   />
                 </Stack>
                 <Stack>
-                  <Typography
+                  <Typography component={'div'}
                     fontWeight={"bold"}
                     color={"white"}
                     fontSize={"22px"}
                   >
                     Head Office
                   </Typography>
-                  <Typography color={"white"}>
+                  <Typography component={'address'} color={"white"}>
                     613-5th Floor, Apex Mall, Lalkothi, Jaipur - 302015
                   </Typography>
                 </Stack>
@@ -113,14 +113,14 @@ const Footer = () => {
                   />
                 </Stack>
                 <Stack>
-                  <Typography
+                  <Typography component={'div'}
                     fontWeight={"bold"}
                     color={"white"}
                     fontSize={"22px"}
                   >
                     Sale(s) Office
                   </Typography>
-                  <Typography color={"white"}>
+                  <Typography component={'address'} color={"white"}>
                     Jaipur, Mumbai, Lucknow, Pune, Ahmedabad
                   </Typography>
                 </Stack>
@@ -128,10 +128,10 @@ const Footer = () => {
             </Stack>
           </Stack>
           <Stack>
-            <Typography color={"white"} fontWeight={"bold"} fontSize={"25px"}>
+            <Typography component={'div'} color={"white"} fontWeight={"bold"} fontSize={"25px"}>
               Company
             </Typography>
-            <Typography>
+            <Typography component={'div'}>
               <ul
                 style={{
                   display: "flex",
@@ -139,8 +139,9 @@ const Footer = () => {
                   flexDirection: "column",
                 }}
               >
-                {list1.map((d) => (
+                {list1.map((d, index) => (
                   <Link
+                    key={'a' + index}
                     href={`${d.to}`}
                     style={{ color: "lightgray", textDecoration: "none" }}
                     onClick={() => window.scrollTo(0, 0)}
@@ -152,10 +153,10 @@ const Footer = () => {
             </Typography>
           </Stack>
           <Stack>
-            <Typography color={"white"} fontWeight={"bold"} fontSize={"25px"}>
+            <Typography component={'div'} color={"white"} fontWeight={"bold"} fontSize={"25px"}>
               Resources
             </Typography>
-            <Typography color={"lightgray"}>
+            <Typography component={'div'} color={"lightgray"}>
               <ul
                 style={{
                   display: "flex",
@@ -163,8 +164,9 @@ const Footer = () => {
                   flexDirection: "column",
                 }}
               >
-                {list2.map((d) => (
+                {list2.map((d, index) => (
                   <Link
+                    key={'b' + index}
                     // className="Footer-new"
                     href={`${d.to}`}
                     style={{ color: "lightgray", textDecoration: "none" }}
@@ -177,10 +179,10 @@ const Footer = () => {
             </Typography>
           </Stack>
           <Stack>
-            <Typography color={"white"} fontWeight={"bold"} fontSize={"25px"}>
+            <Typography component={'div'} color={"white"} fontWeight={"bold"} fontSize={"25px"}>
               Customers
             </Typography>
-            <Typography color={"lightgray"}>
+            <Typography component={'div'} color={"lightgray"}>
               <ul
                 style={{
                   display: "flex",
@@ -212,7 +214,7 @@ const Footer = () => {
               </ul>
             </Typography>
             <Stack gap={2}>
-              <Typography
+              <Typography component={'div'}
                 color={"white"}
                 fontWeight={"bold"}
                 fontSize={"30px"}
@@ -261,13 +263,14 @@ const Footer = () => {
           justifyContent={"Center"}
           gap={5}
         >
-          {list4.map((d) => (
+          {list4.map((d, index) => (
             <Link
+              key={'c' + index}
               href={`${d.to}`}
               style={{ color: "lightgray", textDecoration: "none" }}
               onClick={() => window.scrollTo(0, 0)}
             >
-              <Typography>{d.item}</Typography>
+              <Typography component={'div'}>{d.item}</Typography>
             </Link>
           ))}
         </Stack>
@@ -298,6 +301,7 @@ const Footer = () => {
               }}
             >
               <Typography
+                component={'div'}
                 color={"white"}
                 fontWeight={"bold"}
                 fontSize={"25px"}
@@ -344,13 +348,14 @@ const Footer = () => {
                   </Stack>
                   <Stack>
                     <Typography
+                      component={'div'}
                       fontWeight={"bold"}
                       color={"white"}
                       fontSize={"22px"}
                     >
                       Head Office
                     </Typography>
-                    <Typography color={"white"}>
+                    <Typography component={'address'} color={"white"}>
                       613-5th Floor, Apex Mall, Lalkothi, Jaipur - 302015
                     </Typography>
                   </Stack>
@@ -377,14 +382,14 @@ const Footer = () => {
                     />
                   </Stack>
                   <Stack>
-                    <Typography
+                    <Typography component={'div'}
                       fontWeight={"bold"}
                       color={"white"}
                       fontSize={"22px"}
                     >
                       Sale(s) Office
                     </Typography>
-                    <Typography color={"white"}>
+                    <Typography component={'address'} color={"white"}>
                       Jaipur, Mumbai, Lucknow, Pune, Ahmedabad
                     </Typography>
                   </Stack>
@@ -426,14 +431,14 @@ const Footer = () => {
                       />
                     }
                   >
-                    <Typography>
+                    <Typography component={'div'}>
                       {" "}
                       <Box
                         display={"flex"}
                         justifyContent="center"
                         alignItems={"center"}
                       >
-                        <Typography
+                        <Typography component={'div'}
                           alignSelf="center"
                           display="inline-block"
                           fontSize={20}
@@ -455,8 +460,9 @@ const Footer = () => {
                       gap={1}
                       marginLeft={"20px"}
                     >
-                      {list1.map((d) => (
+                      {list1.map((d, index) => (
                         <Link
+                          key={'d' + index}
                           href={`${d.to}`}
                           style={{ color: "white", textDecoration: "none" }}
                           onClick={() => window.scrollTo(0, 0)}
@@ -491,13 +497,14 @@ const Footer = () => {
                       />
                     }
                   >
-                    <Typography>
+                    <Typography component={'div'}>
                       <Box
                         display={"flex"}
                         justifyContent="center"
                         alignItems={"center"}
                       >
                         <Typography
+                          component={'div'}
                           alignSelf="center"
                           display="inline-block"
                           fontSize={20}
@@ -519,8 +526,9 @@ const Footer = () => {
                       gap={1}
                       marginLeft={"20px"}
                     >
-                      {list2.map((d) => (
+                      {list2.map((d, index) => (
                         <Link
+                          key={'e' + index}
                           href={`${d.to}`}
                           style={{ color: "white", textDecoration: "none" }}
                           onClick={() => window.scrollTo(0, 0)}
@@ -555,14 +563,14 @@ const Footer = () => {
                       />
                     }
                   >
-                    <Typography>
+                    <Typography component={'div'}>
                       {" "}
                       <Box
                         display={"flex"}
                         justifyContent="center"
                         alignItems={"center"}
                       >
-                        <Typography
+                        <Typography component={'div'}
                           alignSelf="center"
                           display="inline-block"
                           fontSize={20}
@@ -584,8 +592,9 @@ const Footer = () => {
                       gap={1}
                       marginLeft={"20px"}
                     >
-                      {list3.map((d) => (
+                      {list3.map((d, index) => (
                         <Link
+                          key={'f' + index}
                           href={`${d.to}`}
                           style={{ color: "white", textDecoration: "none" }}
                           onClick={() => window.scrollTo(0, 0)}
@@ -607,7 +616,7 @@ const Footer = () => {
             </Stack>
 
             <Stack gap={2} alignItems={"center"} marginTop={"10px"}>
-              <Typography
+              <Typography component={'div'}
                 color={"white"}
                 fontWeight={"bold"}
                 fontSize={"25px"}
@@ -683,8 +692,9 @@ const Footer = () => {
                 },
               }}
             >
-              {list4.map((d) => (
+              {list4.map((d, index) => (
                 <Link
+                  key={'g' + index}
                   href={`${d.to}`}
                   style={{ color: "lightgray", textDecoration: "none" }}
                   onClick={() => window.scrollTo(0, 0)}
