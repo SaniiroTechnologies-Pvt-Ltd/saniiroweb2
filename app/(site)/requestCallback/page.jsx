@@ -1,10 +1,11 @@
-
 import RequestCallback from "@components/utils/RequestCallback";
 
-export default function Index() {
+const RequestCallbackPage = () => {
   return (
     <main>
       <RequestCallback />
     </main>
   );
 }
+
+export default RequestCallbackPage;
