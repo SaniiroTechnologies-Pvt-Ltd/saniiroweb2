@@ -52,7 +52,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-image: url("../../assets/BigBgSvg.png"); */
+  /* background-image: url("../assets/BgSvg.jpeg"); */
+  background-image: url("../assets/BgPng.png");
   background-size: cover;
   background-repeat: no-repeat;
   mix-blend-mode: overlay; /* Adjust blend mode as needed */

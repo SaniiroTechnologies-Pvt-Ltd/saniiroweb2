@@ -10,46 +10,39 @@ export default function RequestDemoBanner() {
 
  return (
   <Fragment>
-   <Box
+   <Stack
     sx={{
-     height: { xs: "100%" },
+     height: { xs: "auto", xl: "100dvh" },
      position: { xs: "relative" },
      bgcolor: { xs: "primary.main" },
-     boxSizing: { xs: "border-box" },
-     // overflow: { xs: "hidden" },
-     border: { xs: 2 },
-     borderColor: { xs: "background.default" },
     }}
     className={"textured-background"}
    >
+    {/* Light Navigation */}
     <NavLight />
 
     <Stack
      sx={{
-      flexDirection: { xs: "column", lg: "row" },
-      height: { xs: "100%" },
-      gap: { xs: 2 },
-      p: { xs: 2 },
+      maxWidth: "xxl",
       zIndex: 11,
-      // border: { xs: 1 },
+      flexDirection: { xs: "column", lg: "row" },
+      margin: { xs: "0 auto", sm: "20px auto" },
      }}>
 
      {/* Left contents */}
-     <Box
+     <Stack
       sx={{
-       width: { xs: "100%", lg: "50%" },
-       p: { xs: 1 },
-       // zIndex: 12,
-       // border: { xs: 1 },
-       display: 'flex', // Add this line
-       flexDirection: 'column', // Add this line
-       justifyContent: 'center', // Add this line
-       alignItems: 'start', // Add this line
+       gap: { xs: 0.6 },
+       width: { xs: "100%", lg: "40%", xl: "54%", xxl: "50%", },
+       m: { lg: "40px auto", xl: "84px 37px" },
+       p: { xs: "10px 0" },
       }}>
+
       <Typography
        component={'h1'}
        className={"text-stroke"}
        sx={{
+        wordSpacing: { xl: "-27px" },
         fontSize: { xs: "2rem", sm: "3rem", md: "4rem", lg: "4.5rem", xl: "4rem", },
         textAlign: { xs: "center", lg: "left", },
         textTransform: "uppercase",
@@ -92,45 +85,35 @@ export default function RequestDemoBanner() {
        We're here to help.
       </Typography>
 
-     </Box>
+     </Stack>
 
      {/* Right contents */}
-     <Box
+     <Stack
       sx={{
+       gap: { xs: 2 },
        width: { xs: "100%", lg: "50%" },
-       p: { xs: 1 },
-       m: 'auto',
-       zIndex: 12,
-       // border: { xs: 1 },
+       p: { xs: "20px 0px", lg: "20px 0px", xl: "40px 0px", },
       }}>
+
       <Typography
        component={'h3'}
        sx={{
-        fontSize: {
-         xs: "18px",
-         sm: "22px",
-         md: "28px",
-
-         xl: "38px",
-        },
-        textAlign: {
-         xs: "center",
-        },
+        fontSize: { xs: "18px", sm: "22px", md: "28px", xl: "38px" },
+        textAlign: { xs: "center" },
+        color: "primary.contrastText",
+        fontWeight: "bold",
+        fontSize: "22px",
+        textAlign: "center",
+        fontFamily: "Work Sans",
        }}
-       color={"white"}
-       // color={"white"}
-       fontWeight={"bold"}
-       fontSize={"22px"}
-       textAlign={"center"}
-       fontFamily={"Work Sans"}
       >
        Get in Touch with us
       </Typography>
       <RequestDemoForm /> {/** Demo form component */}
-     </Box>
+     </Stack>
     </Stack>
 
-   </Box >
+   </Stack >
   </Fragment >
  )
 
