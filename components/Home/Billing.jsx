@@ -47,7 +47,7 @@ const features = [
   },
   {
     id: 4,
-    src: "/home/billing-module.gif",
+    src: "/home/crm1-module.gif",
     title: "CRM",
     disc: "Optimize your client management processes with integrated CRM tools that improve customer engagement and retention.",
     bulletPoints: [
