@@ -1,7 +1,7 @@
 "use client"
 
 import apiEndpoints from "@/utils/apiEndpoints";
-import countryCodes from "./data/country_codes_data.json";
+import countryCodes from "@/components/data/country_codes_data.json";
 import { Business, ChatBubble, Email, Language, Person, PhoneAndroid } from "@mui/icons-material";
 import { Box, Button, CircularProgress, Grid, InputAdornment, MenuItem, TextField, Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
@@ -223,7 +223,7 @@ export default function RequestDemoForm() {
      </Grid>
 
      {/* Phone Code */}
-     <Grid item xs={4}>
+     <Grid item xs={12} lg={5}>
       <Tooltip
        title={errors.PhoneCode || ""}
        open={Boolean(errors.PhoneCode)}
@@ -268,7 +268,7 @@ export default function RequestDemoForm() {
      </Grid>
 
      {/* Phone Number */}
-     <Grid item xs={8}>
+     <Grid item xs={12} lg={7}>
       <Tooltip
        title={errors.PhoneNumber || ""}
        open={Boolean(errors.PhoneNumber)}
