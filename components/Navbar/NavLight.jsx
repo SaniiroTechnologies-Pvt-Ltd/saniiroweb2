@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 // import log from "../assets/log.png"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Link from "next/link";
-
 import { Box, Typography } from "@mui/material";
 import logoLight from "../assets/logoLight.svg";
 import { Stack } from "@mui/material";
@@ -16,14 +15,12 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import { RxCross2 } from "react-icons/rx";
 import { CgMenuRight } from "react-icons/cg";
 import Image from "next/image";
-import style from "./navlight.css";
 
 const NavLight = () => {
   const [popoverState, setPopoverState] = useState({});
   const [subLinks, setSubLinks] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
   const [scrollBackground, setScrollBackground] = useState("transparent");
-
 
   const handleClick = () => {
     setMenuClick(!menuClick);
@@ -36,9 +33,7 @@ const NavLight = () => {
         setMenuClick(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -79,7 +74,9 @@ const NavLight = () => {
           <Link href="/">
             <Image
               src={logoLight}
-              alt=""
+              alt="Saniiro Light Logo"
+              width={0}
+              height={0}
               style={{ width: "100%", height: "100%", objectFit: "contain" }}
             />
           </Link>
@@ -152,7 +149,7 @@ const NavLight = () => {
                   justifyContent={"center"}
                   alignItems={"center"}
                   sx={{
-                    height: isPopoverOpen(1) ? 122 : 0,
+                    height: isPopoverOpen(1) ? 148 : 0,
                     opacity: isPopoverOpen(1) ? 1 : 0,
                     transition: "height 0.2s ease-in, opacity 0.2s ease-in-out",
                     position: "absolute",
