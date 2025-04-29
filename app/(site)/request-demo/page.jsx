@@ -12,20 +12,9 @@ import React from 'react'
 const RequestDemoPage = () => {
   return (
     <>
-    {/* <NavOnScroll threshold={610} />  */}
-    <RequestDemoBanner />
-      {/* <RequestDemo/> */}
-      <Stack bgcolor={"#F1F1F1"}>
-        <Box
-          fontFamily={"Work Sans"}
-          maxWidth={"1536px"}
-          margin={"8rem auto"}
-          gap={4}
-        >
-          <GrennSection />
-          <Bluescreen />
-        </Box>
-      </Stack>
+      <RequestDemoBanner />
+      <GrennSection />
+      <Bluescreen />
       <Offices />
       <Readytosign />
     </>

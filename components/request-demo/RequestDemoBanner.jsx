@@ -15,6 +15,8 @@ export default function RequestDemoBanner() {
      height: { xs: "auto", xl: "100dvh" },
      position: { xs: "relative" },
      bgcolor: { xs: "primary.main" },
+     mb: {xs: 4, },
+     pb: {lg: 2, xl: 8},
     }}
     className={"textured-background"}
    >
@@ -26,7 +28,7 @@ export default function RequestDemoBanner() {
       maxWidth: "xxl",
       zIndex: 11,
       flexDirection: { xs: "column", lg: "row" },
-      margin: { xs: "0 auto", sm: "20px auto" },
+      px: {xs: 2, md:0},
      }}>
 
      {/* Left contents */}
@@ -36,6 +38,7 @@ export default function RequestDemoBanner() {
        width: { xs: "100%", lg: "40%", xl: "54%", xxl: "50%", },
        m: { lg: "40px auto", xl: "84px 37px" },
        p: { xs: "10px 0" },
+       justifyContent: "center",
       }}>
 
       <Typography
@@ -43,7 +46,7 @@ export default function RequestDemoBanner() {
        className={"text-stroke"}
        sx={{
         wordSpacing: { xl: "-27px" },
-        fontSize: { xs: "2rem", sm: "3rem", md: "4rem", lg: "4.5rem", xl: "4rem", },
+        fontSize: { xs: "1rem", sm: "2rem", smm:"2.5rem", sml: "2.8rem", md: "4rem", lg: "4.25rem", xl: "5.25rem", xxl: "5rem" },
         textAlign: { xs: "center", lg: "left", },
         textTransform: "uppercase",
         fontFamily: "monospace",
@@ -59,7 +62,7 @@ export default function RequestDemoBanner() {
       <Typography
        component={'h2'}
        sx={{
-        fontSize: { xs: "2rem", sm: "3rem", md: "4rem", lg: "4.5rem", xl: "3.9rem", },
+        fontSize: { xs: "1rem", sm: "2rem", smm:"2.5rem", sml: "2.8rem", md: "4rem", lg: "4rem", xl: "5.25rem", xxl: "5rem" },
         textAlign: { xs: "center", lg: "left", },
         color: "primary.contrastText",
         textTransform: "uppercase",
@@ -76,7 +79,6 @@ export default function RequestDemoBanner() {
        sx={{
         width: { xs: "90%", sm: "80%", lg: "90%", },
         margin: { xs: "0px auto 0px", lg: "5px 5px", },
-        fontFamily: "Work Sans",
         color: "primary.contrastText",
         fontSize: { xs: "0.8rem", lg: "1.1rem", },
         textAlign: { xs: "center", lg: "left" },
