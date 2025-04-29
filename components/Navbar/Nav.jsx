@@ -97,24 +97,16 @@ const Nav = () => {
 
   return (
     <>
-
-
       {/* for Desktop view */}
-
       <Stack
-        sx={{
-          display: {
-            xs: "none",
-            lg: "flex",
-          },
-        }}
+        sx={{ display: { xs: "none", lg: "flex", }, }}
         direction={"row"}
         justifyContent={"space-between"}
         p={"20px 90px"}
         alignItems={"center"}
         position={"sticky"}
         top={0}
-        backgroundColor={"#fff"}
+        backgroundColor={"background.paper"}
         zIndex={999}
       >
         <Stack width={{ xl: "16%", md: "25%", sm: "35%" }}
