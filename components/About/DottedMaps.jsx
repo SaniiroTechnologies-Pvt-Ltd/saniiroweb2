@@ -4,7 +4,7 @@ import { Box, Stack } from "@mui/material";
 import DottedMap from "dotted-map";
 import { useState } from "react";
 
-const map = new DottedMap({ height: 60, grid: "vertical" });
+const map = new DottedMap({ height: 60, width: 100, grid: "diagonal" });
 
 map.addPin({
   lat: 41.963064,
@@ -48,14 +48,14 @@ const offset = {
 
 export default function DottedMaps() {
   const [pin, setActivePin] = useState(pins[0]);
-  const viewBox = `0 0 100 100`;
+  
+  const viewBox = `0 0 100 60`;
   return (
-    <Box
-      sx={{
-        height: {
-          xs: "100%",
-        },
-      }}
+    <Box 
+    sx={{ 
+      height: { xs: "60%", }, 
+      boxSizing: "border-box",
+    }}
     >
       {/* {pins.map((pin) => (
         <button type="button" onClick={() => setActivePin(pin)}>
@@ -65,7 +65,7 @@ export default function DottedMaps() {
       <Stack alignItems={"center"} pt={3}>
         <svg
           viewBox={viewBox}
-          style={{ background: svgOptions.backgroundColor, width: "80%" }}
+          style={{ background: svgOptions.backgroundColor, width: "90%", height: "60%" }}
         >
           {points.map((point) => (
             <circle

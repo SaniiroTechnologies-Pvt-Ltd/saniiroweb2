@@ -1,5 +1,3 @@
-"use client";
-
 import AboutBanner from "@/components/About/AboutBanner";
 import ExploreAbout from "@/components/About/ExploreAbout";
 import Name from "@/components/About/Name";
@@ -12,14 +10,12 @@ import Clock from "@/components/Home/Clock";
 import NavOnScroll from "@/components/NavOnScroll";
 import { Stack } from "@mui/material";
 
-function page() {
+const AboutUsPage = () => {
   return (
     <>
       <NavOnScroll isAlwaysVisible={true} />
       <AboutBanner />
-      <Stack gap={5} maxWidth={"1536px"} margin={"0 auto"}>
-        <WelcomeToSaniiro />
-      </Stack>
+      <WelcomeToSaniiro />
       <ExploreAbout />
       <OurJourney />
       <OurNetwork />
@@ -33,4 +29,4 @@ function page() {
   );
 }
 
-export default page
+export default AboutUsPage;
