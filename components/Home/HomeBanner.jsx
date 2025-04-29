@@ -88,7 +88,7 @@ export default function HomeBanner() {
 
           {/* <Typography variant="body1"
             sx={{
-              color: "dark.main",
+              color: "common.black",
               maxWidth: { xs: "90%", lg: "80%" },
               margin: { xs: "20px auto 0px", lg: "20px 0px 0px" },
               fontSize: { 
@@ -125,9 +125,9 @@ export default function HomeBanner() {
             <Link href="/request-demo" onClick={() => window.scrollTo(0, 0)}>
               <Button variant="contained"
                 sx={{
-                  bgcolor: "light.main",
-                  color: "dark.main",
-                  borderColor: "dark.main",
+                  bgcolor: "common.white",
+                  color: "common.black",
+                  borderColor: "common.black",
                   border: "1px solid",
                   fontWeight: "bold",
                   fontSize: {
@@ -155,7 +155,7 @@ export default function HomeBanner() {
             width: { xs: "85%", lg: "45%" },
           }}
         >
-          <Typography variant="h2" color="light.main"
+          <Typography variant="h2" color="common.white"
             sx={{
               fontSize: { xs: "0.75rem", sm: '1em', md: "1.5rem", lg: "1.1rem", xl: "1.6rem" },
               mb: { xs: 2, xl: 4 },
@@ -288,8 +288,8 @@ export default function HomeBanner() {
         <Button
           sx={{
             fontSize: { xs: "10px", sm: "12px", md: "18px" },
-            bgcolor: "light.main",
-            color: "dark.main",
+            bgcolor: "common.white",
+            color: "common.black",
             border: "1px solid black",
             fontWeight: "bold",
             p: 1.5,
