@@ -4,9 +4,11 @@ import BlogContentFeed from "@/components/Blog/parts/BlogContentFeed";
 import NavOnScroll from "@/components/NavOnScroll";
 
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }) {
+  const { slug, Id } = params; // Access slug and Id from params
+
   return {
-    title: "Homeddd Page",
+    title: `${slug}`,
     description: "This is a dynamically generated description for the Home Page",
     viewport: "width=device-width, initial-scale=1.0",
     other: {
@@ -15,7 +17,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function page() {
+const BlogBySlugPage = () => {
   return (
     <main>
       <NavOnScroll isAlwaysVisible={true} />
@@ -24,3 +26,5 @@ export default function page() {
     </main>
   );
 }
+
+export default BlogBySlugPage;

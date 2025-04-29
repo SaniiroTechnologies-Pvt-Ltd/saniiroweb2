@@ -1,15 +1,16 @@
 "use client";
 
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DescriptionIcon from "@mui/icons-material/Description";
-import CommentForm from "./CommentForm";
+// import CommentForm from "./CommentForm";
 import RelatedPost from "./RelatedPost";
 import { Blogs } from "./TagsBlogsData";
 import { usePathname } from "next/navigation";
 import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
 import Link from "next/link";
+import BlogCommentForm from "./BlogCommentForm";
 
 const BlogContentFeed = () => {
   const [activeTags, setActiveTags] = useState([]);
@@ -235,7 +236,9 @@ const BlogContentFeed = () => {
                     marginBottom: "20px",
                   }}
                 />
-                <CommentForm BlogId={BlogId} />
+                {/* <CommentForm BlogId={BlogId} /> */}
+                <BlogCommentForm BlogId={BlogId} />
+                <Divider sx={{ width: '100%'}} flexItem />
                 <RelatedPost />
               </Stack>
             ))}
