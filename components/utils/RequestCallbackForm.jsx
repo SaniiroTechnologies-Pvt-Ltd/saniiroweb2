@@ -349,12 +349,12 @@ export default function RequestCallbackForm() {
           {/* reCaptcha */}
           <Grid item xs={12}>
             <Tooltip
-              title={errors.Message || ""}
-              open={Boolean(errors.Message)}
+              title={captchaVerified || ""}
+              open={captchaVerified}
               placement="bottom-end"
               arrow
               disableFocusListener
-              disableHoverListener={!errors.Message}
+              disableHoverListener={!captchaVerified}
               disableTouchListener
             >
               {/* ✅ Add reCAPTCHA below the last input field */}
