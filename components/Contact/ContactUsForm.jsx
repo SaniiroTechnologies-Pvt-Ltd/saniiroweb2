@@ -1,7 +1,7 @@
 "use client"
 
 import apiEndpoints from "@/utils/apiEndpoints";
-import countryCodes from "./data/country_codes_data.json";
+import countryCodes from "@/components/data/country_codes_data.json";
 import { Business, ChatBubble, Email, Language, Person, PhoneAndroid } from "@mui/icons-material";
 import { Box, Button, CircularProgress, Grid, InputAdornment, MenuItem, TextField, Tooltip } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import SweetAlert from "../SweetAlert/SweetAlert";
 import confetti from "canvas-confetti";
 
 const inputStyles = {
-  borderRadius: "12px", backgroundColor: "#FFFFFF",
+  borderRadius: "12px", backgroundColor: "background.paper",
 };
 const inputSize = "small";
 
@@ -39,15 +39,6 @@ export default function ContactUsForm() {
   const selectedCountry = isClient
     ? countryCodes.find((country) => `${country.dial_code}` === formValues.PhoneCode)
     : null;
-
-  // // Handle phone number input change
-  // const handlePhoneChange = (e) => {
-  //  if (!selectedCountry) return; // Prevent errors during SSR
-  //  const maxLength = selectedCountry?.mobile_number_length || 10;
-  //  const value = e.target.value.replace(/\D/g, "").slice(0, maxLength); // Restricts non-numeric input
-
-  //  setFormValues({ ...formValues, PhoneNumber: value });
-  // };
 
   const handlePhoneChange = (e) => {
     if (!selectedCountry) return; // Prevent errors during SSR
@@ -101,21 +92,16 @@ export default function ContactUsForm() {
   const finalSubmit = async () => {
 
     const payload = { ...formValues };
-    // console.log('final payload: ', payload)
     await axios.post(apiEndpoints.Contact, payload).then(response => {
-      // console.log("✅ Success Response1:", response, response.data.Code);
       if (response.data.Code === 1000) {
-        // console.log("✅ Success Response2:", response.data);
         SweetAlert.success("Success", "Thank you for your submission! Our team will call you shortly.");
         launchConfetti();
         resetForm();
       } else {
-        // console.log("❌ Failed Response:", response.data);
         SweetAlert.error("Error", response?.data?.message || "Submission failed.");
       }
     })
-      .catch(error => {
-        // console.error("finalSubmit error", error);
+      .catch(() => {
         SweetAlert.error("Error", "Something went wrong during submission.");
       })
       .finally(() => {
@@ -223,7 +209,7 @@ export default function ContactUsForm() {
           </Grid>
 
           {/* Phone Code */}
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             <Tooltip
               title={errors.PhoneCode || ""}
               open={Boolean(errors.PhoneCode)}
@@ -268,7 +254,7 @@ export default function ContactUsForm() {
           </Grid>
 
           {/* Phone Number */}
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <Tooltip
               title={errors.PhoneNumber || ""}
               open={Boolean(errors.PhoneNumber)}
@@ -314,7 +300,6 @@ export default function ContactUsForm() {
               />
             </Tooltip>
           </Grid>
-
 
           {/* Work Email */}
           <Grid item xs={12}>
@@ -369,8 +354,8 @@ export default function ContactUsForm() {
               <TextField
                 fullWidth
                 size={inputSize}
-                placeholder="Message"
-                type="tel"
+                placeholder="Your Message Here..."
+                type="text"
                 name="Message"
                 value={formValues.Message}
                 onChange={(e) => setFormValues({ ...formValues, Message: e.target.value })}
@@ -384,10 +369,10 @@ export default function ContactUsForm() {
                       borderColor: errors.Message ? "#f44336" : "#ccc",
                       borderWidth: errors.Message ? "2px" : "1px", // 🎯 Here we increase border width
                     },
+                    alignItems: "flex-start",
                   },
                   startAdornment: (
-                    <InputAdornment position="start"
-                      sx={{ display: "flex", alignItems: "flex-start", marginTop: "12px" }}>
+                    <InputAdornment position="start" sx={{ marginTop: "12px" }}>
                       <ChatBubble sx={{ color: "text.tertiary", fontSize: "20px" }} />
                     </InputAdornment>
                   ),

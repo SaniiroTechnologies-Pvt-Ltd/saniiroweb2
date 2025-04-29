@@ -1,12 +1,12 @@
 "use client"
 
 import apiEndpoints from "@/utils/apiEndpoints";
-import countryCodes from "./data/country_codes_data.json";
+import countryCodes from "@/components/data/country_codes_data.json";
 import { ChatBubble, Email, Language, Person, PhoneAndroid } from "@mui/icons-material";
 import { Box, Button, CircularProgress, Grid, InputAdornment, MenuItem, TextField, Tooltip, Typography } from "@mui/material";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import SweetAlert from "../SweetAlert/SweetAlert"; 
+import SweetAlert from "../SweetAlert/SweetAlert";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const inputStyles = {
@@ -97,20 +97,15 @@ export default function RequestCallbackForm() {
   const finalSubmit = async () => {
 
     const payload = { ...formValues };
-    // console.log('final payload: ', payload)
     await axios.post(apiEndpoints.RequestDemo, payload).then(response => {
-      // console.log("✅ Success Response1:", response, response.data.Code);
       if (response.data.Code === 1000) {
-        // console.log("✅ Success Response2:", response.data);
         SweetAlert.success("Success", "Thank you for your submission! Our team will call you shortly.");
         resetForm();
       } else {
-        // console.log("❌ Failed Response:", response.data);
         SweetAlert.error("Error", response?.data?.message || "Submission failed.");
       }
     })
-      .catch(error => {
-        // console.error("finalSubmit error", error);
+      .catch(() => {
         SweetAlert.error("Error", "Something went wrong during submission.");
       })
       .finally(() => {
@@ -338,10 +333,10 @@ export default function RequestCallbackForm() {
                       borderColor: errors.Message ? "#f44336" : "#ccc",
                       borderWidth: errors.Message ? "2px" : "1px", // 🎯 Here we increase border width
                     },
+                    alignItems: "flex-start",
                   },
                   startAdornment: (
-                    <InputAdornment position="start"
-                      sx={{ display: "flex", alignItems: "flex-start", marginTop: "12px" }}>
+                    <InputAdornment position="start" sx={{ marginTop: "12px" }}>
                       <ChatBubble sx={{ color: "text.tertiary", fontSize: "20px" }} />
                     </InputAdornment>
                   ),
