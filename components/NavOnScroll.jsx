@@ -26,7 +26,7 @@ const NavOnScroll = ({ threshold, isAlwaysVisible = false }) => {
             setShowNav(true);
           } 
           // Hide nav when scrolling up past threshold
-          else if (currentScrollY < threshold) {
+          else if (currentScrollY < threshold && currentScrollY > 0) {
             setShowNav(false);
           }
           
