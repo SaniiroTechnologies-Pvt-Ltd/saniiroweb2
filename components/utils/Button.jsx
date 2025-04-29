@@ -1,3 +1,5 @@
+"use client";
+
 import { Button as MuiButton } from "@mui/material";
 import { styled } from "@mui/system";
 
