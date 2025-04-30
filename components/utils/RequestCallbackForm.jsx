@@ -359,7 +359,7 @@ export default function RequestCallbackForm() {
             >
               {/* ✅ Add reCAPTCHA below the last input field */}
               <ReCAPTCHA
-                sitekey="6Ldyj58pAAAAAMxa5p0VGAIrBNxqDgwbUivphTon"
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 onChange={handleCaptchaVerification}
               />
 
