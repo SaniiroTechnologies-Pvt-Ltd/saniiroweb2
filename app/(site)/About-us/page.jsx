@@ -8,9 +8,22 @@ import WelcomeToSaniiro from "@/components/About/WelcomeToSaniiro";
 import Awards from "@/components/Home/Awards";
 import Clock from "@/components/Home/Clock";
 import NavOnScroll from "@/components/NavOnScroll";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-const AboutUsPage = () => {
+// Metadata | About-us
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('about');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+export default function AboutUsPage() {
+
   return (
     <>
       <NavOnScroll isAlwaysVisible={true} />
@@ -28,5 +41,3 @@ const AboutUsPage = () => {
     </>
   );
 }
-
-export default AboutUsPage;

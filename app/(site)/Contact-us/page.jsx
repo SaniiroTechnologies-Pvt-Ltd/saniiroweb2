@@ -6,9 +6,19 @@ import GrennSection from "@/components/Contact/GreenSection";
 import Offices from "@/components/Contact/Offices";
 import Readytosign from "@/components/Contact/Readytosign";
 import NavOnScroll from "@/components/NavOnScroll";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Box, Stack } from "@mui/material";
 
-function page() {
+// Metadata | Contact-us
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('contact');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function ContactUsPage() {
   return (
     <>
       <NavOnScroll threshold={610} />
@@ -29,5 +39,3 @@ function page() {
     </>
   )
 }
-
-export default page

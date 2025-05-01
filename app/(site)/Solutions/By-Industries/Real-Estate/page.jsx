@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Real Estate
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('real-estate');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Real estate CRM software is vital for managing property listings, clients, bookings, CRM, and finances. Manual processes can lead to missed opportunities and inefficiencies.",
@@ -106,7 +114,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function RealEstate() {
+export default function RealEstatePage() {
   
   return (
     <React.Fragment>

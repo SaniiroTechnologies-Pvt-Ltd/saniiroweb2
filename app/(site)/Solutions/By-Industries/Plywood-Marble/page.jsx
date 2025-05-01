@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Plywood & Marble
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('plywood-marble');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Saniiro offers a comprehensive solution for managing online grocery and FMCG retail operations. Our software ensures smooth, fast, and accurate transactions from real-time inventory tracking to efficient order processing.",
@@ -85,7 +93,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function PlywoodMarble() {
+export default function PlywoodMarblePage() {
   
   return (
     <React.Fragment>

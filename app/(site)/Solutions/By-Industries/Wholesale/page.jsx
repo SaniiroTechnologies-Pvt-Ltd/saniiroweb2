@@ -1,10 +1,19 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Wholesale
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('wholesale');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
 const headings = [
   "Best Wholesale & Distribution Software built to serve the complex needs of FMCG distributors, pharmaceutical distributors, electrical & electronics wholesalers, hardware suppliers, grocery wholesalers, mobile accessories distributors, and the plywood industry. Empower your business with advanced features like multi-location inventory management, batch-wise tracking, smart order processing, and real-time stock visibility.",
@@ -130,7 +139,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function Wholesale() {
+export default function WholesalePage() {
   
   return (
     <React.Fragment>

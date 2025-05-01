@@ -1,5 +1,3 @@
-"use client";
-
 import ProductSlider from "@/components/About/ProductSlider";
 import Clock from "@/components/Home/Clock";
 import ContactFaq from "@/components/Home/ContactFaq";
@@ -9,9 +7,19 @@ import Industries2 from "@/components/Solutions/industriesParts/Industries2";
 import Industries3 from "@/components/Solutions/industriesParts/Industries3";
 import Industries4 from "@/components/Solutions/industriesParts/Industries4";
 import IndustriesGridInteractive from "@/components/Solutions/industriesParts/IndustriesGridInteractive";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+// Metadata | Solution / By Industries
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('by-industries');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function ByIndustriesPage() {
   return (
     <>
       <Nav />

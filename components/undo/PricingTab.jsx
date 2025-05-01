@@ -322,6 +322,7 @@
 // };
 
 // export default PricingTab;
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Stack } from "@mui/material";

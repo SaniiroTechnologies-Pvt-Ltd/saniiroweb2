@@ -1,7 +1,7 @@
 import PageWrapper from '@/components/PageWrapper'
 import Footer from '@/components/utils/Footer'
 
-function WebLayout({ children }) {
+export default function WebLayout({ children }) {
  return (
   <PageWrapper>
    {children}
@@ -9,5 +9,3 @@ function WebLayout({ children }) {
   </PageWrapper>
  )
 }
-
-export default WebLayout

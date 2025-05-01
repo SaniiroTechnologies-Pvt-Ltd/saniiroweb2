@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Real Estate
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('service-provider');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Best Service Provider Software is essential for businesses that rely on appointments, client management, and on-time service delivery. Managing schedules, invoicing, and customer communication manually can slow you down and lead to errors.",

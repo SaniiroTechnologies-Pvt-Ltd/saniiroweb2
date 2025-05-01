@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Wholesale
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('ecommerce');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Saniiro simplifies multi-vendor marketplace operations with centralized product listing management, inventory tracking, and order processing. Seamlessly onboard vendors, manage commissions, and track performance.",
@@ -85,7 +93,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function ECommerce() {
+export default function ECommercePage() {
 
   return (
     <React.Fragment>

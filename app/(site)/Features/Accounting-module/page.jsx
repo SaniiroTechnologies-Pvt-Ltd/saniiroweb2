@@ -9,9 +9,19 @@ import BillingSteps from "@/components/Features/BillingSteps";
 import ImprovedSales from "@/components/Features/ImprovedSales";
 import Clock from "@/components/Home/Clock";
 import NavOnScroll from "@/components/NavOnScroll";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+// Metadata | Features / Accounting Module
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('accounting-module');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function AccountingModulePage() {
   return (
     <>
       <NavOnScroll threshold={570} />

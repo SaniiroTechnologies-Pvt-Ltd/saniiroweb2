@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Nav from "./Navbar/Nav";
 
-const NavOnScroll = ({ threshold, isAlwaysVisible = false }) => {
+export default function NavOnScroll({ threshold, isAlwaysVisible = false }) {
   const [showNav, setShowNav] = useState(isAlwaysVisible);
 
   useEffect(() => {
@@ -13,23 +13,24 @@ const NavOnScroll = ({ threshold, isAlwaysVisible = false }) => {
       return;
     }
 
-    let lastScrollY = window.scrollY;
+    let lastScrollY = undefined;
     let ticking = false;
 
     const handleScroll = () => {
+      lastScrollY = window.scrollY
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          
+
           // Show nav when scrolling down past threshold
           if (currentScrollY > threshold) {
             setShowNav(true);
-          } 
+          }
           // Hide nav when scrolling up past threshold
           else if (currentScrollY < threshold && currentScrollY > 0) {
             setShowNav(false);
           }
-          
+
           lastScrollY = currentScrollY;
           ticking = false;
         });
@@ -43,5 +44,3 @@ const NavOnScroll = ({ threshold, isAlwaysVisible = false }) => {
 
   return showNav && <Nav />;
 };
-
-export default NavOnScroll;

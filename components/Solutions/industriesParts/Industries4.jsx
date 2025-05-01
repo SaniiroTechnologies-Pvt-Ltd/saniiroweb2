@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import IndustryLogo1 from "../../assets/IndustryLogo1.svg";

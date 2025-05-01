@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, ButtonBase, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import "react-multi-carousel/lib/styles.css";

@@ -1,11 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { Fragment } from "react";
 import Nav from "../Navbar/Nav";
 import { Box, Stack, Typography } from "@mui/material";
-import Footer from "../utils/Footer";
 
 const Legal = () => {
   return (
-    <>
+    <Fragment>
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Nav />
         <Stack width={"100%"} alignItems={"center"}>
@@ -140,8 +141,7 @@ const Legal = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Footer />
-    </>
+    </Fragment>
   );
 };
 

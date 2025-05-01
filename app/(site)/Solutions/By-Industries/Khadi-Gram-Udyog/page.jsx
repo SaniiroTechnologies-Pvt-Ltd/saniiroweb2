@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Khadi Gram Udyog
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('khadi-gram-udyog');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Khadi and Gramudyog software is designed to support the unique needs of traditional, rural, and small-scale industries. From raw material tracking and artisan management to billing, inventory, and sales, managing operations manually can slow down growth and reduce efficiency.",
@@ -100,7 +108,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function KhadiGramUdyog() {
+export default function KhadiGramUdyogPage() {
   
   return (
     <React.Fragment>

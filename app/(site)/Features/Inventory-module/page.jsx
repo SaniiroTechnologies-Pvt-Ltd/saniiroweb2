@@ -9,9 +9,19 @@ import InventoryFeaturesGlance2 from "@/components/Features/Inventory/InventoryF
 import InventoryFolderOperationList from "@/components/Features/Inventory/InventoryFolderOperationList";
 import Clock from "@/components/Home/Clock";
 import NavOnScroll from "@/components/NavOnScroll";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+// Metadata | Features / Inventory Module
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('inventory-module');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function InventoryModulePage() {
   return (
     <main>
       <NavOnScroll threshold={570} />

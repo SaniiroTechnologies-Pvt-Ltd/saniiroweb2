@@ -4,9 +4,19 @@ import ContactFaq from "@/components/Home/ContactFaq";
 import IndustryCards from "@/components/IndustryCards";
 import Nav from "@/components/Navbar/Nav";
 import Industries1 from "@/components/Solutions/IndustriesBysize/Industries1";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+// Metadata | Solution / By Size
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('by-size');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function BySizePage() {
   return (
     <>
     <Nav />

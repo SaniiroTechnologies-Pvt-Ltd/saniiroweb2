@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import Image from "next/image";
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries /Retailers
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('retailers');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "The retail industry is fast-paced and complex, covering everything from clothing and electronics to groceries and cosmetics. Managing a retail store involves handling inventory, billing, taxes, customers, and employees—tasks that can be time-consuming and error-prone when done manually. Saniiro, the best retail software, simplifies retail operations by automating all core functions. It offers real-time inventory tracking, fast billing, GST-compliant accounting, and built-in customer management. Whether you run a single store or a chain, Saniiro provides centralized control, reduces paperwork, and improves accuracy.",
@@ -119,7 +127,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function Retailer() {
+export default function RetailerPage() {
   
   return (
     <React.Fragment>

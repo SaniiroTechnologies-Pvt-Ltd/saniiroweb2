@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Manufacturing
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('manufacturing');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Manufacturing businesses deal with a wide range of challenges—material procurement, production planning, inventory control, labor management, and compliance. Handling all of this manually not only consumes time but increases the risk of costly errors and inefficiencies.",
@@ -129,7 +137,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function Manufacturing() {
+export default function ManufacturingPage() {
   
   return (
     <React.Fragment>

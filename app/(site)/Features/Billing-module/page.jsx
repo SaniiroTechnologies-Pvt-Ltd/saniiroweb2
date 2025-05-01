@@ -1,5 +1,3 @@
-"use client";
-
 import BillingBanner from "@/components/Features/BillingBanner";
 import BillingFolderOperationList from "@/components/Features/Billing/BillingFolderOperationList";
 import BillingFeaturesGlance2 from "@/components/Features/Billing/BillingFeaturesGlance2";
@@ -10,10 +8,20 @@ import ProductSlider from "@/components/About/ProductSlider";
 import Clock from "@/components/Home/Clock";
 import ImprovedSales from "@/components/Features/ImprovedSales";
 import NavOnScroll from "@/components/NavOnScroll";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 // import BillingFeatures from "@/components/Features/BillingFeatures";
 // import FeaturesGlance from "@/components/Features/FeaturesGlance";
 
-function page() {
+// Metadata | Features / Billing Module
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('billing-module');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function BillingModulePage() {
   return (
     <>
       <NavOnScroll threshold={570} />
@@ -34,5 +42,3 @@ function page() {
     </>
   );
 }
-
-export default page

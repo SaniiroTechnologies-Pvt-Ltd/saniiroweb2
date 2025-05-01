@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Pharmaceutical
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('pharmaceutical');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Saniiro, the best medical and health industry software, simplifies daily operations by automating inventory control, GST-compliant billing, appointment scheduling, and reporting. Whether you're running a pharmacy, clinic, or healthcare distribution unit, Saniiro offers centralized control, real-time insights, and complete compliance—all from one easy-to-use platform.",
@@ -81,7 +89,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function Pharmaceutical() {
+export default function PharmaceuticalPage() {
   
   return (
     <React.Fragment>

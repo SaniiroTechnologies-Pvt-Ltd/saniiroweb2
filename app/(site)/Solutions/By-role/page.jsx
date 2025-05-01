@@ -8,9 +8,19 @@ import Industry4 from "@/components/Solutions/IndustriesByrole/Industry4";
 import Industry5 from "@/components/Solutions/IndustriesByrole/Industry5";
 import Industry6 from "@/components/Solutions/IndustriesByrole/Industry6";
 import Signupfree from "@/components/Solutions/Signupfree";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
 
-export default function Index() {
+// Metadata | Solution / By Size
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('by-role');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export default function ByRolePage() {
   return (
     <>
       <Nav />

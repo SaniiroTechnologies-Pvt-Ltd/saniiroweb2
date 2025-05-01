@@ -1,7 +1,12 @@
-import React from "react";
+"use client";
 
-const EmployeeLogin = () => {
-  return <div>EmployeeLogin</div>;
+import { Typography } from "@mui/material";
+import React, { Fragment } from "react";
+
+function EmployeeLoginPage() {
+  return (<Fragment>
+    <Typography variant="h1">Sorry! This Page Under Maintanance.</Typography>
+  </Fragment>);
 };
 
-export default EmployeeLogin;
+export default EmployeeLoginPage;

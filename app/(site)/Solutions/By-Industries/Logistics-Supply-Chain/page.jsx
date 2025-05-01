@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / logistics Supply Chain
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('logistics-supply-chain');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Logistics and supply chain operations are the backbone of efficient business flow, but managing them manually can lead to delays, errors, and missed opportunities. From shipment tracking and warehouse management to order processing and vendor coordination, the complexity demands smart automation.",
@@ -122,7 +130,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function LogisticsSupplyChain() {
+export default function LogisticsSupplyChainPage() {
 
   return (
     <React.Fragment>

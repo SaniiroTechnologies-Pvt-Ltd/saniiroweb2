@@ -7,19 +7,17 @@ import NewPart from "@/components/Home/NewPart";
 import RequestDemo from "@/components/Home/RequestDemo";
 import ToggleSection from "@/components/Home/State";
 import NavOnScroll from "@/components/NavOnScroll";
-import PageWrapper from "@/components/PageWrapper";
+import { fetchMetadata } from "@/utils/FetchMetadata";
 
-// export async function generateMetadata() {
-//   return {
-//     title: "Home Page",
-//     description: "This is a dynamically generated description for the Home Page",
-//     viewport: "width=device-width, initial-scale=1.0",
-//     other: {
-//       "keywords": "home page, SEO, Saniiro",
-//     },
-//   };
-// }
 
+// metadata | Home
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('home');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default function Index() {
   return (

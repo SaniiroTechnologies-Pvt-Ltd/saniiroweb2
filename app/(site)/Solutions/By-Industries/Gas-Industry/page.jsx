@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react"; 
+import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Gas Industry
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('ongc');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Gas industry software is essential for managing the complex operations of LPG distributors, gas agencies, and energy suppliers. From cylinder tracking and order management to billing and safety compliance, manual processes can lead to delays and errors.",

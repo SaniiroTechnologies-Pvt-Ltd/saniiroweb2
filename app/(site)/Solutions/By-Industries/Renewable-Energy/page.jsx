@@ -1,10 +1,18 @@
-"use client";
-
 import Banner from "@/components/Banner";
 import { Box, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import { fetchMetadata } from "@/utils/FetchMetadata";
+
+// Metadata | Solution / By Industries / Real Estate
+export async function generateMetadata() {
+  try {
+    return await fetchMetadata('renewable-energy');
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const headings = [
   "Renewable energy software is essential for companies involved in solar, wind, hydro, and other sustainable energy projects. Managing installations, asset performance, compliance, and financials manually can slow progress and reduce efficiency.",
@@ -108,7 +116,7 @@ const titleFontSize = {
   lg: '2.5rem',  // Retained for large screens
 };
 
-export default function RenewableEnergy() {
+export default function RenewableEnergyPage() {
  
   return (
     <React.Fragment>

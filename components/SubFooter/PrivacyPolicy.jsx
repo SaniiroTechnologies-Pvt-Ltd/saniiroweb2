@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Nav from "../Navbar/Nav";
 import { Box, Stack, Typography } from "@mui/material";
-import Footer from "../utils/Footer";
 
 const PrivacyPolicy = () => {
   return (
-    <>
+    <Fragment>
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Nav />
         <Stack width={"100%"} alignItems={"center"}>
@@ -357,8 +356,7 @@ const PrivacyPolicy = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Footer />
-    </>
+    </Fragment>
   );
 };
 

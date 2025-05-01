@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, Typography, Button } from "@mui/material";
 import React from "react";
 import CompanyImg from "../assets/c36347c59a42b5602f35e77ae7519878.png";
