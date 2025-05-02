@@ -1,5 +1,3 @@
-"use client";
-
 import Bluescreen from "@/components/Contact/Bluescreen";
 import ContactUs from "@/components/Contact/ContactUs";
 import GrennSection from "@/components/Contact/GreenSection";
@@ -14,7 +12,8 @@ export async function generateMetadata() {
   try {
     return await fetchMetadata('contact');
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching metadata:", error);
+    return {}; // Return an empty object or default metadata
   }
 }
 
