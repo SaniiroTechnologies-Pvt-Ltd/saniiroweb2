@@ -7,12 +7,3 @@ export const fetchMetadata = async (key) => {
  }
  return res.json();
 };
-
-// Metadata | Solution / By Industries / Khadi Gram Udyog
-export async function generateMetadata(key) {
-  try {
-    return await fetchMetadata(key);
-  } catch (error) {
-    console.error(error);
-  }
-}
