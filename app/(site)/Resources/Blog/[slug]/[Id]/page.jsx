@@ -18,7 +18,7 @@ const BlogBySlugPage = () => {
   return (
     <main>
       <NavOnScroll isAlwaysVisible={true} />
-      <BlogBanner GrayBanner={true} />
+      {/* <BlogBanner GrayBanner={true} /> */}
       <BlogContentFeed />
     </main>
   );
