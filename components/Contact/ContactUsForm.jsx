@@ -127,7 +127,7 @@ export default function ContactUsForm() {
       <Box
         component="form"
         onSubmit={handleFormSubmit}
-        sx={{ mx: { xs: 0, md: 2, lg: 2 }, px: { xs: 0, md: 4, lg: 2 } }}
+        sx={{ mx: { xs: 0, md: 2, lg: 2 }, px: { xs: 1, md: 4, lg: 2 } }}
       >
         <Grid container spacing={2}>
           {/* Full Name */}

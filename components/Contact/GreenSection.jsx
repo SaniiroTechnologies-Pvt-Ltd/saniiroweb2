@@ -19,22 +19,22 @@ const GrennSection = () => {
   return (
     <Box sx={{ position: "relative" }}>
       <Stack
-        alignItems={{ xl: "center", xs: "none" }}
-        pt={{ xl: 4, xs: "none" }}
-        position={{ xl: "absolute", xs: "none" }}
+        alignItems={{ lg: "center", xs: "none" }}
+        pt={{ lg: 4, xs: "none" }}
+        position={{ lg: "absolute", xs: "none" }}
         top={"-11%"}
       >
         <Stack
           bgcolor={"tertiary.main"}
-          width={{ xl: "85%", xs: "none" }}
-          borderRadius={{ xl: 1, xs: "none" }}
+          width={{ lg: "85%", xs: "none" }}
+          borderRadius={{ lg: 1, xs: "none" }}
           p={"20px 24px"}
-          direction={{ xl: "row", xs: "column" }}
+          direction={{ lg: "row", xs: "column" }}
           gap={2}
           zIndex={1}
         >
           <Stack
-            width={{ xl: "25%", xs: "100%" }}
+            width={{ lg: "25%", xs: "100%" }}
             bgcolor={"white"}
             borderRadius={1}
           >
@@ -67,7 +67,7 @@ const GrennSection = () => {
             </Stack>
           </Stack>
           <Stack
-            width={{ xl: "75%", xs: "100%" }}
+            width={{ lg: "75%", xs: "100%" }}
             bgcolor={"white"}
             borderRadius={1}
           >
@@ -85,11 +85,11 @@ const GrennSection = () => {
               >
                 EXISTING CUSTOMER
               </Button>
-              <Stack direction={{ xl: "row", xs: "column" }} gap={5}>
+              <Stack direction={{ lg: "row", xs: "column" }} gap={5}>
                 <Stack
-                  width={{ xl: "30%", xs: "100%" }}
+                  width={{ lg: "30%", xs: "100%" }}
                   gap={2}
-                  borderRight={{ xl: "1px solid #248F41", xs: "none" }}
+                  borderRight={{ lg: "1px solid #248F41", xs: "none" }}
                 >
                   <Stack>
                     <Image
@@ -105,9 +105,9 @@ const GrennSection = () => {
                   <Link href="#">sales@saniiro.com</Link>
                 </Stack>
                 <Stack
-                  width={{ xl: "30%", xs: "100%" }}
+                  width={{ lg: "30%", xs: "100%" }}
                   gap={2}
-                  borderRight={{ xl: "1px solid #248F41", xs: "none" }}
+                  borderRight={{ lg: "1px solid #248F41", xs: "none" }}
                 >
                   <Stack>
                     <Image
@@ -122,7 +122,7 @@ const GrennSection = () => {
                   </Typography>
                   <Link href="#">sales@saniiro.com</Link>
                 </Stack>
-                <Stack width={{ xl: "30%", xs: "100%" }} gap={2}>
+                <Stack width={{ lg: "30%", xs: "100%" }} gap={2}>
                   <Stack>
                     <Image
                       src={icon4Contact}
@@ -150,12 +150,12 @@ const GrennSection = () => {
         </Stack>
       </Stack>
 
-      <Stack alignItems={"center"} pt={"19%"} gap={{ xl: 10, xs: 3 }}>
+      <Stack alignItems={"center"} pt={"19%"} gap={{ lg: 10, xs: 3 }}>
         <Stack
-          width={{ xl: "90%", xs: "100%" }}
-          direction={{ xl: "row", xs: "column" }}
+          width={{ lg: "90%", xs: "100%" }}
+          direction={{ lg: "row", xs: "column" }}
         >
-          <Stack width={{ xl: "47%", xs: "100%" }}>
+          <Stack width={{ lg: "47%", xs: "100%" }}>
             <Image
               src={contactsection3}
               alt=""
@@ -164,8 +164,8 @@ const GrennSection = () => {
           </Stack>
           <Stack
             p={"20px 25px"}
-            gap={{ xl: 3, xs: "10px" }}
-            width={{ xl: "40%", xs: "none" }}
+            gap={{ lg: 3, xs: "10px" }}
+            width={{ lg: "40%", xs: "none" }}
           >
             <Button
               sx={{
@@ -180,7 +180,7 @@ const GrennSection = () => {
             >
               I'M NEW HERE
             </Button>
-            <Typography fontSize={{ xl: "40px", xs: "24px" }} letterSpacing={1}>
+            <Typography fontSize={{ lg: "40px", xs: "24px" }} letterSpacing={1}>
               Find your way around Saniiro with Concierge
             </Typography>
             <Typography>
@@ -191,8 +191,8 @@ const GrennSection = () => {
           </Stack>
         </Stack>
         <Stack
-          width={{ xl: "90%", xs: "100%" }}
-          direction={{ xl: "row", xs: "column-reverse" }}
+          width={{ lg: "90%", xs: "100%" }}
+          direction={{ lg: "row", xs: "column-reverse" }}
         >
           <Stack
             m={"0 auto"}
@@ -201,7 +201,7 @@ const GrennSection = () => {
               xs: "20px 0px",
             }}
             gap={3}
-            width={{ xl: "40%", xs: "90%" }}
+            width={{ lg: "40%", xs: "90%" }}
           >
             <Button
               sx={{
@@ -222,7 +222,7 @@ const GrennSection = () => {
                   xs: "95%",
                 },
               }}
-              fontSize={{ xl: "40px", xs: "24px" }}
+              fontSize={{ lg: "40px", xs: "24px" }}
               letterSpacing={1}
             >
               Interested in a product? Talk to our sales team
@@ -239,15 +239,15 @@ const GrennSection = () => {
             </Typography>
           </Stack>
           <Stack
-            width={{ xl: "60%", xs: "100%" }}
+            width={{ lg: "60%", xs: "100%" }}
             alignItems={"center"}
             justifyContent={"center"}
           >
             <Stack
-              width={{ xl: "80%", xs: "90%" }}
+              width={{ lg: "80%", xs: "90%" }}
               bgcolor={"#FFFFFF"}
               gap={3}
-              p={{ xl: "50px 70px", xs: "20px 0px" }}
+              p={{ lg: "50px 70px", xs: "20px 0px" }}
               borderRadius={1}
             >
               <Stack direction={"row"} gap={1} justifyContent={"center"}>

@@ -11,7 +11,7 @@ const ContactUs = () => {
   return (
     <Stack
       sx={{
-        height: { xl: "930px", xs: "auto" },
+        height: { xs: "auto", lg: "930px", },
         position: "relative",
         bgcolor: "primary.main",
       }}
@@ -20,7 +20,6 @@ const ContactUs = () => {
       <NavLight />
       <Stack
         sx={{
-          maxWidth: "1536px",
           zIndex: 11,
           flexDirection: { xs: "column", lg: "row", },
           margin: { xs: "0 auto", sm: "20px auto", },
@@ -35,6 +34,7 @@ const ContactUs = () => {
           }}
         >
           <Typography
+            variant="h1"
             sx={{
               textTransform: "uppercase",
               wordSpacing: { xl: "-27px" },
@@ -44,7 +44,7 @@ const ContactUs = () => {
               lineHeight: 0.9,
               letterSpacing: "0.1em",
               WebkitTextStrokeColor: theme.palette.secondary.main,
-              WebkitTextStrokeWidth: '2px',
+              WebkitTextStrokeWidth: 2,
               color: 'transparent',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
@@ -59,7 +59,7 @@ const ContactUs = () => {
               color: 'common.white',
               fontSize: { xs: "38px", sm: "37px", md: "68px", lg: "63px", xl: "87px", },
               textAlign: { xs: "center", lg: "left", },
-              fontWeight: 900,
+              fontWeight: 700,
               lineHeight: 0.9,
               letterSpacing: "0.05em",
             }}
@@ -87,12 +87,19 @@ const ContactUs = () => {
           }}
         >
           <Typography
+            variant="h1"
             sx={{
-              fontSize: { xs: "18px", sm: "22px", md: "28px", xl: "38px", },
+              fontSize: {
+                xs: "1.5rem",  // Extra small devices (phones)
+                sm: "1.75rem", // Small devices (tablets)
+                md: "2rem",    // Medium devices (small laptops)
+                lg: "2.25rem",  // Large devices (desktops)
+                xl: "2.5rem",   // Extra large devices (large desktops)
+                xxl: "2.75rem"  // Extra extra large devices (very large screens)
+              },
               textAlign: { xs: "center", },
-              color: "common.white",
-              fontWeight: "bold",
-              fontSize: "22px",
+              color: theme.palette.common.white,
+              fontWeight: theme.typography.fontWeightBold,
               textAlign: "center",
             }}
           >
