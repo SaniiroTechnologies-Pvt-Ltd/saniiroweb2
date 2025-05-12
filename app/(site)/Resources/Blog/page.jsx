@@ -16,7 +16,7 @@ export default function BlogPage() {
   return (
     <main>
       <NavOnScroll isAlwaysVisible={true} />
-      {/* <BlogBanner GrayBanner={false} /> */}
+      <BlogBanner GrayBanner={false} />
       <BlogFeed />
     </main>
   );

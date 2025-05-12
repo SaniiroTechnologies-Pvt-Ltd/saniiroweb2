@@ -1,8 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import Blog1Img from "../assets/BlogImg1.png";
 import Image from "next/image";
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, index }) => {
   const {
     id = "",
     title = "",
@@ -42,7 +41,7 @@ const BlogCard = ({ blog }) => {
           objectFit="cover"
           sizes="100vw"
           alt="Blog Image"
-          src={Blog1Img}
+          src={`/blogs/blogImg${index}.png`}
         />
       </Stack>
       <Stack>

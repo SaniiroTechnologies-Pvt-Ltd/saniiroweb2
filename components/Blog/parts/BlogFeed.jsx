@@ -2,23 +2,16 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Box,
-  Stack,
-  Typography,
-  TextField,
-  InputAdornment,
-} from "@mui/material";
+import { Box, Stack, Typography, TextField, InputAdornment, } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BlogCard from "./BlogCard";
 import TagSection from "./TagSection";
 import CustomPagination from "./Pagination";
 import Link from "next/link";
-
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { Tags, Blogs, FeaturedPosts } from "./TagsBlogsData";
 import DescriptionIcon from "@mui/icons-material/Description";
 import apiEndpoints from "@/utils/apiEndpoints";
+
 const BlogFeed = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -87,6 +80,7 @@ const BlogFeed = () => {
         lg: "1200px",
       }}
     >
+      {/* Boundry */}
       <Stack
         width={"100%"}
         direction="column"
@@ -100,6 +94,7 @@ const BlogFeed = () => {
           xs: "center",
         }}
       >
+        {/* Mobile View | Search Post and Filter */}
         <Stack
           display={{
             xs: "flex",
@@ -108,6 +103,7 @@ const BlogFeed = () => {
           m={"0 auto"}
           width={"95%"}
         >
+          {/* Mobile View | Search Post */}
           <Stack width={"100%"}>
             <TextField
               sx={{
@@ -134,6 +130,7 @@ const BlogFeed = () => {
             />
           </Stack>
 
+          {/* Mobile View | Search Filters Tags */}
           <Stack
             borderRadius={"5px"}
             pb={2}
@@ -141,9 +138,9 @@ const BlogFeed = () => {
             style={
               filterClicked
                 ? {
-                    border: "1px solid lightgray",
-                    backgroundColor: "#dbe1f9",
-                  }
+                  border: "1px solid lightgray",
+                  backgroundColor: "#dbe1f9",
+                }
                 : {}
             }
           >
@@ -201,9 +198,10 @@ const BlogFeed = () => {
               </Stack>
             )}
           </Stack>
+
         </Stack>
 
-        {/*         blog cards  */}
+        {/* Main blog posts  */}
         {blogs.length === 0 ? (
           <Typography
             width={{
@@ -230,7 +228,7 @@ const BlogFeed = () => {
               lg: "left",
             }}
           >
-            {currentBlogs.map((blog) => (
+            {currentBlogs.map((blog, index) => (
               <Link
                 href={{
                   pathname: `/Resources/Blog/${blog.Slug}/${blog.Id}`,
@@ -239,7 +237,7 @@ const BlogFeed = () => {
                 key={blog.Id}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <BlogCard blog={blog} />
+                <BlogCard blog={blog} index={index + 1} />
               </Link>
             ))}
           </Stack>
@@ -251,65 +249,8 @@ const BlogFeed = () => {
           paginate={paginate}
         />
       </Stack>
-      <Stack
-        m={"0 auto"}
-        width={"95%"}
-        display={{
-          xs: "flex",
-          lg: "none",
-        }}
-      >
-        <Box marginTop="30px" border="0.5px solid rgba(0, 0, 0, 0.3)" />
-        <Stack>
-          <Box marginTop="25px">
-            <Typography
-              sx={{
-                fontFamily: "Work Sans",
-                fontSize: "20px",
-                fontWeight: 700,
-                lineHeight: "21px",
-                letterSpacing: "0em",
-                textAlign: "left",
-              }}
-            >
-              FEATURED POSTS
-            </Typography>
-          </Box>
-          <Stack>
-            {Featured.map((post, index) => (
-              <Link
-                href={{
-                  pathname: `/Resources/Blog/${post.Slug}/${post.Id}`,
-                }}
-                key={index}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <Stack key={index} gap={1} marginTop="27px">
-                  <Stack direction="row" gap={1}>
-                    <DescriptionIcon />
-                    <Typography
-                      key={index}
-                      sx={{
-                        fontFamily: "Work Sans",
-                        fontSize: "16px",
-                        fontWeight: 400,
-                        lineHeight: "24px",
-                        letterSpacing: "-0.02em",
-                        textAlign: "left",
-                      }}
-                    >
-                      {post.Title.length > 50
-                        ? `${post.Title.substring(0, 50)}...`
-                        : post.title}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Link>
-            ))}
-          </Stack>
-        </Stack>
-        <Box marginTop="30px" border="0.5px solid rgba(0, 0, 0, 0.3)" />
-      </Stack>
+
+      {/* Desktop View Aside */}
       <Stack
         display={{
           xs: "none",
@@ -349,13 +290,22 @@ const BlogFeed = () => {
                       top: "50%",
                       transform: "translateY(-50%)",
                     }}
-                    // onChange={() => fetchBlogs()}
+                  // onChange={() => fetchBlogs()}
                   />
                 </InputAdornment>
               ),
             }}
           />
         </Stack>
+
+        {/* <Stack mt={4}>
+          <Typography variant="body1">{"Selected Tags"}</Typography>
+
+          {tags.map((tag, index) => {
+            return <Typography variant="body2" key={index}>{tag?.Tag},</Typography>
+          })}
+        </Stack> */}
+
         <Box marginTop="30px" border="0.5px solid rgba(0, 0, 0, 0.3)" />
         <Stack>
           <Box marginTop="25px">
@@ -427,6 +377,68 @@ const BlogFeed = () => {
           onTagClick={handleTagClick}
         />
       </Stack>
+
+      {/* Mobile View Aside */}
+      <Stack
+        m={"0 auto"}
+        width={"95%"}
+        display={{
+          xs: "flex",
+          lg: "none",
+        }}
+      >
+        <Box marginTop="30px" border="0.5px solid rgba(0, 0, 0, 0.3)" />
+        <Stack>
+          <Box marginTop="25px">
+            <Typography
+              sx={{
+                fontFamily: "Work Sans",
+                fontSize: "20px",
+                fontWeight: 700,
+                lineHeight: "21px",
+                letterSpacing: "0em",
+                textAlign: "left",
+              }}
+            >
+              FEATURED POSTS
+            </Typography>
+          </Box>
+          <Stack>
+            {Featured.map((post, index) => (
+              <Link
+                href={{
+                  pathname: `/Resources/Blog/${post.Slug}/${post.Id}`,
+                }}
+                key={index}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Stack key={index} gap={1} marginTop="27px">
+                  <Stack direction="row" gap={1}>
+                    <DescriptionIcon />
+                    <Typography
+                      key={index}
+                      sx={{
+                        fontFamily: "Work Sans",
+                        fontSize: "16px",
+                        fontWeight: 400,
+                        lineHeight: "24px",
+                        letterSpacing: "-0.02em",
+                        textAlign: "left",
+                      }}
+                    >
+                      {post.Title.length > 50
+                        ? `${post.Title.substring(0, 50)}...`
+                        : post.title}
+                    </Typography>
+                  </Stack>
+                </Stack>
+              </Link>
+            ))}
+          </Stack>
+        </Stack>
+        <Box marginTop="30px" border="0.5px solid rgba(0, 0, 0, 0.3)" />
+      </Stack>
+
     </Stack>
   );
 };
