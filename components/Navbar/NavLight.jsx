@@ -218,7 +218,7 @@ const NavLight = () => {
                           },
                         }}
                       >
-                        Crm
+                        CRM
                       </Typography>
                     </Link>
                   </Stack>
