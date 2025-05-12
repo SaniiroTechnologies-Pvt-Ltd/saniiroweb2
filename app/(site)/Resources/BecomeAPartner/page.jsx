@@ -27,17 +27,15 @@ export default function BecomeAPartnerPage() {
     <>
       <NavOnScroll isAlwaysVisible={true} />
       <BuildingSuccess />
-      <Stack maxWidth={"1536px"} margin={"0 auto"}>
-        <Tagline />
-        <Billing bgColor={true} />
-        <Specialize />
-        <Industry2 />
-        <BlankSpace />
-        <PartnerPrivileges />
-        <Inspire />
-        <Gallery />
-        <ContactFaq />
-      </Stack>
+      <Tagline />
+      <Billing bgColor={true} />
+      <Specialize />
+      <Industry2 />
+      <BlankSpace />
+      <PartnerPrivileges />
+      <Inspire />
+      <Gallery />
+      <ContactFaq />
       <Readytosign />
     </>
   );

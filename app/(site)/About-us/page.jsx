@@ -26,8 +26,10 @@ export default function AboutUsPage() {
 
   return (
     <>
-      <NavOnScroll isAlwaysVisible={true} />
-      <AboutBanner />
+      <Stack gap={5}>
+        <NavOnScroll isAlwaysVisible={true} />
+        <AboutBanner />
+      </Stack>
       <WelcomeToSaniiro />
       <ExploreAbout />
       <OurJourney />

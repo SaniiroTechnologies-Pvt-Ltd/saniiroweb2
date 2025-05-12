@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import Script from "next/script";
 import { useDispatch, useSelector } from "react-redux";
 import SweetAlert from "@/components/SweetAlert/SweetAlert";
@@ -9,14 +10,9 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
-  TextField,
   Button,
-  Grid,
-  Box,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { json } from "react-router-dom";
 import { logPaymentDetails } from "@/components/undo/payment/confrimPayment";
 
 export default function PayuModel({ isOpen, onClose }) {

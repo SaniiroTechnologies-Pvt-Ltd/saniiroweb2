@@ -1,5 +1,6 @@
 import Readytosign from "@/components/Contact/Readytosign";
 import ContactFaq from "@/components/Home/ContactFaq";
+import NavOnScroll from "@/components/NavOnScroll";
 import JoinBusinesses from "@/components/undo/JoinBusinesses";
 import PricingBanner from "@/components/undo/PricingBanner";
 import PricingTab from "@/components/undo/PricingTab";
@@ -16,15 +17,16 @@ export async function generateMetadata() {
 }
 
 
+
 export default function PricingPage() {
+
   return (
     <>
+      <NavOnScroll threshold={450} isAlwaysVisible={false} />
       <PricingBanner />
-      <Stack maxWidth={"1536px"} margin={"0 auto"}>
-        <PricingTab />
-        <JoinBusinesses />
-        <ContactFaq />
-      </Stack>
+      <PricingTab />
+      <JoinBusinesses />
+      <ContactFaq />
       <Readytosign />
     </>
   );
