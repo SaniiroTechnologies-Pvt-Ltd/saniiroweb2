@@ -19,7 +19,7 @@ export async function generateMetadata() {
   }
 }
 
-export default function Index() {
+export default function IndexPage() {
   return (
     <>
       <NavOnScroll isAlwaysVisible={true} />
@@ -27,28 +27,11 @@ export default function Index() {
       <RequestDemo />
       <Billing />
       <NewPart />
+      {/* <Testimonial /> */}
       <ToggleSection />
       <Awards />
       <Clock />
       <ContactFaq />
-
-
-
-      {/* <Stack
-        fontFamily={"Work Sans"}
-        maxWidth={"1536px"}
-        margin={"0 auto"}
-        gap={4}
-      >
-        <Simplify />
-        <RequestDemo />
-        <Billing />
-        <Testimonial />
-        <ToggleSection />
-        <Clock />
-        <Awards />
-        <ContactFaq />
-      </Stack>*/}
     </>
   );
 }
