@@ -267,7 +267,7 @@ function ThemeWrapper({ children }) {
   return (
     <ThemeProvider theme={theme}>
       {globalStyles}  {/* Apply global styles */}
-      <CssBaseline /> {/* Normalize styles */}
+      {/* <CssBaseline />  */}  {/* Normalize styles */}
       <DataProvider>
         <Provider store={store}>
           {children}
