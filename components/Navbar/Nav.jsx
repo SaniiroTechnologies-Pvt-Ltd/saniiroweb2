@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Link from "next/link";
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
-import lo from "../assets/lo.svg";
+import { Box, Typography } from "@mui/material";
+// import lo from "../assets/lo.svg";
 import { Stack } from "@mui/material";
 import "./nav.css";
 import Button from "../utils/Button";
@@ -96,7 +96,7 @@ const Nav = () => {
   ];
 
   return (
-    <>
+    <Fragment>
       {/* for Desktop view */}
       <Stack
         sx={{ display: { xs: "none", lg: "flex", }, }}
@@ -114,7 +114,7 @@ const Nav = () => {
           position={"relative"}
         >
           <Link href="/">
-            <Image src={lo} alt="" fill objectFit="contain" sizes="100%" />
+            <Image src={'/saniiro.svg'} alt="" fill objectFit="contain" sizes="100%" />
           </Link>
         </Stack>
 
@@ -644,7 +644,7 @@ const Nav = () => {
             position={"relative"}
           >
             <Link href="/">
-              <Image src={lo} alt="" fill objectFit="contain" />
+              <Image src={'/saniiro.svg'} alt="" fill objectFit="contain" />
             </Link>
           </Stack>
           <Stack
@@ -969,7 +969,7 @@ const Nav = () => {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </Fragment>
   );
 };
 
