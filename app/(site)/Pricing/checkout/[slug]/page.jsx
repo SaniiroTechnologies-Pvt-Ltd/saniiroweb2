@@ -2,12 +2,14 @@
 
 import Readytosign from '@/components/Contact/Readytosign';
 import ContactFaq from '@/components/Home/ContactFaq';
+import NavOnScroll from '@/components/NavOnScroll';
 // import PricingBanner from '@/components/Pricing/PricingBanner'; 
 import JoinBusinesses from '@/components/undo/JoinBusinesses';
 import PackageDetails from '@/components/undo/PackageDetails';
 import { Stack } from '@mui/material';
 import { useParams } from 'next/navigation';
-import React from 'react';
+import { Fragment } from 'react';
+
 
 function Page() {
   const price = sessionStorage.getItem("price") || 0;
@@ -17,7 +19,8 @@ function Page() {
   const slug = param.slug;
 
   return (
-    <React.Fragment>
+    <Fragment>
+      <NavOnScroll isAlwaysVisible={true} />
       {/* <PricingBanner /> */}
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <PackageDetails slug={slug} price={price} Name={planName} />
@@ -25,7 +28,7 @@ function Page() {
         <ContactFaq />
       </Stack>
       <Readytosign />
-    </React.Fragment>
+    </Fragment>
   );
 }
 
