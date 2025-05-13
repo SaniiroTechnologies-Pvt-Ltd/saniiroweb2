@@ -1,4 +1,3 @@
-import Awards from "@/components/Home/Awards";
 import HomeBanner from "@/components/Home/HomeBanner";
 import Billing from "@/components/Home/Billing";
 import Clock from "@/components/Home/Clock";
@@ -9,6 +8,8 @@ import ToggleSection from "@/components/Home/State";
 import NavOnScroll from "@/components/NavOnScroll";
 import { fetchMetadata } from "@/utils/FetchMetadata";
 import ResponsiveAppBar from "@/components/Navbar/ResponsiveAppBar";
+import VideoFeatureSection from "@/components/Home/VideoFeatureSection";
+import RecognitionShowcase from "@/components/Home/AwardsAndRecognition";
 
 
 // metadata | Home
@@ -28,10 +29,11 @@ export default function IndexPage() {
       <HomeBanner />
       <RequestDemo />
       <Billing />
-      <NewPart />
+      {/* <NewPart /> */}
+      <RecognitionShowcase />
       {/* <Testimonial /> */}
       <ToggleSection />
-      <Awards />
+      <VideoFeatureSection />
       <Clock />
       <ContactFaq />
     </>
