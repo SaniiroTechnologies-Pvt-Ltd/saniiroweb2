@@ -3,11 +3,11 @@ import { Container } from '@mui/material';
 const PageWrapper = ({ children }) => (
  <Container
   component={"main"}
-  maxWidth={'1536px'}
+  maxWidth={'xxl'}
+  disableGutters
   sx={{
-   margin: { xs: "0 auto" },
-   boxSizing: 'content-box',
-   padding: { xs: 0 },
+   mx: "auto",
+   boxSizing: 'border-box',
    width: '100%',
   }}
  >

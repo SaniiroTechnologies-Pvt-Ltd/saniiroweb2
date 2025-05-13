@@ -8,6 +8,7 @@ import RequestDemo from "@/components/Home/RequestDemo";
 import ToggleSection from "@/components/Home/State";
 import NavOnScroll from "@/components/NavOnScroll";
 import { fetchMetadata } from "@/utils/FetchMetadata";
+import ResponsiveAppBar from "@/components/Navbar/ResponsiveAppBar";
 
 
 // metadata | Home
@@ -22,7 +23,8 @@ export async function generateMetadata() {
 export default function IndexPage() {
   return (
     <>
-      <NavOnScroll isAlwaysVisible={true} />
+      {/* <NavOnScroll isAlwaysVisible={true} /> */}
+      <ResponsiveAppBar />
       <HomeBanner />
       <RequestDemo />
       <Billing />
