@@ -1,7 +1,7 @@
 "use client"; // This ensures the component runs only on the client
 
 import { useState, useEffect } from "react";
-import Nav from "./Navbar/Nav";
+import ResponsiveAppBar from "./Navbar/ResponsiveAppBar";
 
 export default function NavOnScroll({ threshold, isAlwaysVisible = false }) {
   const [showNav, setShowNav] = useState(isAlwaysVisible);
@@ -42,5 +42,5 @@ export default function NavOnScroll({ threshold, isAlwaysVisible = false }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [threshold, isAlwaysVisible]);
 
-  return showNav && <Nav />;
+  return showNav && <ResponsiveAppBar />;
 };

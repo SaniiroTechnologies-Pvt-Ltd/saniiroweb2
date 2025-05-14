@@ -2,14 +2,13 @@ import HomeBanner from "@/components/Home/HomeBanner";
 import Billing from "@/components/Home/Billing";
 import Clock from "@/components/Home/Clock";
 import ContactFaq from "@/components/Home/ContactFaq";
-import NewPart from "@/components/Home/NewPart";
 import RequestDemo from "@/components/Home/RequestDemo";
 import ToggleSection from "@/components/Home/State";
 import NavOnScroll from "@/components/NavOnScroll";
 import { fetchMetadata } from "@/utils/FetchMetadata";
-import ResponsiveAppBar from "@/components/Navbar/ResponsiveAppBar";
 import VideoFeatureSection from "@/components/Home/VideoFeatureSection";
 import RecognitionShowcase from "@/components/Home/AwardsAndRecognition";
+import PartnerLogoCarousel from "@/components/Home/PartnerLogoCarousel";
 
 
 // metadata | Home
@@ -24,12 +23,11 @@ export async function generateMetadata() {
 export default function IndexPage() {
   return (
     <>
-      {/* <NavOnScroll isAlwaysVisible={true} /> */}
-      <ResponsiveAppBar />
+      <NavOnScroll isAlwaysVisible={true} />
       <HomeBanner />
       <RequestDemo />
+      <PartnerLogoCarousel />
       <Billing />
-      {/* <NewPart /> */}
       <RecognitionShowcase />
       {/* <Testimonial /> */}
       <ToggleSection />

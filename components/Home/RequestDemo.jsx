@@ -1,15 +1,10 @@
 "use client";
 
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Button from "../utils/Button";
-import section2 from "../assets/Team.png";
-import LogosDesign from "../assets/LogosDesign.png";
-import Slider from "./Slider";
 import Link from "next/link";
 
-import Image from "next/image";
-import Slider2 from "./Slider2";
 
 const RequestDemo = () => {
   return (
@@ -97,11 +92,6 @@ const RequestDemo = () => {
             REQUEST DEMO
           </Button>
         </Link>
-      </Stack>
-      <Stack>
-        <Box>
-          <Slider2 />
-        </Box>
       </Stack>
     </Stack>
   );
