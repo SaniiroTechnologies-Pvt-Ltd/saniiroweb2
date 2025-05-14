@@ -5,8 +5,8 @@ import OurJourney from "@/components/About/OurJourney";
 import OurNetwork from "@/components/About/OurNetwork";
 import ProductSlider from "@/components/About/ProductSlider";
 import WelcomeToSaniiro from "@/components/About/WelcomeToSaniiro";
-import Awards from "@/components/Home/Awards";
 import Clock from "@/components/Home/Clock";
+import VideoFeatureSection from "@/components/Home/VideoFeatureSection";
 import NavOnScroll from "@/components/NavOnScroll";
 import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
@@ -38,7 +38,7 @@ export default function AboutUsPage() {
       <Stack gap={5} maxWidth={"1536px"} margin={"0 auto"}>
         <Name />
         <Clock />
-        <Awards />
+        <VideoFeatureSection />
       </Stack>
     </>
   );
