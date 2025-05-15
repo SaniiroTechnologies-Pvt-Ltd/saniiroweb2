@@ -365,7 +365,7 @@ const PricingTab = () => {
 
     fetchSubscriptionPlans();
   }, []);
-  console.log("subscriptionPlans", subscriptionPlans);
+  // console.log("subscriptionPlans", subscriptionPlans);
   return (
     <>
      <Box

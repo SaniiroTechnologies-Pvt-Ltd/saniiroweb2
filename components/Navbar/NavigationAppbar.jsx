@@ -20,8 +20,7 @@ import { CgMenuRight } from 'react-icons/cg';
 import LaunchIcon from '@mui/icons-material/Launch';
 import navigationLinks from './navigation-links';
 
-
-function ResponsiveAppBar() {
+function NavigationAppbar({ isAppbarLight = false }) {
   const theme = useTheme();
 
   const [openDropdown, setOpenDropdown] = React.useState(null);
@@ -48,12 +47,13 @@ function ResponsiveAppBar() {
   return (
     <>
       <AppBar
-        position="sticky"
+        position={isAppbarLight ? "relative" : "sticky"}
         sx={{
-          backgroundColor: 'common.white',
+          backgroundColor: isAppbarLight ? 'transparent' : 'common.white',
           top: 0,
           boxShadow: 'none',
-          borderBottom: '1px solid #eee',
+          borderBottom: isAppbarLight ? '0px' : `1px solid #eee`,
+          zIndex: 111
         }}
       >
         <Container maxWidth="xxl" disableGutters>
@@ -101,7 +101,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Image
-                  src="/saniiro.svg"
+                  src={isAppbarLight ? "/saniiro-light.svg" : "/saniiro.svg"}
                   alt="Saniiro Logo"
                   layout="fill"
                   objectFit="contain"
@@ -132,7 +132,7 @@ function ResponsiveAppBar() {
                       disableElevation
                       size="small"
                       sx={{
-                        color: 'common.black',
+                        color: isAppbarLight ? 'common.white' : 'common.black',
                         textTransform: 'capitalize',
                         fontFamily: 'Work Sans',
                         fontWeight: 500,
@@ -253,7 +253,7 @@ function ResponsiveAppBar() {
 
             {/* ✅ Mobile Menu Icon toggler */}
             <Box sx={{ display: { xs: 'flex', lg: 'none' } }}>
-              <IconButton onClick={toggleDrawer(true)} sx={{ color: 'common.black' }}>
+              <IconButton onClick={toggleDrawer(true)} sx={{ color: isAppbarLight ? 'common.white' : 'common.black' }}>
                 <CgMenuRight />
               </IconButton>
             </Box>
@@ -283,7 +283,7 @@ function ResponsiveAppBar() {
           </IconButton>
         </Box>
         <List>
-          {navigation.map((item) => (
+          {navigationLinks.map((item) => (
             <React.Fragment key={item.label}>
               <ListItem onClick={() => handleCollapseToggle(item.label)} sx={{ "&:hover": { backgroundColor: 'transparent' } }}>
                 <ListItemIcon>
@@ -341,4 +341,4 @@ function ResponsiveAppBar() {
   );
 }
 
-export default ResponsiveAppBar;
+export default NavigationAppbar;

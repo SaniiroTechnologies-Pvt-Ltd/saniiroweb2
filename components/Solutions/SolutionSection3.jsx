@@ -1,15 +1,19 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import arrowIcon from "../../assets/arrowIcon.svg";
-import colors from "../../assets/colors.png";
 import Image from "next/image";
+
 const SolutionSection3 = () => {
   const lists2 = [
     {
-      title: "Automotive CRM",
+      title: "Small Business CRM",
     },
     {
-      title: "Automotive CRM",
+      title: "Medium Business CRM",
+    },
+    {
+      title: "Large Enterprise CRM",
     },
   ];
   return (
@@ -28,7 +32,7 @@ const SolutionSection3 = () => {
           </Typography>
           <Typography
             textAlign={"center"}
-            color={"#4DB267"}
+            color={'tertiary.main'}
             fontWeight={"bold"}
             fontSize={{
               xs: "25px",
@@ -52,8 +56,8 @@ const SolutionSection3 = () => {
         >
           Whether you're an SMB looking to optimize your sales processes by
           moving away from legacy tools and spreadsheets or a global enterprise
-          looking to scale your sales operations across the globe, Zoho CRM is
-          the right fit for you. Zoho CRM offers the right combination of
+          looking to scale your sales operations across the globe, Saniiro CRM is
+          the right fit for you. Saniiro CRM offers the right combination of
           functional feature sets, intuitive user experience, scalability, and
           ease of use to help every business connect with customers at scale to
           build everlasting relationships.
@@ -70,7 +74,7 @@ const SolutionSection3 = () => {
               <Stack
                 key={index}
                 p={{ xs: "2px 8px", md: "5px 10px", lg: "7px 16px" }}
-                bgcolor={"#248F41"}
+                bgcolor={'tertiary.main'}
                 border={"1px solid white"}
                 direction={"row"}
                 justifyContent={"center"}
@@ -79,7 +83,7 @@ const SolutionSection3 = () => {
                 gap={1}
               >
                 <Typography
-                  color={"white"}
+                  color={"common.white"}
                   fontWeight={"bold"}
                   fontSize={{
                     xs: "8px",
@@ -95,11 +99,13 @@ const SolutionSection3 = () => {
                   justifyContent={"center"}
                   width={{ xs: "30px", lg: "50px" }}
                   height={{ xs: "30px", lg: "50px" }}
-                  bgcolor={"white"}
+                  bgcolor={"common.white"}
                   borderRadius={"50%"}
                 >
                   <Image
-                    src={arrowIcon}
+                    src={'/solutions/ArrowOutwardIcon.svg'}
+                    width={0}
+                    height={0}
                     alt=""
                     style={{ width: "50%", height: "50%" }}
                   />
@@ -114,7 +120,7 @@ const SolutionSection3 = () => {
           width={"100%"}
           height={"50vh"}
         >
-          <Image src={colors} alt="" fill objectFit="contain" sizes="100vw" />
+          <Image src={'/solutions/Colors.png'} alt="corner stone for businesses" fill objectFit="contain" sizes="100vw" />
         </Stack>
       </Stack>
     </Stack>

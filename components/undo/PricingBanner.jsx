@@ -2,10 +2,10 @@
 
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import NavLight from "../Navbar/NavLight";
-import "../Solutions/IndustriesByusecases/Solution.css";
+// import "../Solutions/IndustriesByusecases/Solution.css";
 import TickMark from "../assets/TickMark.svg";
 import Image from "next/image";
+import NavigationAppbar from "../Navbar/NavigationAppbar";
 
 const PricingBanner = () => {
   const lists = [
@@ -28,8 +28,8 @@ const PricingBanner = () => {
   ];
   return (
     <>
-    <Stack bgcolor={"#052973"} className="textured-background">
-      <NavLight />
+    <Stack bgcolor={"primary.main"} className="textured-background">
+      <NavigationAppbar isAppbarLight={true} />
       <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
         <Stack
           p={"150px 0px 0 0"}

@@ -1,27 +1,82 @@
-import { Stack, Typography } from "@mui/material";
 import React from "react";
-import NavLight from "../Navbar/NavLight";
-import "../Solutions/IndustriesByusecases/Solution.css";
-import TickMark from "../assets/TickMark.svg";
+import { Box, Grid, Typography } from "@mui/material";
+import NavigationAppbar from "@/components/Navbar/NavigationAppbar";
+
 
 const CaseStudyBanner = () => {
   return (
     <>
       {/* desktop view  */}
 
-      <Stack
-        display={{
-          xs: "none",
-          lg: "block",
-        }}
-        bgcolor={"#052973"}
+      <Box
+        bgcolor={"primary.main"}
         className="textured-background"
+        boxSizing={'border-box'}
       >
-        <Stack zIndex={110}>
+        <NavigationAppbar isAppbarLight={true} />
+        <Grid container spacing={4} justifyContent="center" height={{ xs: '45dvh', sm: '35dvh', md: '50dvh', lg: '50dvh', xl: '60dvh' }}>
+          <Grid item width={'100%'}>
+            <Typography
+              variant={'h4'}
+              textAlign={"center"}
+              textTransform={"uppercase"}
+              fontSize={{
+                xs: "30px",
+                sm: "30px",
+                md: "50px",
+                lg: "60px",
+                xl: "75px",
+              }}
+              letterSpacing={1}
+              fontWeight={"bold"}
+              lineHeight={{ xs: 1.3, lg: 1 }}
+              color={"#4DB267"}
+            >
+              Trusted by Over{" "}
+            </Typography>
 
-          <NavLight />
-        </Stack>
-        <Stack gap={4} pb={14}>
+            <Typography
+              variant={'h4'}
+              textAlign={"center"}
+              textTransform={"uppercase"}
+              letterSpacing={1}
+              fontWeight={"bold"}
+              lineHeight={{ xs: 1.3, lg: 1 }}
+              color={"transparent"}
+              className="text-stroke"
+              fontSize={{
+                xs: "30px",
+                sm: "30px",
+                md: "50px",
+                lg: "60px",
+                xl: "75px",
+              }}
+            >
+              250,000+
+            </Typography>
+
+            <Typography
+              variant={'h4'}
+              textAlign={"center"}
+              textTransform={"uppercase"}
+              fontSize={{
+                xs: "30px",
+                sm: "30px",
+                md: "50px",
+                lg: "60px",
+                xl: "75px",
+              }}
+              letterSpacing={1}
+              fontWeight={"bold"}
+              color={"white"}
+              lineHeight={{ xs: 1.3, lg: 1 }}
+            >
+              Businesses Worldwide
+            </Typography>
+
+          </Grid>
+        </Grid>
+        {/* <Stack gap={4} py={14}>
           <Stack
             p={"50px 0px 0 0"}
             gap={2}
@@ -35,7 +90,7 @@ const CaseStudyBanner = () => {
                 letterSpacing={1}
                 fontWeight={"bold"}
                 lineHeight={1}
-                color={"#4DB267"}
+                color={"tertiary.main"}
               >
                 Trusted by Over
               </Typography>
@@ -48,7 +103,7 @@ const CaseStudyBanner = () => {
                 lineHeight={1}
                 className="text-stroke"
               >
-                {" "}
+                &nbsp;
                 250,000+
               </Typography>
             </Stack>
@@ -63,68 +118,9 @@ const CaseStudyBanner = () => {
               Businesses Worldwide
             </Typography>
           </Stack>
-        </Stack>
-      </Stack>
+        </Stack> */}
+      </Box>
 
-      {/* mobile view and desktop both */}
-      <Stack
-        display={{
-          xs: "block",
-          lg: "none",
-        }}
-        bgcolor={"#052973"}
-        className="textured-background"
-      >
-        <NavLight />
-        <Stack pb={14}>
-          <Stack
-            p={"50px 0px 0 0"}
-            gap={2}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Stack direction={"row"} margin={"0 auto"}>
-              <Typography
-                textAlign={"center"}
-                textTransform={"uppercase"}
-                fontSize={{
-                  xs: "30px",
-                  sm: "40px",
-                  md: "50px",
-                  lg: "60px",
-                  xl: "75%",
-                }}
-                letterSpacing={1}
-                fontWeight={"bold"}
-                lineHeight={1}
-                color={"#4DB267"}
-              >
-                Trusted by Over{" "}
-                <span style={{ color: "transparent" }} className="text-stroke">
-                  250,000+
-                </span>
-              </Typography>
-            </Stack>
-            <Typography
-              textAlign={"center"}
-              textTransform={"uppercase"}
-              fontSize={{
-                xs: "30px",
-                sm: "40px",
-                md: "50px",
-                lg: "60px",
-                xl: "75%",
-              }}
-              letterSpacing={1}
-              fontWeight={"bold"}
-              color={"white"}
-              lineHeight={1}
-            >
-              Businesses Worldwide
-            </Typography>
-          </Stack>
-        </Stack>
-      </Stack>
     </>
   );
 };

@@ -1,5 +1,5 @@
 
-import Nav from "@/components/Navbar/Nav";
+import NavOnScroll from "@/components/NavOnScroll";
 import BenefitsByRole from "@/components/Solutions/IndustriesByrole/BenefitsByRole";
 import Industry1 from "@/components/Solutions/IndustriesByrole/Industry1";
 import Industry2 from "@/components/Solutions/IndustriesByrole/Industry2";
@@ -23,7 +23,7 @@ export async function generateMetadata() {
 export default function ByRolePage() {
   return (
     <>
-      <Nav />
+      <NavOnScroll isAlwaysVisible={true} />
       <Stack maxWidth={"1536px"} margin={"0 auto"}>
         <Stack
           pb={{ xs: "50px", md: "100px", }}

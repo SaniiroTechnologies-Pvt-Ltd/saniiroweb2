@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname, } from "next/navigation";
 import { Box, Stack, Typography } from "@mui/material";
-import NavLight from "@/components/Navbar/NavLight";
+import NavigationAppbar from "../Navbar/NavigationAppbar";
 
 
 const BillingBanner = () => {
@@ -50,8 +50,7 @@ const BillingBanner = () => {
         position={"relative"}
         bgcolor={"#052973"}
         className="textured-background" >
-        <NavLight />
-        {/* <Stack></Stack> */}
+        <NavigationAppbar isAppbarLight={true} />
 
         <Stack maxWidth={"1536px"} margin={"0 auto"} position={"relative"} zIndex={12}>
           <Stack margin={"0 auto"} width={{ xs: "90%", lg: "95%", xl: "100%", }}>

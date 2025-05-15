@@ -1,8 +1,9 @@
 import CaseStudyBanner from "@/components/CaseStudy/CaseStudyBanner";
 import TestimonialsCardsSection from "@/components/CaseStudy/CaseStudyCardsSection";
-import CompanyBanner from "@/components/CaseStudy/CompanyBanner";
+import TestimonialSection from "@/components/CaseStudy/TestimonialSection";
+import apiEndpoints from "@/utils/apiEndpoints";
+// import CompanyBanner from "@/components/CaseStudy/CompanyBanner";
 import { fetchMetadata } from "@/utils/FetchMetadata";
-import { Stack } from "@mui/material";
 
 // Metadata | Case Study
 export async function generateMetadata() {
@@ -13,14 +14,19 @@ export async function generateMetadata() {
   }
 }
 
-export default function CaseStudyPage() {
+export default async function CaseStudyPage() {
+  const res = await fetch(apiEndpoints.review, { next: { revalidate: 60 } }); // ISR + cache
+  const data = await res.json();
+
+  const caseStudies  = data.Data; // or any logic
+
+
   return (
     <>
       <CaseStudyBanner />
-      <Stack maxWidth={"1536px"} margin={"0 auto"}>
-        <CompanyBanner />
-      </Stack>
-      <TestimonialsCardsSection />
+      {/* <CompanyBanner /> */}
+      <TestimonialSection caseStudies ={caseStudies[0] } />
+      <TestimonialsCardsSection caseStudies={caseStudies} />
     </>
   );
 }

@@ -20,8 +20,52 @@ import { CgMenuRight } from 'react-icons/cg';
 import LaunchIcon from '@mui/icons-material/Launch';
 import navigationLinks from './navigation-links';
 
+// const navigation = [
+//   {
+//     label: "Features",
+//     href: "/Features",
+//     icon: <FeaturesIcon />,
+//     dropdown: [
+//       { label: "Billing", href: "/Features/Billing-module" },
+//       { label: "Accounting", href: "/Features/Accounting-module" },
+//       { label: "Inventory", href: "/Features/Inventory-module" },
+//       { label: "CRM", href: "/Features/Crm-module" },
+//     ],
+//   },
+//   {
+//     label: "Solutions",
+//     href: "/Solutions",
+//     icon: <SolutionsIcon />, // Add icon here
+//     dropdown: [
+//       { label: "By Industries", href: "/Solutions/By-Industries" },
+//       { label: "By Size", href: "/Solutions/By-Size" },
+//       { label: "By Role", href: "/Solutions/By-role" },
+//       { label: "By Use Cases", href: "/Solutions/By-usecases" },
+//     ],
+//   },
+//   {
+//     label: "Resources",
+//     href: "/Resources",
+//     icon: <ResourcesIcon />, // Add icon here
+//     dropdown: [
+//       { label: "Become A Partner", href: "/Resources/BecomeAPartner" },
+//       { label: "Career", href: "/Resources/Career" },
+//       { label: "Blogs", href: "/Resources/Blog" },
+//       { label: "Case Study", href: "/Resources/CaseStudy" },
+//       { label: "Testimonials", href: "/Resources/Testimonials" },
+//       { label: "Videos", href: "/Resources/Videos" },
+//       { label: "Faq", href: "/Resources/faq" },
+//     ],
+//   },
+//   {
+//     label: "Pricing",
+//     href: "/Pricing",
+//     icon: <PricingIcon />, // Add icon here
+//     dropdown: [],
+//   },
+// ];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBarLight() {
   const theme = useTheme();
 
   const [openDropdown, setOpenDropdown] = React.useState(null);
@@ -48,12 +92,13 @@ function ResponsiveAppBar() {
   return (
     <>
       <AppBar
-        position="sticky"
+        position="relative"
         sx={{
-          backgroundColor: 'common.white',
+          backgroundColor: 'transparent',
           top: 0,
           boxShadow: 'none',
-          borderBottom: '1px solid #eee',
+          // borderBottom: `1px solid ${theme.palette.primary.light}`,
+          zIndex:100,
         }}
       >
         <Container maxWidth="xxl" disableGutters>
@@ -101,7 +146,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 <Image
-                  src="/saniiro.svg"
+                  src="/saniiro-light.svg"
                   alt="Saniiro Logo"
                   layout="fill"
                   objectFit="contain"
@@ -132,7 +177,7 @@ function ResponsiveAppBar() {
                       disableElevation
                       size="small"
                       sx={{
-                        color: 'common.black',
+                        color: 'common.white',
                         textTransform: 'capitalize',
                         fontFamily: 'Work Sans',
                         fontWeight: 500,
@@ -283,7 +328,7 @@ function ResponsiveAppBar() {
           </IconButton>
         </Box>
         <List>
-          {navigation.map((item) => (
+          {navigationLinks.map((item) => (
             <React.Fragment key={item.label}>
               <ListItem onClick={() => handleCollapseToggle(item.label)} sx={{ "&:hover": { backgroundColor: 'transparent' } }}>
                 <ListItemIcon>
@@ -341,4 +386,4 @@ function ResponsiveAppBar() {
   );
 }
 
-export default ResponsiveAppBar;
+export default ResponsiveAppBarLight;

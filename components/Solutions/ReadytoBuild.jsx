@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import Button from "../../utils/Button";
+import Button from "@/components/utils/Button";
 import "./Solution.css";
 import Link from "next/link";
 const ReadytoBuild = () => {
@@ -14,7 +16,7 @@ const ReadytoBuild = () => {
       }}
       gap={2}
       alignItems={"center"}
-      bgcolor={"#052973"}
+      bgcolor={"primary.main"}
       className="textured-background-Solution"
     >
       <Typography
@@ -25,7 +27,7 @@ const ReadytoBuild = () => {
           lg: "60px",
         }}
         fontWeight={"bold"}
-        color={"white"}
+        color={"primary.contrastText"}
         textAlign={"center"}
       >
         Ready to build lasting relationships with Saniiro CRM?
@@ -34,8 +36,8 @@ const ReadytoBuild = () => {
 
       <Button
         sx={{
-          bgcolor: "white",
-          color: "black",
+          bgcolor: "common.white",
+          color: "common.black",
           width: {
             xs: "150px",
             sm: "180px",

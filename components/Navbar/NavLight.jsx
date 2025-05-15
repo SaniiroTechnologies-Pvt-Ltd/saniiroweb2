@@ -566,6 +566,7 @@ const NavLight = () => {
           </Button>
         </Link>
       </Stack>
+      
       {/* mobile view */}
       <Stack
         alignItems={"end"}

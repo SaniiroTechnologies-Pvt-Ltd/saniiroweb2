@@ -2,7 +2,7 @@ import ProductSlider from "@/components/About/ProductSlider";
 import Clock from "@/components/Home/Clock";
 import ContactFaq from "@/components/Home/ContactFaq";
 import IndustryCards from "@/components/IndustryCards";
-import Nav from "@/components/Navbar/Nav";
+import NavOnScroll from "@/components/NavOnScroll";
 import Industries1 from "@/components/Solutions/IndustriesBysize/Industries1";
 import { fetchMetadata } from "@/utils/FetchMetadata";
 import { Stack } from "@mui/material";
@@ -19,20 +19,20 @@ export async function generateMetadata() {
 export default function BySizePage() {
   return (
     <>
-    <Nav />
-    {/* for desktop view  */}
-    <Stack maxWidth={"1536px"} margin={"0 auto"}>
-      <Stack>
-        <Stack position={"relative"} gap={5}>
-          <Stack>
-            <Industries1 />
-          </Stack>
-          <Stack gap={5}>
-            {/* <Line /> */}
-            {/* <SliderIndustry /> */}
-            <IndustryCards />
-          </Stack>
-          {/* <Stack
+      <NavOnScroll isAlwaysVisible={true} />
+      {/* for desktop view  */}
+      <Stack maxWidth={"1536px"} margin={"0 auto"}>
+        <Stack>
+          <Stack position={"relative"} gap={5}>
+            <Stack>
+              <Industries1 />
+            </Stack>
+            <Stack gap={5}>
+              {/* <Line /> */}
+              {/* <SliderIndustry /> */}
+              <IndustryCards />
+            </Stack>
+            {/* <Stack
             alignItems={"center"}
             p={"100px 0"}
             display={{
@@ -44,17 +44,17 @@ export default function BySizePage() {
           </Stack>
          
           <Industries2 /> */}
-        </Stack>
-        <Stack bgcolor={"#F8F8F8"} pt={5}>
-          <ProductSlider/>
-          <Clock />
+          </Stack>
+          <Stack bgcolor={"#F8F8F8"} pt={5}>
+            <ProductSlider />
+            <Clock />
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
-    <ContactFaq />
+      <ContactFaq />
 
-    {/* for mobile view  */}
-    {/* <Stack
+      {/* for mobile view  */}
+      {/* <Stack
       display={{
         xs: "flex",
         lg: "none",
@@ -72,6 +72,6 @@ export default function BySizePage() {
         <Footer />
       </Stack>
     </Stack> */}
-  </>
+    </>
   );
 }

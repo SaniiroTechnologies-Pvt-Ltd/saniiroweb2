@@ -2,8 +2,8 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { Grid, Stack, Typography } from "@mui/material";
-import NavLight from "@/components/Navbar/NavLight";
 import Image from "next/image";
+import NavigationAppbar from "./Navbar/NavigationAppbar";
 import bannerImage from "../public/industry/banner.svg";
 
 // Optional reusable typography block
@@ -93,7 +93,7 @@ const Banner = () => {
   <React.Fragment>
 
    <Stack position="relative" bgcolor="#052973" className="textured-background">
-    <NavLight />
+   <NavigationAppbar isAppbarLight={true} />
 
     <Grid
      container

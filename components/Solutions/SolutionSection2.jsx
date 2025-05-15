@@ -1,8 +1,7 @@
+"use client";
+
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import arrowIcon from "../../assets/arrowIcon.svg";
-import solutionsection3 from "../../assets/solutionsection3.svg";
-import DotGreen from "../../assets/DotGreen.svg";
 import Image from "next/image";
 
 const SolutionSection2 = () => {
@@ -14,20 +13,19 @@ const SolutionSection2 = () => {
       mt={10}
       p={"30px 0"}
       alignItems={"center"}
-      bgcolor={"#052973"}
+      bgcolor={"primary.main"}
       className="textured-background"
     >
       <Stack
         width={"80%"}
         gap={5}
         alignItems={"center"}
-        zIndex={111}
-        maxWidth={"1536px"}
+        // maxWidth={"1536px"}
         margin={"0 auto"}
       >
         <Stack gap={2}>
           <Typography
-            color={"white"}
+            color={"common.white"}
             fontSize={{
               xs: "25px",
               md: "30px",
@@ -39,7 +37,7 @@ const SolutionSection2 = () => {
           </Typography>
           <Typography
             lineHeight={1}
-            color={"#FA7241"}
+            color={'secondary.main'}
             fontSize={{
               xs: "25px",
               md: "30px",
@@ -50,7 +48,7 @@ const SolutionSection2 = () => {
             Experiences Across Industries
           </Typography>
           <Typography
-            color={"white"}
+            color={"common.white"}
             textAlign={"center"}
             fontSize={{
               xs: "18px",
@@ -82,8 +80,8 @@ const SolutionSection2 = () => {
                 md: "5px 10px",
                 lg: "7px 16px",
               }}
-              bgcolor={"#248F41"}
-              border={"1px solid white"}
+              bgcolor={"tertiary.main"}
+              border={`1px solid common.dark`}
               direction={"row"}
               justifyContent={"center"}
               alignItems={"center"}
@@ -91,7 +89,7 @@ const SolutionSection2 = () => {
               gap={1}
             >
               <Typography
-                color={"white"}
+                color={"common.white"}
                 fontWeight={"bold"}
                 fontSize={{
                   xs: "8px",
@@ -113,12 +111,14 @@ const SolutionSection2 = () => {
                   xs: "30px",
                   lg: "50px",
                 }}
-                bgcolor={"white"}
+                bgcolor={"common.white"}
                 borderRadius={"50%"}
               >
                 <Image
-                  src={arrowIcon}
-                  alt=""
+                  src={'/solutions/ArrowOutwardIcon.svg'}
+                  width={100}
+                  height={100}
+                  alt={`Icon for ${d.title}`}
                   style={{ width: "50%", height: "50%" }}
                 />
               </Stack>
@@ -136,7 +136,7 @@ const SolutionSection2 = () => {
               fill
               objectFit="cover"
               sizes="100vw"
-              src={solutionsection3}
+              src={'/solutions/solutionsection3.svg'}
               alt=""
               style={{ opacity: "0.2" }}
             />
@@ -144,8 +144,8 @@ const SolutionSection2 = () => {
           <Stack
             borderRadius={2}
             sx={{
-              backgroundImage: `url(${DotGreen.src})`,
-              bgcolor: "#248F41",
+              backgroundImage: `url(DotGreenIcon.svg)`,
+              bgcolor: "tertiary.dark",
             }}
             direction={{ xs: "column", lg: "row" }}
             gap={{
@@ -163,13 +163,13 @@ const SolutionSection2 = () => {
               <Stack alignSelf={"center"}>
                 <Typography
                   fontSize={{ xs: "30px", lg: "40px" }}
-                  color={"white"}
+                  color={"common.white"}
                 >
                   The Perfect Tool For
                 </Typography>
                 <Typography
                   fontSize={{ xs: "30px", lg: "40px" }}
-                  color={"white"}
+                  color={"common.white"}
                   fontWeight={900}
                 >
                   Your Sales Teams
@@ -177,7 +177,7 @@ const SolutionSection2 = () => {
               </Stack>
               <Stack>
                 <Typography
-                  color={"white"}
+                  color={"common.white"}
                   fontSize={{
                     xs: "16px",
                     sm: "18px",
@@ -207,7 +207,7 @@ const SolutionSection2 = () => {
                     key={index}
                     p={{ xs: "2px 8px", md: "5px 10px", lg: "7px 16px" }}
                     bgcolor={"#248F41"}
-                    border={"1px solid white"}
+                    border={`1px solid common.white`}
                     direction={"row"}
                     justifyContent={"center"}
                     alignItems={"center"}
@@ -215,7 +215,7 @@ const SolutionSection2 = () => {
                     gap={1}
                   >
                     <Typography
-                      color={"white"}
+                      color={"common.white"}
                       fontWeight={"bold"}
                       fontSize={{
                         xs: "8px",
@@ -235,8 +235,10 @@ const SolutionSection2 = () => {
                       borderRadius={"50%"}
                     >
                       <Image
-                        src={arrowIcon}
-                        alt=""
+                        src={'/solutions/ArrowOutwardIcon.svg'}
+                        width={0}
+                        height={0}
+                        alt={`Icon for ${d.title}`}
                         style={{ width: "50%", height: "50%" }}
                       />
                     </Stack>

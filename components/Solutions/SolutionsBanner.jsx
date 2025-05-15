@@ -1,9 +1,11 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import "./Solution.css";
-import Button from "../../utils/Button";
+import Button from "@/components/utils/Button"; 
 import Image from "next/image";
 import Link from "next/link";
+
 const SolutionsBanner = () => {
   return (
     <Stack
@@ -28,7 +30,7 @@ const SolutionsBanner = () => {
           xs: "center",
           lg: "flex-start",
         }}
-        bgcolor={"#248F41"}
+        bgcolor={"tertiary.main"}
         width={{
           xs: "80%",
           lg: "63%",
@@ -104,7 +106,7 @@ const SolutionsBanner = () => {
             xs: "center",
             lg: "left",
           }}
-          color={"white"}
+          color={"common.white"}
         >
           With a robust set of functionalities and a flexible system that allows
           deep customization, Zoho CRM allows people in different roles and
