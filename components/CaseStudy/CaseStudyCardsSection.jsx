@@ -1,20 +1,14 @@
 "use client";
 
-import { Box, Card, CardContent, Paper, Stack, styled, Typography, useMediaQuery } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { Box, CardContent, Paper, Stack, styled, Typography, useMediaQuery } from "@mui/material";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import EastSharpIcon from "@mui/icons-material/EastSharp";
-import TestmonialCard from "./CaseStudyCard.jsx";
 import CustomPagination from "./CaseStudyPagination";
-import apiEndpoints from "@/utils/apiEndpoints";
 import { Masonry } from "@mui/lab";
 import Image from "next/image";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import Button from "../utils/Button";
 
-const heights = [150, 30, 90, 70, 110, 150, 130, 80, 50, 90, 100, 150, 30, 50, 80];
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -130,42 +124,17 @@ const ShareExperienceBox = () => {
 };
 
 const TestimonialsCardsSection = ({ caseStudies }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [reviews, setReviews] = useState([]);
-  const jobsPerPage = 9;
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(
-          `${apiEndpoints.caseStudy}`
-        );
-        setReviews(response.data.Data);
-      } catch (error) {
-        console.error("Error fetching the reviews: ", error);
-      }
-    };
+  // Assuming caseStudies[0] contains TotalCount
+  const totalCount = caseStudies[0]?.TotalCount || 0; // Fallback to 0 if not available
 
-    fetchReviews();
-  }, []);
 
-  const indexOfLastJob = currentPage * jobsPerPage;
-  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = caseStudies.slice(indexOfFirstJob, indexOfLastJob);
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const columns = [[], [], []];
-  currentJobs.forEach((review, index) => {
-    columns[index % 3].push(review);
-  });
   const router = useRouter();
 
   const handleExploreMoreClick = (slug) => {
     router.push(`/Resources/CaseStudy/${slug}`);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -199,14 +168,15 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
                 <Box
                   sx={{
                     position: 'relative',
-                    width: { xs: '50px', lg: '101.52px' },
-                    height: { xs: '16px', lg: '32.71px' },
+                    width: { xs: '60px', lg: '101.52px' },
+                    height: { xs: '20px', lg: '32.71px' },
                     mb: 1,
                   }}
                 >
                   <Image
-                    src="/casestudy/FedExLogo.png"
-                    alt="FedEx Image"
+                    // src={study.BrandLogo}
+                    src="/saniiro.svg"
+                    alt="Saniiro Logo"
                     fill
                     sizes="(max-width: 768px) 50px, 101.52px"
                     style={{ objectFit: 'contain' }}
@@ -225,7 +195,7 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
                   textAlign={'left'}
                   mb={1}
                 >
-                  {study.Name} Title
+                  {study.Title}
                 </Typography>
 
                 {/* CaseStudy Description */}
@@ -237,7 +207,7 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
                   letterSpacing={0.2}
                   textAlign={'left'}
                   mb={1}
-                  dangerouslySetInnerHTML={{ __html: study.Review }}
+                  dangerouslySetInnerHTML={{ __html: study.Description }}
                 />
 
                 {/* CaseStudy ReadMore Text and Icon */}
@@ -265,7 +235,7 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
                 </Typography>
 
                 <Typography variant="subtitle2" fontSize={15} fontWeight={500} fontFamily="Work Sans">
-                  {study.Name},
+                  {study.Author},
                 </Typography>
 
                 <Typography
@@ -274,7 +244,7 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
                   color="text.secondary"
                   fontFamily="Work Sans"
                 >
-                  {study.Designation}, {study.Company}
+                  {study.Designation}
                 </Typography>
 
               </CardContent>
@@ -282,15 +252,14 @@ const TestimonialsCardsSection = ({ caseStudies }) => {
           ))}
         </Masonry>
 
-        {/* CaseStudy pagination Numbers */}
         <CustomPagination
-          jobsPerPage={jobsPerPage}
-          totalJobs={reviews.length}
-          paginate={paginate}
+          totalCount={totalCount} // or FilteredCount if filtered
+          pageSize={9}
+          currentPage={currentPage}
+          onChange={(value) => setCurrentPage(value)} // update state and refetch
         />
 
         <ViewAllButton />
-
       </Box >
       <ShareExperienceBox />
 

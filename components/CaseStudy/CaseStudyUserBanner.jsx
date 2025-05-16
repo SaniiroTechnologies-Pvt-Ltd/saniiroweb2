@@ -1,13 +1,14 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
 import React from "react";
-import NavLight from "../Navbar/NavLight";
-import "../../Solutions/IndustriesByusecases/Solution.css";
-// import TickMark from "../../assets/TickMark.svg";
-import profileImg from "./../../assets/Group 62904.png";
-const CaseStudyUserBanner = () => {
+import { Box, Stack, Typography } from "@mui/material";
+import "@/components/Solutions/IndustriesByusecases/Solution.css";
+import NavigationAppbar from "@/components/Navbar/NavigationAppbar";
+
+const CaseStudyUserBanner = ({ caseStudy }) => {
   return (
-    <Stack bgcolor={"#052973"} className="textured-background">
-      <NavLight />
+    <Stack bgcolor={"primary.main"} className="textured-background">
+      <NavigationAppbar isAppbarLight={true} />
       <Stack
         gap={4}
         pb={{
@@ -36,12 +37,11 @@ const CaseStudyUserBanner = () => {
             }}
             letterSpacing={1}
             fontWeight={"bold"}
-            color={"white"}
+            color={"common.white"}
             lineHeight={1}
             textAlign={"center"}
           >
-            Brigade Plus transforms sales management and customer journeys with
-            Zoho CRM
+            {caseStudy.Title}
           </Typography>
           <Typography
             sx={{
@@ -54,21 +54,16 @@ const CaseStudyUserBanner = () => {
               lineHeight: "32px",
               letterSpacing: "0em",
               textAlign: "center",
-              color: "white",
+              color: "common.white",
             }}
-          >
-            "Zoho CRM stands out from its competitors, not only for its
-            user-friendly interface, but for its exceptional customer support as
-            well. Whether it's through their comprehensive online resources or
-            dedicated tech support, Zoho has consistently delivered excellent
-            support,"
-          </Typography>
+            dangerouslySetInnerHTML={{ __html: caseStudy.Description }}
+          />
           <Box
             width={"83px"}
             height={"83px"}
             component="img"
             alt="ProfileImg"
-            src={profileImg}
+            src={caseStudy.ProfileImage}
           />
           <Typography
             sx={{
@@ -78,10 +73,10 @@ const CaseStudyUserBanner = () => {
               lineHeight: "24px",
               letterSpacing: "-0.02em",
               textAlign: "center",
-              color: "white",
+              color: "common.white",
             }}
           >
-            David Fauser,
+            {caseStudy.Author},
           </Typography>
           <Typography
             sx={{
@@ -91,10 +86,10 @@ const CaseStudyUserBanner = () => {
               lineHeight: "13px",
               letterSpacing: "-0.02em",
               textAlign: "center",
-              color: "white",
+              color: "common.white",
             }}
           >
-            Director of Sales, CIMCO Refrigeration,
+            {caseStudy.Designation}, [CompanyName],
           </Typography>
         </Stack>
       </Stack>

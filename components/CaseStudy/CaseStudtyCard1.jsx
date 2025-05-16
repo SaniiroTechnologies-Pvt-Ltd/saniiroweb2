@@ -1,17 +1,20 @@
-import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
-import FedXImg from "./../../assets/image 168.png";
-import arrowImg from "./../../assets/icons/Arrow 4.png";
-import Image from "next/image";
+"use client";
 
-const CaseStudtyCard1 = () => {
+import { alpha, Box, Stack, Typography, useTheme } from "@mui/material";
+import React from "react";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+
+const CaseStudtyCard1 = ({ brandLogo, company }) => {
+  const theme = useTheme();
+
   return (
     <>
       <Stack
         margin={"0px auto"}
-        backgroundColor={"white"}
+        backgroundColor={"common.white"}
         zIndex={1}
-        border={"1px solid  #F15B25"}
+        border={`1px solid ${theme.palette.secondary.main}`}
         borderRadius={"10px"}
         height={"525px"}
         width={{
@@ -24,8 +27,9 @@ const CaseStudtyCard1 = () => {
             component="img"
             width={"113px"}
             height={"33px"}
-            alt="FedXImgs"
-            src={FedXImg}
+            alt="brand logo"
+            // src={FedXImg}
+            src={brandLogo}
           />
           <Stack gap={"4px"}>
             <Typography
@@ -51,7 +55,7 @@ const CaseStudtyCard1 = () => {
                 textAlign: "left",
               }}
             >
-              Real Estate
+              {company?.IndustryType || 'N/A'}
             </Typography>
           </Stack>
           <Stack gap={"4px"}>
@@ -78,7 +82,7 @@ const CaseStudtyCard1 = () => {
                 textAlign: "left",
               }}
             >
-              1000-5000 employees
+              {company?.Employee || 'N/A'}
             </Typography>
           </Stack>
           <Stack gap={"4px"}>
@@ -106,7 +110,7 @@ const CaseStudtyCard1 = () => {
                 textAlign: "left",
               }}
             >
-              Privately held
+              {company?.BusinessType || 'N/A'}
             </Typography>
           </Stack>
         </Stack>
@@ -152,198 +156,41 @@ const CaseStudtyCard1 = () => {
               lg: "flex-start",
             }}
           >
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
+            {[...Array(6)].map((_, index) => (
+              <Stack
+                key={index}
                 sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
+                  width: "110px",
+                  height: "23px",
+                  padding: {
+                    xs: "2.5px 0px",
+                    md: "2.5px 4px",
                   },
-
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
+                  borderRadius: "4px",
+                  backgroundColor: alpha(theme.palette.secondary.light, 0.2),
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
-                  },
+                <Typography
+                  sx={{
+                    fontFamily: "Work Sans",
+                    fontSize: {
+                      xs: "12px",
+                      md: "14px",
+                    },
 
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
-                }}
-              >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
-                  },
-
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
-                }}
-              >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
-                  },
-
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
-                }}
-              >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
-                  },
-
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
-                }}
-              >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: "110px",
-                height: "23px",
-                padding: {
-                  xs: "2.5px 0px",
-                  md: "2.5px 4px",
-                },
-                borderRadius: "4px",
-                backgroundColor: "#FFDEC2",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Work Sans",
-                  fontSize: {
-                    xs: "12px",
-                    md: "14px",
-                  },
-
-                  fontWeight: 500,
-                  lineHeight: "15px",
-                  letterSpacing: "-0.02em",
-                  textAlign: "left",
-                }}
-              >
-                {" "}
-                Privately held
-              </Typography>
-            </Stack>
+                    fontWeight: 500,
+                    lineHeight: "15px",
+                    letterSpacing: "-0.02em",
+                    textAlign: "left",
+                  }}
+                >
+                  {" "}
+                  Privately held {index + 1}
+                </Typography>
+              </Stack>
+            ))}
           </Stack>
 
           <Stack
@@ -361,17 +208,13 @@ const CaseStudtyCard1 = () => {
                 xs: "10px",
                 md: "22px",
               },
-              backgroundColor: "#052973",
+              backgroundColor: "secondary.main",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Image
-              width={"10px"}
-              height={"20px"}
-              src={arrowImg}
-              alt="downward arrow"
-            />
+
+            <ArrowDownwardIcon sx={{ color: "primary.contrastText", fontWeight: 'bold' }} />
             <Typography
               sx={{
                 fontFamily: "Work Sans",
@@ -383,7 +226,7 @@ const CaseStudtyCard1 = () => {
                 lineHeight: "18px",
                 letterSpacing: "0em",
                 textAlign: "center",
-                color: "white",
+                color: "primary.contrastText",
               }}
             >
               Dowenload Case Study

@@ -64,10 +64,12 @@ const TestimonialSection = ({ caseStudies }) => {
           }}
         >
           <Image
-            src={FedXImg}
-            alt="FedX"
-            width={112}
-            height={32.71}
+            src={"/saniiro.svg"}
+            alt="Saniiro Brand"
+            // width={112}
+            // height={32.71}
+            width={148}
+            height={48}
             style={{ marginBottom: 24 }}
           />
 
@@ -103,11 +105,19 @@ const TestimonialSection = ({ caseStudies }) => {
           />
 
           <Typography
+
             fontSize={14}
             fontWeight={600}
-            color="#006FCE"
+            color="primary.main"
             display="inline-flex"
             alignItems="center"
+            sx={{
+              "&:hover": {
+                // backgroundColor: "#F15B25",
+                // color: "#FFFFFF",
+                cursor: "pointer",
+              },
+            }}
           >
             Read full story <ArrowRightAltIcon sx={{ fontSize: 16, ml: 1 }} />
           </Typography>

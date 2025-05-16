@@ -1,12 +1,14 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client";
+
 import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import OfficerImg from "../assets/Rectangle1178.png";
-import profileImg from "../assets/Group 62904.png";
-import fedXImg from "../../assets/image 167.png";
+import OfficerImg from "@/components/CaseStudy/assets/Rectangle1178.png";
+import profileImg from "@/components/CaseStudy/assets/Group 62904.png";
+import fedXImg from "@/components/assets/image 167.png";
 
-const FeedbackCard = ({ video, name, position, feedback }) => {
+const FeedbackCard = ({ video, image, name, position, feedback }) => {
   return (
     <Stack
       width={{
@@ -37,8 +39,8 @@ const FeedbackCard = ({ video, name, position, feedback }) => {
               height: "32.71px",
               marginBottom: "15px",
             }}
-            alt="Fedx Image"
-            src={fedXImg}
+            alt="Profile image"
+            src={image}
           />
           <Typography
             sx={{

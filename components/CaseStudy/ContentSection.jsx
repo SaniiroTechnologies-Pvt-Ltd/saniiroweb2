@@ -1,10 +1,13 @@
+"use client";
+
 import React from "react";
 import KeyResults from "./KeyResults";
 import { Box, Stack } from "@mui/material";
-import UserContent from "./../parts/UserContent";
-import CaseStudyCard1 from "./../parts/CaseStudtyCard1";
-import CaseStudyCard2 from "./../parts/CaseStudtyCard2";
-import frameImg from "../../assets/icons/Group 62562.png";
+import UserContent from "@/components/CaseStudy/UserContent";
+import CaseStudyCard1 from "@/components/CaseStudy/CaseStudtyCard1";
+import CaseStudyCard2 from "@/components/CaseStudy/CaseStudtyCard2";
+// import frameImg from "@/components/assets/icons/Group 62562.png";
+
 const UserContents = [
   {
     id: 1,
@@ -44,7 +47,7 @@ const UserContents = [
   },
 ];
 
-const ContentSection = () => {
+const ContentSection = ({ caseStudy }) => {
   return (
     <>
       {/* desktop view  */}
@@ -65,7 +68,7 @@ const ContentSection = () => {
           margin={"auto"}
         >
           <Stack width={"790px"} direction={"column"} gap={2}>
-            <KeyResults />
+            <KeyResults keyResult={caseStudy.keyResults[0]} />
             <Stack gap={3}>
               {UserContents.map((content) => (
                 <UserContent key={content.id} content={content} />
@@ -89,10 +92,10 @@ const ContentSection = () => {
               position={"absolute"}
               top={-20}
               right={-40}
-              src={frameImg}
+              src={'/casestudy/DottedSquareFrame.png'}
               zIndex={1}
             />
-            <CaseStudyCard1 />
+            <CaseStudyCard1 brandLogo={caseStudy.BrandLogo} company={caseStudy.companies[0]} />
             <CaseStudyCard2 />
           </Stack>
         </Stack>
@@ -127,7 +130,7 @@ const ContentSection = () => {
                 md: "row",
               }}
             >
-              <CaseStudyCard1 />
+              <CaseStudyCard1 brandLogo={caseStudy.BrandLogo} company={caseStudy.companies[0]}/>
               <CaseStudyCard2 />
             </Stack>
           </Stack>

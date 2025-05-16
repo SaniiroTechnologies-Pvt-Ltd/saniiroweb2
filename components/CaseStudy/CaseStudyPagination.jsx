@@ -1,62 +1,66 @@
 import * as React from "react";
 import MuiPagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import Stack from "@mui/material/Stack";
+import { Box } from "@mui/material";
 
-const CustomPagination = ({ jobsPerPage, totalJobs, paginate }) => {
-  const [currentPage, setCurrentPage] = React.useState(1);
-
-  const handlePageChange = (event, page) => {
-    setCurrentPage(page);
-    paginate(page); // Call the paginate function passed from the JobSection component
-    window.scrollTo({ top: 700, behavior: "smooth" });
-  };
+const CustomPagination = ({ totalCount, pageSize = 10, currentPage, onChange }) => {
+  const totalPages = Math.ceil(totalCount / pageSize);
 
   return (
-    <Stack
-      sx={{
-        color: "white",
-        justifyContent: "center",
-        alignItems: "center",
-        mt: 2,
-        mb: 6,
-      }}
-    >
-      <Stack
-        spacing={2}
+    <React.Fragment>
+      <Box
+        component={'div'}
         sx={{
-          color: "white",
+          mt: 4,
+          boxSizing: 'border-box',
+          display: "flex",
+          color: "secondary.contrastText",
+          justifyContent: "center",
+          alignItems: "center",
+          borderSpacing: 2,
+          mb: 6,
         }}
       >
+
         <MuiPagination
           sx={{
             "& .MuiPaginationItem-root": {
-              color: "white",
+              color: "secondary.contrastText",
             },
           }}
-          count={Math.ceil(totalJobs / jobsPerPage)} // Calculate the number of pages
+          count={totalPages}
           page={currentPage}
-          onChange={handlePageChange}
+          onChange={(_, value) => onChange(value)}
           renderItem={(item) => (
             <PaginationItem
               component="a"
               sx={{
                 "&.Mui-selected": {
                   textDecoration: "underline",
-                  color: "#F15B25",
+                  color: "secondary.main",
                   "&:hover": {
                     textDecoration: "underline",
-                    backgroundColor: "white",
-                    color: "#F15B25",
+                    backgroundColor: "secondary.contrastText",
+                    color: "secondary.main",
                   },
                 },
+                mx: 0.5,
+                borderRadius: 4,
+                fontWeight: 500,
+                minWidth: 32,
+                height: 32,
               }}
               {...item}
             />
           )}
+          // size="large"
+          showFirstButton
+          showLastButton
+        // hidePrevButton
+        // hideNextButton
         />
-      </Stack>
-    </Stack>
+      </Box>
+    </React.Fragment>
   );
 };
 

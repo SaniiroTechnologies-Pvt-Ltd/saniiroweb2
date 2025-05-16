@@ -1,7 +1,9 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import React from "react";
 
-const KeyResults = () => {
+const KeyResults = ({ keyResult }) => {
   return (
     <>
       <Stack marginBottom={"30px"}>
@@ -58,7 +60,7 @@ const KeyResults = () => {
                 color: "#F15B25",
               }}
             >
-              6 months
+              {keyResult?.Adoption}
             </Typography>
           </Stack>
           <Stack paddingLeft={"10px"} borderLeft={"3px solid #34A853"}>
@@ -85,7 +87,7 @@ const KeyResults = () => {
                 color: "#34A853",
               }}
             >
-              70%
+              {keyResult?.DirectBenefit}
             </Typography>
           </Stack>
           <Stack paddingLeft={"10px"} borderLeft={"3px solid #052973"}>
@@ -112,7 +114,7 @@ const KeyResults = () => {
                 color: "#052973",
               }}
             >
-              18hrs/week
+              {keyResult?.TimeSaved}
             </Typography>
           </Stack>
           <Stack paddingLeft={"10px"} borderLeft={"3px solid #DF7E00"}>
@@ -139,7 +141,7 @@ const KeyResults = () => {
                 color: "#DF7E00",
               }}
             >
-              100%
+              {keyResult?.Adoption2}
             </Typography>
           </Stack>
         </Stack>

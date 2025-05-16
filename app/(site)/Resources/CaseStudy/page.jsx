@@ -15,9 +15,12 @@ export async function generateMetadata() {
 }
 
 export default async function CaseStudyPage() {
-  const res = await fetch(apiEndpoints.review, { next: { revalidate: 60 } }); // ISR + cache
-  const data = await res.json();
+  const res1 = await fetch(apiEndpoints.review, { next: { revalidate: 60 } }); // ISR + cache
+  const data1 = await res1.json();
+  const reviews  = data1.Data; // or any logic
 
+  const res = await fetch(apiEndpoints.caseStudy, { next: { revalidate: 60 } }); // ISR + cache
+  const data = await res.json();
   const caseStudies  = data.Data; // or any logic
 
 
@@ -25,7 +28,7 @@ export default async function CaseStudyPage() {
     <>
       <CaseStudyBanner />
       {/* <CompanyBanner /> */}
-      <TestimonialSection caseStudies ={caseStudies[0] } />
+      <TestimonialSection caseStudies ={reviews[0] } />
       <TestimonialsCardsSection caseStudies={caseStudies} />
     </>
   );

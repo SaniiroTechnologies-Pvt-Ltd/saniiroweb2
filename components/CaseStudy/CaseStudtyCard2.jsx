@@ -1,14 +1,16 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+"use client";
+
+import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
-import interviewImg from "./../../assets/image 177.png";
-import arrowImg from "./../../assets/icons/Arrow 4.png";
 import Link from "next/link";
 
 const CaseStudtyCard1 = () => {
+  const theme = useTheme();
+
   return (
-    <>
+    <React.Fragment>
       <Stack
-        border={"1px solid  #F15B25"}
+        border={`1px solid  ${theme.palette.secondary.main}`}
         borderRadius={"10px"}
         height={"390px"}
         width={{
@@ -26,8 +28,8 @@ const CaseStudtyCard1 = () => {
               md: "300px",
             }}
             height={"136px"}
-            alt="FedXImgs"
-            src={interviewImg}
+            alt="Interview to share experience"
+            src={'/casestudy/Interview.png'}
           />
 
           <Stack gap={"4px"} width={"85%"} margin={"0px auto"}>
@@ -74,13 +76,13 @@ const CaseStudtyCard1 = () => {
                   padding: "20px, 20px, 14px, 20px",
                   borderRadius: "4px",
                   gap: "22px",
-                  backgroundColor: "#F15B25",
+                  backgroundColor: "secondary.main",
                   justifyContent: "center",
-                  border: "1px solid white",
+                  border: `1px solid ${theme.palette.common.white}`,
                   alignItems: "center",
                   "&:hover": {
-                    backgroundColor: "#F15B25",
-                    border: "1px solid #F15B25",
+                    backgroundColor: "secondary.light",
+                    border: `1px solid ${theme.palette.secondary.main}`,
                     cursor: "pointer",
                   },
                 }}
@@ -96,7 +98,7 @@ const CaseStudtyCard1 = () => {
                     lineHeight: "18px",
                     letterSpacing: "0em",
                     textAlign: "center",
-                    color: "white",
+                    color: "common.white",
                   }}
                 >
                   SUBMIT YOUR STORY
@@ -106,7 +108,7 @@ const CaseStudtyCard1 = () => {
           </Stack>
         </Stack>
       </Stack>
-    </>
+    </React.Fragment>
   );
 };
 
