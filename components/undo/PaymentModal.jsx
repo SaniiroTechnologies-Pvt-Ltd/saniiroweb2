@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useFormik } from "formik";
+// components/undo/PaymentModal.jsx
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -10,20 +9,20 @@ import {
   Button,
   Grid,
   Box,
+  Select,
+  MenuItem,
+  Tooltip,
+  CircularProgress,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
 import apiEndpoints from "@/utils/apiEndpoints";
-import { purchaseSchema } from "@/Validation-Scema";
-import { handleRazorpayCheckout } from "./payment/Razorpay";
-import SweetAlert from "../SweetAlert/SweetAlert";
-import zIndex from "@mui/material/styles/zIndex";
-import Script from "next/script";
+import SweetAlert from "@/components/SweetAlert/SweetAlert";
 import { useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { handleRazorpayCheckout } from "./payment/Razorpay";
 import { savePayUMoneyData } from "@/redux/payuSlice";
-import PayPage from "@/app/(site)/Pricing/payumoney/PayuModel";
 import PayuModel from "@/app/(site)/Pricing/payumoney/PayuModel";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const PaymentModal = ({
   open,
@@ -33,24 +32,45 @@ const PaymentModal = ({
   referenceCode,
   couponCode,
 }) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [formValues, setFormValues] = useState({
+    Name: "",
+    Email: "",
+    UserName: "",
+    PhoneNumber: "",
+    CountryISDCode: "91",
+    CountryId: "",
+    StateId: "",
+    OrganisationName: "",
+    ContactPerson: "",
+    GSTNo: "",
+    City: "",
+    referenceCode: referenceCode || "",
+    couponCode: couponCode || "",
+    Address: "",
+    PostCode: "",
+    SalesExecutive: "",
+    Remark: "",
+  });
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const dispatch = useDispatch();
+
   const [openModal, setOpenModal] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const handleClose = () => {
-    setOpenModal(false);
-    setIsOpenModal(false);
-  };
+
+  // Fetch countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get(`${apiEndpoints.Country}`);
+        const response = await axios.get(apiEndpoints.Country);
         setCountries(response.data.Data || []);
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -59,54 +79,149 @@ const PaymentModal = ({
     fetchCountries();
   }, []);
 
+  // Fetch states
   useEffect(() => {
-    if (selectedCountry) {
-      const fetchStates = async () => {
+    const fetchStates = async () => {
+      if (selectedCountry) {
         try {
-          const response = await axios.get(`${apiEndpoints.State}`, {
+          const response = await axios.get(apiEndpoints.State, {
             params: { CountryId: selectedCountry },
           });
           setStates(response.data.Data || []);
         } catch (error) {
           console.error("Error fetching states:", error);
         }
-      };
-      fetchStates();
-    } else {
-      setStates([]);
-    }
+      }
+    };
+    fetchStates();
   }, [selectedCountry]);
 
+  // Fetch cities
   useEffect(() => {
-    if (selectedState) {
-      const fetchCities = async () => {
+    const fetchCities = async () => {
+      if (selectedState) {
         try {
-          const response = await axios.get(`${apiEndpoints.City}`, {
+          const response = await axios.get(apiEndpoints.City, {
             params: { StateId: selectedState },
           });
           setCities(response.data.Data || []);
         } catch (error) {
           console.error("Error fetching cities:", error);
         }
-      };
-      fetchCities();
-    } else {
-      setCities([]);
-    }
+      }
+    };
+    fetchCities();
   }, [selectedState]);
 
-  useEffect(() => {
-    formik.setFieldValue("referenceCode", referenceCode || "");
-    formik.setFieldValue("couponCode", couponCode || "");
-  }, [referenceCode, couponCode]);
+  // redirect to success page
+  const Rediract = () => router.push("/success");
 
-  const Rediract = () => {
-    const router = useRouter();
-    router.push("/success");
+  // validate form data
+  const validateFields = () => {
+    const newErrors = {};
+    if (!formValues.Name.trim()) newErrors.Name = "Full Name is required";
+    if (!formValues.Email.trim()) newErrors.Email = "Email is required";
+    if (!formValues.UserName.trim()) newErrors.UserName = "Username is required";
+    if (!formValues.PhoneNumber.trim()) newErrors.PhoneNumber = "Phone number is required";
+    if (!selectedCountry) newErrors.CountryId = "Country is required";
+    if (!selectedState) newErrors.StateId = "State is required";
+    if (!selectedCity) newErrors.City = "City is required";
+    if (!formValues.OrganisationName?.trim()) newErrors.OrganisationName = "Organization is required";
+    if (!formValues.Address?.trim()) newErrors.Address = "Address is required";
+    if (!formValues.PostCode?.trim()) newErrors.PostCode = "PostCode is required";
+    if (!formValues.ContactPerson?.trim()) newErrors.ContactPerson = "Key Person is required";
+    // if (!formValues.GSTNo?.trim()) newErrors.GSTNo = "GST No is required";
+    if (!formValues.Remark?.trim()) newErrors.Remark = "Remark is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const formik = useFormik({
-    initialValues: {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateFields()) return;
+
+    setLoading(true);
+    try {
+      const response = await axios.post(apiEndpoints.Purchase, {
+        ...formValues,
+        slug,
+      });
+      if (response.data.Code === 1000) {
+        handlePayment(response.data.Data);
+        SweetAlert.success("Payment successful!");
+        onClose(); // Close the modal on success
+      } else {
+        SweetAlert.error("Payment failed.");
+      }
+    } catch (error) {
+      console.error("Error during payment:", error);
+      SweetAlert.error("An error occurred during payment.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handles payment methods
+  const handlePayment = (response) => {
+    if (response.Priority === 'RazorPay') {
+      executeRazorpay(response);
+    }
+    else if (response.Priority === "PayUMoney") {
+      executePayUMoney(response);
+    }
+    else {
+      SweetAlert.error("Payment initiation failed.");
+    }
+  }
+
+  // RazorPay Payment Method
+  const executeRazorpay = async (response) => {
+    const paymentData = {
+      ID: response.Id,
+      Price: response.Price,
+      Name: response.Name,
+      Email: response.Email,
+      Phone: response.Phone,
+      Description: response.Productinfo,
+      txnid: response.Txnid,
+      Priority: "RazorPay",
+    };
+    await handleRazorpayCheckout(paymentData, router);
+    resetForm();
+    closePopup();
+  }
+
+  // PayU Money Payment Method
+  const executePayUMoney = (response) => {
+    dispatch(
+      savePayUMoneyData({
+        key: process.env.NEXT_PUBLIC_PAYU_MAINKEY,
+        price: response.Price,
+        firstname: response.Name,
+        email: response.Email,
+        phone: response.Phone,
+        productinfo: response.Productinfo,
+        txnid: response.Txnid,
+        surl: "http://localhost:4000/payment-success",
+        furl: "http://localhost:4000/payment-failure",
+      })
+    );
+    closePopup();
+    setIsOpenModal(true);
+  }
+
+  // reset and close
+  const closePopup = () => {
+    onClose();
+    reset();
+  };
+
+  // reset form data
+  const reset = () => {
+    setSelectedCountry('');
+    setSelectedState('');
+    setSelectedCity('');
+    setFormValues({
       Name: "",
       Email: "",
       UserName: "",
@@ -124,291 +239,173 @@ const PaymentModal = ({
       PostCode: "",
       SalesExecutive: "",
       Remark: "",
-    },
-    validationSchema: purchaseSchema,
-    onSubmit: async (values, { resetForm }) => {
-      setLoading(true);
-      try {
-        const response = await fetch(`${apiEndpoints.Purchase}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...values, slug }),
-        });
+    })
+  }
 
-        if (!response.ok) {
-          throw new Error(`Error: ${response.statusText}`);
-        }
+  // close all modals
+  const handleModelClose = () => {
+    setOpenModal(false);
+    setIsOpenModal(false);
+  }
 
-        const data = await response.json();
-
-        if (data.Code === 1000) {
-          if (data.Data.Priority === "RazorPay") {
-            const paymentData = {
-              ID: data.Data.Id,
-              Price: data.Data.Price,
-              Name: data.Data.Name,
-              Email: data.Data.Email,
-              Phone: data.Data.Phone,
-              Description: data.Data.Productinfo,
-              txnid: data.Data.Txnid,
-              Priority: "RazorPay",
-            };
-            await handleRazorpayCheckout(paymentData, router);
-            resetForm();
-            ClosePopup();
-          } else if (data.Data.Priority === "PayUMoney") {
-            dispatch(
-              savePayUMoneyData({
-                key: process.env.NEXT_PUBLIC_PAYU_MAINKEY,
-                price: data.Data.Price,
-                firstname: data.Data.Name,
-                email: data.Data.Email,
-                phone: data.Data.Phone,
-                productinfo: data.Data.Productinfo,
-                txnid: data.Data.Txnid,
-                surl: "http://localhost:4000/payment-success",
-                furl: "http://localhost:4000/payment-failure",
-              })
-            );
-            ClosePopup();
-            setIsOpenModal(true);
-          } else {
-            SweetAlert.error("Payment initiation failed.");
-          }
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    },
-  });
-
-  const ClosePopup = () => {
-    onClose();
-    formik.resetForm();
-  };
-  const renderTextField = (field, label, isOptional = false) => (
+  // Text field common format
+  const renderTextField = (field, label) => (
     <Box key={field} mb={2}>
-      <TextField
-        label={label || field.replace(/([A-Z])/g, " $1").trim()}
-        name={field}
-        value={formik.values[field]}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        error={formik.touched[field] && Boolean(formik.errors[field])}
-        helperText={formik.touched[field] && formik.errors[field]}
-        fullWidth
-        size="small"
-        sx={{
-          maxWidth: "300px",
-          "& .MuiInputBase-root": {
-            height: "35px",
-          },
-        }}
-      />
+      <Tooltip
+        title={errors[field] || ""}
+        open={Boolean(errors[field])}
+        placement="bottom-end"
+        arrow
+        disableFocusListener
+        disableHoverListener={!errors[field]}
+        disableTouchListener
+      >
+        <TextField
+          label={label}
+          name={field}
+          value={formValues[field]}
+          onChange={(e) => setFormValues({ ...formValues, [field]: e.target.value })}
+          error={Boolean(errors[field])}
+          fullWidth
+          size="small"
+        />
+      </Tooltip>
     </Box>
   );
 
   return (
     <>
-      <Dialog
-        open={open}
-        onClose={ClosePopup}
-        maxWidth="lg"
-        fullWidth
-        style={{ zIndex: 999 }}
-      >
-        <DialogTitle
-          style={{
-            backgroundColor: "#052973",
-            color: "#fff",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+      <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
+        <DialogTitle>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
             Customer Details
-            <Button
-              onClick={onClose}
-              color="inherit"
-              style={{
-                backgroundColor: "rgb(241, 91, 37)",
-                padding: 5,
-                color: "#fff",
-              }}
-            >
+            <Button onClick={onClose} color="inherit">
               <CloseIcon />
             </Button>
-          </div>
+          </Box>
         </DialogTitle>
 
-        <form onSubmit={formik.handleSubmit}>
-          <DialogContent style={{ zIndex: 5 }}>
+        <form onSubmit={handleSubmit}>
+          <DialogContent>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6} md={4}>
-                {[
-                  "Name",
-                  "OrganisationName",
-                  "PhoneNumber",
-                  "GSTNo",
-                  "SalesExecutive",
-                ].map((field) => renderTextField(field))}
+                {["Name", "OrganisationName", "PhoneNumber", "GSTNo", "SalesExecutive"].map((field) => renderTextField(field, field))}
               </Grid>
-
               <Grid item xs={12} sm={6} md={4}>
-                {[
-                  "Email",
-                  "ContactPerson",
-                  "UserName",
-                  "Remark",
-                  "PostCode",
-                ].map((field) => renderTextField(field))}
+                {["Email", "ContactPerson", "UserName", "Remark", "PostCode"].map((field) => renderTextField(field, field))}
               </Grid>
-
               <Grid item xs={12} sm={6} md={4}>
-
                 <Box mb={2}>
-                  <TextField
-                    select
-                    name="CountryId"
-                    value={formik.values.CountryId}
-                    onChange={(e) => {
-                      formik.handleChange(e);
-                      setSelectedCountry(e.target.value);
-                      formik.setFieldValue("StateId", "");
-                      setSelectedState("");
-                    }}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.CountryId &&
-                      Boolean(formik.errors.CountryId)
-                    }
-                    helperText={
-                      formik.touched.CountryId && formik.errors.CountryId
-                    }
-                    fullWidth
-                    SelectProps={{ native: true }}
-                    size="small"
-                    sx={{
-                      maxWidth: "300px",
-                      "& .MuiInputBase-root": {
-                        height: "35px",
-                      },
-                    }}
+                  <Tooltip
+                    title={errors.CountryId || ""}
+                    open={Boolean(errors.CountryId)}
+                    placement="bottom-end"
+                    arrow
+                    disableFocusListener
+                    disableHoverListener={!errors.CountryId}
+                    disableTouchListener
                   >
-                    <option value="">Select Country</option>
-                    {countries.map((option) => (
-                      <option key={option.Id} value={option.Id}>
-                        {option.Name}
-                      </option>
-                    ))}
-                  </TextField>
+                    <Select
+                      name="CountryId"
+                      value={selectedCountry}
+                      onChange={(e) => {
+                        setSelectedCountry(e.target.value);
+                        setFormValues({ ...formValues, CountryId: e.target.value });
+                        setSelectedState(""); // Reset state when country changes
+                        setSelectedCity(""); // Reset city when country or state changes
+                      }}
+                      fullWidth
+                      size="small"
+                    >
+                      <MenuItem value="">Select Country</MenuItem>
+                      {countries.map((option) => (
+                        <MenuItem key={option.Id} value={option.Id}>
+                          {option.Name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Tooltip>
                 </Box>
 
                 <Box mb={2}>
-                  <TextField
-                    select
-                    name="StateId"
-                    value={formik.values.StateId}
-                    onChange={(e) => {
-                      formik.handleChange(e);
-                      setSelectedState(e.target.value);
-                      formik.setFieldValue("City", "");
-                    }}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.StateId && Boolean(formik.errors.StateId)
-                    }
-                    helperText={formik.touched.StateId && formik.errors.StateId}
-                    fullWidth
-                    SelectProps={{ native: true }}
-                    size="small"
-                    sx={{
-                      maxWidth: "300px",
-                      "& .MuiInputBase-root": {
-                        height: "35px",
-                      },
-                    }}
+                  <Tooltip
+                    title={errors.StateId || ""}
+                    open={Boolean(errors.StateId)}
+                    placement="bottom-end"
+                    arrow
+                    disableFocusListener
+                    disableHoverListener={!errors.StateId}
+                    disableTouchListener
                   >
-                    <option value="">Select State</option>
-                    {states.map((option) => (
-                      <option key={option.Id} value={option.Id}>
-                        {option.Name}
-                      </option>
-                    ))}
-                  </TextField>
+                    <Select
+                      name="StateId"
+                      value={selectedState}
+                      onChange={(e) => {
+                        setSelectedState(e.target.value);
+                        setFormValues({ ...formValues, StateId: e.target.value });
+                        setSelectedCity(""); // Reset city when state changes
+                      }}
+                      fullWidth
+                      size="small"
+                    >
+                      <MenuItem value="">Select State</MenuItem>
+                      {states.map((option) => (
+                        <MenuItem key={option.Id} value={option.Id}>
+                          {option.Name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Tooltip>
                 </Box>
 
                 <Box mb={2}>
-                  <TextField
-                    select
-                    name="City"
-                    value={formik.values.City}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.City && Boolean(formik.errors.City)}
-                    helperText={formik.touched.City && formik.errors.City}
-                    fullWidth
-                    SelectProps={{ native: true }}
-                    size="small"
-                    sx={{
-                      maxWidth: "300px",
-                      "& .MuiInputBase-root": {
-                        height: "35px",
-                      },
-                    }}
+                  <Tooltip
+                    title={errors.City || ""}
+                    open={Boolean(errors.City)}
+                    placement="bottom-end"
+                    arrow
+                    disableFocusListener
+                    disableHoverListener={!errors.City}
+                    disableTouchListener
                   >
-                    <option value="">Select City</option>
-                    {cities.map((option) => (
-                      <option key={option.Id} value={option.Id}>
-                        {option.Name}
-                      </option>
-                    ))}
-                  </TextField>
+                    <Select
+                      name="City"
+                      value={formValues.City}
+                      onChange={(e) => {
+                        setSelectedCity(e.target.value);
+                        setFormValues({ ...formValues, City: e.target.value });
+                      }}
+                      fullWidth
+                      size="small"
+                    >
+                      <MenuItem value="">Select City</MenuItem>
+                      {cities.map((option) => (
+                        <MenuItem key={option.Id} value={option.Id}>
+                          {option.Name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </Tooltip>
                 </Box>
 
-                {renderTextField("Address", "Address", true)}
-                {/* {renderTextField("PostCode", "PostCode", true)} */}
-
-
+                {renderTextField("Address", "Address")}
               </Grid>
             </Grid>
           </DialogContent>
 
-          <DialogActions
-            style={{
-              padding: "15px",
-            }}
-          >
-            <Button
-              type="submit"
-              style={{
-                backgroundColor: "rgb(241, 91, 37)",
-                color: "#fff",
-              }}
-              variant="contained"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  Loading <CircularProgress size={14} color="inherit" />
-                </>
-              ) : (
-                "Submit"
-              )}
+          <DialogActions>
+            <Button type="submit" variant="contained" disabled={loading}>
+              {loading ? <CircularProgress size={24} /> : "Submit"}
             </Button>
           </DialogActions>
         </form>
       </Dialog>
 
-      <PayuModel isOpen={isOpenModal} onClose={handleClose} />
+      {/* PayU Money Model Component */}
+      <PayuModel isOpen={isOpenModal} onClose={handleModelClose} />
     </>
-  );
-};
+  )
+}
+
 
 export default PaymentModal;

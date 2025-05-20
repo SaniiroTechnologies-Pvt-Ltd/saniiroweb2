@@ -6,6 +6,7 @@ import NavOnScroll from '@/components/NavOnScroll';
 // import PricingBanner from '@/components/Pricing/PricingBanner'; 
 import JoinBusinesses from '@/components/undo/JoinBusinesses';
 import PackageDetails from '@/components/undo/PackageDetails';
+import PricingBanner from '@/components/undo/PricingBanner';
 import { Stack } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { Fragment } from 'react';
@@ -22,11 +23,9 @@ function Page() {
     <Fragment>
       <NavOnScroll isAlwaysVisible={true} />
       {/* <PricingBanner /> */}
-      <Stack maxWidth={"1536px"} margin={"0 auto"}>
-        <PackageDetails slug={slug} price={price} Name={planName} />
-        <JoinBusinesses />
-        <ContactFaq />
-      </Stack>
+      <PackageDetails slug={slug} price={price} Name={planName} />
+      <JoinBusinesses />
+      <ContactFaq />
       <Readytosign />
     </Fragment>
   );

@@ -28,106 +28,89 @@ const PricingBanner = () => {
   ];
   return (
     <>
-    <Stack bgcolor={"primary.main"} className="textured-background">
-      <NavigationAppbar isAppbarLight={true} />
-      <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
-        <Stack
-          p={"150px 0px 0 0"}
-          gap={2}
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
-          <Typography
-            textTransform={"uppercase"}
-            fontSize={{
-              xs: "30px",
-              sm: "40px",
-              md: "60px",
-              lg: "70px",
-              xl: "80px",
-            }}
-            letterSpacing={1}
-            fontWeight={"bold"}
-            color={"transparent"}
-            lineHeight={1}
-            className="text-stroke"
-            textAlign={"center"}
+      <Stack bgcolor={"primary.main"} className="textured-background">
+        <NavigationAppbar isAppbarLight={true} />
+        <Stack gap={4} pb={10} width={"95%"} m={"0 auto"}>
+          <Stack
+            p={{ xs: "50px 0 0 0", lg: "150px 0 0 0" }}
+            gap={2}
+            alignItems={"center"}
+            justifyContent={"center"}
           >
-            Sensational software,
-          </Typography>
-          <Typography
-            textTransform={"uppercase"}
-            fontSize={{
-              xs: "30px",
-              sm: "40px",
-              md: "60px",
-              lg: "70px",
-              xl: "80px",
-            }}
-            letterSpacing={1}
-            fontWeight={"bold"}
-            color={"white"}
-            lineHeight={1}
-            textAlign={"center"}
+            <Typography
+              textTransform={"uppercase"}
+              fontSize={{
+                xs: "30px",
+                sm: "40px",
+                md: "60px",
+                lg: "70px",
+                xl: "80px",
+              }}
+              letterSpacing={1}
+              fontWeight={"bold"}
+              color={"transparent"}
+              lineHeight={1}
+              className="text-stroke"
+              textAlign={"center"}
+            >
+              Sensational software,
+            </Typography>
+            <Typography
+              textTransform={"uppercase"}
+              fontSize={{
+                xs: "30px",
+                sm: "40px",
+                md: "60px",
+                lg: "70px",
+                xl: "80px",
+              }}
+              letterSpacing={1}
+              fontWeight={"bold"}
+              color={"common.white"}
+              lineHeight={1}
+              textAlign={"center"}
+            >
+              Sensible price
+            </Typography>
+          </Stack>
+
+          <Stack
+            pl={{ xs: 6, sm: 12, smm: 0 }}
+            direction={{ xs: "column", smm: "row", }}
+            flexWrap={"wrap"}
+            justifyContent={{ xs: "flex-start", }}
+            alignItems={'center'}
+          
+            gap={{ xs: 1, sm: 4, md: 6, lg: 8, xl: 10, }}
           >
-            Sensible price
-          </Typography>
-        </Stack>
-        <Stack
-          pl={{
-            xs: 6,
-            sm: 12,
-            smm: 0,
-            md: 0,
-          }}
-          direction={{
-            xs: "column",
-            sm: "column",
-            smm: "row",
-            md: "row",
-            lg: "row",
-            xl: "row",
-          }}
-          flexWrap={"wrap"}
-          justifyContent={{
-            xs: "center",
-          }}
-          gap={{
-            xs: 1,
-            sm: 4,
-            md: 6,
-            lg: 8,
-            xl: 10,
-          }}
-        >
-          {lists.map((d) => (
-            <Stack direction={"row"} gap={1}>
-              <Stack pt={0.7}>
-                <Image src={TickMark} alt="" />
+            {lists.map((d) => (
+              <Stack direction={"row"} gap={1} mx={{xs:'50px', md:0}}>
+                <Stack pt={0.7}>
+                  <Image src={TickMark} alt="Tick Mark" />
+                </Stack>
+                <Stack>
+                  <Typography
+                    fontSize={{
+                      xs: "12px",
+                      sm: "14px",
+                      md: "16px",
+                      lg: "20px",
+                      xl: "22px",
+                    }}
+                    fontWeight={"bold"}
+                    color={"common.white"}
+                  >
+                    {d.title}
+                  </Typography>
+                  <Typography fontSize={"13px"} color={"text.tertiary"}>
+                    {d.description}
+                  </Typography>
+                </Stack>
               </Stack>
-              <Stack>
-                <Typography
-                  fontSize={{
-                    xs: "12px",
-                    sm: "14px",
-                    md: "16px",
-                    lg: "20px",
-                    xl: "22px",
-                  }}
-                  fontWeight={"bold"}
-                  color={"white"}
-                >
-                  {d.title}
-                </Typography>
-                <Typography fontSize={"13px"} color={"grey"}>
-                  {d.description}
-                </Typography>
-              </Stack>
-            </Stack>
-          ))}
+            ))}
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
     </>
   );
 };

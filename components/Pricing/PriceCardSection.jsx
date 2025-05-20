@@ -456,7 +456,7 @@ const PriceCardSection = ({ plan }) => {
 
     fetchSubscriptionPlans();
   }, []);
-  console.log("subscriptionPlans", subscriptionPlans);
+  // console.log("subscriptionPlans", subscriptionPlans);
 
   const handleClick = (feature) => {
     setFeaturesInfo(feature);

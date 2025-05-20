@@ -11,21 +11,21 @@ const PackageDetails = ({ slug, price, Name }) => {
   const [referenceCode, setReferenceCode] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [couponDiscount, setCouponDiscount] = useState(0); 
+  const [couponDiscount, setCouponDiscount] = useState(0);
 
   const applyCouponCode = () => {
     if (couponCode.trim().toUpperCase() === "SANJAY") {
       setSuccess(true);
       setError("");
-      setCouponDiscount(10); 
+      setCouponDiscount(10);
       SweetAlert.success("Coupon Applied Successfully");
-      
+
     } else {
       setSuccess(false);
       setError("Coupon code invalid.");
       setCouponDiscount(0);
       SweetAlert.error("Invalid Coupon Code");
-   
+
     }
   };
 
@@ -37,10 +37,10 @@ const PackageDetails = ({ slug, price, Name }) => {
 
   const handleClose = () => setOpenModal(false);
 
-  const couponDiscountAmount = (price * couponDiscount) / 100; 
-  const subTotal = Math.max(price - couponDiscountAmount, 0); 
-  const gst = (subTotal * 18) / 100; 
-  const total = subTotal + gst; 
+  const couponDiscountAmount = (price * couponDiscount) / 100;
+  const subTotal = Math.max(price - couponDiscountAmount, 0);
+  const gst = (subTotal * 18) / 100;
+  const total = subTotal + gst;
 
   return (
     <Box p={3} borderRadius={2} border="1px solid #ccc" bgcolor="#f9f9f9">
@@ -48,7 +48,7 @@ const PackageDetails = ({ slug, price, Name }) => {
         Package Details: {Name}
       </Typography>
 
-      <Stack direction="row" spacing={3} justifyContent="space-between">
+      <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} justifyContent="space-between">
         <Box
           flex={2}
           border={1}
@@ -56,11 +56,11 @@ const PackageDetails = ({ slug, price, Name }) => {
           borderRadius={2}
           overflow="hidden"
         >
-          <Stack direction="row" bgcolor="#052973" color="white" p={1}>
-            <Typography flex={1} textAlign="left" fontWeight="bold">
+          <Stack direction="row" bgcolor="primary.main" color="primary.contrastText" p={1}>
+            <Typography variant="subtitle1" flex={1} textAlign="left" fontWeight="bold">
               Package Name
             </Typography>
-            <Typography flex={1} textAlign="right" fontWeight="bold">
+            <Typography variant="subtitle1" flex={1} textAlign="right" fontWeight="bold">
               Details
             </Typography>
           </Stack>
@@ -72,7 +72,7 @@ const PackageDetails = ({ slug, price, Name }) => {
               borderBottom={1}
               borderColor="grey.300"
             >
-              <Typography flex={1} textAlign="left">
+              <Typography variant="body1" flex={1} textAlign="left">
                 Cost
               </Typography>
               <Typography flex={1} textAlign="right">
@@ -142,8 +142,8 @@ const PackageDetails = ({ slug, price, Name }) => {
         <Box flex={1} borderRadius={2} overflow="hidden">
           <Stack
             direction="row"
-            bgcolor="#052973"
-            color="white"
+            bgcolor="primary.main"
+            color="primary.contrastText"
             p={1}
             style={{ borderTopLeftRadius: "2px" }}
           >
@@ -169,18 +169,18 @@ const PackageDetails = ({ slug, price, Name }) => {
                     endAdornment: (
                       success && (
                         <Typography
-                        style={{
-                          color: "green",
-                          fontSize: "22px",
-                          fontWeight: "700",
-                          textShadow: "3px 3px 6px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 255, 0, 0.5)"
-                        }}
-                        variant="caption"
-                      >
-                        ✓
-                      </Typography>
-                      
-                      
+                          style={{
+                            color: "green",
+                            fontSize: "22px",
+                            fontWeight: "700",
+                            textShadow: "3px 3px 6px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 255, 0, 0.5)"
+                          }}
+                          variant="caption"
+                        >
+                          ✓
+                        </Typography>
+
+
                       )
                     ),
                   }}
@@ -189,16 +189,20 @@ const PackageDetails = ({ slug, price, Name }) => {
                   <Button
                     onClick={clearCouponCode}
                     variant="contained"
-                    color="secondary"
+                    color="secondary.main"
                     size="small"
                   >
                     X
                   </Button>
                 ) : (
                   <Button
-                    style={{ backgroundColor: "#f15b25", color: "white" }}
+                    sx={{
+                      backgroundColor: "secondary.main",
+                      color: "secondary.contrastText"
+                    }}
                     onClick={applyCouponCode}
                     variant="contained"
+                    size="small"
                   >
                     APPLY
                   </Button>
@@ -231,7 +235,10 @@ const PackageDetails = ({ slug, price, Name }) => {
 
             {/* Pay Now Button */}
             <Button
-              style={{ backgroundColor: "#f15b25", color: "white" }}
+              sx={{
+                backgroundColor: "secondary.main",
+                color: "secondary.contrastText"
+              }}
               variant="contained"
               fullWidth
               size="large"

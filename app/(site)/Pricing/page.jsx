@@ -5,7 +5,6 @@ import JoinBusinesses from "@/components/undo/JoinBusinesses";
 import PricingBanner from "@/components/undo/PricingBanner";
 import PricingTab from "@/components/undo/PricingTab";
 import { fetchMetadata } from "@/utils/FetchMetadata";
-import { Stack } from "@mui/material";
 
 // Metadata | Pricing
 export async function generateMetadata() {

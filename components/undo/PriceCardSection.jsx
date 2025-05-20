@@ -1159,7 +1159,7 @@
 
 import React, { useRef, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Card from "./PriceCard";
 
 const PriceCardSection = ({ selectedPlanDetails }) => {
@@ -1195,7 +1195,7 @@ const PriceCardSection = ({ selectedPlanDetails }) => {
         gap={2}
         m={"20px auto"}
       >
-        
+
         <Stack
           ref={sliderRef}
           id="slider"
@@ -1220,7 +1220,7 @@ const PriceCardSection = ({ selectedPlanDetails }) => {
             )
           )}
         </Stack>
-       
+
       </Stack>
       <Stack
         display={{

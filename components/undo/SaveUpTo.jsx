@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 // import roundedArrow from "../assets/curveArrow.png"
 
-const SaveUpTo = () => {
+const SaveUpTo = ({percentage}) => {
   return (
     <Box
       sx={{
@@ -32,7 +32,7 @@ const SaveUpTo = () => {
             color: "#F15B25",
           }}
         >
-          Save up to 34%
+          Save up to {percentage}%
         </Typography>
         <Box
           component={"img"}
