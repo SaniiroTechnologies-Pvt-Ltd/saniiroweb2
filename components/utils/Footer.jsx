@@ -1,29 +1,17 @@
 "use client"
 
-import { Avatar, Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Collapse, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Collapse, Divider, List, ListItemButton, ListItemText, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
 import ofc from "../assets/ofc.svg";
 import ofc2 from "../assets/ofc2.svg";
 import Link from "next/link";
-
-import play from "../assets/play.svg";
-import software from "../assets/software.svg";
 import EmailIcon from "@mui/icons-material/Email";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DomainIcon from '@mui/icons-material/Domain';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-
-// import ArrowDropDownIcon from "@mui/icons-material/KeyboardArrowRight";
-
-
 import "./Footer.css";
 import Image from "next/image";
-import { AccessAlarm } from "@mui/icons-material";
 
 const Footer = () => {
   const theme = useTheme();
@@ -100,8 +88,8 @@ const Footer = () => {
             <Stack gap={1}>
               <Stack
                 p={2}
-                border={"1px solid white"}
-                bgcolor={"#F15B25"}
+                border={`1px solid ${theme.palette.common.white}`}
+                bgcolor={"secondary.main"}
                 width={"265px"}
                 borderRadius={1}
                 direction={"row"}
@@ -117,20 +105,20 @@ const Footer = () => {
                 <Stack>
                   <Typography component={'div'}
                     fontWeight={"bold"}
-                    color={"white"}
+                    color={"secondary.contrastText"}
                     fontSize={"22px"}
                   >
                     Head Office
                   </Typography>
-                  <Typography component={'address'} color={"white"}>
+                  <Typography component={'address'} color={"secondary.contrastText"}>
                     613-5th Floor, Apex Mall, Lalkothi, Jaipur - 302015
                   </Typography>
                 </Stack>
               </Stack>
               <Stack
                 p={2}
-                border={"1px solid white"}
-                bgcolor={"#F15B25"}
+                border={`1px solid ${theme.palette.common.white}`}
+                bgcolor={"secondary.main"}
                 width={"265px"}
                 borderRadius={1}
                 direction={"row"}
@@ -146,12 +134,12 @@ const Footer = () => {
                 <Stack>
                   <Typography component={'div'}
                     fontWeight={"bold"}
-                    color={"white"}
+                    color={"secondary.contrastText"}
                     fontSize={"22px"}
                   >
                     Sale(s) Office
                   </Typography>
-                  <Typography component={'address'} color={"white"}>
+                  <Typography component={'address'} color={"secondary.contrastText"}>
                     Jaipur, Mumbai, Lucknow, Pune, Ahmedabad
                   </Typography>
                 </Stack>
@@ -161,7 +149,9 @@ const Footer = () => {
 
           {/* Company Links */}
           <Stack>
-            <Typography variant="h5" color={theme.palette.common.white} fontWeight={theme.typography.fontWeightBold}>
+            <Typography variant="h5"
+              color={theme.palette.common.white}
+              fontWeight={theme.typography.fontWeightBold}>
               Company
             </Typography>
             <Typography component={'div'}>
@@ -342,7 +332,7 @@ const Footer = () => {
 
 
       {/* Mobile Biew */}
-      <Box sx={{ width: '100%', p: 2, display: { xs: "block", lg: 'none' }, bgcolor: '#35373E' }}>
+      <Box sx={{ p: 2, display: { xs: "block", lg: 'none' }, bgcolor: '#35373E' }}>
 
         {/* Saniiro Contact */}
         <Stack gap={2} sx={{ margin: "0px auto" }}>
@@ -586,12 +576,14 @@ const Footer = () => {
           padding={"20px 0"}
           bgcolor={"#43464F"}
           alignItems={"center"}
-          justifyContent={"Center"}
+          justifyContent={"center"}
           sx={{
             flexDirection: { xs: "column", md: "row", },
           }}
         >
           <Typography variant={theme.typography.subtitle2}
+            textAlign={'center'}
+            fontSize={{ xs: 10, lg: 10 }}
             color={theme.palette.common.white} >
             {`Copyright: © 2019-${new Date().getFullYear()}, Saniiro Technologies Pvt. Ltd. All Rights Reserved.`}
           </Typography>
