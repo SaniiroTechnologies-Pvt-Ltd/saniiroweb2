@@ -8,6 +8,7 @@ import store from "@/redux/store";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { common } from "@mui/material/colors";
 import { CssBaseline, GlobalStyles } from "@mui/material";
+import Snackbar from "./Snackbar";
 
 function ThemeWrapper({ children }) {
   // const theme = createTheme({
@@ -270,6 +271,7 @@ function ThemeWrapper({ children }) {
       {/* <CssBaseline />  */}  {/* Normalize styles */}
       <DataProvider>
         <Provider store={store}>
+          <Snackbar />
           {children}
         </Provider>
       </DataProvider>

@@ -2,47 +2,32 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { Box, Typography, Stack } from "@mui/material";
-import PriceCardSection from "./PriceCardSection";
 import SaveUpTo from "./SaveUpTo";
-import axios from "axios";
 import FeatureTable from "./PricingFeaturesTable";
 import TagSection from "./PracingTagSection";
-import apiEndpoints from "@/utils/apiEndpoints";
-import PricingPlans from "../../app/(site)/Pricing/_components/PricingPlans";
+import PricingPlans from "./PricingPlans";
 
-const PricingTab = () => {
-  const [plan, setPlan] = useState("Monthly");
-  const [subscriptionPlans, setSubscriptionPlans] = useState([]);
+const PricingOptions = ({ subscriptionPlans }) => {
+  const [subscriptionType, setSubscriptionType] = useState("");
   const [selectedPlanDetails, setSelectedPlanDetails] = useState(null);
   const featureTableRef = useRef(null);
 
+  useEffect(() => {
+    // Set the initial subscription type to the first plan's category name if available
+    if (subscriptionPlans.length > 0) {
+      setSubscriptionType(subscriptionPlans[0].CategoryName);
+      setSelectedPlanDetails(subscriptionPlans[0]);
+    }
+  }, [subscriptionPlans]);
+
+  // Handles pricing plan details
   const handlePlan = (selectedPlan) => {
-    setPlan(selectedPlan);
+    setSubscriptionType(selectedPlan);
     const selectedPlanData = subscriptionPlans.find(
       (plan) => plan.CategoryName === selectedPlan
     );
     setSelectedPlanDetails(selectedPlanData);
   };
-
-  useEffect(() => {
-    const fetchSubscriptionPlans = async () => {
-      try {
-        const response = await axios.get(
-          `${apiEndpoints.priceComparison}`
-        );
-        const plans = response.data.Data;
-        setSubscriptionPlans(plans);
-        if (plans.length > 0) {
-          setPlan(plans[0].CategoryName);
-          setSelectedPlanDetails(plans[0]);
-        }
-      } catch (error) {
-        console.error("Error fetching subscription plans:", error);
-      }
-    };
-
-    fetchSubscriptionPlans();
-  }, []);
 
   return (
     <>
@@ -51,7 +36,7 @@ const PricingTab = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
         }}
       >
         <Box
@@ -69,9 +54,9 @@ const PricingTab = () => {
               gap: "10px",
             }}
           >
-            {subscriptionPlans.map((d) => (
+            {subscriptionPlans.map((plan) => (
               <Stack
-                key={d.CategoryName}
+                key={plan.CategoryName}
                 sx={{
                   background: "#34A853",
                   borderRadius: "8px",
@@ -86,19 +71,19 @@ const PricingTab = () => {
                     sx={{
                       padding: "13px 42px",
                       borderRadius: "5px",
-                      background: plan === d.CategoryName ? "#FFFFFF" : "none",
-                      opacity: plan === d.CategoryName ? 0.7 : 1,
+                      background: subscriptionType === plan.CategoryName ? "#FFFFFF" : "none",
+                      opacity: subscriptionType === plan.CategoryName ? 0.7 : 1,
                       fontFamily: "Work Sans",
                       fontSize: "20px",
                       fontWeight: 600,
                       lineHeight: "16px",
                       textAlign: "center",
-                      color: plan === d.CategoryName ? "#000000" : "#FFFFFF",
+                      color: subscriptionType === plan.CategoryName ? "#000000" : "#FFFFFF",
                       cursor: "pointer",
                     }}
-                    onClick={() => handlePlan(d.CategoryName)}
+                    onClick={() => handlePlan(plan.CategoryName)}
                   >
-                    {d.CategoryName}
+                    {plan.CategoryName}
                   </Typography>
                 </Box>
               </Stack>
@@ -109,9 +94,11 @@ const PricingTab = () => {
 
       <SaveUpTo percentage={34} />
 
-      {selectedPlanDetails && <PricingPlans pricingPlans={selectedPlanDetails} featureTableRef={featureTableRef} />}
+      {selectedPlanDetails &&
+        <PricingPlans pricingPlans={selectedPlanDetails} featureTableRef={featureTableRef} />}
 
       <TagSection />
+      
       {selectedPlanDetails && (
         <FeatureTable ref={featureTableRef} features={selectedPlanDetails.Compare} />
       )}
@@ -119,7 +106,7 @@ const PricingTab = () => {
   );
 };
 
-export default PricingTab;
+export default PricingOptions;
 
 
 {/* {selectedPlanDetails && (
