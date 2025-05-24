@@ -104,7 +104,7 @@ function NavigationAppbar({ isAppbarLight = false }) {
                   src={isAppbarLight ? "/saniiro-light.svg" : "/saniiro.svg"}
                   alt="Saniiro Logo"
                   layout="fill"
-                  objectFit="contain"
+                  style={{ objectFit: 'contain' }} // Use style prop for objectFit
                 />
               </Box>
             </Link>

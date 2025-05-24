@@ -96,6 +96,7 @@ const Testimonial = () => {
                   onClick={playVideo}
                   position={"absolute"}
                   sx={{
+                    borderRadius: "50%",
                     width: {
                       xs: "100px",
                     },
@@ -111,7 +112,7 @@ const Testimonial = () => {
                   top={"50%"}
                   left={"50%"}
                   bgcolor={"#D9D9D9"}
-                  borderRadius={"50%"}
+
                   border={"8px solid #FB5555"}
                 >
                   <Image

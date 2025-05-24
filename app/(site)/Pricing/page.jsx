@@ -23,7 +23,7 @@ async function fetchSubscriptionPlans(slug) {
   try {
     const res = await fetch(`${apiEndpoints.priceComparison}`, {
       next: { revalidate: 60 },  // ISR + cache
-      cache: 'no-store', // disable ISR if data updates frequently
+      // cache: 'no-store', // disable ISR if data updates frequently
     });
 
     if (!res.ok) {
@@ -48,7 +48,7 @@ export default async function PricingPage() {
   // Check if the response has the expected structure
   const subscriptionPlans = subscriptionPlansResponse.Data || []; // Default to an empty array if not found
 
-  console.log("Subscription Plans: ", subscriptionPlans);
+  // console.log("Subscription Plans: ", subscriptionPlans);
 
   return (
     <>

@@ -158,9 +158,9 @@ export default function Industry3() {
                         top={"50%"}
                         left={"50%"}
                         bgcolor={"#D9D9D9"}
-                        borderRadius={"50%"}
                         border={"8px solid #FB5555"}
                         sx={{
+                          borderRadius:"50%",
                           transform: "translate(-50%, -50%)",
                           cursor: "pointer",
                         }}
@@ -457,11 +457,11 @@ export default function Industry3() {
                       left: "50%",
                       transform: "translate(-50%, -50%)",
                       cursor: "pointer",
+                      borderRadius:"50%",
                     }}
                     top={"50%"}
                     left={"50%"}
                     bgcolor={"#D9D9D9"}
-                    borderRadius={"50%"}
                     border={"8px solid #FB5555"}
                   >
                     <Image

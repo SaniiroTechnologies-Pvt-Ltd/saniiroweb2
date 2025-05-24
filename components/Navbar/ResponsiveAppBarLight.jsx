@@ -98,7 +98,7 @@ function ResponsiveAppBarLight() {
           top: 0,
           boxShadow: 'none',
           // borderBottom: `1px solid ${theme.palette.primary.light}`,
-          zIndex:100,
+          zIndex: 100,
         }}
       >
         <Container maxWidth="xxl" disableGutters>
@@ -149,7 +149,7 @@ function ResponsiveAppBarLight() {
                   src="/saniiro-light.svg"
                   alt="Saniiro Logo"
                   layout="fill"
-                  objectFit="contain"
+                  style={{ objectFit: 'contain' }} // Use style prop for objectFitobjectFit="contain"
                 />
               </Box>
             </Link>

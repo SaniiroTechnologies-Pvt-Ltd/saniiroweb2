@@ -200,9 +200,9 @@ const ExploreAbout = () => {
                         top={"50%"}
                         left={"50%"}
                         bgcolor={"#D9D9D9"}
-                        borderRadius={"50%"}
                         border={"2px solid #FB5555"}
                         sx={{
+                          borderRadius: "50%",
                           transform: "translate(-50%, -50%)",
                           cursor: "pointer",
                         }}
@@ -368,9 +368,9 @@ const ExploreAbout = () => {
                         top={"50%"}
                         left={"50%"}
                         bgcolor={"#D9D9D9"}
-                        borderRadius={"50%"}
                         border={"2px solid #FB5555"}
                         sx={{
+                          borderRadius: "50%",
                           transform: "translate(-50%, -50%)",
                           cursor: "pointer",
                         }}

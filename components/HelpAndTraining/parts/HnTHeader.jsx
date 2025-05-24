@@ -243,7 +243,7 @@ const HnTHeader = () => {
                             width="20%"
                             height="4px"
                             backgroundColor="#34A853"
-                            borderRadius="10px"
+                            sx={{ borderRadius: "10px", }}
                           />
                           <Typography
                             sx={{
@@ -403,7 +403,7 @@ const HnTHeader = () => {
                         width={"20%"}
                         height={"4px"}
                         backgroundColor={"#34A853"}
-                        borderRadius={"10px"}
+                        sx={{ borderRadius: "10px", }}
                       />
                       <Typography
                         sx={{
@@ -468,7 +468,7 @@ const HnTHeader = () => {
                         width={"20%"}
                         height={"4px"}
                         backgroundColor={"#34A853"}
-                        borderRadius={"10px"}
+                        sx={{ borderRadius: "10px", }}
                       />
                       <Typography
                         sx={{
@@ -533,7 +533,7 @@ const HnTHeader = () => {
                         width={"20%"}
                         height={"4px"}
                         backgroundColor={"#34A853"}
-                        borderRadius={"10px"}
+                        sx={{ borderRadius: "10px", }}
                       />
                       <Typography
                         sx={{
@@ -598,7 +598,7 @@ const HnTHeader = () => {
                         width={"20%"}
                         height={"4px"}
                         backgroundColor={"#34A853"}
-                        borderRadius={"10px"}
+                        sx={{ borderRadius: "10px", }}
                       />
                       <Typography
                         sx={{
