@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Table,
   TableBody,
@@ -9,9 +9,6 @@ import {
   Paper,
   Typography,
   Box,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Divider,
   Container,
   Chip,
@@ -24,41 +21,11 @@ import {
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames }) => {
+const PricingComparison = ({ comparisons, plans, highlightPlan = null }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [expanded, setExpanded] = useState(null);
-
-  const handleAccordionChange = (feature) => {
-    setExpanded(expanded === feature ? null : feature);
-  };
-
-  const [expandedSections, setExpandedSections] = useState(() =>
-    comparisons.reduce((acc, curr, i) => {
-      acc[curr.heading] = i === 0; // only first section expanded
-      return acc;
-    }, {})
-  );
-
-  const handleToggleSection = (section) => {
-    setExpandedSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
-
-
-  const renderCheckmark = (values) => {
-    return values === "true" ?
-      (<CheckIcon fontSize="small" sx={{ color: theme.palette.secondary.main }} />) : values === "false" ?
-        (<CloseIcon fontSize="small" sx={{ color: theme.palette.grey[400] }} />) : '';
-    // !Array.isArray(values) ?
-    //   resnderQuantityRate(values) : values;
-  };
-
 
   const renderValue = (value) => {
     if (typeof value === "boolean" || value === "true" || value === "false") {
@@ -151,102 +118,99 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
     );
   };
 
+  // Mobile view renders cards for each plan
+  if (isMobile) {
+    const plansToShow = plans.length > 1 ? [plans[highlightPlan]] : [];
 
-    // Mobile view renders cards for each plan
-    if (isMobile) {
-      const plansToShow = plans.length > 1 ? [plans[highlightPlan]] : [];
-  
-      return (
-        <Box sx={{ py: 2, px: 2 }}>
-          <Fade in={true} timeout={500}>
-            <Box>
-              {plansToShow.map((plan, index) => (
-                <Card
-                  key={plan.Name.trim()}
+    return (
+      <Box sx={{ py: 2, px: 2 }}>
+        <Fade in={true} timeout={500}>
+          <Box>
+            {plansToShow.map((plan, index) => (
+              <Card
+                key={plan.Name.trim()}
+                sx={{
+                  mb: 4,
+                  overflow: 'visible',
+                  boxShadow: 2,
+                  borderLeft: highlightPlan === index ? `4px solid ${theme.palette.primary.main}` : 'none',
+                  animation: `slideIn 0.3s ease-in-out ${index * 0.1}s both`,
+                  '@keyframes slideIn': {
+                    '0%': { opacity: 0, transform: 'translateX(-10px)' },
+                    '100%': { opacity: 1, transform: 'translateX(0)' }
+                  }
+                }}
+              >
+                <Box
                   sx={{
-                    mb: 4,
-                    overflow: 'visible',
-                    boxShadow: 2,
-                    borderLeft: highlightPlan === index ? `4px solid ${theme.palette.primary.main}` : 'none',
-                    animation: `slideIn 0.3s ease-in-out ${index * 0.1}s both`,
-                    '@keyframes slideIn': {
-                      '0%': { opacity: 0, transform: 'translateX(-10px)' },
-                      '100%': { opacity: 1, transform: 'translateX(0)' }
-                    }
+                    p: 2,
+                    bgcolor: plan.Name === 'Saniiro Standard' ? 'secondary.main' : 'background.paper',
+                    color: plan.Name === 'Saniiro Standard' ? 'secondary.contrastText' : 'text.primary',
+                    borderTopLeftRadius: 8,
+                    borderTopRightRadius: 8,
+                    position: 'relative'
                   }}
                 >
-                  <Box
-                    sx={{
-                      p: 2,
-                      bgcolor: plan.Name === 'Saniiro Standard' ? 'secondary.main' : 'background.paper',
-                      color: plan.Name === 'Saniiro Standard' ? 'secondary.contrastText' : 'text.primary',
-                      borderTopLeftRadius: 8,
-                      borderTopRightRadius: 8,
-                      position: 'relative'
-                    }}
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    fontWeight={highlightPlan === index ? 'bold' : 'medium'}
+                    sx={{ color: highlightPlan === index ? 'secondary.main' : 'inherit' }}
                   >
-                      <Typography
-                      variant="h5"
-                      align="center"
-                      fontWeight={highlightPlan === index ? 'bold' : 'medium'}
-                      sx={{ color: highlightPlan === index ? 'secondary.main' : 'inherit' }}
-                    >
-                      {plan.Name.trim()}
-                    </Typography>
+                    {plan.Name.trim()}
+                  </Typography>
 
-                    {plan.IsPopular === 1 && (
-                      <Chip
-                        label="Popular"
-                        color="secondary"
-                        size="small"
-                        sx={{
-                          position: 'absolute',
-                          top: -12,
-                          right: 20,
-                          fontWeight: 'bold',
-                        }}
-                      />
-                    )}
-                  </Box>
-  
-                  <Box sx={{ p: 2 }}>
-                    {comparisons.map((category) => (
-                      <Box key={category.heading} sx={{ mb: 3 }}>
-                        <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
-                          {category.heading}
-                        </Typography>
-                        <Divider sx={{ mb: 2 }} />
-                        {category.Data.map((feature) => {
-                          const match = feature.CompareCheckbox.find(d => d.Name === plan.Name);
-                          return (
-                            <Box
-                              key={feature.field1}
-                              sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                py: 1,
-                                borderBottom: '1px solid',
-                                borderColor: 'divider'
-                              }}
-                            >
-                              <Typography variant="body2">{feature.field1}</Typography>
-                              {renderValue(match?.Value)}
-                            </Box>
-                          );
-                        })}
-                      </Box>
-                    ))}
-                  </Box>
-                </Card>
-              ))}
-            </Box>
-          </Fade>
-        </Box>
-      );
-    }
-  
-  
+                  {plan.IsPopular === 1 && (
+                    <Chip
+                      label="Popular"
+                      color="secondary"
+                      size="small"
+                      sx={{
+                        position: 'absolute',
+                        top: -12,
+                        right: 20,
+                        fontWeight: 'bold',
+                      }}
+                    />
+                  )}
+                </Box>
+
+                <Box sx={{ p: 2 }}>
+                  {comparisons.map((category) => (
+                    <Box key={category.heading} sx={{ mb: 3 }}>
+                      <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
+                        {category.heading}
+                      </Typography>
+                      <Divider sx={{ mb: 2 }} />
+                      {category.Data.map((feature) => {
+                        const match = feature.CompareCheckbox.find(d => d.Name === plan.Name);
+                        return (
+                          <Box
+                            key={feature.field1}
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              py: 1,
+                              borderBottom: '1px solid',
+                              borderColor: 'divider'
+                            }}
+                          >
+                            <Typography variant="body2">{feature.field1}</Typography>
+                            {renderValue(match?.Value)}
+                          </Box>
+                        );
+                      })}
+                    </Box>
+                  ))}
+                </Box>
+              </Card>
+            ))}
+          </Box>
+        </Fade>
+      </Box>
+    );
+  }
 
   // Desktop view renders a table
   return (

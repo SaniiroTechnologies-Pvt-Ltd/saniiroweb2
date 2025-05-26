@@ -12,9 +12,7 @@ import PricingCardSkeleton from './PricingCardSkeleton'; // Import the skeleton 
 
 const RenderPricingCard = ({ plan, planIndex, planNames, billingPeriod, onCompare }) => {
   const planName = plan.Name.replace(/saniiro/i, "").trim();
-  // const buttonText = ['Standard'].find(o => o === planName) ? "Start Free Trial"
-  //   : ['Professional', 'Expert'].find(o => o === planName) ? 'Buy Now'
-  //     : 'Get Started';
+
   const buttonText = [planNames[2]].find(o => o === planName) ? "Start Free Trial"
     : [planNames[3], planNames[4]].find(o => o === planName) ? 'Buy Now'
       : 'Get Started';

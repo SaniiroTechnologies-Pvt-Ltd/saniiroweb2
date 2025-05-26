@@ -5,12 +5,12 @@ const PricingToggle = ({ billingPeriod, handleBillingChange, categories, discoun
   return (
     <Box sx={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', gap: 2, mb: 5 }}>
       {loading ? (
-        <Stack  zIndex={1} direction="row" spacing={2} borderRadius={30} p={0.5} boxShadow={1} mt={-4}>
+        <Stack direction="row" spacing={2} borderRadius={30} p={0.5} boxShadow={1} mt={-4}>
           <Skeleton variant="rectangular" borderRadius={30} width={100} height={40} />
           <Skeleton variant="rectangular" borderRadius={30} width={100} height={40} />
         </Stack>
       ) : (
-        <Box sx={{ zIndex: 9999, backgroundColor: '#f5f5f5', borderRadius: 30, p: 0.5, boxShadow: 1, mt: -4 }}>
+        <Box sx={{ backgroundColor: '#f5f5f5', borderRadius: 30, p: 0.5, boxShadow: 1, mt: -4 }}>
           <ToggleButtonGroup
             exclusive
             value={billingPeriod}

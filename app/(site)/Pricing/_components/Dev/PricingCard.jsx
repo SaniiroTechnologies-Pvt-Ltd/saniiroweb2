@@ -37,9 +37,9 @@ const PricingCard = ({
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   });
-  
+
   const formattedPrice = numberFormat.format(displayPrice);
-  
+
   const pushToCheckoutPage = () => {
     sessionStorage.setItem("price", price);
     sessionStorage.setItem("planName", title);
@@ -59,7 +59,7 @@ const PricingCard = ({
         overflow: 'visible',
         borderRadius: 2,
         transition: 'transform 0.3s, box-shadow 0.3s',
-        width: '230px',
+        width: '220px',
         margin: '0px',
         '&:hover': {
           boxShadow: isPopular ? 10 : 4,
@@ -67,7 +67,7 @@ const PricingCard = ({
         }
       }}
     >
-    
+
       {isPopular && (
         <Chip
           label="Most Popular"
@@ -86,7 +86,7 @@ const PricingCard = ({
       )}
 
       <CardHeader
-        title={title}
+        title={title.replace(/saniiro/i, "").trim()}
         titleTypographyProps={{ variant: 'h6', align: 'center', fontWeight: 'bold' }}
         sx={{ mt: 2 }}
       />
