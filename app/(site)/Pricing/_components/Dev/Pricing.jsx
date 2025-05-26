@@ -26,7 +26,7 @@ const RenderPricingCard = ({ plan, planIndex, planNames, billingPeriod, onCompar
     slug={plan.Slug}
     yearlyPrice={plan.price}
     features={plan.features}
-    isPopular={planName === planNames[2] ? 1 : 0}
+    isPopular={plan.IsPopular === 1 ? 1 : 0}
     buttonText={buttonText}
     billingPeriod={billingPeriod}
     onCompare={() => onCompare(planIndex)}
@@ -97,7 +97,7 @@ const Pricing = ({ subscriptionPlans }) => {
     },
     tablet: {
       breakpoint: { max: 720, min: 464 },
-      items: 1,
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -112,7 +112,8 @@ const Pricing = ({ subscriptionPlans }) => {
   return (
     <Box sx={{
       bgcolor: 'background.default',
-      minHeight: '100vh',
+      minHeight: 'auto',
+      py: 4,
       animation: 'fadeIn 0.5s ease-in-out',
       '@keyframes fadeIn': {
         '0%': { opacity: 0 },
@@ -129,18 +130,18 @@ const Pricing = ({ subscriptionPlans }) => {
         loading={loading}
       />
 
-      <Container sx={{ mb: 8, px: { xs: 1, md: 4 } }}>
+      <Container sx={{ mb: 2, px: { xs: 1, md: 4 } }}>
         {/* Conditional rendering based on screen size */}
-        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
           {/* Flex layout for screens above 720px */}
           {loading ? (
-            <Stack direction={'row'} gap={2} justifyContent={'space-around'}>
+            <Stack sx={{ display: 'flex', direction: 'row', justifyContent: 'center', gap: 2, }} >
               {[...Array(5)].map((_, index) => (
                 <PricingCardSkeleton key={index} />
               ))}
             </Stack>
           ) : (
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 4 }}>
               {plans.map((plan, index) => {
 
                 const currentPlanName = plan.Name;
@@ -155,7 +156,7 @@ const Pricing = ({ subscriptionPlans }) => {
                   slug={plan.Slug}
                   yearlyPrice={plan.price}
                   features={plan.features}
-                  isPopular={plan.isPopular === 1 ? 1 : 0}
+                  isPopular={plan.IsPopular === 1}
                   buttonText={buttonText}
                   billingPeriod={billingPeriod}
                   onCompare={() => handleCompare(index)}
@@ -175,10 +176,10 @@ const Pricing = ({ subscriptionPlans }) => {
         </Box>
 
         {/* Carousel for mobile devices rendering */}
-        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+        <Box sx={{ display: { xs: 'block', lg: 'none' } }}>
           {/* Carousel for screens below 720px */}
           {loading ? (
-            <Stack direction={'row'} gap={2} justifyContent={'space-around'}>
+            <Stack sx={{ display: 'flex', direction: 'row', gap: 2, justifyContent: 'center' }} >
               {[...Array(5)].map((_, index) => (
                 <PricingCardSkeleton key={index} />
               ))}
@@ -186,7 +187,7 @@ const Pricing = ({ subscriptionPlans }) => {
           ) : (
             <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={3000}>
               {plans.map((plan, index) => (
-                <div key={index} style={{ display: 'flex', justifyContent: 'center' }}>
+                <div key={index} style={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
                   <RenderPricingCard
                     plan={plan}
                     planIndex={index}
@@ -202,7 +203,7 @@ const Pricing = ({ subscriptionPlans }) => {
 
         {comparisons && showComparison && (
           <Box id="pricing-comparison" sx={{
-            mt: '2rem',
+            mt: '4rem',
             scrollMarginTop: '5rem',
             animation: 'fadeInUp 0.5s ease-in-out',
             '@keyframes fadeInUp': {

@@ -12,7 +12,7 @@ const JoinBusinesses = () => {
       sx={{
         margin: {
           xs: "12px auto",
-          lg: "151px auto",
+          lg: "96px auto",
         },
         width: "100%",
         maxWidth: "1060px",

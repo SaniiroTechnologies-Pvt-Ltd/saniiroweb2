@@ -103,61 +103,6 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
   };
 
 
-
-  // const PricingComparisonTableBody = ({ comparisons, planNames, expandedSections, onToggleSection }) => {
-  //   return (
-  //     <TableBody>
-  //       {comparisons.map((feature, index) => (
-  //         <React.Fragment key={feature.heading}>
-  //           {feature?.Data?.length > 0 && (
-  //             <TableRow sx={{ bgcolor: "action.hover" }}>
-  //               <TableCell colSpan={6} sx={{ py: 2 }}>
-  //                 <Accordion
-  //                   expanded={expandedSections[feature.heading]}
-  //                   onChange={() => onToggleSection(feature.heading)}
-  //                   disableGutters
-  //                   elevation={0}
-  //                   sx={{
-  //                     backgroundColor: "transparent",
-  //                     boxShadow: "none",
-  //                     borderBottom: "1px solid #eee",
-  //                     "&::before": { display: "none" },
-  //                     transition: "all 0.3s ease-in-out",
-  //                     width: '100%',
-  //                   }}
-  //                 >
-  //                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-  //                     <Typography variant="subtitle1" fontWeight="bold">
-  //                       {feature.heading}
-  //                     </Typography>
-  //                   </AccordionSummary>
-  //                   <AccordionDetails sx={{ p: 0, width: '100%' }}>
-  //                     {feature.Data.map((subFeature) => (
-  //                       <TableRow key={subFeature.field1} hover>
-  //                         <TableCell component="th" scope="row">
-  //                           {subFeature.field1 || feature.heading}
-  //                         </TableCell>
-  //                         {planNames.map((plan) => {
-  //                           const matched = subFeature.CompareCheckbox.find((d) => d.Name === plan);
-  //                           return (
-  //                             <TableCell key={plan} align="center">
-  //                               {matched ? renderValue(matched.Value) : "-"}
-  //                             </TableCell>
-  //                           );
-  //                         })}
-  //                       </TableRow>
-  //                     ))}
-  //                   </AccordionDetails>
-  //                 </Accordion>
-  //               </TableCell>
-  //             </TableRow>
-  //           )}
-  //         </React.Fragment>
-  //       ))}
-  //     </TableBody>
-  //   );
-  // };
-
   const PricingComparisonTableBody = ({ comparisons, planNames, highlightPlan, popularPlans = [] }) => {
     return (
       <TableBody>
@@ -209,21 +154,21 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
 
     // Mobile view renders cards for each plan
     if (isMobile) {
-      const plansToShow = plans.length > 0 ? [plans[highlightPlan]] : [];
+      const plansToShow = plans.length > 1 ? [plans[highlightPlan]] : [];
   
       return (
         <Box sx={{ py: 2, px: 2 }}>
           <Fade in={true} timeout={500}>
             <Box>
-              {plansToShow.map((plan, planIndex) => (
+              {plansToShow.map((plan, index) => (
                 <Card
-                  key={plan.Name}
+                  key={plan.Name.trim()}
                   sx={{
                     mb: 4,
                     overflow: 'visible',
                     boxShadow: 2,
-                    borderLeft: highlightPlan === planIndex ? `4px solid ${theme.palette.primary.main}` : 'none',
-                    animation: `slideIn 0.3s ease-in-out ${planIndex * 0.1}s both`,
+                    borderLeft: highlightPlan === index ? `4px solid ${theme.palette.primary.main}` : 'none',
+                    animation: `slideIn 0.3s ease-in-out ${index * 0.1}s both`,
                     '@keyframes slideIn': {
                       '0%': { opacity: 0, transform: 'translateX(-10px)' },
                       '100%': { opacity: 1, transform: 'translateX(0)' }
@@ -240,9 +185,15 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
                       position: 'relative'
                     }}
                   >
-                    <Typography variant="h5" fontWeight="bold" align="center">
-                      {plan.Name.charAt(0).toUpperCase() + plan.Name.slice(1)}
+                      <Typography
+                      variant="h5"
+                      align="center"
+                      fontWeight={highlightPlan === index ? 'bold' : 'medium'}
+                      sx={{ color: highlightPlan === index ? 'secondary.main' : 'inherit' }}
+                    >
+                      {plan.Name.trim()}
                     </Typography>
+
                     {plan.IsPopular === 1 && (
                       <Chip
                         label="Popular"
@@ -280,7 +231,7 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
                               }}
                             >
                               <Typography variant="body2">{feature.field1}</Typography>
-                              {renderCheckmark(match?.Value)}
+                              {renderValue(match?.Value)}
                             </Box>
                           );
                         })}
@@ -299,7 +250,7 @@ const PricingComparison = ({ comparisons, plans, highlightPlan = null, planNames
 
   // Desktop view renders a table
   return (
-    <Container maxWidth="xl" sx={{ py: 2 }}>
+    <Container maxWidth="xl" sx={{ py: 2, }}>
       <Fade in={true} timeout={500}>
         <TableContainer component={Paper} sx={{
           boxShadow: 3, borderRadius: 2,

@@ -9,7 +9,8 @@ import {
   Button,
   Box,
   Chip,
-  Stack
+  Stack,
+  useTheme
 } from '@mui/material';
 import CompareIcon from '@mui/icons-material/Compare';
 import { useRouter } from 'next/navigation';
@@ -27,15 +28,18 @@ const PricingCard = ({
 }) => {
 
   const router = useRouter();
+  const theme = useTheme();
 
   const displayPrice = billingPeriod === 'Yearly' ? yearlyPrice : price;
-  const formattedPrice = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
+  const numberFormat = new Intl.NumberFormat('en-IN', {
+    style: 'currency', // 'decimal', 'currency', 'percent'
     currency: 'INR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(displayPrice);
-
+  });
+  
+  const formattedPrice = numberFormat.format(displayPrice);
+  
   const pushToCheckoutPage = () => {
     sessionStorage.setItem("price", price);
     sessionStorage.setItem("planName", title);
@@ -49,31 +53,32 @@ const PricingCard = ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        transform: isPopular === 1 ? 'scale(1.05)' : 'none',
-        boxShadow: isPopular === 1 ? 8 : 1,
-        border: isPopular ? '1px solid #3f51b5' : '1px solid #e0e0e0',
+        transform: isPopular ? 'scale(1.05)' : 'none',
+        boxShadow: isPopular ? 8 : 1,
+        border: isPopular ? `1px solid ${theme.palette.primary.main}` : `1px solid ${theme.palette.common.white}`,
         overflow: 'visible',
         borderRadius: 2,
         transition: 'transform 0.3s, box-shadow 0.3s',
-        width: { md: '110px', lg: '160px', xl: '230px' },
-        margin: '10px',
+        width: '230px',
+        margin: '0px',
         '&:hover': {
-          boxShadow: isPopular === 1 ? 10 : 4,
-          transform: isPopular === 1 ? 'scale(1.07)' : 'scale(1.02)'
+          boxShadow: isPopular ? 10 : 4,
+          transform: isPopular ? 'scale(1.07)' : 'scale(1.02)'
         }
       }}
     >
-      {isPopular === 1 && (
+    
+      {isPopular && (
         <Chip
           label="Most Popular"
-          color="primary"
-
           sx={{
+            backgroundColor: 'primary.main',
+            color: 'common.white',
             position: 'absolute',
             top: -12,
             left: '50%',
             transform: 'translateX(-50%)',
-            fontWeight: 'bold',
+            fontWeight: '600',
             px: 0,
             fontSize: 10,
           }}
@@ -97,12 +102,12 @@ const PricingCard = ({
 
           {billingPeriod === 'Yearly' && (
             <Typography variant="body2" color="success.main" fontWeight="medium">
-              Save ₹{(price * 12 - yearlyPrice).toLocaleString('en-IN')}
+              Save {numberFormat.format(price * 12 - yearlyPrice)}
             </Typography>
           )}
         </Box>
 
-        {/* <Box sx={{ borderTop: '1px solid #e0e0e0', my: 2, pt: 1 }} /> */}
+        <Box sx={{ borderTop: '1px solid #e0e0e0', my: 0, pt: 1 }} />
 
         {/* <List disablePadding sx={{ mb: 1 }}>
           {features.slice(0, 5).map((feature, index) => (
@@ -146,7 +151,7 @@ const PricingCard = ({
             variant="outlined"
             color="secondary"
             fullWidth
-            size="medium"
+            size="small"
             startIcon={<CompareIcon />}
             onClick={onCompare}
             sx={{
@@ -158,7 +163,7 @@ const PricingCard = ({
               }
             }}
           >
-            Compare
+            Compare Detail
           </Button>
         </Stack>
       </CardActions>
