@@ -1,6 +1,8 @@
 import ThemeWrapper from "@/components/ThemeWrapper";
 import "./globals.css";
 import Script from "next/script";
+import GoogleTagManager from "./_components/GoogleTagManager";
+import GoogleAnalytics4 from "./_components/googleAnalytics";
 
 // Metadata | Default
 export const metadata = {
@@ -36,6 +38,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <GoogleTagManager />
+        <GoogleAnalytics4 />
         <ThemeWrapper>
           {children}
         </ThemeWrapper>
