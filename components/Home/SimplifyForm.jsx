@@ -113,7 +113,7 @@ const SimplifyForm = () => {
           });
           setStates(statesRes.data.Data || []);
           // Set showContact based on the selected country
-          setShowContact(selectedCountry === "123"); // Only show contact if India is selected
+          //setShowContact(selectedCountry === "123"); // Only show contact if India is selected
         }
       } catch (error) {
         console.error("Error fetching states", error);
@@ -126,7 +126,7 @@ const SimplifyForm = () => {
   }, [selectedCountry]);
 
   useEffect(() => {
-    setShowContact(selectedCountry === 123);
+    setShowContact(String(selectedCountry) === "123");
   }, [selectedCountry]);
 
 
@@ -474,8 +474,9 @@ const SimplifyForm = () => {
           selectedCountry={selectedCountry}
           selectedState={selectedState}
           handleCountryChange={(value) => {
-            setSelectedCountry(value);
-            setFormValues((prev) => ({ ...prev, CountryId: value }));
+            const normalizedValue = String(value);
+            setSelectedCountry(normalizedValue);
+            setFormValues((prev) => ({ ...prev, CountryId: normalizedValue }));
             setSelectedState("");
           }}
           handleStateChange={(value) => {

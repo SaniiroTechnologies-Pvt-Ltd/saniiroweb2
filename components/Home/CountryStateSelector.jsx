@@ -35,7 +35,7 @@ const CountryStateSelector = ({
      <Select
       size={inputSize}
       value={selectedCountry}
-      onChange={(e) => handleCountryChange(e.target.value)}
+      onChange={(e) => handleCountryChange(String(e.target.value))}
       displayEmpty
       fullWidth
       sx={{
@@ -64,7 +64,7 @@ const CountryStateSelector = ({
        </Typography>
       </MenuItem>
       {!countriesLoading && countries.map((country) => (
-       <MenuItem key={country.Id} value={country.Id}>
+       <MenuItem key={country.Id} value={String(country.Id)}>
         {country.Name}
        </MenuItem>
       ))}
@@ -86,7 +86,7 @@ const CountryStateSelector = ({
      <Select
       size={inputSize}
       value={selectedState}
-      onChange={(e) => handleStateChange(e.target.value)}
+      onChange={(e) => handleStateChange(String(e.target.value))}
       displayEmpty
       fullWidth
       disabled={!states.length}
@@ -116,7 +116,7 @@ const CountryStateSelector = ({
        </Typography>
       </MenuItem>
       {!statesLoading && states.map((state) => (
-       <MenuItem key={state.Id} value={state.Id}>
+       <MenuItem key={state.Id} value={String(state.Id)}>
         {state.Name}
        </MenuItem>
       ))}
