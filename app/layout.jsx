@@ -2,7 +2,7 @@ import ThemeWrapper from "@/components/ThemeWrapper";
 import "./globals.css";
 import Script from "next/script";
 import GoogleTagManager from "./_components/GoogleTagManager";
-import GoogleAnalytics4 from "./_components/googleAnalytics";
+import GoogleAnalytics4 from "./_components/GoogleAnalytics";
 
 // Metadata | Default
 export const metadata = {
